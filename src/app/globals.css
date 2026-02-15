@@ -1,0 +1,491 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Root Variables ───────────────────────────────────────────── */
+:root {
+  --bg-primary: #f6f6f8;
+  --bg-secondary: #ecedf1;
+  --text-primary: #1a1b23;
+  --text-secondary: #535a6f;
+  --accent: #1e3a5f;
+  --accent-light: #3466ae;
+  --turquoise: #0d9488;
+  --saffron: #c7923e;
+}
+
+.dark {
+  --bg-primary: #0c0c10;
+  --bg-secondary: #141519;
+  --text-primary: #ecedf1;
+  --text-secondary: #878da1;
+  --accent: #4e80c7;
+  --accent-light: #7aa4db;
+  --turquoise: #2dd4bf;
+  --saffron: #e0a04a;
+}
+
+/* ─── Base Styles ──────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* RTL Support */
+[dir="rtl"] body {
+  font-family: 'Vazirmatn', 'IRANSans', Tahoma, Arial, sans-serif;
+}
+
+/* ─── Scrollbar ────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(136, 136, 136, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(136, 136, 136, 0.5);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ─── Glass Morphism ───────────────────────────────────────────── */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.dark .glass-card {
+  background: rgba(26, 27, 35, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.glass-card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.dark .glass-card-hover:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── Sidebar ──────────────────────────────────────────────────── */
+.sidebar {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.dark .sidebar {
+  background: rgba(20, 21, 25, 0.9);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* ─── Prose / Content Styling ──────────────────────────────────── */
+.prose-iran {
+  line-height: 1.85;
+  color: var(--text-primary);
+}
+
+.prose-iran h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.prose-iran h2 {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--turquoise);
+  color: var(--text-primary);
+}
+
+.prose-iran h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-light);
+}
+
+.prose-iran p {
+  margin-bottom: 1rem;
+}
+
+.prose-iran ul, .prose-iran ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.prose-iran li {
+  margin-bottom: 0.4rem;
+}
+
+.prose-iran strong {
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.dark .prose-iran strong {
+  color: var(--accent-light);
+}
+
+.prose-iran blockquote {
+  border-left: 4px solid var(--saffron);
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+[dir="rtl"] .prose-iran blockquote {
+  border-left: none;
+  border-right: 4px solid var(--saffron);
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+.prose-iran code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875em;
+  padding: 0.2em 0.4em;
+  background: rgba(30, 58, 95, 0.08);
+  border-radius: 4px;
+}
+
+.dark .prose-iran code {
+  background: rgba(78, 128, 199, 0.15);
+}
+
+.prose-iran hr {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+}
+
+.dark .prose-iran hr {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prose-iran table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.prose-iran th, .prose-iran td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.dark .prose-iran th, .dark .prose-iran td {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.prose-iran th {
+  background: rgba(30, 58, 95, 0.06);
+  font-weight: 600;
+}
+
+.dark .prose-iran th {
+  background: rgba(78, 128, 199, 0.1);
+}
+
+/* ─── Tier Badges ──────────────────────────────────────────────── */
+.tier-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.tier-badge-tier1 {
+  background: rgba(13, 148, 136, 0.12);
+  color: #0d9488;
+}
+
+.tier-badge-tier2 {
+  background: rgba(30, 58, 95, 0.12);
+  color: #3466ae;
+}
+
+.tier-badge-tier3 {
+  background: rgba(195, 146, 62, 0.12);
+  color: #c7923e;
+}
+
+.dark .tier-badge-tier1 {
+  background: rgba(45, 212, 191, 0.15);
+  color: #5eead4;
+}
+
+.dark .tier-badge-tier2 {
+  background: rgba(78, 128, 199, 0.15);
+  color: #7aa4db;
+}
+
+.dark .tier-badge-tier3 {
+  background: rgba(224, 160, 74, 0.15);
+  color: #e0a04a;
+}
+
+/* ─── Part Colors ──────────────────────────────────────────────── */
+.part-accent-1 { border-color: #0d9488; }
+.part-accent-2 { border-color: #3466ae; }
+.part-accent-3 { border-color: #c7923e; }
+.part-accent-4 { border-color: #7c3aed; }
+.part-accent-5 { border-color: #dc2626; }
+.part-accent-6 { border-color: #059669; }
+.part-accent-7 { border-color: #d97706; }
+.part-accent-8 { border-color: #2563eb; }
+.part-accent-9 { border-color: #be185d; }
+
+/* ─── Animations ───────────────────────────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.loading-shimmer {
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.08) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.25s ease-out;
+}
+
+.animate-slideInUp {
+  animation: slideInUp 0.25s ease-out;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* ─── Mobile Responsive ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .prose-iran {
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .prose-iran h1 {
+    font-size: 1.5rem;
+  }
+
+  .prose-iran h2 {
+    font-size: 1.2rem;
+  }
+
+  .prose-iran h3 {
+    font-size: 1.05rem;
+  }
+
+  .prose-iran blockquote {
+    margin: 1rem 0;
+    padding-left: 0.75rem;
+  }
+
+  .prose-iran table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* ─── Safe Area (for notched devices) ─────────────────────────── */
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* ─── Selection ────────────────────────────────────────────────── */
+::selection {
+  background: rgba(30, 58, 95, 0.2);
+  color: inherit;
+}
+
+.dark ::selection {
+  background: rgba(78, 128, 199, 0.3);
+}
+
+/* ─── Focus Styles ─────────────────────────────────────────────── */
+*:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Cross-Reference Links ───────────────────────────────────── */
+.cross-ref {
+  color: var(--accent-light);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--turquoise);
+  padding-bottom: 1px;
+  transition: all 0.15s ease;
+}
+
+.cross-ref:hover {
+  color: var(--turquoise);
+  border-bottom-style: solid;
+}
+
+.cross-ref-section {
+  border-color: var(--turquoise);
+}
+
+.cross-ref-lecture {
+  border-color: var(--saffron);
+}
+
+.cross-ref-lecture:hover {
+  color: var(--saffron);
+}
+
+/* Cross-reference tooltip on hover */
+.cross-ref[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  background: var(--bg-secondary);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  margin-top: 1.5rem;
+  margin-left: -1rem;
+  z-index: 50;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.prose-iran .cross-ref {
+  position: relative;
+}
+
+/* ─── Print Styles ────────────────────────────────────────────── */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+  }
+
+  .sidebar, .no-print, nav, button, .glass-card, footer {
+    display: none !important;
+  }
+
+  main {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .prose-iran {
+    max-width: 100% !important;
+    color: black !important;
+  }
+
+  .prose-iran h1, .prose-iran h2, .prose-iran h3 {
+    color: black !important;
+    page-break-after: avoid;
+  }
+
+  .prose-iran h2 {
+    border-color: #333 !important;
+  }
+
+  .prose-iran p, .prose-iran li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .prose-iran blockquote {
+    border-color: #666 !important;
+    color: #333 !important;
+  }
+
+  a {
+    text-decoration: none !important;
+    color: black !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+    color: #666;
+  }
+
+  @page {
+    margin: 2cm;
+  }
+}

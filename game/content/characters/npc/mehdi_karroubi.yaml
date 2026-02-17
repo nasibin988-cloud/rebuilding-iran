@@ -1,0 +1,77 @@
+# NPC Character: Mehdi Karroubi
+# Green Movement leader, under house arrest
+
+id: mehdi_karroubi
+
+name:
+  fa: مهدی کروبی
+  en: Mehdi Karroubi
+
+title:
+  fa: رئیس سابق مجلس و رهبر جنبش سبز
+  en: Former Speaker and Green Movement Leader
+
+portrait: mehdi_karroubi.png
+
+role: opposition_leader
+
+biography:
+  fa: |
+    روحانی اصلاح‌طلب، رئیس سابق مجلس شورای اسلامی و نامزد ریاست‌جمهوری.
+    پس از اعتراضات ۱۳۸۸ به همراه موسوی به حصر خانگی رفت. اعتصاب غذا
+    کرد و همچنان به مقاومت ادامه می‌دهد.
+  en: |
+    Reformist cleric, former Speaker of Parliament and presidential candidate.
+    Placed under house arrest along with Mousavi after 2009 protests. Went on
+    hunger strike and continues to resist.
+
+personality:
+  traits:
+    - outspoken
+    - courageous
+    - clerical
+    - persistent
+    - defiant
+  beliefs:
+    economicLeft: 55
+    socialLiberal: 65
+    nationalist: 60
+    religious: 70
+    democratic: 80
+
+relationships:
+  - characterId: mir_hossein_mousavi
+    type: ally
+    trust: 90
+    description:
+      fa: همراه در مبارزه و حصر
+      en: Companion in struggle and confinement
+  - characterId: khamenei
+    type: enemy
+    trust: -85
+    description:
+      fa: دشمنی علنی
+      en: Open enmity
+
+status:
+  health: 40
+  influence: 50
+  visibility: low
+  security: confined
+
+goals:
+  - freedom_from_house_arrest
+  - expose_regime_crimes
+  - democratic_reform
+
+fears:
+  - health_deterioration
+  - family_persecution
+  - dying_in_captivity
+
+tags:
+  - npc
+  - opposition
+  - green_movement
+  - clerical
+  - house_arrest

@@ -1,0 +1,71 @@
+# NPC Character: Diaspora Leader
+# A prominent Iranian diaspora activist
+
+id: diaspora_leader
+
+name:
+  fa: مسیح علی‌نژاد
+  en: Masih Alinejad
+
+title:
+  fa: روزنامه‌نگار و فعال حقوق زنان
+  en: Journalist and Women's Rights Activist
+
+portrait: diaspora_leader.png
+
+role: diaspora_activist
+
+biography:
+  fa: |
+    روزنامه‌نگار و فعال حقوق زنان ایرانی مقیم آمریکا. بنیانگذار کمپین‌های
+    ضد حجاب اجباری. صدای بلند ایرانیان خارج از کشور که از طریق رسانه‌های
+    اجتماعی با میلیون‌ها نفر ارتباط دارد.
+  en: |
+    Iranian journalist and women's rights activist based in America. Founder
+    of campaigns against mandatory hijab. Loud voice of Iranians abroad who
+    connects with millions through social media.
+
+personality:
+  traits:
+    - outspoken
+    - media_savvy
+    - controversial
+    - determined
+    - influential
+  beliefs:
+    economicLeft: 45
+    socialLiberal: 95
+    nationalist: 50
+    religious: 10
+    democratic: 90
+
+relationships:
+  - characterId: student_leader
+    type: ally
+    trust: 70
+    description:
+      fa: حمایت از فعالان داخل
+      en: Support for activists inside
+
+status:
+  health: 80
+  influence: 55
+  visibility: very_high
+  security: threatened
+
+goals:
+  - end_mandatory_hijab
+  - amplify_iranian_voices
+  - regime_change
+
+fears:
+  - assassination
+  - family_persecution
+  - losing_platform
+
+tags:
+  - npc
+  - opposition
+  - diaspora
+  - women_rights
+  - media

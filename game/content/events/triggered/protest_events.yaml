@@ -1,0 +1,297 @@
+# Triggered Events: Protests
+# Events related to public demonstrations and civil unrest
+
+events:
+  - id: student_uprising
+    title:
+      fa: قیام دانشجویی
+      en: Student Uprising
+    type: triggered
+    description:
+      fa: |
+        دانشجویان در دانشگاه‌های سراسر کشور دست به اعتراض زده‌اند.
+        شعارهای آزادی‌خواهانه در محوطه دانشگاه‌ها طنین‌انداز شده.
+        این یادآور ۱۸ تیر ۷۸ است. آیا این جرقه انقلاب است؟
+      en: |
+        Students have begun protesting at universities across the country.
+        Chants for freedom echo across campuses. It's reminiscent of July 1999.
+        Is this the spark of revolution?
+    context:
+      whatHappened:
+        fa: دانشجویان به خیابان آمدند
+        en: Students took to the streets
+      whyItMatters:
+        fa: جنبش دانشجویی همیشه پیشتاز تغییر بوده
+        en: Student movements have always led change
+      whoIsInvolved: []
+    triggers:
+      conditions:
+        - type: stat
+          path: regions.tehran.activity.protestLevel
+          operator: greaterThan
+          value: 60
+      probability: 70
+      priority: 75
+      cooldown: 10
+      maxOccurrences: 5
+    timing:
+      when: start_of_turn
+      duration: 3
+      deadline: 7
+    presentation:
+      image: student_protest.jpg
+      mood: hopeful
+    decisions:
+      - id: join_students
+        label:
+          fa: به دانشجویان بپیوند
+          en: Join the Students
+        description:
+          fa: حضور فعال در تظاهرات دانشجویی
+          en: Actively participate in student demonstrations
+        requirements: []
+        effects:
+          immediate:
+            - type: relationship
+              target: students
+              value: 25
+            - type: stat
+              target: player.visibility
+              value: 20
+            - type: stat
+              target: player.security
+              value: -15
+          delayed: []
+      - id: provide_support
+        label:
+          fa: حمایت پشت صحنه
+          en: Provide Support
+        description:
+          fa: کمک مالی و لجستیکی بدون حضور علنی
+          en: Financial and logistical support without public presence
+        requirements: []
+        effects:
+          immediate:
+            - type: relationship
+              target: students
+              value: 15
+            - type: stat
+              target: player.resources
+              value: -10
+          delayed: []
+      - id: stay_distant
+        label:
+          fa: فاصله بگیر
+          en: Stay Distant
+        description:
+          fa: این حرکت زودهنگام است، صبر کن
+          en: This move is premature, wait
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.security
+              value: 5
+          delayed: []
+
+  - id: workers_strike
+    title:
+      fa: اعتصاب کارگری
+      en: Workers' Strike
+    type: triggered
+    description:
+      fa: |
+        کارگران کارخانه‌ها و معادن دست از کار کشیده‌اند. خواسته‌هایشان
+        افزایش دستمزد و آزادی تشکل‌های کارگری است. این اعتصاب می‌تواند
+        اقتصاد را فلج کند.
+      en: |
+        Workers at factories and mines have gone on strike. Their demands are
+        wage increases and freedom for labor unions. This strike could paralyze
+        the economy.
+    context:
+      whatHappened:
+        fa: کارگران اعتصاب کردند
+        en: Workers went on strike
+      whyItMatters:
+        fa: اعتصاب کارگری سلاح قدرتمندی است
+        en: Labor strikes are a powerful weapon
+      whoIsInvolved: []
+    triggers:
+      conditions:
+        - type: stat
+          path: economy.unemployment
+          operator: greaterThan
+          value: 25
+        - type: stat
+          path: economy.inflation
+          operator: greaterThan
+          value: 40
+      probability: 60
+      priority: 70
+      cooldown: 15
+      maxOccurrences: 3
+    timing:
+      when: start_of_turn
+      duration: 5
+      deadline: 10
+    presentation:
+      image: workers_strike.jpg
+      mood: hopeful
+    decisions:
+      - id: support_strikers
+        label:
+          fa: از کارگران حمایت کن
+          en: Support Strikers
+        description:
+          fa: اتحاد با جنبش کارگری
+          en: Unite with the labor movement
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.popularity
+              value: 15
+            - type: stat
+              target: regime.stability
+              value: -10
+          delayed: []
+      - id: politicize_strike
+        label:
+          fa: اعتصاب را سیاسی کن
+          en: Politicize the Strike
+        description:
+          fa: تبدیل خواسته‌های صنفی به خواسته‌های سیاسی
+          en: Transform economic demands into political demands
+        requirements:
+          - type: stat
+            path: player.networks
+            operator: greaterThan
+            value: 40
+        effects:
+          immediate:
+            - type: stat
+              target: regime.legitimacy
+              value: -15
+            - type: stat
+              target: player.visibility
+              value: 15
+          delayed: []
+      - id: observe_only
+        label:
+          fa: فقط نظاره کن
+          en: Just Observe
+        description:
+          fa: منتظر بمان و ببین چه اتفاقی می‌افتد
+          en: Wait and see what happens
+        requirements: []
+        effects:
+          immediate: []
+          delayed: []
+
+  - id: mass_uprising
+    title:
+      fa: قیام عمومی
+      en: Mass Uprising
+    type: triggered
+    description:
+      fa: |
+        میلیون‌ها نفر در خیابان‌های سراسر کشور هستند. این دیگر اعتراض نیست،
+        انقلاب است. حکومت در بحران است. لحظه تاریخی فرا رسیده.
+        تصمیم تو در این لحظه سرنوشت‌ساز است.
+      en: |
+        Millions are in the streets across the country. This is no longer a protest,
+        it's a revolution. The regime is in crisis. The historic moment has arrived.
+        Your decision at this moment is fateful.
+    context:
+      whatHappened:
+        fa: انقلاب آغاز شده
+        en: The revolution has begun
+      whyItMatters:
+        fa: این لحظه تعیین‌کننده است
+        en: This is the decisive moment
+      whoIsInvolved: []
+    triggers:
+      conditions:
+        - type: stat
+          path: regime.stability
+          operator: lessThan
+          value: 25
+        - type: flag
+          flag: mass_protests
+          operator: equals
+          value: true
+      probability: 80
+      priority: 100
+      cooldown: 0
+      maxOccurrences: 1
+    timing:
+      when: immediate
+      duration: 3
+      deadline: 5
+    presentation:
+      image: mass_uprising.jpg
+      mood: triumphant
+      musicCue: revolution_theme
+    decisions:
+      - id: lead_revolution
+        label:
+          fa: رهبری کن
+          en: Lead the Revolution
+        description:
+          fa: نقش رهبری انقلاب را بپذیر
+          en: Accept the role of leading the revolution
+        requirements:
+          - type: stat
+            path: player.popularity
+            operator: greaterThan
+            value: 60
+          - type: stat
+            path: player.networks
+            operator: greaterThan
+            value: 50
+        effects:
+          immediate:
+            - type: stat
+              target: player.visibility
+              value: 50
+            - type: flag
+              flag: revolution_leader
+              value: true
+          delayed:
+            - delay: 3
+              probability: 50
+              effects:
+                - type: flag
+                  flag: democratic_transition
+                  value: true
+              narrative:
+                fa: انقلاب پیروز شد!
+                en: The revolution succeeded!
+      - id: support_transition
+        label:
+          fa: از گذار حمایت کن
+          en: Support Transition
+        description:
+          fa: کار پشت صحنه برای گذار مسالمت‌آمیز
+          en: Work behind the scenes for peaceful transition
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: regime.stability
+              value: -15
+          delayed: []
+      - id: prevent_violence
+        label:
+          fa: از خشونت جلوگیری کن
+          en: Prevent Violence
+        description:
+          fa: تلاش برای جلوگیری از خونریزی
+          en: Try to prevent bloodshed
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.morale
+              value: 10
+          delayed: []

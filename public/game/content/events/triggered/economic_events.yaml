@@ -1,0 +1,621 @@
+# Triggered Events: Economic Events
+
+events:
+  # ================================
+  # CURRENCY & INFLATION
+  # ================================
+
+  - id: currency_crash
+    category: triggered
+    title:
+      fa: سقوط ارزش ریال
+      en: Currency Crash
+    description:
+      fa: |
+        ریال به پایین‌ترین سطح تاریخ سقوط کرده. یک دلار اکنون
+        بیش از صد هزار تومان است. مردم در صرافی‌ها صف کشیده‌اند.
+        وحشت در بازار.
+      en: |
+        The rial has crashed to its lowest level in history. One dollar
+        is now over 100,000 tomans. People are lining up at exchanges.
+        Panic in the market.
+    triggers:
+      - type: random
+        value: 0.1
+    priority: 75
+    weight: 1.0
+    once: false
+    cooldown: 10
+    requirements:
+      - type: stat
+        target: regime.stability
+        operator: less_than
+        value: 55
+    decisions:
+      - id: blame_regime
+        label:
+          fa: رژیم را مقصر بدان
+          en: Blame Regime
+        description:
+          fa: نشان بده که سیاست‌های رژیم باعث این شده
+          en: Show that regime policies caused this
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.legitimacy
+              value: -5
+            - type: faction_trust
+              target: bazaar_merchants
+              value: 10
+          delayed: []
+        tags: [propaganda, anti_regime]
+
+      - id: organize_economic_protest
+        label:
+          fa: اعتراض اقتصادی سازماندهی کن
+          en: Organize Economic Protest
+        description:
+          fa: مردم را به خیابان بیاور
+          en: Bring people to the streets
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.stability
+              value: -5
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 15
+            - type: faction_trust
+              target: workers
+              value: 15
+          delayed: []
+        tags: [organizing, protest]
+
+      - id: help_affected
+        label:
+          fa: به آسیب‌دیدگان کمک کن
+          en: Help Affected
+        description:
+          fa: شبکه‌های کمک‌رسانی را فعال کن
+          en: Activate aid networks
+        effects:
+          immediate:
+            - type: resource_change
+              target: money
+              value: -400
+            - type: faction_trust
+              target: workers
+              value: 15
+            - type: faction_trust
+              target: civil_society
+              value: 10
+          delayed: []
+        tags: [humanitarian, solidarity]
+    tags: [economic, currency, crisis]
+
+  - id: hyperinflation
+    category: triggered
+    title:
+      fa: تورم افسارگسیخته
+      en: Hyperinflation
+    description:
+      fa: |
+        قیمت‌ها روزانه بالا می‌رود. حقوق مردم ارزشی ندارد.
+        خانواده‌ها نمی‌توانند نان بخرند. فقر همه جا را گرفته.
+      en: |
+        Prices rise daily. People's salaries are worthless.
+        Families can't buy bread. Poverty is everywhere.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: regime.stability
+          operator: less_than
+          value: 35
+    priority: 80
+    weight: 0.8
+    once: true
+    requirements: []
+    decisions:
+      - id: mass_mobilization
+        label:
+          fa: بسیج عمومی
+          en: Mass Mobilization
+        description:
+          fa: این لحظه برای تغییر است
+          en: This is the moment for change
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.stability
+              value: -10
+            - type: state_change
+              target: player.position.visibility
+              value: 25
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 25
+          delayed: []
+        tags: [revolutionary, mobilization]
+
+      - id: build_mutual_aid
+        label:
+          fa: شبکه‌های یاری متقابل بساز
+          en: Build Mutual Aid
+        description:
+          fa: مردم به کمک هم احتیاج دارند
+          en: People need each other's help
+        effects:
+          immediate:
+            - type: resource_change
+              target: money
+              value: -500
+            - type: resource_change
+              target: influence
+              value: 20
+            - type: faction_trust
+              target: workers
+              value: 20
+          delayed: []
+        tags: [solidarity, organizing]
+
+      - id: document_suffering
+        label:
+          fa: رنج را مستند کن
+          en: Document Suffering
+        description:
+          fa: جهان باید ببیند
+          en: The world must see
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 15
+            - type: state_change
+              target: regime.legitimacy
+              value: -5
+          delayed: []
+        tags: [documentation, international]
+    tags: [economic, inflation, critical]
+
+  # ================================
+  # UNEMPLOYMENT & LABOR
+  # ================================
+
+  - id: mass_layoffs
+    category: triggered
+    title:
+      fa: اخراج‌های گسترده
+      en: Mass Layoffs
+    description:
+      fa: |
+        چندین کارخانه بزرگ ورشکست شده‌اند. هزاران کارگر بیکار شده‌اند.
+        بدون حقوق، بدون بیمه، بدون آینده.
+      en: |
+        Several large factories have gone bankrupt. Thousands of workers
+        have lost their jobs. No wages, no insurance, no future.
+    triggers:
+      - type: random
+        value: 0.12
+    priority: 65
+    weight: 1.0
+    once: false
+    cooldown: 10
+    requirements: []
+    decisions:
+      - id: organize_workers
+        label:
+          fa: کارگران را سازماندهی کن
+          en: Organize Workers
+        description:
+          fa: این می‌تواند شروع جنبش کارگری باشد
+          en: This could be the start of a labor movement
+        effects:
+          immediate:
+            - type: faction_trust
+              target: workers
+              value: 25
+            - type: resource_change
+              target: influence
+              value: 10
+          delayed: []
+        tags: [labor, organizing]
+
+      - id: demand_government_action
+        label:
+          fa: خواهان اقدام دولت شو
+          en: Demand Government Action
+        description:
+          fa: دولت باید مسئولیت بپذیرد
+          en: Government must take responsibility
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.legitimacy
+              value: -3
+          delayed: []
+        tags: [political, pressure]
+
+      - id: crowdfund_support
+        label:
+          fa: کمپین مالی راه بینداز
+          en: Crowdfund Support
+        description:
+          fa: از مردم برای کارگران کمک جمع کن
+          en: Collect help from people for workers
+        effects:
+          immediate:
+            - type: resource_change
+              target: money
+              value: -200
+            - type: faction_trust
+              target: workers
+              value: 15
+            - type: faction_trust
+              target: civil_society
+              value: 10
+          delayed: []
+        tags: [humanitarian, fundraising]
+    tags: [economic, labor, unemployment]
+
+  - id: pension_crisis
+    category: triggered
+    title:
+      fa: بحران بازنشستگان
+      en: Pension Crisis
+    description:
+      fa: |
+        صندوق بازنشستگی خالی شده. میلیون‌ها بازنشسته ماه‌هاست حقوق
+        نگرفته‌اند. پیرمردها و پیرزن‌ها در خیابان تجمع کرده‌اند.
+      en: |
+        The pension fund is empty. Millions of retirees haven't been
+        paid for months. Elderly men and women are gathering in the streets.
+    triggers:
+      - type: random
+        value: 0.1
+    priority: 60
+    weight: 1.0
+    once: false
+    cooldown: 12
+    requirements: []
+    decisions:
+      - id: amplify_protests
+        label:
+          fa: اعتراضات را تقویت کن
+          en: Amplify Protests
+        description:
+          fa: صدای بازنشستگان را به همه برسان
+          en: Make retirees' voice heard by all
+        effects:
+          immediate:
+            - type: faction_trust
+              target: workers
+              value: 15
+            - type: state_change
+              target: regime.legitimacy
+              value: -3
+          delayed: []
+        tags: [solidarity, media]
+
+      - id: link_to_corruption
+        label:
+          fa: به فساد ربط بده
+          en: Link to Corruption
+        description:
+          fa: نشان بده که پول به جیب چه کسانی رفته
+          en: Show where the money went
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.legitimacy
+              value: -5
+            - type: faction_trust
+              target: irgc
+              value: -10
+          delayed: []
+        tags: [investigative, anti_corruption]
+    tags: [economic, pensions, elderly]
+
+  # ================================
+  # BAZAAR & COMMERCE
+  # ================================
+
+  - id: bazaar_strike
+    category: triggered
+    title:
+      fa: اعتصاب بازار
+      en: Bazaar Strike
+    description:
+      fa: |
+        بازاریان مغازه‌ها را بسته‌اند. این یادآور انقلاب ۵۷ است.
+        وقتی بازار می‌بندد، رژیم می‌لرزد.
+      en: |
+        Bazaar merchants have closed their shops. This is reminiscent
+        of the '79 revolution. When the bazaar closes, the regime trembles.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: regime.stability
+          operator: less_than
+          value: 40
+    priority: 80
+    weight: 0.7
+    once: false
+    cooldown: 15
+    requirements: []
+    decisions:
+      - id: expand_strike
+        label:
+          fa: اعتصاب را گسترش بده
+          en: Expand Strike
+        description:
+          fa: بازارهای شهرهای دیگر را هم تشویق کن
+          en: Encourage bazaars in other cities
+        effects:
+          immediate:
+            - type: faction_trust
+              target: bazaar_merchants
+              value: 20
+            - type: state_change
+              target: regime.stability
+              value: -8
+            - type: resource_change
+              target: influence
+              value: 15
+          delayed: []
+        tags: [strategic, coalition]
+
+      - id: coordinate_with_workers
+        label:
+          fa: با کارگران هماهنگ کن
+          en: Coordinate with Workers
+        description:
+          fa: اعتصاب عمومی را ممکن کن
+          en: Make general strike possible
+        effects:
+          immediate:
+            - type: faction_trust
+              target: workers
+              value: 15
+            - type: faction_trust
+              target: bazaar_merchants
+              value: 10
+          delayed:
+            - delay: 2
+              probability: 0.4
+              effects:
+                - type: flag_set
+                  target: general_strike_ready
+                  value: true
+              narrative:
+                fa: امکان اعتصاب عمومی
+                en: General strike becomes possible
+        tags: [coalition, labor]
+
+      - id: support_from_outside
+        label:
+          fa: از بیرون حمایت کن
+          en: Support from Outside
+        description:
+          fa: بدون دخالت مستقیم، کمک کن
+          en: Help without direct involvement
+        effects:
+          immediate:
+            - type: faction_trust
+              target: bazaar_merchants
+              value: 10
+          delayed: []
+        tags: [safe, supportive]
+    tags: [bazaar, strike, turning_point]
+
+  - id: smuggling_crackdown
+    category: triggered
+    title:
+      fa: برخورد با قاچاق
+      en: Smuggling Crackdown
+    description:
+      fa: |
+        سپاه بنادر جنوب را تحت کنترل گرفته و قاچاق «غیرخودی» را
+        سرکوب می‌کند - البته قاچاق خودش ادامه دارد.
+      en: |
+        The IRGC has taken control of southern ports and is cracking
+        down on "unofficial" smuggling - while their own smuggling continues.
+    triggers:
+      - type: random
+        value: 0.08
+    priority: 50
+    weight: 1.0
+    once: false
+    cooldown: 15
+    requirements: []
+    decisions:
+      - id: expose_hypocrisy
+        label:
+          fa: دورویی را افشا کن
+          en: Expose Hypocrisy
+        description:
+          fa: نشان بده که سپاه خودش قاچاقچی است
+          en: Show that IRGC itself smuggles
+        effects:
+          immediate:
+            - type: faction_trust
+              target: irgc
+              value: -15
+            - type: faction_trust
+              target: bazaar_merchants
+              value: 15
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 15
+          delayed: []
+        tags: [investigative, anti_irgc]
+
+      - id: help_affected_traders
+        label:
+          fa: به تجار آسیب‌دیده کمک کن
+          en: Help Affected Traders
+        description:
+          fa: شبکه‌های جایگزین بساز
+          en: Build alternative networks
+        effects:
+          immediate:
+            - type: faction_trust
+              target: bazaar_merchants
+              value: 10
+            - type: resource_change
+              target: money
+              value: -300
+          delayed: []
+        tags: [practical, supportive]
+    tags: [economic, smuggling, irgc]
+
+  # ================================
+  # SANCTIONS & INTERNATIONAL
+  # ================================
+
+  - id: new_sanctions_wave
+    category: triggered
+    title:
+      fa: موج جدید تحریم‌ها
+      en: New Sanctions Wave
+    description:
+      fa: |
+        غرب تحریم‌های جدیدی علیه ایران اعمال کرده. بانک‌ها،
+        شرکت‌های نفتی، و حتی برخی افراد. فشار بیشتر می‌شود.
+      en: |
+        The West has imposed new sanctions on Iran. Banks, oil companies,
+        and even some individuals. Pressure is increasing.
+    triggers:
+      - type: random
+        value: 0.15
+    priority: 60
+    weight: 1.0
+    once: false
+    cooldown: 8
+    requirements: []
+    decisions:
+      - id: frame_as_regime_failure
+        label:
+          fa: شکست رژیم
+          en: Frame as Regime Failure
+        description:
+          fa: سیاست‌های رژیم باعث این شده
+          en: Regime policies caused this
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.legitimacy
+              value: -5
+          delayed: []
+        tags: [propaganda, framing]
+
+      - id: criticize_sanctions
+        label:
+          fa: تحریم‌ها را نقد کن
+          en: Criticize Sanctions
+        description:
+          fa: تحریم‌ها به مردم آسیب می‌زنند نه رژیم
+          en: Sanctions hurt people not regime
+        effects:
+          immediate:
+            - type: faction_trust
+              target: workers
+              value: 10
+            - type: state_change
+              target: player.position.internationalProfile
+              value: -5
+          delayed: []
+        tags: [principled, nuanced]
+
+      - id: document_impact
+        label:
+          fa: تاثیر را مستند کن
+          en: Document Impact
+        description:
+          fa: نشان بده تحریم‌ها چه می‌کنند
+          en: Show what sanctions do
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 10
+          delayed: []
+        tags: [documentation, balanced]
+    tags: [international, sanctions, economic]
+
+  - id: medicine_shortage
+    category: triggered
+    title:
+      fa: کمبود دارو
+      en: Medicine Shortage
+    description:
+      fa: |
+        داروهای حیاتی در بازار پیدا نمی‌شود. بیماران سرطانی،
+        دیابتی، و دیگران در خطرند. خانواده‌ها مستاصل هستند.
+      en: |
+        Vital medicines are unavailable in the market. Cancer patients,
+        diabetics, and others are at risk. Families are desperate.
+    triggers:
+      - type: random
+        value: 0.1
+    priority: 70
+    weight: 1.0
+    once: false
+    cooldown: 10
+    requirements: []
+    decisions:
+      - id: organize_aid_network
+        label:
+          fa: شبکه کمک‌رسانی بساز
+          en: Organize Aid Network
+        description:
+          fa: دارو از خارج برسان
+          en: Get medicine from abroad
+        effects:
+          immediate:
+            - type: resource_change
+              target: money
+              value: -500
+            - type: faction_trust
+              target: civil_society
+              value: 20
+            - type: resource_change
+              target: influence
+              value: 15
+          delayed: []
+        tags: [humanitarian, practical]
+
+      - id: publicize_crisis
+        label:
+          fa: بحران را علنی کن
+          en: Publicize Crisis
+        description:
+          fa: جهان باید بداند
+          en: The world must know
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 15
+            - type: state_change
+              target: regime.legitimacy
+              value: -3
+          delayed: []
+        tags: [media, international]
+
+      - id: blame_both_sides
+        label:
+          fa: هر دو طرف را مقصر بدان
+          en: Blame Both Sides
+        description:
+          fa: هم رژیم هم غرب مسئولند
+          en: Both regime and West are responsible
+        effects:
+          immediate:
+            - type: faction_trust
+              target: workers
+              value: 5
+          delayed: []
+        tags: [balanced, principled]
+    tags: [health, humanitarian, crisis]

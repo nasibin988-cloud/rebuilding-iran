@@ -1,0 +1,67 @@
+# Playable Character: The Underground Journalist
+# A truth-seeker operating in the shadows
+
+id: journalist
+
+name:
+  fa: پریسا بهرامی
+  en: Parisa Bahrami
+
+title:
+  fa: روزنامه‌نگار زیرزمینی
+  en: Underground Journalist
+
+portrait: journalist.png
+
+biography:
+  fa: |
+    یک روزنامه‌نگار که پس از بسته شدن روزنامه‌اش به فعالیت زیرزمینی روی آورده است.
+    شما اطلاعات را جمع‌آوری می‌کنید، با منابع داخلی در ارتباط هستید و حقیقت را
+    از طریق کانال‌های مخفی منتشر می‌کنید. خطر همیشه در کمین است اما حقیقت باید
+    گفته شود.
+  en: |
+    A journalist who turned to underground activities after her newspaper was shut
+    down. You gather information, maintain contact with inside sources, and publish
+    the truth through secret channels. Danger is always lurking but the truth must
+    be told.
+
+startingPosition:
+  location: tehran
+  officialRole: null
+
+startingResources:
+  money: 15000
+  influence: 30
+  networkConnections: 50
+  knowledge: 70
+  actionsPerTurn: 3
+  actionsRemaining: 3
+
+personal:
+  health: 85
+  stress: 50
+  hope: 55
+  courage: 70
+
+backstory:
+  fa: شما زمانی ستون‌نویس یک روزنامه اصلاح‌طلب بودید تا اینکه همه چیز تغییر کرد.
+  en: You were once a columnist for a reformist newspaper until everything changed.
+
+motivations:
+  fa: افشای حقیقت و مستندسازی تاریخ برای نسل‌های آینده
+  en: Exposing the truth and documenting history for future generations
+
+challenges:
+  - fa: اجتناب از دستگیری
+    en: Avoiding arrest
+  - fa: حفاظت از منابع
+    en: Protecting sources
+  - fa: انتشار اطلاعات با خطر کم
+    en: Publishing information with minimal risk
+
+difficulty: hard
+tags:
+  - journalist
+  - underground
+  - truth-seeker
+  - high-risk

@@ -1,0 +1,293 @@
+# Triggered Events: Regime Crisis
+# Events triggered by regime instability
+
+events:
+  - id: economic_collapse
+    title:
+      fa: فروپاشی اقتصادی
+      en: Economic Collapse
+    type: triggered
+    description:
+      fa: |
+        ریال سقوط کرده. صف‌های نان طولانی شده. مردم قادر به تأمین نیازهای
+        اساسی نیستند. خشم عمومی در حال انفجار است. این شاید فرصتی برای
+        تغییر باشد — یا آغاز هرج‌ومرج.
+      en: |
+        The rial has collapsed. Bread lines have grown long. People cannot afford
+        basic necessities. Public anger is about to explode. This may be an
+        opportunity for change — or the beginning of chaos.
+    context:
+      whatHappened:
+        fa: اقتصاد فروریخت
+        en: The economy has collapsed
+      whyItMatters:
+        fa: گرسنگی و فقر انقلاب‌ها را می‌سازد
+        en: Hunger and poverty make revolutions
+      whoIsInvolved: []
+    triggers:
+      conditions:
+        - type: stat
+          path: economy.gdp
+          operator: lessThan
+          value: 30
+      probability: 80
+      priority: 85
+      cooldown: 20
+      maxOccurrences: 3
+    timing:
+      when: start_of_turn
+      duration: 5
+      deadline: 10
+    presentation:
+      image: empty_shelves.jpg
+      mood: tragic
+    decisions:
+      - id: organize_mutual_aid
+        label:
+          fa: شبکه کمک متقابل
+          en: Organize Mutual Aid
+        description:
+          fa: سازمان‌دهی کمک مردمی به نیازمندان
+          en: Organize community aid for those in need
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.popularity
+              value: 15
+            - type: relationship
+              target: students
+              value: 10
+          delayed: []
+      - id: blame_regime
+        label:
+          fa: حکومت را مقصر بدان
+          en: Blame the Regime
+        description:
+          fa: مسئولیت بحران را بر دوش حکومت بگذار
+          en: Place responsibility for the crisis on the regime
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: regime.legitimacy
+              value: -10
+            - type: stat
+              target: player.visibility
+              value: 10
+          delayed: []
+      - id: exploit_black_market
+        label:
+          fa: از بازار سیاه استفاده کن
+          en: Exploit Black Market
+        description:
+          fa: از فرصت اقتصادی برای تقویت شبکه‌ها استفاده کن
+          en: Use economic opportunity to strengthen networks
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.resources
+              value: 20
+            - type: stat
+              target: player.morale
+              value: -5
+          delayed: []
+
+  - id: irgc_power_grab
+    title:
+      fa: کودتای سپاه
+      en: IRGC Power Grab
+    type: triggered
+    description:
+      fa: |
+        سپاه اعلام کرده که برای «حفظ امنیت و ثبات» کنترل را در دست گرفته است.
+        نیروهای نظامی در خیابان‌ها مستقر شده‌اند. ارتباطات قطع شده.
+        این یا پایان امیدها است یا آغاز مقاومت جدید.
+      en: |
+        The IRGC has announced it has taken control to "maintain security and
+        stability." Military forces are deployed in the streets. Communications
+        are cut. This is either the end of hopes or the beginning of new resistance.
+    context:
+      whatHappened:
+        fa: سپاه کودتا کرد
+        en: The IRGC staged a coup
+      whyItMatters:
+        fa: ایران وارد دوران نظامی شده
+        en: Iran has entered a military era
+      whoIsInvolved:
+        - irgc_commander
+    triggers:
+      conditions:
+        - type: stat
+          path: regime.stability
+          operator: lessThan
+          value: 20
+        - type: stat
+          path: factions.irgc.power
+          operator: greaterThan
+          value: 70
+      probability: 70
+      priority: 95
+      cooldown: 0
+      maxOccurrences: 1
+    timing:
+      when: immediate
+      duration: 1
+      deadline: 3
+    presentation:
+      image: tanks_streets.jpg
+      mood: tragic
+      musicCue: coup_theme
+    decisions:
+      - id: go_underground
+        label:
+          fa: مخفی شو
+          en: Go Underground
+        description:
+          fa: پنهان شو و شبکه مقاومت بساز
+          en: Hide and build resistance networks
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.visibility
+              value: -30
+            - type: stat
+              target: player.security
+              value: 20
+          delayed: []
+      - id: flee_country
+        label:
+          fa: از کشور فرار کن
+          en: Flee the Country
+        description:
+          fa: امنیت شخصی را بر مبارزه ترجیح بده
+          en: Prioritize personal safety over the struggle
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.security
+              value: 50
+            - type: stat
+              target: player.networks
+              value: -30
+            - type: flag
+              flag: in_exile
+              value: true
+          delayed: []
+      - id: resist_openly
+        label:
+          fa: علناً مقاومت کن
+          en: Resist Openly
+        description:
+          fa: مقاومت در برابر کودتا، حتی با خطر جان
+          en: Resist the coup, even at the risk of life
+        requirements:
+          - type: stat
+            path: player.morale
+            operator: greaterThan
+            value: 50
+        effects:
+          immediate:
+            - type: stat
+              target: player.visibility
+              value: 30
+            - type: stat
+              target: player.security
+              value: -40
+          delayed:
+            - delay: 1
+              probability: 40
+              effects:
+                - type: flag
+                  flag: arrested
+                  value: true
+              narrative:
+                fa: دستگیر شدی
+                en: You were arrested
+
+  - id: regime_fragmentation
+    title:
+      fa: شکاف در حکومت
+      en: Regime Fragmentation
+    type: triggered
+    description:
+      fa: |
+        درگیری بین جناح‌های حکومت علنی شده است. اصول‌گرایان و میانه‌روها
+        در حال رویارویی هستند. سپاه و بسیج درباره مسیر آینده اختلاف دارند.
+        این شکاف فرصتی برای مخالفان ایجاد کرده است.
+      en: |
+        Conflict between regime factions has become public. Principlists and
+        moderates are confronting each other. The IRGC and Basij disagree about
+        the future path. This rift has created an opportunity for opposition.
+    context:
+      whatHappened:
+        fa: وحدت حکومت فروپاشید
+        en: Regime unity collapsed
+      whyItMatters:
+        fa: دشمن ضعیف شده
+        en: The enemy has weakened
+      whoIsInvolved:
+        - irgc_commander
+    triggers:
+      conditions:
+        - type: stat
+          path: regime.cohesion
+          operator: lessThan
+          value: 40
+      probability: 70
+      priority: 80
+      cooldown: 15
+      maxOccurrences: 2
+    timing:
+      when: start_of_turn
+      duration: 3
+      deadline: 7
+    presentation:
+      image: regime_split.jpg
+      mood: hopeful
+    decisions:
+      - id: exploit_divisions
+        label:
+          fa: از شکاف‌ها استفاده کن
+          en: Exploit Divisions
+        description:
+          fa: تلاش برای تعمیق اختلافات درون حکومت
+          en: Try to deepen divisions within the regime
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: regime.cohesion
+              value: -10
+          delayed: []
+      - id: approach_moderates
+        label:
+          fa: با میانه‌روها صحبت کن
+          en: Approach Moderates
+        description:
+          fa: تلاش برای جذب عناصر میانه‌رو حکومت
+          en: Try to attract moderate regime elements
+        requirements: []
+        effects:
+          immediate:
+            - type: relationship
+              target: reformists
+              value: 15
+          delayed: []
+      - id: strengthen_opposition
+        label:
+          fa: اپوزیسیون را تقویت کن
+          en: Strengthen Opposition
+        description:
+          fa: از این فرصت برای تقویت جبهه مخالفان استفاده کن
+          en: Use this opportunity to strengthen opposition front
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.networks
+              value: 15
+          delayed: []

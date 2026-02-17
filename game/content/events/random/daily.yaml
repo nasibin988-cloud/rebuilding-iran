@@ -1,0 +1,349 @@
+# Random Events: Daily
+# Random events that can occur during normal gameplay
+
+events:
+  - id: internet_blackout
+    title:
+      fa: قطعی اینترنت
+      en: Internet Blackout
+    type: random
+    description:
+      fa: |
+        دولت اینترنت را قطع کرده است. ارتباط با دنیای خارج و هماهنگی
+        داخلی دشوار شده. این نشانه‌ای از اعتراضات در راه است یا
+        صرفاً سرکوب پیشگیرانه؟
+      en: |
+        The government has shut down the internet. Communication with the outside
+        world and internal coordination has become difficult. Is this a sign of
+        protests to come or just preemptive suppression?
+    context:
+      whatHappened:
+        fa: اینترنت قطع شد
+        en: Internet was cut off
+      whyItMatters:
+        fa: ارتباطات حیاتی است
+        en: Communication is vital
+      whoIsInvolved: []
+    triggers:
+      conditions: []
+      probability: 15
+      priority: 50
+      cooldown: 8
+      maxOccurrences: 10
+    timing:
+      when: start_of_turn
+      duration: 2
+      deadline: 3
+    presentation:
+      image: internet_blackout.jpg
+      mood: tense
+    decisions:
+      - id: use_vpn_networks
+        label:
+          fa: از VPN استفاده کن
+          en: Use VPN Networks
+        description:
+          fa: راه‌های جایگزین برای ارتباط پیدا کن
+          en: Find alternative ways to communicate
+        requirements:
+          - type: stat
+            path: player.resources
+            operator: greaterThan
+            value: 20
+        effects:
+          immediate:
+            - type: stat
+              target: player.resources
+              value: -10
+            - type: stat
+              target: player.networks
+              value: 5
+          delayed: []
+      - id: go_offline
+        label:
+          fa: آفلاین شو
+          en: Go Offline
+        description:
+          fa: فعالیت‌ها را به صورت حضوری ادامه بده
+          en: Continue activities in person
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.security
+              value: 10
+            - type: stat
+              target: player.networks
+              value: -5
+          delayed: []
+      - id: document_blackout
+        label:
+          fa: قطعی را مستند کن
+          en: Document Blackout
+        description:
+          fa: این سرکوب را برای آینده ثبت کن
+          en: Record this suppression for the future
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.intelligence
+              value: 5
+          delayed: []
+
+  - id: arrest_of_activist
+    title:
+      fa: دستگیری فعال
+      en: Activist Arrested
+    type: random
+    description:
+      fa: |
+        یکی از فعالان شناخته‌شده دستگیر شده است. خانواده‌اش نگران هستند.
+        این می‌تواند هشداری برای همه باشد یا فرصتی برای بسیج افکار عمومی.
+      en: |
+        A well-known activist has been arrested. Their family is worried.
+        This could be a warning to everyone or an opportunity to mobilize
+        public opinion.
+    context:
+      whatHappened:
+        fa: فعالی دستگیر شد
+        en: An activist was arrested
+      whyItMatters:
+        fa: این می‌تواند بعدی تو باشی
+        en: You could be next
+      whoIsInvolved: []
+    triggers:
+      conditions:
+        - type: stat
+          path: regime.repression
+          operator: greaterThan
+          value: 60
+      probability: 25
+      priority: 55
+      cooldown: 5
+      maxOccurrences: 20
+    timing:
+      when: start_of_turn
+      duration: 2
+      deadline: 4
+    presentation:
+      image: arrest.jpg
+      mood: tragic
+    decisions:
+      - id: publicize_arrest
+        label:
+          fa: دستگیری را رسانه‌ای کن
+          en: Publicize Arrest
+        description:
+          fa: خبر دستگیری را منتشر کن
+          en: Spread news of the arrest
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: regime.legitimacy
+              value: -5
+            - type: stat
+              target: player.visibility
+              value: 10
+          delayed: []
+      - id: help_family
+        label:
+          fa: به خانواده کمک کن
+          en: Help Family
+        description:
+          fa: حمایت مادی و معنوی از خانواده
+          en: Provide material and moral support to family
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.resources
+              value: -10
+            - type: stat
+              target: player.morale
+              value: 5
+          delayed: []
+      - id: increase_security
+        label:
+          fa: امنیت خودت را بالا ببر
+          en: Increase Your Security
+        description:
+          fa: احتیاط بیشتر برای جلوگیری از دستگیری
+          en: More caution to prevent your own arrest
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.security
+              value: 10
+            - type: stat
+              target: player.visibility
+              value: -5
+          delayed: []
+
+  - id: international_pressure
+    title:
+      fa: فشار بین‌المللی
+      en: International Pressure
+    type: random
+    description:
+      fa: |
+        سازمان‌های بین‌المللی از وضعیت حقوق بشر در ایران انتقاد کرده‌اند.
+        این می‌تواند فرصتی برای جلب توجه جهانی باشد.
+      en: |
+        International organizations have criticized the human rights situation
+        in Iran. This could be an opportunity to attract global attention.
+    context:
+      whatHappened:
+        fa: جامعه جهانی واکنش نشان داد
+        en: The international community reacted
+      whyItMatters:
+        fa: توجه جهانی می‌تواند حفاظت ایجاد کند
+        en: Global attention can provide protection
+      whoIsInvolved: []
+    triggers:
+      conditions: []
+      probability: 20
+      priority: 45
+      cooldown: 10
+      maxOccurrences: 10
+    timing:
+      when: start_of_turn
+      duration: 2
+      deadline: 4
+    presentation:
+      image: un_building.jpg
+      mood: neutral
+    decisions:
+      - id: engage_diaspora
+        label:
+          fa: با دیاسپورا کار کن
+          en: Engage Diaspora
+        description:
+          fa: هماهنگی با ایرانیان خارج از کشور
+          en: Coordinate with Iranians abroad
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.networks
+              value: 10
+          delayed: []
+      - id: document_abuses
+        label:
+          fa: نقض حقوق را مستند کن
+          en: Document Abuses
+        description:
+          fa: جمع‌آوری مدارک برای سازمان‌های بین‌المللی
+          en: Gather evidence for international organizations
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.intelligence
+              value: 10
+            - type: stat
+              target: regime.legitimacy
+              value: -5
+          delayed: []
+      - id: maintain_focus
+        label:
+          fa: تمرکز داخلی
+          en: Maintain Focus
+        description:
+          fa: تمرکز بر مبارزه داخلی، نه فشار خارجی
+          en: Focus on internal struggle, not external pressure
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.morale
+              value: 5
+          delayed: []
+
+  - id: cultural_event
+    title:
+      fa: رویداد فرهنگی
+      en: Cultural Event
+    type: random
+    description:
+      fa: |
+        یک رویداد فرهنگی مهم در شهر برگزار می‌شود — کنسرت زیرزمینی،
+        نمایشگاه هنری، یا جشنواره فیلم. این فرصتی برای ارتباط با
+        جامعه مدنی است.
+      en: |
+        An important cultural event is being held in the city — an underground
+        concert, art exhibition, or film festival. This is an opportunity to
+        connect with civil society.
+    context:
+      whatHappened:
+        fa: رویداد فرهنگی برگزار می‌شود
+        en: A cultural event is being held
+      whyItMatters:
+        fa: فرهنگ زمینه‌ساز تغییر است
+        en: Culture lays the groundwork for change
+      whoIsInvolved: []
+    triggers:
+      conditions: []
+      probability: 20
+      priority: 30
+      cooldown: 6
+      maxOccurrences: 20
+    timing:
+      when: start_of_turn
+      duration: 1
+      deadline: 2
+    presentation:
+      image: cultural_event.jpg
+      mood: hopeful
+    decisions:
+      - id: attend_event
+        label:
+          fa: شرکت کن
+          en: Attend
+        description:
+          fa: حضور در رویداد و ارتباط با شرکت‌کنندگان
+          en: Attend and connect with participants
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.morale
+              value: 10
+            - type: stat
+              target: player.networks
+              value: 5
+          delayed: []
+      - id: sponsor_event
+        label:
+          fa: حمایت مالی
+          en: Sponsor
+        description:
+          fa: کمک مالی برای برگزاری رویداد
+          en: Financial support for the event
+        requirements:
+          - type: stat
+            path: player.resources
+            operator: greaterThan
+            value: 30
+        effects:
+          immediate:
+            - type: stat
+              target: player.resources
+              value: -15
+            - type: stat
+              target: player.popularity
+              value: 10
+          delayed: []
+      - id: skip_event
+        label:
+          fa: نرو
+          en: Skip
+        description:
+          fa: این رویداد اولویت نیست
+          en: This event is not a priority
+        requirements: []
+        effects:
+          immediate: []
+          delayed: []

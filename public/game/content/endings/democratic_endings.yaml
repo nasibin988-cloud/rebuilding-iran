@@ -1,0 +1,286 @@
+# Endings: Democratic Transitions
+
+endings:
+  # ================================
+  # FULL DEMOCRACY
+  # ================================
+
+  - id: constitutional_democracy
+    category: democratic
+    subcategory: full_democracy
+    title:
+      fa: دموکراسی مشروطه
+      en: Constitutional Democracy
+    subtitle:
+      fa: پیروزی مردم
+      en: Victory of the People
+    description:
+      fa: |
+        پس از سال‌ها مبارزه، ایران به یک دموکراسی مشروطه تبدیل شد.
+        قانون اساسی جدید حقوق برابر برای همه شهروندان، بدون توجه به
+        جنسیت، قومیت، یا مذهب، تضمین می‌کند. انتخابات آزاد برگزار می‌شود
+        و احزاب سیاسی آزادانه فعالیت می‌کنند.
+
+        مردم ایران ثابت کردند که آزادی قابل دستیابی است - حتی اگر
+        قیمت آن سنگین باشد.
+      en: |
+        After years of struggle, Iran has become a constitutional democracy.
+        A new constitution guarantees equal rights for all citizens, regardless
+        of gender, ethnicity, or religion. Free elections are held and
+        political parties operate freely.
+
+        The Iranian people proved that freedom is achievable - even if
+        the price is heavy.
+    epilogue:
+      fa: |
+        تو یکی از معماران این آزادی هستی. تاریخ نام تو را
+        در کنار دیگر مبارزان آزادی ثبت خواهد کرد.
+      en: |
+        You are one of the architects of this freedom. History will
+        record your name alongside other freedom fighters.
+    conditions:
+      - type: stat
+        target: regime.stability
+        operator: less_than
+        value: 10
+      - type: stat
+        target: regime.legitimacy
+        operator: less_than
+        value: 15
+      - type: flag
+        target: democratic_coalition_formed
+        value: true
+      - type: stat
+        target: player.position.influence
+        operator: greater_than
+        value: 80
+    eudaimonia:
+      freedom: 95
+      justice: 85
+      prosperity: 60
+      community: 75
+      meaning: 90
+      health: 70
+      knowledge: 85
+    color: "#22c55e"
+    tone: triumphant
+    tags: [democratic, ideal, victory]
+
+  - id: negotiated_transition
+    category: democratic
+    subcategory: transition
+    title:
+      fa: گذار مذاکره‌ای
+      en: Negotiated Transition
+    subtitle:
+      fa: انقلاب مخملین
+      en: Velvet Revolution
+    description:
+      fa: |
+        فشار مردم چنان بالا گرفت که جناح‌هایی از درون رژیم حاضر به
+        مذاکره شدند. یک دولت انتقالی تشکیل شد که شامل اصلاح‌طلبان،
+        نمایندگان جنبش‌های مدنی، و حتی برخی از نظامیان معتدل است.
+
+        این بهترین سناریو نبود، اما خونریزی محدود ماند و راه برای
+        انتخابات آزاد باز شد.
+      en: |
+        Public pressure grew so intense that factions within the regime
+        agreed to negotiate. A transitional government was formed including
+        reformists, civil movement representatives, and even some moderate
+        military figures.
+
+        This wasn't the ideal scenario, but bloodshed was limited and
+        the path to free elections opened.
+    epilogue:
+      fa: |
+        نقش تو در پل زدن بین گروه‌های مختلف حیاتی بود.
+        تو نشان دادی که دشمن دیروز می‌تواند شریک فردا باشد.
+      en: |
+        Your role in bridging different groups was vital.
+        You showed that yesterday's enemy can be tomorrow's partner.
+    conditions:
+      - type: stat
+        target: regime.stability
+        operator: less_than
+        value: 25
+      - type: flag
+        target: negotiations_started
+        value: true
+      - type: stat
+        target: player.position.networkSize
+        operator: greater_than
+        value: 60
+    eudaimonia:
+      freedom: 80
+      justice: 70
+      prosperity: 65
+      community: 80
+      meaning: 75
+      health: 75
+      knowledge: 70
+    color: "#86efac"
+    tone: hopeful
+    tags: [democratic, negotiated, peaceful]
+
+  - id: peoples_revolution
+    category: democratic
+    subcategory: revolution
+    title:
+      fa: انقلاب مردمی
+      en: People's Revolution
+    subtitle:
+      fa: بهار ایران
+      en: Iranian Spring
+    description:
+      fa: |
+        اعتصاب عمومی سراسر کشور را فلج کرد. میلیون‌ها نفر به خیابان آمدند.
+        ارتش از شلیک به مردم امتناع کرد. رژیم فرو ریخت.
+
+        این انقلابی واقعی بود - نه کودتا، نه مداخله خارجی. مردم ایران
+        سرنوشت خود را به دست گرفتند.
+      en: |
+        A general strike paralyzed the entire country. Millions took to
+        the streets. The army refused to fire on the people. The regime
+        collapsed.
+
+        This was a real revolution - not a coup, not foreign intervention.
+        The Iranian people took their destiny into their own hands.
+    epilogue:
+      fa: |
+        در میدان آزادی، مردم نام تو را فریاد زدند. تو یکی از
+        چهره‌های این انقلاب هستی - و مسئولیت سنگینی بر دوش داری.
+      en: |
+        In Azadi Square, people chanted your name. You are one of the
+        faces of this revolution - and bear a heavy responsibility.
+    conditions:
+      - type: stat
+        target: regime.stability
+        operator: less_than
+        value: 5
+      - type: flag
+        target: general_strike_active
+        value: true
+      - type: flag
+        target: military_defection
+        value: true
+    eudaimonia:
+      freedom: 90
+      justice: 80
+      prosperity: 50
+      community: 85
+      meaning: 95
+      health: 60
+      knowledge: 75
+    color: "#4ade80"
+    tone: triumphant
+    tags: [democratic, revolution, mass_movement]
+
+  # ================================
+  # PARTIAL DEMOCRACY
+  # ================================
+
+  - id: flawed_democracy
+    category: democratic
+    subcategory: partial
+    title:
+      fa: دموکراسی ناقص
+      en: Flawed Democracy
+    subtitle:
+      fa: آزادی نیمه‌کاره
+      en: Incomplete Freedom
+    description:
+      fa: |
+        رژیم سقوط کرد، اما نهادهای دموکراتیک هنوز ضعیفند. انتخابات
+        برگزار می‌شود، اما قدرت واقعی در دست الیگارشی جدیدی است.
+        فساد ادامه دارد. مطبوعات آزادند، اما محتاط.
+
+        این بهتر از گذشته است، اما آینده هنوز نامعلوم است.
+      en: |
+        The regime fell, but democratic institutions are still weak.
+        Elections are held, but real power is in the hands of a new
+        oligarchy. Corruption continues. Press is free, but cautious.
+
+        This is better than before, but the future remains uncertain.
+    epilogue:
+      fa: |
+        تو می‌دانی که کار هنوز تمام نشده. آزادی به دست آمده،
+        اما حفظ آن کار سخت‌تری است.
+      en: |
+        You know the work isn't done. Freedom was won, but
+        maintaining it is harder work.
+    conditions:
+      - type: stat
+        target: regime.stability
+        operator: less_than
+        value: 15
+      - type: stat
+        target: regime.coherence
+        operator: less_than
+        value: 20
+      - type: flag
+        target: democratic_coalition_formed
+        value: false
+    eudaimonia:
+      freedom: 65
+      justice: 55
+      prosperity: 55
+      community: 60
+      meaning: 60
+      health: 65
+      knowledge: 60
+    color: "#a3e635"
+    tone: bittersweet
+    tags: [democratic, partial, uncertain]
+
+  - id: federal_democracy
+    category: democratic
+    subcategory: federal
+    title:
+      fa: دموکراسی فدرال
+      en: Federal Democracy
+    subtitle:
+      fa: اتحاد در تنوع
+      en: Unity in Diversity
+    description:
+      fa: |
+        پس از سقوط رژیم، ایران به یک جمهوری فدرال تبدیل شد.
+        کردستان، آذربایجان، بلوچستان، و خوزستان خودمختاری گسترده‌ای
+        دارند. این ساختار تنش‌های قومی را کاهش داده.
+
+        ایران دیگر یکپارچه نیست، اما متحد است.
+      en: |
+        After the regime's fall, Iran became a federal republic.
+        Kurdistan, Azerbaijan, Baluchistan, and Khuzestan have extensive
+        autonomy. This structure has reduced ethnic tensions.
+
+        Iran is no longer uniform, but it is united.
+    epilogue:
+      fa: |
+        نقش تو در متحد کردن اقوام مختلف ایران تاریخی بود.
+        تو ثابت کردی که تنوع قدرت است، نه ضعف.
+      en: |
+        Your role in uniting Iran's different ethnicities was historic.
+        You proved that diversity is strength, not weakness.
+    conditions:
+      - type: stat
+        target: regime.stability
+        operator: less_than
+        value: 10
+      - type: flag
+        target: ethnic_coalition
+        value: true
+      - type: faction_trust
+        target: kurdish_parties
+        operator: greater_than
+        value: 60
+    eudaimonia:
+      freedom: 85
+      justice: 80
+      prosperity: 55
+      community: 90
+      meaning: 80
+      health: 65
+      knowledge: 70
+    color: "#34d399"
+    tone: hopeful
+    tags: [democratic, federal, ethnic_rights]

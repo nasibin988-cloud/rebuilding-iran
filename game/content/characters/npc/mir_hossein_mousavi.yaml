@@ -1,0 +1,77 @@
+# NPC Character: Mir Hossein Mousavi
+# Leader of the Green Movement, under house arrest
+
+id: mir_hossein_mousavi
+
+name:
+  fa: میرحسین موسوی
+  en: Mir Hossein Mousavi
+
+title:
+  fa: نخست‌وزیر سابق و رهبر جنبش سبز
+  en: Former Prime Minister and Green Movement Leader
+
+portrait: mir_hossein_mousavi.png
+
+role: opposition_leader
+
+biography:
+  fa: |
+    نخست‌وزیر ایران در دوران جنگ و نامزد ریاست‌جمهوری ۱۳۸۸. پس از
+    اعتراضات جنبش سبز به حصر خانگی رفت و از ۱۳۸۹ در حصر است.
+    نماد مقاومت مدنی و خواست دموکراسی در ایران.
+  en: |
+    Prime Minister during the war and 2009 presidential candidate. Placed
+    under house arrest after Green Movement protests and has been confined
+    since 2010. Symbol of civil resistance and democratic aspiration in Iran.
+
+personality:
+  traits:
+    - principled
+    - artistic
+    - reserved
+    - resilient
+    - symbolic
+  beliefs:
+    economicLeft: 55
+    socialLiberal: 70
+    nationalist: 65
+    religious: 50
+    democratic: 85
+
+relationships:
+  - characterId: mehdi_karroubi
+    type: ally
+    trust: 90
+    description:
+      fa: همراه در حصر
+      en: Fellow in confinement
+  - characterId: khamenei
+    type: enemy
+    trust: -80
+    description:
+      fa: مخالف اصلی
+      en: Primary adversary
+
+status:
+  health: 50
+  influence: 60
+  visibility: low
+  security: confined
+
+goals:
+  - end_house_arrest
+  - democratic_transition
+  - accountability_for_2009
+
+fears:
+  - death_in_confinement
+  - being_forgotten
+  - movement_failure
+
+tags:
+  - npc
+  - opposition
+  - green_movement
+  - house_arrest
+  - symbol

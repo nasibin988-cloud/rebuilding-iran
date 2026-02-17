@@ -1,0 +1,598 @@
+# Random Events: Minor Incidents
+
+events:
+  # ================================
+  # SECURITY ENCOUNTERS
+  # ================================
+
+  - id: checkpoint_stop
+    category: random
+    title:
+      fa: ایست بازرسی
+      en: Checkpoint Stop
+    description:
+      fa: |
+        در یک بازرسی تصادفی متوقف شدی. سرباز گوشی‌ات را
+        می‌خواهد ببیند. قلبت تند می‌زند.
+      en: |
+        Stopped at a random checkpoint. The soldier wants to
+        see your phone. Your heart beats fast.
+    triggers:
+      - type: random
+        value: 0.15
+    priority: 40
+    weight: 1.0
+    once: false
+    cooldown: 5
+    requirements: []
+    decisions:
+      - id: show_clean_phone
+        label:
+          fa: گوشی تمیز را نشان بده
+          en: Show Clean Phone
+        description:
+          fa: همیشه یک گوشی تمیز داری
+          en: You always have a clean phone
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: -5
+          delayed: []
+        tags: [prepared, safe]
+
+      - id: refuse_politely
+        label:
+          fa: مودبانه رد کن
+          en: Refuse Politely
+        description:
+          fa: «این شخصی است»
+          en: "This is personal"
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 5
+          delayed:
+            - delay: 0
+              probability: 0.3
+              effects:
+                - type: state_change
+                  target: player.resources.freedom
+                  value: -20
+              narrative:
+                fa: بردنت برای بازرسی بیشتر
+                en: Taken for further inspection
+        tags: [risky, principled]
+
+      - id: comply
+        label:
+          fa: اطاعت کن
+          en: Comply
+        description:
+          fa: مشکلی ندارد - گوشی‌ات را پاک کرده‌ای
+          en: No problem - your phone is clean
+        effects:
+          immediate: []
+          delayed: []
+        tags: [safe, compliant]
+    tags: [security, daily, tension]
+
+  - id: basij_patrol
+    category: random
+    title:
+      fa: گشت بسیج
+      en: Basij Patrol
+    description:
+      fa: |
+        گشت گروهی از بسیجی‌ها را در خیابان می‌بینی.
+        دارند به مردم نگاه می‌کنند. بهتر است عادی رفتار کنی.
+      en: |
+        You see a group of Basij patrolling the street.
+        They're watching people. Better act normal.
+    triggers:
+      - type: random
+        value: 0.2
+    priority: 25
+    weight: 1.0
+    once: false
+    cooldown: 4
+    requirements: []
+    decisions:
+      - id: avoid_eye_contact
+        label:
+          fa: چشم در چشم نشو
+          en: Avoid Eye Contact
+        description:
+          fa: راهت را برو
+          en: Go your way
+        effects:
+          immediate: []
+          delayed: []
+        tags: [safe, passive]
+
+      - id: observe_them
+        label:
+          fa: نظاره کن
+          en: Observe
+        description:
+          fa: ببین چه می‌کنند
+          en: See what they're doing
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 2
+          delayed: []
+        tags: [intelligence, observant]
+
+      - id: take_different_route
+        label:
+          fa: مسیر را عوض کن
+          en: Take Different Route
+        description:
+          fa: از جایی دیگر برو
+          en: Go another way
+        effects:
+          immediate: []
+          delayed: []
+        tags: [cautious]
+    tags: [security, basij, daily]
+
+  - id: plainclothes_following
+    category: random
+    title:
+      fa: لباس شخصی
+      en: Plainclothes Following
+    description:
+      fa: |
+        حس می‌کنی کسی دنبالت می‌آید. مرد میانسالی با لباس شخصی.
+        شاید خیالاتی شده‌ای. شاید نه.
+      en: |
+        You feel someone following you. A middle-aged man in
+        plain clothes. Maybe you're imagining. Maybe not.
+    triggers:
+      - type: random
+        value: 0.1
+    priority: 50
+    weight: 0.8
+    once: false
+    cooldown: 8
+    requirements:
+      - type: stat
+        target: player.position.regimeAttention
+        operator: greater_than
+        value: 30
+    decisions:
+      - id: lose_tail
+        label:
+          fa: گمش کن
+          en: Lose Tail
+        description:
+          fa: از کوچه پس کوچه‌ها برو
+          en: Go through back alleys
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: -10
+          delayed: []
+        tags: [evasive, stressful]
+
+      - id: act_normal
+        label:
+          fa: عادی رفتار کن
+          en: Act Normal
+        description:
+          fa: شاید اشتباه می‌کنی
+          en: Maybe you're wrong
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 3
+          delayed: []
+        tags: [risky, calm]
+
+      - id: confront
+        label:
+          fa: رو در رو شو
+          en: Confront
+        description:
+          fa: برگرد و نگاهش کن
+          en: Turn and look at him
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 5
+            - type: state_change
+              target: player.position.visibility
+              value: 5
+          delayed: []
+        tags: [bold, risky]
+    tags: [surveillance, paranoia, tension]
+
+  # ================================
+  # SOCIAL FRICTION
+  # ================================
+
+  - id: regime_supporter_argument
+    category: random
+    title:
+      fa: بحث با طرفدار رژیم
+      en: Argument with Regime Supporter
+    description:
+      fa: |
+        در جمعی، کسی شروع به دفاع از رژیم می‌کند. «اگر اینها نبودند،
+        وضع بدتر بود». آیا جواب بدهی؟
+      en: |
+        In a gathering, someone starts defending the regime. "Without
+        them, things would be worse." Will you respond?
+    triggers:
+      - type: random
+        value: 0.15
+    priority: 20
+    weight: 1.0
+    once: false
+    cooldown: 6
+    requirements: []
+    decisions:
+      - id: debate_calmly
+        label:
+          fa: آرام بحث کن
+          en: Debate Calmly
+        description:
+          fa: با دلیل و منطق جواب بده
+          en: Respond with reason and logic
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: 3
+          delayed: []
+        tags: [intellectual, social]
+
+      - id: get_heated
+        label:
+          fa: داغ شو
+          en: Get Heated
+        description:
+          fa: نمی‌توانی ساکت بمانی
+          en: Can't stay silent
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: 8
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: -5
+          delayed: []
+        tags: [emotional, risky]
+
+      - id: walk_away
+        label:
+          fa: برو
+          en: Walk Away
+        description:
+          fa: ارزش بحث ندارد
+          en: Not worth arguing
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: -5
+          delayed: []
+        tags: [avoidant, frustrated]
+    tags: [social, conflict, ideology]
+
+  - id: generational_divide
+    category: random
+    title:
+      fa: شکاف نسلی
+      en: Generational Divide
+    description:
+      fa: |
+        با یک نفر از نسل قبل بحث شده. آنها می‌گویند «شما صبور نیستید».
+        تو می‌گویی «شما کاری نکردید». هر دو درد داریم.
+      en: |
+        You've argued with someone from the older generation. They say
+        "You're not patient." You say "You did nothing." Both are hurt.
+    triggers:
+      - type: random
+        value: 0.12
+    priority: 25
+    weight: 1.0
+    once: false
+    cooldown: 8
+    requirements: []
+    decisions:
+      - id: listen_to_experience
+        label:
+          fa: به تجربه گوش بده
+          en: Listen to Experience
+        description:
+          fa: شاید چیزی یاد بگیری
+          en: Maybe learn something
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 5
+            - type: resource_change
+              target: influence
+              value: 3
+          delayed: []
+        tags: [respectful, learning]
+
+      - id: hold_ground
+        label:
+          fa: سر حرفت بمان
+          en: Hold Ground
+        description:
+          fa: حق با توست
+          en: You're right
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: -5
+          delayed: []
+        tags: [stubborn, principled]
+
+      - id: find_common_ground
+        label:
+          fa: نقطه مشترک پیدا کن
+          en: Find Common Ground
+        description:
+          fa: هر دو آزادی می‌خواهیم
+          en: We both want freedom
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 10
+          delayed: []
+        tags: [diplomatic, healing]
+    tags: [social, generational, conflict]
+
+  # ================================
+  # SMALL VICTORIES
+  # ================================
+
+  - id: small_act_resistance
+    category: random
+    title:
+      fa: عمل کوچک مقاومت
+      en: Small Act of Resistance
+    description:
+      fa: |
+        در خیابان، زنی بدون حجاب با اعتماد به نفس قدم می‌زند.
+        مردی موزیک غربی از ماشینش پخش می‌کند. لحظات کوچک آزادی.
+      en: |
+        On the street, a woman walks confidently without hijab.
+        A man plays Western music from his car. Small moments of freedom.
+    triggers:
+      - type: random
+        value: 0.25
+    priority: 15
+    weight: 1.0
+    once: false
+    cooldown: 4
+    requirements: []
+    decisions:
+      - id: smile_and_appreciate
+        label:
+          fa: لبخند بزن
+          en: Smile and Appreciate
+        description:
+          fa: این لحظات را ارج بده
+          en: Value these moments
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 10
+          delayed: []
+        tags: [positive, appreciation]
+
+      - id: join_in
+        label:
+          fa: همراهی کن
+          en: Join In
+        description:
+          fa: تو هم قدمی بردار
+          en: You take a step too
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 15
+            - type: state_change
+              target: player.position.visibility
+              value: 2
+          delayed: []
+        tags: [brave, solidarity]
+    tags: [resistance, daily, hope]
+
+  - id: graffiti_message
+    category: random
+    title:
+      fa: پیام دیواری
+      en: Graffiti Message
+    description:
+      fa: |
+        روی دیوار نوشته شده: «زن، زندگی، آزادی». قلبت گرم می‌شود.
+        کسی هنوز امید دارد.
+      en: |
+        Written on the wall: "Woman, Life, Freedom." Your heart warms.
+        Someone still has hope.
+    triggers:
+      - type: random
+        value: 0.2
+    priority: 15
+    weight: 1.0
+    once: false
+    cooldown: 5
+    requirements: []
+    decisions:
+      - id: take_photo
+        label:
+          fa: عکس بگیر
+          en: Take Photo
+        description:
+          fa: این لحظه را ثبت کن
+          en: Capture this moment
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 5
+            - type: state_change
+              target: player.position.visibility
+              value: 3
+          delayed: []
+        tags: [documentation, hopeful]
+
+      - id: add_message
+        label:
+          fa: پیام اضافه کن
+          en: Add Message
+        description:
+          fa: تو هم چیزی بنویس
+          en: Write something too
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: 5
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 10
+          delayed: []
+        tags: [expression, risky]
+
+      - id: appreciate_silently
+        label:
+          fa: در سکوت قدردانی کن
+          en: Appreciate Silently
+        description:
+          fa: لبخند بزن و برو
+          en: Smile and go
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 5
+          delayed: []
+        tags: [safe, appreciative]
+    tags: [art, resistance, hope]
+
+  # ================================
+  # EVERYDAY CHALLENGES
+  # ================================
+
+  - id: power_outage
+    category: random
+    title:
+      fa: قطعی برق
+      en: Power Outage
+    description:
+      fa: |
+        برق رفته. شب تاریک است. شمع روشن می‌کنی و فکر می‌کنی
+        به روزهایی که قرار بود همه چیز بهتر شود.
+      en: |
+        Power is out. The night is dark. You light a candle and think
+        of days when everything was supposed to get better.
+    triggers:
+      - type: random
+        value: 0.2
+    priority: 15
+    weight: 1.0
+    once: false
+    cooldown: 5
+    requirements: []
+    decisions:
+      - id: use_time_to_think
+        label:
+          fa: فکر کن
+          en: Think
+        description:
+          fa: این فرصتی برای تامل است
+          en: An opportunity for reflection
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 5
+          delayed: []
+        tags: [introspective, peaceful]
+
+      - id: connect_with_neighbors
+        label:
+          fa: با همسایه‌ها ارتباط بگیر
+          en: Connect with Neighbors
+        description:
+          fa: در تاریکی، مردم به هم نزدیک‌تر می‌شوند
+          en: In darkness, people get closer
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.networkSize
+              value: 2
+          delayed: []
+        tags: [social, community]
+    tags: [infrastructure, daily, hardship]
+
+  - id: traffic_nightmare
+    category: random
+    title:
+      fa: کابوس ترافیک
+      en: Traffic Nightmare
+    description:
+      fa: |
+        ساعت‌هاست در ترافیک گیر کرده‌ای. آلودگی، صدا، استرس.
+        این شهر دیگر قابل زندگی نیست.
+      en: |
+        You've been stuck in traffic for hours. Pollution, noise, stress.
+        This city is no longer livable.
+    triggers:
+      - type: random
+        value: 0.25
+    priority: 10
+    weight: 1.0
+    once: false
+    cooldown: 4
+    requirements: []
+    decisions:
+      - id: use_time_productively
+        label:
+          fa: وقت را مفید استفاده کن
+          en: Use Time Productively
+        description:
+          fa: پادکست گوش کن یا فکر کن
+          en: Listen to podcast or think
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 2
+          delayed: []
+        tags: [productive, adaptive]
+
+      - id: frustration
+        label:
+          fa: ناامید شو
+          en: Get Frustrated
+        description:
+          fa: چرا همه چیز این‌قدر سخت است؟
+          en: Why is everything so hard?
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: -10
+          delayed: []
+        tags: [negative, realistic]
+    tags: [daily, infrastructure, stress]

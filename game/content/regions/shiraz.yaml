@@ -1,0 +1,72 @@
+# Region: Shiraz
+# Cultural capital of Iran, center of Persian poetry and arts
+
+id: shiraz
+
+name:
+  fa: شیراز
+  en: Shiraz
+
+type: major_city
+
+description:
+  fa: |
+    شیراز پایتخت فرهنگی ایران و زادگاه حافظ و سعدی است. این شهر به باغ‌ها،
+    شعر، و سنت‌های فرهنگی‌اش شهرت دارد. شیراز نسبت به سایر شهرهای بزرگ
+    آرام‌تر است اما جامعه مدنی فعالی دارد.
+  en: |
+    Shiraz is Iran's cultural capital and birthplace of Hafez and Saadi. The city
+    is renowned for its gardens, poetry, and cultural traditions. Shiraz is calmer
+    than other major cities but has an active civil society.
+
+demographics:
+  population: 3500000
+  ethnicComposition:
+    persian: 85
+    lur: 10
+    other: 5
+  urbanization: 75
+  religiosity: 60
+  educationLevel: 70
+  youthPercentage: 38
+  unemploymentRate: 14
+
+control:
+  regimeControl: 75
+  oppositionPresence: 35
+  militaryPresence: 60
+  ethnicMovementControl: 0
+  contestedZones: []
+
+conditions:
+  economicHealth: 55
+  infrastructure: 60
+  publicServices: 60
+  environmentalHealth: 50
+  publicSentiment: 50
+
+activity:
+  protestLevel: 30
+  strikeActivity: 25
+  civilSocietyStrength: 55
+  insurgency: 0
+
+keyLocations:
+  - name:
+      fa: آرامگاه حافظ
+      en: Tomb of Hafez
+    significance: cultural_heritage
+  - name:
+      fa: تخت جمشید
+      en: Persepolis
+    significance: historical_site
+  - name:
+      fa: دانشگاه شیراز
+      en: Shiraz University
+    significance: education_center
+
+tags:
+  - cultural
+  - poetry
+  - tourism
+  - historical

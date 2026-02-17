@@ -1,0 +1,122 @@
+# Playable Character: The Student Activist
+# A young voice of the new generation, radicalized by recent events
+
+id: student_activist
+
+name:
+  fa: روشنک آزادی
+  en: Roshanak Azadi
+
+title:
+  fa: فعال دانشجویی
+  en: Student Activist
+
+portrait: student_activist.png
+
+biography:
+  fa: |
+    یک دانشجوی ۲۴ ساله که در خیزش ۱۴۰۱ به خیابان آمد و دیگر هرگز به زندگی
+    عادی برنگشت. شما شاهد کشته شدن دوستانتان بودید. اکنون در شبکه‌های زیرزمینی
+    فعال هستید و می‌دانید که بازگشتی نیست. سوال این است: چه آینده‌ای می‌خواهید
+    بسازید و چه بهایی حاضرید بپردازید؟
+  en: |
+    A 24-year-old student who took to the streets in the 2022 uprising and never
+    returned to normal life. You witnessed friends being killed. Now you're active
+    in underground networks and know there's no going back. The question is: what
+    future do you want to build and what price are you willing to pay?
+
+startingPosition:
+  location: tehran
+  officialRole: null
+  factionMemberships:
+    - factionId: students
+      role: organizer
+      trust: 70
+    - factionId: green_movement
+      role: member
+      trust: 50
+
+startingResources:
+  influence: 30
+  money: 500
+  actionsPerTurn: 4
+
+personal:
+  age: 24
+  traits:
+    - courageous
+    - idealistic
+    - impatient
+    - charismatic
+    - traumatized
+  beliefs:
+    economicLeft: 55
+    socialLiberal: 90
+    nationalist: 60
+    religious: 15
+    democratic: 95
+  priorities:
+    - womens_rights
+    - freedom_of_expression
+    - regime_change
+    - justice_for_victims
+  redLines:
+    - compromise_with_current_regime
+    - abandoning_fellow_activists
+    - violence_against_innocent_civilians
+
+backstory:
+  fa: |
+    متولد ۱۳۷۹ در کرج. در خانواده‌ای طبقه متوسط بزرگ شدید که پدرتان مهندس
+    و مادرتان معلم بود. اینترنت پنجره‌ای به جهان برایتان باز کرد.
+
+    دانشجوی جامعه‌شناسی دانشگاه تهران بودید که مهسا امینی کشته شد. آن روز
+    همه چیز عوض شد. اولین شب به خیابان آمدید، فقط برای اعتراض. اما وقتی
+    گاز اشک‌آور و باتوم دیدید، وقتی دوستتان را بردند، دیگر برنگشتید.
+
+    شش ماه زندگی مخفیانه، سازماندهی شبانه، رد شدن از فیلترینگ، یادگیری
+    رمزنگاری. حالا شما دیگر آن دختر ساده نیستید. شما یک سازمان‌ده هستید.
+  en: |
+    Born in 2000 in Karaj. You grew up in a middle-class family - your father
+    an engineer, your mother a teacher. The internet opened a window to the world.
+
+    You were a sociology student at Tehran University when Mahsa Amini was killed.
+    That day everything changed. The first night you went to the street, just to
+    protest. But when you saw tear gas and batons, when they took your friend,
+    you never went back to normal.
+
+    Six months of hiding, organizing at night, bypassing filtering, learning
+    encryption. Now you're no longer that simple girl. You're an organizer.
+
+motivations:
+  fa: |
+    شما می‌خواهید سیستمی که دوستانتان را کشت سرنگون شود. اما همچنین می‌دانید
+    که خشونت بی‌هدف فقط بهانه سرکوب بیشتر می‌دهد. باید راهی پیدا کنید که
+    هم موثر باشد و هم انسانی.
+  en: |
+    You want the system that killed your friends to fall. But you also know that
+    purposeless violence only gives excuse for more repression. You must find a
+    way that is both effective and humane.
+
+challenges:
+  - fa: همیشه در خطر دستگیری هستید
+    en: You're always at risk of arrest
+  - fa: منابع محدودی دارید
+    en: You have limited resources
+  - fa: باید به شبکه‌های مختلف اعتماد کنید
+    en: You must trust various networks
+  - fa: تروما و استرس مداوم
+    en: Ongoing trauma and stress
+  - fa: نسل قدیمی‌تر شما را درک نمی‌کند
+    en: The older generation doesn't understand you
+
+difficulty: hard
+
+tags:
+  - playable
+  - activist
+  - student
+  - outsider
+  - tehran
+  - young_generation
+  - woman_life_freedom

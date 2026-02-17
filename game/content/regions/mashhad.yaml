@@ -1,0 +1,73 @@
+# Region: Mashhad
+# Religious capital and pilgrimage center
+
+id: mashhad
+
+name:
+  fa: مشهد
+  en: Mashhad
+
+type: major_city
+
+description:
+  fa: |
+    مشهد دومین شهر بزرگ ایران و مهم‌ترین مرکز زیارتی شیعیان در کشور است.
+    آستان قدس رضوی، متولی حرم امام رضا، یکی از ثروتمندترین نهادهای ایران است.
+    مشهد ترکیبی از مذهبی بودن سنتی و طبقه متوسط مدرن دارد.
+  en: |
+    Mashhad is Iran's second largest city and the most important Shia pilgrimage
+    center in the country. The Astan Quds Razavi foundation, which manages the
+    Imam Reza shrine, is one of Iran's wealthiest institutions. Mashhad has a mix
+    of traditional religiosity and a modern middle class.
+
+demographics:
+  population: 6000000
+  ethnicComposition:
+    persian: 80
+    turkmen: 10
+    other: 10
+  urbanization: 85
+  religiosity: 85
+  educationLevel: 65
+  youthPercentage: 43
+  unemploymentRate: 16
+
+control:
+  regimeControl: 85
+  oppositionPresence: 25
+  militaryPresence: 70
+  ethnicMovementControl: 5
+  contestedZones: []
+
+conditions:
+  economicHealth: 65
+  infrastructure: 70
+  publicServices: 70
+  environmentalHealth: 45
+  publicSentiment: 55
+
+activity:
+  protestLevel: 25
+  strikeActivity: 20
+  civilSocietyStrength: 40
+  insurgency: 0
+
+keyLocations:
+  - name:
+      fa: حرم امام رضا
+      en: Imam Reza Shrine
+    significance: religious_center
+  - name:
+      fa: دانشگاه فردوسی
+      en: Ferdowsi University
+    significance: education_center
+  - name:
+      fa: آستان قدس رضوی
+      en: Astan Quds Razavi
+    significance: economic_power
+
+tags:
+  - religious
+  - pilgrimage
+  - shrine
+  - conservative

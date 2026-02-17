@@ -1,0 +1,312 @@
+# Comprehensive Faction Definitions
+
+factions:
+  # ===================
+  # SOCIETY FACTIONS
+  # ===================
+
+  - id: workers
+    name:
+      fa: جنبش کارگری
+      en: Workers Movement
+    shortName:
+      fa: کارگران
+      en: Workers
+    description:
+      fa: کارگران صنعتی، معلمان، و بازنشستگان که برای حقوق اقتصادی مبارزه می‌کنند.
+      en: Industrial workers, teachers, and retirees fighting for economic rights.
+    category: society
+    subcategory: labor
+    power:
+      base: 30
+      military: 5
+      economic: 25
+      religious: 10
+      popular: 45
+    ideology:
+      economicLeft: 75
+      socialLiberal: 60
+      nationalist: 55
+      religious: 25
+      democratic: 70
+    interests:
+      survival: [Wages, Job security, Union rights]
+      shortTerm: [Pension payments, End corruption]
+      longTerm: [Independent unions, Social justice]
+      redLines: [Privatization without protection, Mass layoffs]
+    behavior:
+      aggression: 45
+      cooperation: 65
+      riskTolerance: 55
+      pragmatism: 60
+    color: "#dc2626"
+    tags: [society, labor, economic_justice]
+
+  - id: women_movement
+    name:
+      fa: جنبش زنان
+      en: Women's Movement
+    shortName:
+      fa: زنان
+      en: Women
+    description:
+      fa: فعالان حقوق زنان که علیه حجاب اجباری و تبعیض جنسیتی مبارزه می‌کنند.
+      en: Women's rights activists fighting against mandatory hijab and gender discrimination.
+    category: society
+    subcategory: civil_rights
+    power:
+      base: 35
+      military: 0
+      economic: 15
+      religious: 5
+      popular: 60
+    ideology:
+      economicLeft: 50
+      socialLiberal: 95
+      nationalist: 50
+      religious: 10
+      democratic: 90
+    interests:
+      survival: [Physical safety, Legal protection]
+      shortTerm: [End hijab enforcement, Employment rights]
+      longTerm: [Full legal equality, Bodily autonomy]
+      redLines: [Violence against women activists, Regression of rights]
+    behavior:
+      aggression: 40
+      cooperation: 75
+      riskTolerance: 70
+      pragmatism: 50
+    color: "#ec4899"
+    tags: [society, women, woman_life_freedom]
+
+  - id: civil_society
+    name:
+      fa: نهادهای مدنی
+      en: Civil Society
+    shortName:
+      fa: مدنی
+      en: Civil
+    description:
+      fa: وکلا، روزنامه‌نگاران، و فعالان حقوق بشر.
+      en: Lawyers, journalists, and human rights activists.
+    category: society
+    subcategory: professional
+    power:
+      base: 20
+      military: 0
+      economic: 15
+      religious: 5
+      popular: 35
+    ideology:
+      economicLeft: 45
+      socialLiberal: 85
+      nationalist: 50
+      religious: 20
+      democratic: 90
+    behavior:
+      aggression: 25
+      cooperation: 80
+      riskTolerance: 55
+      pragmatism: 60
+    color: "#8b5cf6"
+    tags: [society, professional, human_rights]
+
+  # ===================
+  # OPPOSITION FACTIONS
+  # ===================
+
+  - id: monarchists
+    name:
+      fa: مشروطه‌خواهان
+      en: Monarchists
+    shortName:
+      fa: سلطنت‌طلبان
+      en: Monarchists
+    description:
+      fa: حامیان بازگشت سلطنت، متمرکز بر رضا پهلوی.
+      en: Supporters of monarchy restoration, centered on Reza Pahlavi.
+    category: opposition
+    subcategory: political
+    power:
+      base: 25
+      military: 5
+      economic: 30
+      religious: 5
+      popular: 20
+    ideology:
+      economicLeft: 30
+      socialLiberal: 60
+      nationalist: 85
+      religious: 20
+      democratic: 50
+    behavior:
+      aggression: 30
+      cooperation: 50
+      riskTolerance: 40
+      pragmatism: 55
+    color: "#eab308"
+    tags: [opposition, diaspora, monarchist]
+
+  - id: mek
+    name:
+      fa: سازمان مجاهدین خلق
+      en: MEK (Mojahedin-e Khalq)
+    shortName:
+      fa: منافقین
+      en: MEK
+    description:
+      fa: سازمان بحث‌برانگیز در تبعید با سابقه مسلحانه و ایدئولوژی خاص.
+      en: Controversial exiled organization with armed history and unique ideology.
+    category: opposition
+    subcategory: militant
+    power:
+      base: 15
+      military: 20
+      economic: 25
+      religious: 5
+      popular: 5
+    ideology:
+      economicLeft: 70
+      socialLiberal: 40
+      nationalist: 60
+      religious: 30
+      democratic: 20
+    behavior:
+      aggression: 75
+      cooperation: 20
+      riskTolerance: 80
+      pragmatism: 30
+    color: "#991b1b"
+    tags: [opposition, diaspora, militant, controversial]
+
+  # ===================
+  # ETHNIC FACTIONS
+  # ===================
+
+  - id: kurdish_parties
+    name:
+      fa: احزاب کرد
+      en: Kurdish Parties
+    shortName:
+      fa: کردها
+      en: Kurds
+    description:
+      fa: احزاب کردستان ایران مانند حزب دموکرات و کومله.
+      en: Iranian Kurdistan parties like KDPI and Komala.
+    category: ethnic
+    subcategory: kurdish
+    power:
+      base: 25
+      military: 30
+      economic: 15
+      religious: 10
+      popular: 40
+    ideology:
+      economicLeft: 55
+      socialLiberal: 70
+      nationalist: 75
+      religious: 25
+      democratic: 75
+    behavior:
+      aggression: 50
+      cooperation: 55
+      riskTolerance: 65
+      pragmatism: 60
+    color: "#15803d"
+    tags: [ethnic, kurdish, federalism]
+
+  - id: azeri_movement
+    name:
+      fa: جنبش آذربایجان
+      en: Azerbaijani Movement
+    shortName:
+      fa: آذری‌ها
+      en: Azeris
+    description:
+      fa: فعالان حقوق زبانی و فرهنگی ترک‌های آذربایجان ایران.
+      en: Linguistic and cultural rights activists of Iranian Azerbaijani Turks.
+    category: ethnic
+    subcategory: azeri
+    power:
+      base: 20
+      military: 5
+      economic: 25
+      religious: 20
+      popular: 35
+    ideology:
+      economicLeft: 45
+      socialLiberal: 60
+      nationalist: 70
+      religious: 35
+      democratic: 65
+    behavior:
+      aggression: 35
+      cooperation: 60
+      riskTolerance: 45
+      pragmatism: 65
+    color: "#0ea5e9"
+    tags: [ethnic, azeri, cultural_rights]
+
+  - id: baluchi_movement
+    name:
+      fa: جنبش بلوچستان
+      en: Baluchistan Movement
+    shortName:
+      fa: بلوچ‌ها
+      en: Baluchis
+    description:
+      fa: فعالان حقوق اقلیت سنی بلوچ در جنوب شرق ایران.
+      en: Activists for Sunni Baluch minority rights in southeastern Iran.
+    category: ethnic
+    subcategory: baluchi
+    power:
+      base: 15
+      military: 15
+      economic: 10
+      religious: 35
+      popular: 30
+    ideology:
+      economicLeft: 50
+      socialLiberal: 50
+      nationalist: 65
+      religious: 60
+      democratic: 60
+    behavior:
+      aggression: 45
+      cooperation: 50
+      riskTolerance: 60
+      pragmatism: 50
+    color: "#f97316"
+    tags: [ethnic, baluchi, sunni]
+
+  - id: arab_movement
+    name:
+      fa: جنبش عرب‌های ایران
+      en: Ahwazi Arab Movement
+    shortName:
+      fa: عرب‌ها
+      en: Arabs
+    description:
+      fa: فعالان حقوق عرب‌های خوزستان.
+      en: Activists for Arab rights in Khuzestan.
+    category: ethnic
+    subcategory: arab
+    power:
+      base: 15
+      military: 10
+      economic: 15
+      religious: 20
+      popular: 25
+    ideology:
+      economicLeft: 55
+      socialLiberal: 55
+      nationalist: 70
+      religious: 45
+      democratic: 60
+    behavior:
+      aggression: 50
+      cooperation: 45
+      riskTolerance: 55
+      pragmatism: 50
+    color: "#84cc16"
+    tags: [ethnic, arab, khuzestan]

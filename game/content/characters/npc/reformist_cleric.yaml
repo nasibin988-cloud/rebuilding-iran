@@ -1,0 +1,71 @@
+# NPC Character: Reformist Cleric
+# A progressive religious figure
+
+id: reformist_cleric
+
+name:
+  fa: حجت‌الاسلام حسن یوسفی اشکوری
+  en: Hojatoleslam Hassan Yousefi Eshkevari
+
+title:
+  fa: روحانی اصلاح‌طلب
+  en: Reformist Cleric
+
+portrait: reformist_cleric.png
+
+role: religious_reformist
+
+biography:
+  fa: |
+    روحانی روشنفکر که خواهان بازخوانی اسلام و سازگاری آن با دموکراسی
+    و حقوق بشر است. به دلیل دیدگاه‌هایش از لباس روحانیت خلع شد و
+    مدتی در زندان بود. اکنون در تبعید زندگی می‌کند.
+  en: |
+    Intellectual cleric calling for reinterpretation of Islam compatible with
+    democracy and human rights. Defrocked for his views and imprisoned for
+    a time. Now lives in exile.
+
+personality:
+  traits:
+    - intellectual
+    - progressive
+    - scholarly
+    - brave
+    - marginalized
+  beliefs:
+    economicLeft: 60
+    socialLiberal: 80
+    nationalist: 55
+    religious: 75
+    democratic: 90
+
+relationships:
+  - characterId: former_president_khatami
+    type: ally
+    trust: 65
+    description:
+      fa: همراه فکری
+      en: Intellectual ally
+
+status:
+  health: 60
+  influence: 30
+  visibility: low
+  security: exile
+
+goals:
+  - religious_reform
+  - islam_democracy_reconciliation
+  - return_to_iran
+
+fears:
+  - irrelevance
+  - traditionalist_attacks
+  - death_in_exile
+
+tags:
+  - npc
+  - opposition
+  - reformist
+  - clerical
+  - intellectual

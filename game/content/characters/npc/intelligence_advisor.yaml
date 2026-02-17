@@ -1,0 +1,76 @@
+# NPC Character: Intelligence Advisor
+# Security advisor to the Supreme Leader
+
+id: intelligence_advisor
+
+name:
+  fa: حجت‌الاسلام علی‌اکبر ولایتی
+  en: Hojatoleslam Ali Akbar Velayati
+
+title:
+  fa: مشاور امور بین‌الملل رهبر
+  en: Leader's Advisor on International Affairs
+
+portrait: intelligence_advisor.png
+
+role: advisor
+
+biography:
+  fa: |
+    مشاور ارشد رهبری در امور بین‌الملل و امنیتی. وزیر خارجه سابق با
+    تجربه طولانی در دیپلماسی. نقش کلیدی در تنظیم سیاست خارجی ایران
+    و ارتباط با متحدان منطقه‌ای.
+  en: |
+    Senior advisor to the Leader on international and security affairs.
+    Former Foreign Minister with long diplomatic experience. Key role in
+    shaping Iran's foreign policy and relations with regional allies.
+
+personality:
+  traits:
+    - diplomatic
+    - experienced
+    - calculating
+    - conservative
+    - networked
+  beliefs:
+    economicLeft: 40
+    socialLiberal: 15
+    nationalist: 80
+    religious: 75
+    democratic: 10
+
+relationships:
+  - characterId: khamenei
+    type: advisor
+    trust: 85
+    description:
+      fa: مشاور مورد اعتماد
+      en: Trusted advisor
+  - characterId: quds_force_commander
+    type: political
+    trust: 70
+    description:
+      fa: همکاری در امور منطقه‌ای
+      en: Regional affairs cooperation
+
+status:
+  health: 55
+  influence: 65
+  visibility: medium
+  security: high
+
+goals:
+  - maintain_regional_influence
+  - manage_foreign_relations
+  - advise_on_succession
+
+fears:
+  - international_isolation
+  - policy_failure
+  - loss_of_influence
+
+tags:
+  - npc
+  - regime
+  - advisor
+  - foreign_policy

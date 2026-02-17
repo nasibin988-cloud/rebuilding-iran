@@ -1,0 +1,686 @@
+# Story Events: Succession Crisis Arc
+
+events:
+  # ================================
+  # ACT 1: THE BEGINNING
+  # ================================
+
+  - id: succession_rumors
+    category: story
+    title:
+      fa: شایعات جانشینی
+      en: Succession Rumors
+    description:
+      fa: |
+        شبکه‌هایت خبر می‌دهند که جلسات محرمانه‌ای در قم و تهران در جریان است.
+        برخی روحانیون ارشد درباره آینده پس از رهبری صحبت می‌کنند. این اولین
+        بار است که این موضوع به این شکل علنی شده.
+
+        "مجتبی دارد زمینه‌سازی می‌کند،" یک منبع می‌گوید. "اما همه راضی نیستند."
+      en: |
+        Your networks report confidential meetings underway in Qom and Tehran.
+        Some senior clerics are discussing the post-Leader future. This is the
+        first time the topic has become this open.
+
+        "Mojtaba is laying groundwork," a source says. "But not everyone is happy."
+    triggers:
+      - type: turn
+        value: 3
+    priority: 90
+    weight: 1.0
+    once: true
+    requirements: []
+    decisions:
+      - id: investigate_succession
+        label:
+          fa: تحقیق کن
+          en: Investigate
+        description:
+          fa: تلاش کن اطلاعات بیشتری از جریانات داخلی به دست بیاوری
+          en: Try to get more information about internal developments
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: -5
+            - type: flag_set
+              target: investigating_succession
+              value: true
+          delayed:
+            - delay: 2
+              probability: 0.7
+              effects:
+                - type: flag_set
+                  target: succession_intel
+                  value: true
+              narrative:
+                fa: اطلاعات جدیدی به دست آوردی
+                en: You obtained new information
+        outcome:
+          fa: شروع به جمع‌آوری اطلاعات می‌کنی
+          en: You begin gathering information
+        tags: [intelligence, proactive]
+
+      - id: contact_reformists
+        label:
+          fa: با اصلاح‌طلبان تماس بگیر
+          en: Contact Reformists
+        description:
+          fa: ببین اصلاح‌طلبان چه برنامه‌ای دارند
+          en: See what plans the reformists have
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: faction_trust
+              target: reformists
+              value: 10
+            - type: flag_set
+              target: reformist_contact
+              value: true
+          delayed: []
+        outcome:
+          fa: با چند چهره اصلاح‌طلب تماس گرفتی
+          en: You contacted several reformist figures
+        tags: [coalition, reformist]
+
+      - id: stay_quiet
+        label:
+          fa: ساکت بمان
+          en: Stay Quiet
+        description:
+          fa: هنوز زود است. بگذار وضعیت روشن‌تر شود
+          en: It's still early. Let the situation clarify
+        requirements: []
+        visible: []
+        effects:
+          immediate: []
+          delayed: []
+        outcome:
+          fa: تصمیم می‌گیری منتظر بمانی
+          en: You decide to wait
+        tags: [passive, cautious]
+    tags: [succession, story, act1]
+
+  - id: leader_hospitalized
+    category: story
+    title:
+      fa: بستری شدن رهبر
+      en: Leader Hospitalized
+    description:
+      fa: |
+        خبر فوری: رهبر در بیمارستان بستری شده. رسانه‌های رسمی می‌گویند
+        "معاینات معمول"، اما منابع می‌گویند وضعیت جدی است.
+
+        در خیابان‌ها آرامش مشکوکی حاکم است. انگار همه نفس‌شان را حبس کرده‌اند.
+        سپاه در حالت آماده‌باش قرار گرفته.
+
+        این لحظه‌ای است که همه منتظرش بودند - و از آن می‌ترسیدند.
+      en: |
+        Breaking news: The Leader has been hospitalized. Official media says
+        "routine checkup," but sources say the situation is serious.
+
+        A suspicious calm reigns in the streets. It's as if everyone is holding
+        their breath. The IRGC has gone on alert.
+
+        This is the moment everyone was waiting for - and fearing.
+    triggers:
+      - type: turn
+        value: 5
+    priority: 95
+    weight: 1.0
+    once: true
+    requirements: []
+    decisions:
+      - id: mobilize_networks
+        label:
+          fa: شبکه‌ها را فعال کن
+          en: Mobilize Networks
+        description:
+          fa: وقتش است که آماده شویم
+          en: Time to get ready
+        requirements:
+          - type: resource
+            target: influence
+            operator: greater_equal
+            value: 40
+        visible: []
+        effects:
+          immediate:
+            - type: flag_set
+              target: networks_mobilized
+              value: true
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 20
+          delayed:
+            - delay: 1
+              probability: 0.4
+              effects:
+                - type: flag_set
+                  target: irgc_watching
+                  value: true
+              narrative:
+                fa: فعالیت‌هایت توجه را جلب کرده
+                en: Your activities attracted attention
+        outcome:
+          fa: شبکه‌هایت را به حالت آماده‌باش درآوردی
+          en: You put your networks on alert
+        tags: [proactive, risky, leadership]
+
+      - id: gather_intel_urgent
+        label:
+          fa: اطلاعات جمع کن
+          en: Gather Intelligence
+        description:
+          fa: باید بفهمی واقعا چه خبر است
+          en: Need to find out what's really happening
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: resource_change
+              target: money
+              value: -500
+            - type: flag_set
+              target: urgent_intel_gathering
+              value: true
+          delayed:
+            - delay: 1
+              probability: 0.8
+              effects:
+                - type: flag_set
+                  target: medical_intel
+                  value: true
+              narrative:
+                fa: اطلاعات پزشکی به دست آوردی
+                en: You obtained medical intelligence
+        outcome:
+          fa: پول خرج می‌کنی تا اطلاعات بگیری
+          en: You spend money to get information
+        tags: [intelligence, cautious]
+
+      - id: contact_international
+        label:
+          fa: با خارج تماس بگیر
+          en: Contact Abroad
+        description:
+          fa: دیاسپورا باید بداند چه می‌گذرد
+          en: The diaspora needs to know what's happening
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 15
+            - type: flag_set
+              target: international_contact
+              value: true
+          delayed:
+            - delay: 2
+              probability: 0.5
+              effects:
+                - type: state_change
+                  target: player.position.regimeAttention
+                  value: 25
+              narrative:
+                fa: تماس‌های بین‌المللی‌ات رصد شده
+                en: Your international contacts were monitored
+        outcome:
+          fa: با شبکه‌های خارجی تماس گرفتی
+          en: You contacted networks abroad
+        tags: [international, risky]
+
+      - id: pray_wait
+        label:
+          fa: دعا کن و منتظر بمان
+          en: Pray and Wait
+        description:
+          fa: این لحظه بزرگ‌تر از تو است
+          en: This moment is bigger than you
+        requirements: []
+        visible: []
+        effects:
+          immediate: []
+          delayed: []
+        outcome:
+          fa: در انتظار خواهی ماند
+          en: You will wait and see
+        tags: [passive, spiritual]
+    tags: [succession, story, act1, critical]
+
+  # ================================
+  # ACT 2: THE STRUGGLE
+  # ================================
+
+  - id: power_vacuum_begins
+    category: story
+    title:
+      fa: خلأ قدرت
+      en: Power Vacuum
+    description:
+      fa: |
+        رهبر هنوز زنده است اما ناتوان. هیچ‌کس نمی‌داند چه کسی تصمیم می‌گیرد.
+        جناح‌ها شروع به موضع‌گیری کرده‌اند:
+
+        • مجتبی و متحدانش در بیت جلسات پشت درهای بسته دارند
+        • سپاه اعلام کرده "آماده حفاظت از نظام" است
+        • برخی مراجع در قم سکوت کرده‌اند - نشانه‌ای معنادار
+        • اصلاح‌طلبان در تماس با یکدیگرند
+
+        این شکاف در قدرت، فرصتی نادر است - یا تله‌ای خطرناک.
+      en: |
+        The Leader is still alive but incapacitated. No one knows who's deciding.
+        Factions have begun positioning:
+
+        • Mojtaba and allies hold closed-door meetings in the Beyt
+        • IRGC announces readiness to "protect the system"
+        • Some Qom grand ayatollahs have gone silent - a meaningful sign
+        • Reformists are in contact with each other
+
+        This crack in power is a rare opportunity - or a dangerous trap.
+    triggers:
+      - type: turn
+        value: 7
+    priority: 90
+    weight: 1.0
+    once: true
+    requirements: []
+    decisions:
+      - id: propose_unity
+        label:
+          fa: پیشنهاد وحدت بده
+          en: Propose Unity
+        description:
+          fa: تلاش کن گروه‌های مختلف اپوزیسیون را متحد کنی
+          en: Try to unite different opposition groups
+        requirements:
+          - type: resource
+            target: influence
+            operator: greater_equal
+            value: 50
+        visible: []
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 20
+            - type: faction_trust
+              target: reformists
+              value: 15
+            - type: faction_trust
+              target: green_movement
+              value: 15
+            - type: flag_set
+              target: unity_proposed
+              value: true
+          delayed:
+            - delay: 3
+              probability: 0.5
+              effects:
+                - type: flag_set
+                  target: unity_meeting_scheduled
+                  value: true
+              narrative:
+                fa: جلسه وحدت برنامه‌ریزی شد
+                en: Unity meeting scheduled
+        outcome:
+          fa: شروع به تماس با گروه‌های مختلف می‌کنی
+          en: You begin reaching out to different groups
+        tags: [coalition, leadership, ambitious]
+
+      - id: exploit_divisions
+        label:
+          fa: از شکاف‌ها استفاده کن
+          en: Exploit Divisions
+        description:
+          fa: شکاف در حکومت را تشدید کن
+          en: Deepen the cracks in the regime
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.stability
+              value: -5
+            - type: flag_set
+              target: exploiting_divisions
+              value: true
+          delayed:
+            - delay: 2
+              probability: 0.6
+              effects:
+                - type: state_change
+                  target: regime.coherence
+                  value: -10
+              narrative:
+                fa: شکاف‌ها عمیق‌تر شدند
+                en: Divisions deepened
+        outcome:
+          fa: تلاش می‌کنی از اختلافات درونی استفاده کنی
+          en: You try to exploit internal conflicts
+        tags: [subversion, risky]
+
+      - id: protect_position
+        label:
+          fa: موقعیتت را حفظ کن
+          en: Protect Your Position
+        description:
+          fa: اول باید مطمئن شوی که امن هستی
+          en: First make sure you're safe
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.inHiding
+              value: true
+            - type: state_change
+              target: player.position.regimeAttention
+              value: -10
+          delayed: []
+        outcome:
+          fa: به پناهگاه امن می‌روی
+          en: You go to a safe location
+        tags: [defensive, survival]
+    tags: [succession, story, act2]
+
+  - id: street_protests_erupt
+    category: story
+    title:
+      fa: آغاز اعتراضات
+      en: Protests Erupt
+    description:
+      fa: |
+        خبر ضعف رهبر به بیرون درز کرده. مردم به خیابان‌ها آمده‌اند.
+        در تهران، اصفهان، شیراز، تبریز - شعارها بلند است.
+
+        "مرگ بر دیکتاتور" در کوچه‌ها می‌پیچد. بسیج و یگان ویژه در حال
+        آماده شدن هستند. هنوز خونریزی نشده، اما تنش در اوج است.
+
+        این لحظه‌ای است که می‌تواند همه چیز را تغییر دهد.
+      en: |
+        News of the Leader's weakness has leaked. People have taken to the streets.
+        In Tehran, Isfahan, Shiraz, Tabriz - chants are loud.
+
+        "Death to the dictator" echoes in alleys. Basij and special units are
+        getting ready. No bloodshed yet, but tension is at its peak.
+
+        This is a moment that could change everything.
+    triggers:
+      - type: turn
+        value: 9
+    priority: 95
+    weight: 1.0
+    once: true
+    requirements: []
+    decisions:
+      - id: join_streets
+        label:
+          fa: به خیابان برو
+          en: Join the Streets
+        description:
+          fa: جایت در کنار مردم است
+          en: Your place is with the people
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.publicProfile
+              value: 30
+            - type: faction_trust
+              target: students
+              value: 25
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 30
+            - type: state_change
+              target: player.personal.stress
+              value: 25
+          delayed:
+            - delay: 1
+              probability: 0.3
+              effects:
+                - type: state_change
+                  target: player.personal.health
+                  value: -20
+              narrative:
+                fa: در درگیری آسیب دیدی
+                en: You were hurt in clashes
+        outcome:
+          fa: به سمت خیابان‌های شلوغ می‌روی
+          en: You head toward the crowded streets
+        tags: [protest, brave, public, risky]
+
+      - id: coordinate_protests
+        label:
+          fa: هماهنگ کن
+          en: Coordinate
+        description:
+          fa: از پشت صحنه اعتراضات را سازماندهی کن
+          en: Organize protests from behind the scenes
+        requirements:
+          - type: resource
+            target: influence
+            operator: greater_equal
+            value: 40
+        visible: []
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 15
+            - type: flag_set
+              target: coordinating_protests
+              value: true
+            - type: state_change
+              target: regime.stability
+              value: -3
+          delayed: []
+        outcome:
+          fa: شروع به هماهنگی گروه‌های مختلف می‌کنی
+          en: You begin coordinating different groups
+        tags: [leadership, strategic]
+
+      - id: document_events
+        label:
+          fa: مستندسازی کن
+          en: Document Events
+        description:
+          fa: همه چیز را ثبت کن برای تاریخ و جهان
+          en: Record everything for history and the world
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 10
+            - type: flag_set
+              target: documenting
+              value: true
+          delayed: []
+        outcome:
+          fa: شروع به جمع‌آوری مستندات می‌کنی
+          en: You begin collecting documentation
+        tags: [journalism, safe, important]
+
+      - id: protect_family
+        label:
+          fa: خانواده را امن کن
+          en: Protect Family
+        description:
+          fa: اول باید مطمئن شوی خانواده‌ات امن هستند
+          en: First make sure your family is safe
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: state_change
+              target: player.personal.family.safetyLevel
+              value: 20
+            - type: resource_change
+              target: actionsRemaining
+              value: -1
+          delayed: []
+        outcome:
+          fa: خانواده‌ات را به جای امنی می‌بری
+          en: You take your family to safety
+        tags: [family, protective]
+    tags: [succession, story, act2, protest, critical]
+
+  - id: regime_crackdown
+    category: story
+    title:
+      fa: سرکوب
+      en: Crackdown
+    description:
+      fa: |
+        سپاه تصمیم گرفته است. دستور سرکوب صادر شده.
+
+        گلوله‌های جنگی در خیابان‌ها. دستگیری‌های گسترده. اینترنت قطع.
+        صدها کشته و هزاران بازداشتی. جهان نگاه می‌کند اما کاری نمی‌کند.
+
+        شب‌هایی تاریک فرا رسیده. اما مردم هنوز در خیابان‌ها هستند.
+        آیا این پایان است یا آغاز چیز بزرگ‌تری؟
+      en: |
+        The IRGC has decided. Crackdown orders issued.
+
+        Live ammunition in the streets. Mass arrests. Internet blackout.
+        Hundreds dead and thousands detained. The world watches but does nothing.
+
+        Dark nights have arrived. But people are still in the streets.
+        Is this the end or the beginning of something bigger?
+    triggers:
+      - type: turn
+        value: 11
+    priority: 95
+    weight: 1.0
+    once: true
+    requirements: []
+    decisions:
+      - id: go_underground
+        label:
+          fa: به زیرزمین برو
+          en: Go Underground
+        description:
+          fa: برای ادامه مبارزه باید زنده بمانی
+          en: To continue the struggle you must survive
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.inHiding
+              value: true
+            - type: state_change
+              target: player.position.publicProfile
+              value: -30
+            - type: flag_set
+              target: underground
+              value: true
+          delayed: []
+        outcome:
+          fa: به شبکه زیرزمینی می‌پیوندی
+          en: You join the underground network
+        tags: [survival, resistance]
+
+      - id: flee_country
+        label:
+          fa: از کشور فرار کن
+          en: Flee the Country
+        description:
+          fa: از مرز فرار کن و از خارج ادامه بده
+          en: Escape across the border and continue from abroad
+        requirements:
+          - type: resource
+            target: money
+            operator: greater_equal
+            value: 2000
+        visible: []
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.isInIran
+              value: false
+            - type: resource_change
+              target: money
+              value: -2000
+            - type: flag_set
+              target: in_exile
+              value: true
+          delayed: []
+        outcome:
+          fa: راه فرار را انتخاب می‌کنی
+          en: You choose to escape
+        tags: [exile, survival]
+
+      - id: surrender
+        label:
+          fa: تسلیم شو
+          en: Surrender
+        description:
+          fa: دیگر توان مبارزه نداری
+          en: You can't fight anymore
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.arrested
+              value: true
+            - type: flag_set
+              target: surrendered
+              value: true
+          delayed: []
+        outcome:
+          fa: خودت را تسلیم می‌کنی
+          en: You turn yourself in
+        tags: [defeat, ending_path]
+
+      - id: continue_resistance
+        label:
+          fa: مقاومت را ادامه بده
+          en: Continue Resistance
+        description:
+          fa: تسلیم نمی‌شوی. هر چه باشد
+          en: You won't give up. Whatever happens
+        requirements:
+          - type: stat
+            target: player.personal.health
+            operator: greater_than
+            value: 30
+        visible: []
+        effects:
+          immediate:
+            - type: state_change
+              target: player.personal.stress
+              value: 30
+            - type: faction_trust
+              target: students
+              value: 20
+            - type: faction_trust
+              target: green_movement
+              value: 20
+            - type: flag_set
+              target: continuing_resistance
+              value: true
+          delayed:
+            - delay: 2
+              probability: 0.4
+              effects:
+                - type: state_change
+                  target: player.position.arrested
+                  value: true
+              narrative:
+                fa: دستگیر شدی
+                en: You were arrested
+        outcome:
+          fa: تصمیم می‌گیری بمانی و مبارزه کنی
+          en: You decide to stay and fight
+        tags: [brave, heroic, risky]
+    tags: [succession, story, act2, crackdown, critical]

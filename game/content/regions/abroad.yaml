@@ -1,0 +1,72 @@
+# Region: Abroad
+# Represents the Iranian diaspora outside Iran's borders
+
+id: abroad
+
+name:
+  fa: خارج از کشور
+  en: Abroad
+
+type: diaspora
+
+description:
+  fa: |
+    ایرانیان خارج از کشور در سراسر جهان پراکنده‌اند. از لس‌آنجلس تا لندن،
+    از تورنتو تا برلین، میلیون‌ها ایرانی در تبعید یا مهاجرت زندگی می‌کنند.
+    آنها از آزادی بیان برخوردارند اما از وطن دورند.
+  en: |
+    Iranians abroad are scattered around the world. From Los Angeles to London,
+    from Toronto to Berlin, millions of Iranians live in exile or emigration.
+    They enjoy freedom of expression but are far from home.
+
+demographics:
+  population: 4000000
+  ethnicComposition:
+    persian: 70
+    azeri: 15
+    other: 15
+  urbanization: 95
+  religiosity: 30
+  educationLevel: 85
+  youthPercentage: 35
+  unemploymentRate: 8
+
+control:
+  regimeControl: 5
+  oppositionPresence: 80
+  militaryPresence: 0
+  ethnicMovementControl: 0
+  contestedZones: []
+
+conditions:
+  economicHealth: 75
+  infrastructure: 90
+  publicServices: 85
+  environmentalHealth: 80
+  publicSentiment: 60
+
+activity:
+  protestLevel: 60
+  strikeActivity: 20
+  civilSocietyStrength: 85
+  insurgency: 0
+
+keyLocations:
+  - name:
+      fa: لس‌آنجلس
+      en: Los Angeles
+    significance: diaspora_hub
+  - name:
+      fa: لندن
+      en: London
+    significance: media_center
+  - name:
+      fa: برلین
+      en: Berlin
+    significance: political_center
+
+tags:
+  - diaspora
+  - exile
+  - international
+  - freedom

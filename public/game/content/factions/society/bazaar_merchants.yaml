@@ -1,0 +1,94 @@
+# Faction: Bazaar Merchants
+# Traditional merchant class
+
+id: bazaar_merchants
+
+name:
+  fa: بازاریان
+  en: Bazaar Merchants
+
+shortName:
+  fa: بازار
+  en: Bazaar
+
+description:
+  fa: |
+    طبقه تجار سنتی بازار که نقش تاریخی در انقلاب ۵۷ داشتند. اکنون
+    تحت فشار از سپاه و تحریم‌ها. منافع اقتصادی آنها را به سمت
+    خواستن ثبات و رفع تحریم می‌کشاند.
+  en: |
+    Traditional merchant class of the bazaar who played a historic role
+    in the 1979 revolution. Now under pressure from IRGC and sanctions.
+    Economic interests push them toward wanting stability and sanctions relief.
+
+category: society
+subcategory: economic
+
+power:
+  base: 35
+  military: 0
+  economic: 70
+  religious: 30
+  popular: 25
+
+ideology:
+  economicLeft: 25
+  socialLiberal: 35
+  nationalist: 65
+  religious: 55
+  democratic: 40
+
+interests:
+  survival:
+    - Maintain business operations
+    - Protect from IRGC competition
+    - Access to foreign currency
+  shortTerm:
+    - Sanctions relief
+    - Economic stability
+    - Fair competition
+  longTerm:
+    - Open economy
+    - Property rights
+    - Rule of law
+  redLines:
+    - Confiscation of property
+    - Complete IRGC takeover
+    - Hyperinflation
+
+leaders: []
+
+relationships:
+  - factionId: irgc
+    type: rival
+    trust: -25
+    reason:
+      fa: رقابت اقتصادی
+      en: Economic competition
+  - factionId: reformists
+    type: neutral
+    trust: 25
+    reason:
+      fa: امید به اصلاحات اقتصادی
+      en: Hope for economic reform
+  - factionId: hardline_clerics
+    type: neutral
+    trust: 30
+    reason:
+      fa: روابط تاریخی
+      en: Historical relations
+
+behavior:
+  aggression: 20
+  cooperation: 60
+  riskTolerance: 30
+  pragmatism: 85
+
+color: "#ca8a04"
+icon: bazaar
+
+tags:
+  - society
+  - economic
+  - traditional
+  - pragmatic

@@ -1,0 +1,77 @@
+# NPC Character: IRGC Intelligence Chief
+# Head of IRGC Intelligence Organization
+
+id: irgc_intelligence_chief
+
+name:
+  fa: سردار حسین طائب
+  en: Brigadier General Hossein Taeb
+
+title:
+  fa: رئیس سازمان اطلاعات سپاه
+  en: Chief of IRGC Intelligence Organization
+
+portrait: irgc_intelligence_chief.png
+
+role: intelligence_chief
+
+biography:
+  fa: |
+    رئیس سازمان اطلاعات سپاه پاسداران. مسئول نظارت امنیتی داخلی،
+    جاسوسی، و مقابله با مخالفان. یکی از قدرتمندترین و مخوف‌ترین
+    چهره‌های امنیتی ایران.
+  en: |
+    Chief of IRGC Intelligence Organization. Responsible for internal security
+    surveillance, espionage, and countering dissidents. One of Iran's most
+    powerful and feared security figures.
+
+personality:
+  traits:
+    - paranoid
+    - ruthless
+    - intelligent
+    - secretive
+    - powerful
+  beliefs:
+    economicLeft: 40
+    socialLiberal: 0
+    nationalist: 85
+    religious: 70
+    democratic: 0
+
+relationships:
+  - characterId: irgc_commander
+    type: subordinate
+    trust: 80
+    description:
+      fa: زیردست فرمانده کل
+      en: Subordinate to Commander-in-Chief
+  - characterId: khamenei
+    type: political
+    trust: 85
+    description:
+      fa: محافظ امنیت نظام
+      en: Guardian of system security
+
+status:
+  health: 65
+  influence: 85
+  visibility: low
+  security: maximum
+
+goals:
+  - eliminate_opposition
+  - expand_surveillance
+  - protect_regime_secrets
+
+fears:
+  - intelligence_leaks
+  - internal_betrayal
+  - prosecution
+
+tags:
+  - npc
+  - regime
+  - intelligence
+  - irgc
+  - security

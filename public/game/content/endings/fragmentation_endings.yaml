@@ -1,0 +1,315 @@
+# Endings: Fragmentation and Chaos
+
+endings:
+  # ================================
+  # CIVIL WAR
+  # ================================
+
+  - id: civil_war
+    category: fragmentation
+    subcategory: war
+    title:
+      fa: جنگ داخلی
+      en: Civil War
+    subtitle:
+      fa: فروپاشی خونین
+      en: Bloody Collapse
+    description:
+      fa: |
+        رژیم سقوط کرد، اما هیچ نیرویی نتوانست جایش را بگیرد. جناح‌های
+        مختلف به جان هم افتادند. سپاه، گروه‌های قومی، باندهای مسلح -
+        همه علیه همه.
+
+        ایران به سوریه تبدیل شد. میلیون‌ها آواره. شهرها ویرانه.
+        این همان چیزی بود که رژیم همیشه از آن هشدار می‌داد.
+      en: |
+        The regime fell, but no force could replace it. Different factions
+        turned on each other. IRGC, ethnic groups, armed gangs - all
+        against all.
+
+        Iran became Syria. Millions of refugees. Cities in ruins.
+        This was exactly what the regime always warned about.
+    epilogue:
+      fa: |
+        تو از کشور فرار کردی - یا شاید نه. در هر صورت،
+        رویای آزادی به کابوس تبدیل شد.
+      en: |
+        You fled the country - or maybe not. Either way,
+        the dream of freedom became a nightmare.
+    conditions:
+      - type: stat
+        target: regime.stability
+        operator: less_than
+        value: 5
+      - type: stat
+        target: regime.coherence
+        operator: less_than
+        value: 10
+      - type: flag
+        target: armed_conflict
+        value: true
+    eudaimonia:
+      freedom: 30
+      justice: 10
+      prosperity: 5
+      community: 15
+      meaning: 20
+      health: 10
+      knowledge: 25
+    color: "#dc2626"
+    tone: tragic
+    tags: [fragmentation, war, catastrophe]
+
+  - id: ethnic_breakup
+    category: fragmentation
+    subcategory: separation
+    title:
+      fa: تجزیه قومی
+      en: Ethnic Breakup
+    subtitle:
+      fa: پایان ایران
+      en: End of Iran
+    description:
+      fa: |
+        وقتی مرکز فرو ریخت، مناطق قومی استقلال اعلام کردند.
+        کردستان، آذربایجان، بلوچستان، خوزستان - هر کدام راه خودشان
+        را رفتند. ایران دیگر وجود ندارد.
+
+        برخی این را «آزادی ملل» می‌نامند. برخی «فاجعه».
+        شاید هر دو درست باشند.
+      en: |
+        When the center collapsed, ethnic regions declared independence.
+        Kurdistan, Azerbaijan, Baluchistan, Khuzestan - each went their
+        own way. Iran no longer exists.
+
+        Some call this "liberation of nations." Some call it "catastrophe."
+        Maybe both are right.
+    epilogue:
+      fa: |
+        تو در کدام «کشور» هستی حالا؟ و آیا این واقعا
+        بهتر است؟ فقط زمان جواب خواهد داد.
+      en: |
+        Which "country" are you in now? And is this really
+        better? Only time will tell.
+    conditions:
+      - type: stat
+        target: regime.stability
+        operator: less_than
+        value: 10
+      - type: flag
+        target: separatist_movements_active
+        value: true
+      - type: flag
+        target: no_central_authority
+        value: true
+    eudaimonia:
+      freedom: 50
+      justice: 40
+      prosperity: 25
+      community: 55
+      meaning: 45
+      health: 35
+      knowledge: 40
+    color: "#f97316"
+    tone: ambiguous
+    tags: [fragmentation, ethnic, separation]
+
+  # ================================
+  # CHAOS & DISORDER
+  # ================================
+
+  - id: failed_state
+    category: fragmentation
+    subcategory: chaos
+    title:
+      fa: دولت شکست‌خورده
+      en: Failed State
+    subtitle:
+      fa: هرج و مرج
+      en: Anarchy
+    description:
+      fa: |
+        نه رژیم ماند، نه جایگزینی پیدا شد. ایران حالا منطقه‌ای است
+        بدون قانون، بدون نظم، بدون آینده مشخص. باندهای مسلح کنترل
+        مناطق مختلف را دارند. مردم فقط سعی می‌کنند زنده بمانند.
+      en: |
+        Neither did the regime survive, nor was a replacement found.
+        Iran is now a zone without law, without order, without a clear
+        future. Armed gangs control different areas. People just try
+        to survive.
+    epilogue:
+      fa: |
+        این جهنم روی زمین است. تو برای چی جنگیدی؟
+        شاید نباید این‌قدر سریع می‌شکستی؟
+      en: |
+        This is hell on earth. What did you fight for?
+        Maybe you shouldn't have broken things so fast?
+    conditions:
+      - type: stat
+        target: regime.stability
+        operator: less_than
+        value: 3
+      - type: flag
+        target: state_collapse
+        value: true
+      - type: flag
+        target: no_transition_plan
+        value: true
+    eudaimonia:
+      freedom: 40
+      justice: 5
+      prosperity: 5
+      community: 10
+      meaning: 15
+      health: 5
+      knowledge: 20
+    color: "#b91c1c"
+    tone: tragic
+    tags: [fragmentation, chaos, failure]
+
+  - id: foreign_intervention
+    category: fragmentation
+    subcategory: intervention
+    title:
+      fa: مداخله خارجی
+      en: Foreign Intervention
+    subtitle:
+      fa: اشغال
+      en: Occupation
+    description:
+      fa: |
+        در هرج و مرج پس از سقوط رژیم، قدرت‌های خارجی وارد شدند.
+        «برای حفظ ثبات» - البته. حالا ایران میدان رقابت روسیه،
+        چین، آمریکا، و همسایگان است. استقلال؟ فراموشش کن.
+      en: |
+        In the chaos after regime collapse, foreign powers entered.
+        "To maintain stability" - of course. Now Iran is a battleground
+        for Russia, China, America, and neighbors. Independence? Forget it.
+    epilogue:
+      fa: |
+        تو برای آزادی جنگیدی، اما کشورت حالا عروسک قدرت‌های
+        بزرگ است. درس تاریخ: بدون برنامه، انقلاب خطرناک است.
+      en: |
+        You fought for freedom, but your country is now a puppet of
+        great powers. History's lesson: without a plan, revolution is dangerous.
+    conditions:
+      - type: stat
+        target: regime.stability
+        operator: less_than
+        value: 10
+      - type: flag
+        target: foreign_intervention
+        value: true
+    eudaimonia:
+      freedom: 20
+      justice: 25
+      prosperity: 40
+      community: 20
+      meaning: 15
+      health: 45
+      knowledge: 35
+    color: "#0ea5e9"
+    tone: bitter
+    tags: [fragmentation, intervention, dependency]
+
+  # ================================
+  # STALEMATE
+  # ================================
+
+  - id: eternal_stalemate
+    category: fragmentation
+    subcategory: stalemate
+    title:
+      fa: بن‌بست ابدی
+      en: Eternal Stalemate
+    subtitle:
+      fa: نه جنگ نه صلح
+      en: Neither War Nor Peace
+    description:
+      fa: |
+        رژیم نه می‌تواند سرکوب کند، نه جنبش می‌تواند پیروز شود.
+        سال‌ها این وضعیت ادامه دارد. زندگی در تعلیق است. مردم
+        خسته شده‌اند، اما هیچ‌کس جرات عقب‌نشینی ندارد.
+      en: |
+        The regime can't repress, the movement can't win.
+        This situation continues for years. Life is suspended. People
+        are exhausted, but no one dares retreat.
+    epilogue:
+      fa: |
+        تو در این برزخ گیر کرده‌ای. نه می‌توانی بروی،
+        نه می‌توانی بمانی. این زندگی نیست - این بقاست.
+      en: |
+        You're stuck in this limbo. Can't leave, can't stay.
+        This isn't living - this is surviving.
+    conditions:
+      - type: stat
+        target: regime.stability
+        operator: greater_than
+        value: 30
+      - type: stat
+        target: regime.stability
+        operator: less_than
+        value: 50
+      - type: turn
+        operator: greater_than
+        value: 50
+    eudaimonia:
+      freedom: 35
+      justice: 35
+      prosperity: 40
+      community: 40
+      meaning: 30
+      health: 50
+      knowledge: 45
+    color: "#6b7280"
+    tone: exhausted
+    tags: [stalemate, limbo, exhaustion]
+
+  - id: slow_decay
+    category: fragmentation
+    subcategory: decay
+    title:
+      fa: زوال آهسته
+      en: Slow Decay
+    subtitle:
+      fa: مردن تدریجی
+      en: Dying Slowly
+    description:
+      fa: |
+        نه انقلابی شد، نه سرکوبی کامل. رژیم به آرامی می‌پوسد،
+        مثل جسدی که هنوز نفس می‌کشد. مردم یکی یکی می‌روند -
+        مهاجرت، فرار، ناامیدی. ایران خالی می‌شود.
+      en: |
+        No revolution happened, no complete repression. The regime
+        slowly rots, like a corpse still breathing. People leave one
+        by one - emigration, escape, despair. Iran empties.
+    epilogue:
+      fa: |
+        تو ماندی یا رفتی؟ هر کدام، نتیجه یکی است:
+        کشوری که دوستش داشتی دیگر وجود ندارد.
+      en: |
+        Did you stay or leave? Either way, the result is the same:
+        the country you loved no longer exists.
+    conditions:
+      - type: stat
+        target: regime.stability
+        operator: greater_than
+        value: 40
+      - type: stat
+        target: regime.legitimacy
+        operator: less_than
+        value: 30
+      - type: turn
+        operator: greater_than
+        value: 60
+    eudaimonia:
+      freedom: 30
+      justice: 30
+      prosperity: 25
+      community: 20
+      meaning: 25
+      health: 40
+      knowledge: 35
+    color: "#9ca3af"
+    tone: melancholic
+    tags: [decay, emigration, despair]

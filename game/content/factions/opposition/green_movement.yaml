@@ -1,0 +1,97 @@
+# Faction: Green Movement
+# The pro-democracy movement that emerged from the 2009 protests
+
+id: green_movement
+
+name:
+  fa: جنبش سبز
+  en: Green Movement
+
+shortName:
+  fa: سبزها
+  en: Greens
+
+description:
+  fa: |
+    جنبش سبز از اعتراضات ۱۳۸۸ برخاست و خواستار دموکراسی، حقوق مدنی،
+    و پایان سرکوب بود. هرچند سرکوب شد، اما ایده‌های آن زنده مانده و
+    در اعتراضات بعدی بازتولید شده است. رهبران آن هنوز در حصر خانگی هستند.
+  en: |
+    The Green Movement emerged from the 2009 protests demanding democracy,
+    civil rights, and an end to repression. Though suppressed, its ideas
+    survived and were reproduced in later protests. Its leaders remain under
+    house arrest.
+
+category: opposition
+subcategory: democratic
+
+power:
+  base: 25
+  military: 0
+  economic: 15
+  religious: 20
+  popular: 45
+
+ideology:
+  economicLeft: 50
+  socialLiberal: 75
+  nationalist: 60
+  religious: 35
+  democratic: 90
+
+interests:
+  survival:
+    - Maintain underground networks
+    - Protect activists
+    - Preserve movement memory
+  shortTerm:
+    - Support new protests
+    - Free political prisoners
+    - Document human rights abuses
+  longTerm:
+    - Achieve democratic transition
+    - Hold free elections
+    - Establish rule of law
+  redLines:
+    - Violence against civilians
+    - Foreign military intervention
+    - Abandoning democratic principles
+
+leaders:
+  - mir_hossein_mousavi
+  - mehdi_karroubi
+
+relationships:
+  - factionId: reformists
+    type: ally
+    trust: 60
+    reason:
+      fa: اهداف مشترک دموکراتیک
+      en: Shared democratic goals
+  - factionId: students
+    type: ally
+    trust: 70
+    reason:
+      fa: نیروی محرکه جنبش
+      en: Driving force of movement
+  - factionId: irgc
+    type: enemy
+    trust: -90
+    reason:
+      fa: سرکوب‌کننده جنبش
+      en: Movement suppressors
+
+behavior:
+  aggression: 20
+  cooperation: 70
+  riskTolerance: 45
+  pragmatism: 60
+
+color: "#22c55e"
+icon: green_movement
+
+tags:
+  - opposition
+  - democratic
+  - civil_society
+  - protest

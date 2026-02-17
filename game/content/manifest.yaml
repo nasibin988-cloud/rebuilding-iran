@@ -1,0 +1,80 @@
+# IRAN 14XX Content Manifest
+# Version 1.1 - Complete Content
+
+version: "1.1"
+
+events:
+  - story/prologue.yaml
+  - story/succession_crisis.yaml
+  - triggered/regime_crisis.yaml
+  - triggered/protest_events.yaml
+  - scheduled/elections.yaml
+  - random/daily.yaml
+
+characters:
+  # Playable Characters
+  - playable/reformist_politician.yaml
+  - playable/student_activist.yaml
+  - playable/diaspora_intellectual.yaml
+  - playable/journalist.yaml
+  - playable/bazaari.yaml
+  - playable/cleric.yaml
+  # Key NPCs - Regime Leadership
+  - npc/khamenei.yaml
+  - npc/mojtaba_khamenei.yaml
+  - npc/irgc_commander.yaml
+  - npc/ahmad_jannati.yaml
+  - npc/sadegh_larijani.yaml
+  # NPCs - Security/Military
+  - npc/basij_commander.yaml
+  - npc/quds_force_commander.yaml
+  - npc/irgc_intelligence_chief.yaml
+  # NPCs - Supreme Leader's Office
+  - npc/beyt_chief_of_staff.yaml
+  - npc/intelligence_advisor.yaml
+  # NPCs - Opposition Leaders
+  - npc/mir_hossein_mousavi.yaml
+  - npc/mehdi_karroubi.yaml
+  - npc/former_president_khatami.yaml
+  - npc/imprisoned_reformist.yaml
+  - npc/reformist_cleric.yaml
+  # NPCs - Society
+  - npc/bazaar_guild_leader.yaml
+  - npc/student_leader.yaml
+  # NPCs - Ethnic Leaders
+  - npc/kdpi_leader.yaml
+  - npc/komala_leader.yaml
+  # NPCs - Diaspora
+  - npc/diaspora_leader.yaml
+  - npc/exiled_journalist.yaml
+
+factions:
+  # Regime Factions
+  - regime/supreme_leader_office.yaml
+  - regime/irgc.yaml
+  - regime/basij.yaml
+  - regime/hardline_clerics.yaml
+  # Opposition Factions
+  - opposition/reformists.yaml
+  - opposition/green_movement.yaml
+  - opposition/diaspora_activists.yaml
+  # Society Factions
+  - society/bazaar_merchants.yaml
+  - society/students.yaml
+  # Ethnic Factions
+  - ethnic/kurdish_parties.yaml
+
+regions:
+  - tehran.yaml
+  - isfahan.yaml
+  - tabriz.yaml
+  - shiraz.yaml
+  - mashhad.yaml
+  - kurdistan.yaml
+  - abroad.yaml
+
+endings:
+  - democratic_endings.yaml
+  - authoritarian_endings.yaml
+  - fragmentation_endings.yaml
+  - personal_endings.yaml

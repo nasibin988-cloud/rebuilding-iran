@@ -1,0 +1,404 @@
+# IRAN 14XX - Prologue Events
+# The opening sequence that sets the stage for the player
+
+events:
+  # Event 1: The Game Begins
+  - id: prologue_awakening
+    category: story
+    title:
+      fa: بیداری
+      en: Awakening
+    description:
+      fa: |
+        فروردین ۱۴۰۴. صبح زود است و از پنجره، تهران هنوز در مه صبحگاهی غرق است.
+
+        رادیو خبر می‌دهد که رهبر دچار کسالت شده. این اولین بار نیست که چنین
+        خبری می‌آید، اما این بار لحن گوینده متفاوت است. چیزی در هوا سنگین است.
+
+        موبایلتان زنگ می‌زند. پیامی رمزگذاری‌شده از یک دوست قدیمی که سال‌هاست
+        ندیده‌اید: "وقتش رسیده. باید صحبت کنیم."
+      en: |
+        Farvardin 1404 (April 2025). It's early morning and through the window,
+        Tehran is still shrouded in morning fog.
+
+        The radio reports that the Leader has fallen ill. This isn't the first time
+        such news has come, but this time the announcer's tone is different.
+        Something heavy hangs in the air.
+
+        Your phone rings. An encrypted message from an old friend you haven't seen
+        in years: "The time has come. We need to talk."
+    image: prologue_awakening.jpg
+
+    triggers:
+      - type: turn
+        value: 1
+
+    priority: 100
+    weight: 1.0
+    once: true
+
+    requirements: []
+
+    decisions:
+      - id: meet_friend
+        label:
+          fa: با دوستت قرار بگذار
+          en: Arrange to meet your friend
+        description:
+          fa: ملاقاتی امن ترتیب بده تا ببینی چه خبر است
+          en: Arrange a safe meeting to see what's happening
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: flag_set
+              target: prologue_path
+              value: engaged
+          delayed:
+            - delay: 1
+              probability: 1.0
+              effects: []
+              narrative:
+                fa: قرار ملاقات تنظیم شد
+                en: Meeting arranged
+        outcome:
+          fa: قرار ملاقات برای فردا در یک کافه آرام تنظیم می‌کنی
+          en: You arrange to meet tomorrow at a quiet café
+        tags:
+          - proactive
+          - network
+
+      - id: ignore_message
+        label:
+          fa: پیام را نادیده بگیر
+          en: Ignore the message
+        description:
+          fa: خطرناک است. شاید بهتر است دور بمانی
+          en: It's dangerous. Maybe it's better to stay away
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: flag_set
+              target: prologue_path
+              value: cautious
+            - type: resource_change
+              target: influence
+              value: -5
+          delayed: []
+        outcome:
+          fa: پیام را پاک می‌کنی و سعی می‌کنی فراموشش کنی
+          en: You delete the message and try to forget it
+        tags:
+          - cautious
+          - isolation
+
+      - id: investigate_news
+        label:
+          fa: ابتدا اخبار را بررسی کن
+          en: First investigate the news
+        description:
+          fa: قبل از هر اقدامی، باید بفهمی وضعیت چیست
+          en: Before any action, you need to understand the situation
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: flag_set
+              target: prologue_path
+              value: analytical
+          delayed: []
+        outcome:
+          fa: شروع به جمع‌آوری اطلاعات از منابع مختلف می‌کنی
+          en: You begin gathering information from various sources
+        tags:
+          - analytical
+          - information
+
+    tags:
+      - prologue
+      - opening
+      - tutorial
+
+  # Event 2: The Meeting (if player chose to meet)
+  - id: prologue_meeting
+    category: story
+    title:
+      fa: ملاقات
+      en: The Meeting
+    description:
+      fa: |
+        کافه‌ای در خیابان ولیعصر. دوست قدیمی‌ات که زمانی همکار سیاسی‌ات بود
+        پیرتر به نظر می‌رسد، اما چشمانش همان درخشش را دارد.
+
+        "همه چیز در حال تغییر است،" می‌گوید. "رهبر دیگر توان ندارد. جناح‌ها
+        در حال آماده‌سازی هستند. سپاه، بیت، روحانیون - همه منتظرند."
+
+        نفس عمیقی می‌کشد. "سوال این است: ما چه می‌کنیم؟ آیا باز هم منتظر
+        می‌مانیم یا این بار متفاوت عمل می‌کنیم؟"
+      en: |
+        A café on Valiasr Street. Your old friend who was once your political
+        colleague looks older, but their eyes have the same spark.
+
+        "Everything is changing," they say. "The Leader no longer has strength.
+        The factions are preparing. The IRGC, the Beyt, the clerics - everyone
+        is waiting."
+
+        They take a deep breath. "The question is: what do we do? Do we wait
+        again or do we act differently this time?"
+    image: prologue_meeting.jpg
+
+    triggers:
+      - type: condition
+        value:
+          type: flag
+          target: prologue_path
+          operator: equals
+          value: engaged
+
+    priority: 95
+    weight: 1.0
+    once: true
+
+    requirements:
+      - type: flag
+        target: prologue_path
+        operator: equals
+        value: engaged
+
+    decisions:
+      - id: build_coalition
+        label:
+          fa: باید ائتلاف بسازیم
+          en: We need to build a coalition
+        description:
+          fa: پیشنهاد کن که گروه‌های مختلف را گرد هم بیاورید
+          en: Suggest bringing different groups together
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: flag_set
+              target: strategy
+              value: coalition
+            - type: faction_trust
+              target: reformists
+              value: 10
+          delayed:
+            - delay: 2
+              probability: 0.8
+              effects:
+                - type: flag_set
+                  target: coalition_opportunity
+                  value: true
+              narrative:
+                fa: تماس‌های اولیه برقرار شد
+                en: Initial contacts established
+        outcome:
+          fa: تصمیم می‌گیری که زمان اتحاد رسیده
+          en: You decide the time for unity has come
+        tags:
+          - coalition
+          - leadership
+
+      - id: stay_underground
+        label:
+          fa: باید زیرزمینی بمانیم
+          en: We must stay underground
+        description:
+          fa: هنوز زود است. باید صبر کنیم و آماده شویم
+          en: It's still too early. We must wait and prepare
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: flag_set
+              target: strategy
+              value: underground
+            - type: resource_change
+              target: influence
+              value: -10
+          delayed: []
+        outcome:
+          fa: تصمیم می‌گیری که احتیاط بهتر است
+          en: You decide caution is better
+        tags:
+          - cautious
+          - preparation
+
+      - id: seek_international
+        label:
+          fa: باید با خارج ارتباط بگیریم
+          en: We need to connect with abroad
+        description:
+          fa: دیاسپورا و جامعه بین‌المللی می‌توانند کمک کنند
+          en: The diaspora and international community can help
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: flag_set
+              target: strategy
+              value: international
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 10
+          delayed:
+            - delay: 3
+              probability: 0.6
+              effects:
+                - type: flag_set
+                  target: irgc_attention
+                  value: true
+              narrative:
+                fa: فعالیت‌های بین‌المللی توجه دستگاه امنیتی را جلب کرد
+                en: International activities attracted security attention
+        outcome:
+          fa: تصمیم می‌گیری که پل‌های بین‌المللی بسازی
+          en: You decide to build international bridges
+        tags:
+          - international
+          - diaspora
+          - risky
+
+    tags:
+      - prologue
+      - decision_point
+      - strategy
+
+  # Event 3: First Signs of Change
+  - id: prologue_first_signs
+    category: story
+    title:
+      fa: نشانه‌های اول
+      en: First Signs
+    description:
+      fa: |
+        یک هفته گذشته. اخبار رسمی می‌گوید رهبر "در حال استراحت" است، اما
+        همه می‌دانند معنایش چیست. در خیابان‌ها تنش محسوس است.
+
+        دیروز در میدان ولیعصر، جوانی شعار داد و بلافاصله توسط لباس‌شخصی‌ها
+        برده شد. اما امروز، در همان میدان، ده‌ها نفر جمع شده‌اند.
+
+        تلفنت زنگ می‌زند. شبکه‌ات گزارش می‌دهد که در چند شهر دیگر هم
+        تجمعات کوچک شکل گرفته. چیزی در حال شروع شدن است.
+      en: |
+        A week has passed. Official news says the Leader is "resting," but
+        everyone knows what that means. Tension is palpable in the streets.
+
+        Yesterday in Valiasr Square, a young person shouted a slogan and was
+        immediately taken by plainclothes officers. But today, at the same square,
+        dozens have gathered.
+
+        Your phone rings. Your network reports that small gatherings have formed
+        in several other cities too. Something is beginning.
+    image: prologue_first_signs.jpg
+
+    triggers:
+      - type: turn
+        value: 2
+
+    priority: 90
+    weight: 1.0
+    once: true
+
+    requirements: []
+
+    decisions:
+      - id: join_protest
+        label:
+          fa: به تجمع برو
+          en: Go to the gathering
+        description:
+          fa: باید در کنار مردم باشی
+          en: You need to be with the people
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.publicProfile
+              value: 20
+            - type: faction_trust
+              target: students
+              value: 15
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 15
+          delayed:
+            - delay: 1
+              probability: 0.3
+              effects:
+                - type: state_change
+                  target: player.personal.stress
+                  value: 20
+              narrative:
+                fa: حضور در تجمع استرس‌زا بود اما الهام‌بخش
+                en: Being at the gathering was stressful but inspiring
+        outcome:
+          fa: به میدان می‌روی و در کنار مردم می‌ایستی
+          en: You go to the square and stand with the people
+        tags:
+          - protest
+          - public
+          - risky
+          - courageous
+
+      - id: coordinate_remotely
+        label:
+          fa: از راه دور هماهنگ کن
+          en: Coordinate remotely
+        description:
+          fa: از طریق شبکه‌هایت کمک کن بدون اینکه خودت را نشان بدهی
+          en: Help through your networks without showing yourself
+        requirements:
+          - type: resource
+            target: influence
+            operator: greater_equal
+            value: 30
+        visible: []
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 10
+          delayed: []
+        outcome:
+          fa: از پشت صحنه هماهنگی می‌کنی
+          en: You coordinate from behind the scenes
+        tags:
+          - strategic
+          - safe
+          - influence
+
+      - id: observe_only
+        label:
+          fa: فقط نظاره کن
+          en: Just observe
+        description:
+          fa: هنوز زود است برای اقدام. بگذار وضعیت روشن‌تر شود
+          en: It's too early to act. Let the situation clarify
+        requirements: []
+        visible: []
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: -5
+          delayed: []
+        outcome:
+          fa: تصمیم می‌گیری که منتظر بمانی و ببینی چه می‌شود
+          en: You decide to wait and see what happens
+        tags:
+          - passive
+          - cautious
+
+    tags:
+      - prologue
+      - turning_point
+      - protest
+
+tags:
+  - prologue
+  - story
+  - introduction

@@ -1,0 +1,96 @@
+# Faction: Bazaar Merchants
+# The traditional merchant class with significant economic and political influence
+
+id: bazaar_merchants
+
+name:
+  fa: بازاریان
+  en: Bazaar Merchants
+
+shortName:
+  fa: بازار
+  en: Bazaar
+
+description:
+  fa: |
+    بازاریان طبقه سنتی تجار ایران هستند که نقش مهمی در اقتصاد و سیاست دارند.
+    آنها در انقلاب ۵۷ نقش کلیدی داشتند و همچنان با روحانیون و حکومت ارتباط
+    نزدیک دارند، هرچند منافعشان همیشه با سیاست‌های دولت همسو نیست.
+  en: |
+    The Bazaar merchants are Iran's traditional merchant class with significant
+    economic and political influence. They played a key role in the 1979 revolution
+    and maintain close ties with the clergy and government, though their interests
+    don't always align with state policies.
+
+category: society
+subcategory: economic
+
+power:
+  base: 55
+  military: 5
+  economic: 85
+  religious: 50
+  popular: 40
+
+ideology:
+  economicLeft: 25
+  socialLiberal: 35
+  nationalist: 70
+  religious: 65
+  democratic: 30
+
+interests:
+  survival:
+    - Protect business interests
+    - Maintain market control
+    - Preserve traditional trade networks
+  shortTerm:
+    - Reduce government interference
+    - Combat inflation
+    - Ease sanctions impact
+  longTerm:
+    - Economic stability
+    - Property rights protection
+    - Integration with global economy
+  redLines:
+    - Nationalization of trade
+    - Destruction of bazaar system
+    - Complete isolation from world economy
+
+leaders:
+  - bazaar_guild_leader
+
+relationships:
+  - factionId: hardline_clerics
+    type: neutral
+    trust: 45
+    reason:
+      fa: منافع متقابل اما متفاوت
+      en: Mutual but divergent interests
+  - factionId: irgc
+    type: rival
+    trust: -20
+    reason:
+      fa: رقابت اقتصادی
+      en: Economic competition
+  - factionId: reformists
+    type: neutral
+    trust: 35
+    reason:
+      fa: امید به بهبود اقتصادی
+      en: Hope for economic improvement
+
+behavior:
+  aggression: 20
+  cooperation: 65
+  riskTolerance: 30
+  pragmatism: 85
+
+color: "#c9a227"
+icon: bazaar_merchants
+
+tags:
+  - society
+  - economic
+  - traditional
+  - influential

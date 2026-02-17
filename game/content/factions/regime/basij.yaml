@@ -1,0 +1,96 @@
+# Faction: Basij Resistance Force
+# The paramilitary volunteer force used for social control and protest suppression
+
+id: basij
+
+name:
+  fa: نیروی مقاومت بسیج
+  en: Basij Resistance Force
+
+shortName:
+  fa: بسیج
+  en: Basij
+
+description:
+  fa: |
+    بسیج نیروی شبه‌نظامی داوطلب است که زیر نظر سپاه فعالیت می‌کند.
+    با میلیون‌ها عضو، بسیج در سرکوب اعتراضات، کنترل اجتماعی، و
+    بسیج سیاسی نقش کلیدی دارد. اعضای آن از طبقات مختلف اجتماعی هستند.
+  en: |
+    The Basij is a paramilitary volunteer force operating under the IRGC.
+    With millions of members, the Basij plays a key role in suppressing
+    protests, social control, and political mobilization. Its members come
+    from various social classes.
+
+category: regime
+subcategory: paramilitary
+
+power:
+  base: 50
+  military: 60
+  economic: 20
+  religious: 40
+  popular: 35
+
+ideology:
+  economicLeft: 50
+  socialLiberal: 5
+  nationalist: 75
+  religious: 80
+  democratic: 5
+
+interests:
+  survival:
+    - Maintain organization
+    - Keep government support
+    - Preserve social role
+  shortTerm:
+    - Suppress protests
+    - Monitor society
+    - Mobilize for regime events
+  longTerm:
+    - Expand influence
+    - Maintain ideological education
+    - Secure economic benefits for members
+  redLines:
+    - Dissolution of Basij
+    - Loss of state support
+    - Prosecution for violence
+
+leaders:
+  - basij_commander
+
+relationships:
+  - factionId: irgc
+    type: subordinate
+    trust: 75
+    reason:
+      fa: سازمان مادر
+      en: Parent organization
+  - factionId: students
+    type: enemy
+    trust: -70
+    reason:
+      fa: تقابل در دانشگاه‌ها
+      en: Campus confrontations
+  - factionId: green_movement
+    type: enemy
+    trust: -85
+    reason:
+      fa: دشمنی ایدئولوژیک
+      en: Ideological enmity
+
+behavior:
+  aggression: 70
+  cooperation: 25
+  riskTolerance: 55
+  pragmatism: 40
+
+color: "#2d4a1e"
+icon: basij
+
+tags:
+  - regime
+  - paramilitary
+  - social_control
+  - youth

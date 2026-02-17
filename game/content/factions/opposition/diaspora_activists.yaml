@@ -1,0 +1,102 @@
+# Faction: Diaspora Activists
+# Iranian activists and intellectuals living abroad who work for change
+
+id: diaspora_activists
+
+name:
+  fa: فعالان دیاسپورا
+  en: Diaspora Activists
+
+shortName:
+  fa: دیاسپورا
+  en: Diaspora
+
+description:
+  fa: |
+    ایرانیان خارج از کشور که برای تغییر در ایران فعالیت می‌کنند. این گروه
+    شامل روشنفکران، روزنامه‌نگاران، فعالان حقوق بشر و سیاستمداران تبعیدی است.
+    آنها از آزادی بیان در خارج برای افشای وضعیت ایران استفاده می‌کنند.
+  en: |
+    Iranians abroad who work for change in Iran. This group includes intellectuals,
+    journalists, human rights activists, and exiled politicians. They use their
+    freedom of expression abroad to expose conditions in Iran.
+
+category: opposition
+subcategory: diaspora
+
+power:
+  base: 20
+  military: 0
+  economic: 30
+  religious: 10
+  popular: 35
+
+ideology:
+  economicLeft: 45
+  socialLiberal: 85
+  nationalist: 55
+  religious: 20
+  democratic: 90
+
+interests:
+  survival:
+    - Maintain media platforms
+    - Protect activists inside Iran
+    - Build international coalitions
+  shortTerm:
+    - Document human rights abuses
+    - Support protests financially
+    - Lobby foreign governments
+  longTerm:
+    - Democratic transition in Iran
+    - Return to a free Iran
+    - Transitional justice
+  redLines:
+    - Foreign military intervention
+    - Sanctions that harm civilians
+    - Collaboration with regime
+
+leaders:
+  - diaspora_leader
+  - exiled_journalist
+
+relationships:
+  - factionId: green_movement
+    type: ally
+    trust: 65
+    reason:
+      fa: ادامه مبارزه از خارج
+      en: Continuing the struggle from abroad
+  - factionId: reformists
+    type: neutral
+    trust: 30
+    reason:
+      fa: شک به اصلاح‌پذیری نظام
+      en: Doubt about system reformability
+  - factionId: students
+    type: ally
+    trust: 60
+    reason:
+      fa: حمایت از جنبش دانشجویی
+      en: Support for student movement
+  - factionId: irgc
+    type: enemy
+    trust: -95
+    reason:
+      fa: دشمنی ایدئولوژیک
+      en: Ideological enmity
+
+behavior:
+  aggression: 30
+  cooperation: 75
+  riskTolerance: 50
+  pragmatism: 65
+
+color: "#8b5cf6"
+icon: diaspora_activists
+
+tags:
+  - opposition
+  - diaspora
+  - media
+  - international

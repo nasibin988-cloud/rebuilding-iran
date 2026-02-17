@@ -1,0 +1,73 @@
+# Region: Tabriz
+# Capital of East Azerbaijan, center of Azeri culture
+
+id: tabriz
+
+name:
+  fa: تبریز
+  en: Tabriz
+
+type: major_city
+
+description:
+  fa: |
+    تبریز مرکز استان آذربایجان شرقی و بزرگ‌ترین شهر آذری‌نشین ایران است.
+    این شهر تاریخ غنی از فعالیت سیاسی دارد، از انقلاب مشروطه تا امروز.
+    تبریز پل ارتباطی ایران با ترکیه و قفقاز است.
+  en: |
+    Tabriz is the capital of East Azerbaijan province and the largest Azeri-speaking
+    city in Iran. It has a rich history of political activism, from the Constitutional
+    Revolution to today. Tabriz is Iran's bridge to Turkey and the Caucasus.
+
+demographics:
+  population: 4000000
+  ethnicComposition:
+    azeri: 85
+    persian: 10
+    other: 5
+  urbanization: 80
+  religiosity: 70
+  educationLevel: 65
+  youthPercentage: 42
+  unemploymentRate: 17
+
+control:
+  regimeControl: 70
+  oppositionPresence: 40
+  militaryPresence: 65
+  ethnicMovementControl: 25
+  contestedZones:
+    - border_areas
+
+conditions:
+  economicHealth: 50
+  infrastructure: 55
+  publicServices: 55
+  environmentalHealth: 45
+  publicSentiment: 40
+
+activity:
+  protestLevel: 45
+  strikeActivity: 40
+  civilSocietyStrength: 55
+  insurgency: 5
+
+keyLocations:
+  - name:
+      fa: بازار تبریز
+      en: Tabriz Bazaar
+    significance: economic_hub
+  - name:
+      fa: دانشگاه تبریز
+      en: University of Tabriz
+    significance: education_center
+  - name:
+      fa: مقبره‌الشعرا
+      en: Poets' Mausoleum
+    significance: cultural_heritage
+
+tags:
+  - azeri
+  - border
+  - trade
+  - constitutional_heritage

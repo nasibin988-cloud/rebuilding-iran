@@ -1,0 +1,65 @@
+# Playable Character: The Bazaar Merchant
+# A traditional merchant navigating economic and political pressures
+
+id: bazaari
+
+name:
+  fa: بهمن کیانی
+  en: Bahman Kiani
+
+title:
+  fa: تاجر بازار
+  en: Bazaar Merchant
+
+portrait: bazaari.png
+
+biography:
+  fa: |
+    یک تاجر سنتی در بازار بزرگ تهران که نسل‌ها پیشینه تجاری دارد. شما بین فشارهای
+    اقتصادی رژیم و خواسته‌های مردم گیر کرده‌اید. بازار همیشه قدرت داشته است و
+    شما می‌دانید چگونه از این قدرت استفاده کنید.
+  en: |
+    A traditional merchant in Tehran's Grand Bazaar with generations of trading
+    heritage. You are caught between the regime's economic pressures and the
+    people's demands. The bazaar has always had power and you know how to use it.
+
+startingPosition:
+  location: tehran
+  officialRole: null
+
+startingResources:
+  money: 80000
+  influence: 45
+  networkConnections: 60
+  knowledge: 40
+  actionsPerTurn: 4
+  actionsRemaining: 4
+
+personal:
+  health: 80
+  stress: 35
+  hope: 50
+  courage: 45
+
+backstory:
+  fa: خانواده شما صد سال است در این بازار کار می‌کند. شما رازهای زیادی می‌دانید.
+  en: Your family has worked in this bazaar for a hundred years. You know many secrets.
+
+motivations:
+  fa: حفظ تجارت خانوادگی و آینده فرزندان
+  en: Preserving the family business and children's future
+
+challenges:
+  - fa: مدیریت تحریم‌ها و کمبودها
+    en: Managing sanctions and shortages
+  - fa: حفظ موازنه بین رژیم و مردم
+    en: Balancing between regime and people
+  - fa: استفاده از قدرت اقتصادی برای تغییر
+    en: Using economic power for change
+
+difficulty: normal
+tags:
+  - merchant
+  - bazaar
+  - economic-power
+  - traditional

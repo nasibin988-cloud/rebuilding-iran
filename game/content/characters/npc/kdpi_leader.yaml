@@ -1,0 +1,71 @@
+# NPC Character: KDPI Leader
+# Leader of Kurdistan Democratic Party of Iran
+
+id: kdpi_leader
+
+name:
+  fa: مصطفی هجری
+  en: Mostafa Hijri
+
+title:
+  fa: دبیرکل حزب دموکرات کردستان ایران
+  en: Secretary-General of KDPI
+
+portrait: kdpi_leader.png
+
+role: ethnic_leader
+
+biography:
+  fa: |
+    دبیرکل حزب دموکرات کردستان ایران. رهبر یکی از قدیمی‌ترین احزاب
+    کردی ایران که خواهان خودمختاری برای کردها است. در تبعید زندگی
+    می‌کند اما ارتباط نزدیک با کردستان ایران دارد.
+  en: |
+    Secretary-General of Kurdistan Democratic Party of Iran. Leader of one
+    of Iran's oldest Kurdish parties demanding autonomy for Kurds. Lives
+    in exile but maintains close ties with Iranian Kurdistan.
+
+personality:
+  traits:
+    - determined
+    - nationalist
+    - experienced
+    - diplomatic
+    - patient
+  beliefs:
+    economicLeft: 60
+    socialLiberal: 75
+    nationalist: 95
+    religious: 25
+    democratic: 80
+
+relationships:
+  - characterId: komala_leader
+    type: ally
+    trust: 50
+    description:
+      fa: همکاری کردی
+      en: Kurdish cooperation
+
+status:
+  health: 60
+  influence: 45
+  visibility: medium
+  security: medium
+
+goals:
+  - kurdish_autonomy
+  - cultural_rights
+  - democratic_iran
+
+fears:
+  - military_crackdown
+  - assassination
+  - division_among_kurds
+
+tags:
+  - npc
+  - opposition
+  - ethnic
+  - kurdish
+  - exile

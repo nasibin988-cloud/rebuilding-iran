@@ -1,0 +1,102 @@
+# Faction: Student Movement
+# University students who have been at the forefront of protests throughout Iranian history
+
+id: students
+
+name:
+  fa: جنبش دانشجویی
+  en: Student Movement
+
+shortName:
+  fa: دانشجویان
+  en: Students
+
+description:
+  fa: |
+    دانشجویان در طول تاریخ ایران پیشتاز اعتراضات و جنبش‌های اجتماعی بوده‌اند.
+    از انقلاب ۵۷ تا جنبش سبز و اعتراضات اخیر، دانشگاه‌ها همیشه کانون فعالیت
+    سیاسی بوده‌اند. جنبش دانشجویی متنوع است اما اغلب خواستار آزادی و اصلاحات است.
+  en: |
+    Students have been at the forefront of protests and social movements throughout
+    Iranian history. From the 1979 revolution to the Green Movement and recent
+    protests, universities have always been centers of political activity. The
+    student movement is diverse but generally demands freedom and reforms.
+
+category: society
+subcategory: youth
+
+power:
+  base: 35
+  military: 5
+  economic: 10
+  religious: 15
+  popular: 55
+
+ideology:
+  economicLeft: 55
+  socialLiberal: 80
+  nationalist: 50
+  religious: 25
+  democratic: 85
+
+interests:
+  survival:
+    - Freedom of expression
+    - Academic freedom
+    - Protection from arrest
+  shortTerm:
+    - End compulsory hijab
+    - Release political prisoners
+    - Reform universities
+  longTerm:
+    - Democratic transition
+    - Civil liberties
+    - Gender equality
+  redLines:
+    - Systematic repression
+    - University closures
+    - Military service conscription as punishment
+
+leaders:
+  - student_leader
+
+relationships:
+  - factionId: green_movement
+    type: ally
+    trust: 70
+    reason:
+      fa: ادامه‌دهنده جنبش
+      en: Movement continuity
+  - factionId: reformists
+    type: ally
+    trust: 50
+    reason:
+      fa: اهداف مشترک اصلاحی
+      en: Shared reform goals
+  - factionId: basij
+    type: enemy
+    trust: -75
+    reason:
+      fa: سرکوب و خشونت
+      en: Repression and violence
+  - factionId: irgc
+    type: enemy
+    trust: -70
+    reason:
+      fa: تقابل ایدئولوژیک
+      en: Ideological confrontation
+
+behavior:
+  aggression: 45
+  cooperation: 60
+  riskTolerance: 65
+  pragmatism: 40
+
+color: "#3b82f6"
+icon: students
+
+tags:
+  - society
+  - youth
+  - protest
+  - democratic

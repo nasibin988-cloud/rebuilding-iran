@@ -1,0 +1,71 @@
+# NPC Character: Imprisoned Reformist
+# A prominent reformist political prisoner
+
+id: imprisoned_reformist
+
+name:
+  fa: نسرین ستوده
+  en: Nasrin Sotoudeh
+
+title:
+  fa: وکیل حقوق بشر و زندانی سیاسی
+  en: Human Rights Lawyer and Political Prisoner
+
+portrait: imprisoned_reformist.png
+
+role: political_prisoner
+
+biography:
+  fa: |
+    وکیل برجسته حقوق بشر که از حقوق زنان و کودکان دفاع کرده است.
+    بارها به زندان افتاده و به سال‌ها حبس محکوم شده. نماد مقاومت
+    و ایستادگی در برابر سرکوب.
+  en: |
+    Prominent human rights lawyer who has defended women's and children's
+    rights. Imprisoned multiple times and sentenced to years in prison.
+    Symbol of resistance and standing against repression.
+
+personality:
+  traits:
+    - fearless
+    - principled
+    - compassionate
+    - resilient
+    - iconic
+  beliefs:
+    economicLeft: 55
+    socialLiberal: 95
+    nationalist: 50
+    religious: 30
+    democratic: 95
+
+relationships:
+  - characterId: student_leader
+    type: mentor
+    trust: 80
+    description:
+      fa: الهام‌بخش نسل جدید
+      en: Inspires new generation
+
+status:
+  health: 45
+  influence: 50
+  visibility: high
+  security: imprisoned
+
+goals:
+  - freedom
+  - defend_human_rights
+  - end_repression
+
+fears:
+  - health_collapse
+  - family_suffering
+  - being_silenced
+
+tags:
+  - npc
+  - opposition
+  - political_prisoner
+  - human_rights
+  - lawyer

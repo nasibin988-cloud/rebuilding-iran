@@ -1,0 +1,63 @@
+# Region: Tehran Province
+# The capital and center of political power
+
+id: tehran
+
+name:
+  fa: تهران
+  en: Tehran
+
+capital: Tehran
+
+population: 14000000
+
+demographics:
+  persian: 65
+  azeri: 20
+  kurd: 5
+  arab: 2
+  baluch: 1
+  other: 7
+
+economy:
+  gdpContribution: 30
+  mainIndustries:
+    - government
+    - services
+    - manufacturing
+    - technology
+    - media
+  unemployment: 12
+  oilProduction: 0
+
+politics:
+  regimeControl: 75
+  oppositionStrength: 50
+  dominantFactions:
+    - supreme_leader_office
+    - irgc
+    - reformists
+    - students
+  grievances:
+    - air_pollution
+    - housing_costs
+    - political_repression
+    - unemployment
+    - corruption
+
+geography:
+  borders:
+    - alborz
+    - mazandaran
+    - semnan
+    - qom
+    - markazi
+  terrain: urban_mountain
+  strategicImportance: 100
+  borderCountries: []
+
+tags:
+  - capital
+  - political_center
+  - large_city
+  - protest_hub

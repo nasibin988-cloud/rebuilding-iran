@@ -1,0 +1,117 @@
+# Faction: Islamic Revolutionary Guard Corps (IRGC)
+# The military-economic backbone of the Islamic Republic
+
+id: irgc
+
+name:
+  fa: سپاه پاسداران انقلاب اسلامی
+  en: Islamic Revolutionary Guard Corps
+
+shortName:
+  fa: سپاه
+  en: IRGC
+
+description:
+  fa: |
+    سپاه پاسداران نیروی نظامی-اقتصادی-سیاسی است که از نظام محافظت می‌کند.
+    با کنترل بر بخش‌های کلیدی اقتصاد، نیروی قدس، و سایبری، سپاه یکی از
+    قدرتمندترین نهادهای ایران است. اما یکپارچه نیست - جناح‌های مختلفی
+    با منافع متفاوت در درون آن وجود دارد.
+  en: |
+    The IRGC is a military-economic-political force that protects the system.
+    With control over key economic sectors, the Quds Force, and cyber operations,
+    the IRGC is one of Iran's most powerful institutions. But it's not monolithic -
+    different factions with different interests exist within it.
+
+category: regime
+subcategory: security
+
+power:
+  base: 85
+  military: 95
+  economic: 75
+  religious: 30
+  popular: 25
+
+ideology:
+  economicLeft: 40
+  socialLiberal: 10
+  nationalist: 80
+  religious: 70
+  democratic: 5
+
+interests:
+  survival:
+    - Maintain military dominance
+    - Protect economic interests
+    - Prevent regime change
+    - Avoid international military conflict
+  shortTerm:
+    - Suppress protests effectively
+    - Expand economic holdings
+    - Counter foreign influence
+  longTerm:
+    - Control succession process
+    - Become the dominant power center
+    - Build deterrence capability
+  redLines:
+    - Dissolution of IRGC
+    - Loss of economic empire
+    - Prosecution for past actions
+    - Foreign military intervention
+
+leaders:
+  - irgc_commander
+
+keyMembers:
+  - quds_force_commander
+  - basij_commander
+  - irgc_intelligence_chief
+
+relationships:
+  - factionId: supreme_leader_office
+    type: ally
+    trust: 70
+    reason:
+      fa: وابستگی متقابل برای بقا
+      en: Mutual dependence for survival
+  - factionId: hardline_clerics
+    type: ally
+    trust: 50
+    reason:
+      fa: همراهی ایدئولوژیک
+      en: Ideological alignment
+  - factionId: reformists
+    type: enemy
+    trust: -60
+    reason:
+      fa: تهدید برای قدرت و منافع
+      en: Threat to power and interests
+  - factionId: green_movement
+    type: enemy
+    trust: -80
+    reason:
+      fa: دشمن نظام
+      en: Enemy of the system
+  - factionId: bazaar_merchants
+    type: rival
+    trust: -20
+    reason:
+      fa: رقابت اقتصادی
+      en: Economic competition
+
+behavior:
+  aggression: 75
+  cooperation: 30
+  riskTolerance: 60
+  pragmatism: 65
+
+color: "#1a472a"
+icon: irgc
+
+tags:
+  - regime
+  - military
+  - economic_power
+  - security
+  - hardline

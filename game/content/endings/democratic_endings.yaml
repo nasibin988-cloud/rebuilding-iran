@@ -1,0 +1,160 @@
+# IRAN 14XX - Democratic Endings
+# Endings where Iran transitions to some form of democratic governance
+
+endings:
+  - id: democratic_revolution
+    category: democratic
+    title:
+      fa: انقلاب مخملین
+      en: Velvet Revolution
+    description:
+      fa: |
+        پس از سال‌ها مبارزه مدنی، اعتراضات گسترده و فشارهای بین‌المللی،
+        رژیم جمهوری اسلامی سرانجام فروپاشید. مردم ایران توانستند بدون
+        خونریزی گسترده به آزادی دست یابند. اکنون فصل جدیدی در تاریخ
+        ایران آغاز شده است.
+      en: |
+        After years of civil resistance, widespread protests, and international
+        pressure, the Islamic Republic finally collapsed. The Iranian people
+        achieved freedom without widespread bloodshed. A new chapter in
+        Iran's history has begun.
+    conditions:
+      - type: stat
+        path: regime.stability
+        operator: lessThan
+        value: 10
+      - type: stat
+        path: regime.legitimacy
+        operator: lessThan
+        value: 20
+      - type: stat
+        path: eudaimonia.freedomAgency
+        operator: greaterThan
+        value: 60
+    epilogue:
+      fa: |
+        در سال‌های پس از انتقال، ایران مسیر دشواری را پیمود. نوشتن قانون
+        اساسی جدید، برگزاری انتخابات آزاد، و بازسازی نهادها چالش‌برانگیز
+        بود. اما روحیه مردم و همبستگی ملی، کشور را از بحران‌ها عبور داد.
+
+        نام شما در تاریخ ایران به عنوان یکی از معماران آزادی ثبت شد.
+        نسل‌های آینده داستان مبارزات شما را خواهند خواند.
+      en: |
+        In the years after the transition, Iran walked a difficult path.
+        Writing a new constitution, holding free elections, and rebuilding
+        institutions was challenging. But the spirit of the people and
+        national solidarity carried the country through crises.
+
+        Your name was recorded in Iranian history as one of the architects
+        of freedom. Future generations will read the story of your struggles.
+    eudaimoniaModifiers:
+      freedomAgency: 30
+      socialCohesion: 15
+      culturalFlourishing: 20
+      securityOrder: -10
+    unlocks:
+      - achievement_freedom_fighter
+      - ending_democratic
+
+  - id: negotiated_transition
+    category: democratic
+    title:
+      fa: انتقال مذاکره‌ای
+      en: Negotiated Transition
+    description:
+      fa: |
+        از طریق مذاکرات طولانی و فشارهای داخلی و خارجی، بخشی از حاکمیت
+        پذیرفت که باید قدرت را به تدریج واگذار کند. یک دوره انتقالی
+        با نظارت بین‌المللی آغاز شد.
+      en: |
+        Through lengthy negotiations and internal and external pressures,
+        parts of the ruling establishment accepted the need to gradually
+        transfer power. A transitional period under international
+        observation began.
+    conditions:
+      - type: stat
+        path: regime.stability
+        operator: lessThan
+        value: 30
+      - type: stat
+        path: international.internationalSupport
+        operator: greaterThan
+        value: 70
+      - type: flag
+        flag: negotiation_channel_established
+        operator: equals
+        value: true
+    epilogue:
+      fa: |
+        انتقال آرام‌تر از انتظار بود، اما نه بدون تنش. برخی از نیروهای
+        تندرو تلاش کردند روند را خراب کنند، اما جامعه مدنی و فشار
+        بین‌المللی مانع شد.
+
+        ایران به عضویت کامل جامعه بین‌المللی بازگشت. تحریم‌ها برداشته شد
+        و سرمایه‌گذاری خارجی سرازیر شد. آینده روشن‌تر از گذشته می‌نمود.
+      en: |
+        The transition was smoother than expected, but not without tension.
+        Some hardline forces tried to derail the process, but civil society
+        and international pressure prevented them.
+
+        Iran returned to full membership in the international community.
+        Sanctions were lifted and foreign investment flowed in. The future
+        looked brighter than the past.
+    eudaimoniaModifiers:
+      freedomAgency: 20
+      materialWellbeing: 15
+      securityOrder: 10
+      socialCohesion: 5
+    unlocks:
+      - achievement_diplomat
+      - ending_negotiated
+
+  - id: federal_democracy
+    category: democratic
+    title:
+      fa: جمهوری فدرال ایران
+      en: Federal Republic of Iran
+    description:
+      fa: |
+        پس از فروپاشی حکومت مرکزی، اقوام و استان‌های مختلف ایران توافق
+        کردند که یک نظام فدرالی ایجاد کنند. این مدل، استقلال منطقه‌ای را
+        با وحدت ملی ترکیب کرد.
+      en: |
+        After the collapse of the central government, Iran's various ethnic
+        groups and provinces agreed to create a federal system. This model
+        combined regional autonomy with national unity.
+    conditions:
+      - type: stat
+        path: regime.stability
+        operator: lessThan
+        value: 20
+      - type: flag
+        flag: ethnic_rights_recognized
+        operator: equals
+        value: true
+      - type: stat
+        path: eudaimonia.socialCohesion
+        operator: greaterThan
+        value: 40
+    epilogue:
+      fa: |
+        ایران فدرال مدلی جدید برای منطقه شد. کردها، آذری‌ها، بلوچ‌ها و
+        عرب‌ها در چارچوب یک کشور واحد به خودمختاری دست یافتند. تنوع
+        فرهنگی از تهدید به فرصت تبدیل شد.
+
+        شما در تاریخ به عنوان کسی که پل‌ساز میان اقوام بود، یاد می‌شوید.
+      en: |
+        Federal Iran became a new model for the region. Kurds, Azerbaijanis,
+        Baluch, and Arabs achieved autonomy within a unified country.
+        Cultural diversity transformed from threat to opportunity.
+
+        You are remembered in history as someone who built bridges between
+        ethnic groups.
+    eudaimoniaModifiers:
+      freedomAgency: 25
+      socialCohesion: 20
+      culturalFlourishing: 25
+      securityOrder: 5
+    unlocks:
+      - achievement_unifier
+      - ending_federal

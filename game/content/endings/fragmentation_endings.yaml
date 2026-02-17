@@ -1,0 +1,146 @@
+# IRAN 14XX - Fragmentation Endings
+# Endings where Iran experiences division, civil war, or collapse
+
+endings:
+  - id: civil_war
+    category: fragmentation
+    title:
+      fa: جنگ داخلی
+      en: Civil War
+    description:
+      fa: |
+        تنش‌های انباشته سرانجام به جنگ داخلی تبدیل شد. گروه‌های مختلف
+        برای کنترل کشور می‌جنگند و ایران در آتش سوخته است.
+      en: |
+        Accumulated tensions finally erupted into civil war. Various groups
+        fight for control of the country and Iran burns.
+    conditions:
+      - type: stat
+        path: regime.stability
+        operator: lessThan
+        value: 20
+      - type: stat
+        path: eudaimonia.securityOrder
+        operator: lessThan
+        value: 20
+      - type: stat
+        path: eudaimonia.socialCohesion
+        operator: lessThan
+        value: 25
+    epilogue:
+      fa: |
+        جنگ سال‌ها ادامه یافت. شهرها ویران شدند، میلیون‌ها نفر آواره شدند،
+        و نسلی در خون و آتش بزرگ شد. هیچ طرفی پیروز نشد.
+
+        شما که روزی برای آزادی مبارزه می‌کردید، اکنون شاهد ویرانی
+        هستید. این نتیجه‌ای نبود که کسی می‌خواست.
+      en: |
+        The war continued for years. Cities were destroyed, millions
+        displaced, and a generation grew up in blood and fire. No side
+        won.
+
+        You, who once fought for freedom, now witness destruction. This
+        was not the outcome anyone wanted.
+    eudaimoniaModifiers:
+      freedomAgency: -20
+      materialWellbeing: -40
+      healthLongevity: -35
+      securityOrder: -40
+      socialCohesion: -30
+    unlocks:
+      - ending_civil_war
+
+  - id: regional_breakup
+    category: fragmentation
+    title:
+      fa: تجزیه ایران
+      en: Dissolution of Iran
+    description:
+      fa: |
+        فشارهای قومی و منطقه‌ای سرانجام پیروز شد. مناطق مختلف اعلام
+        استقلال کردند و ایران به چند کشور کوچکتر تقسیم شد.
+      en: |
+        Ethnic and regional pressures finally prevailed. Different regions
+        declared independence and Iran split into several smaller countries.
+    conditions:
+      - type: stat
+        path: regime.coherence
+        operator: lessThan
+        value: 15
+      - type: flag
+        flag: ethnic_uprising_success
+        operator: equals
+        value: true
+      - type: stat
+        path: eudaimonia.socialCohesion
+        operator: lessThan
+        value: 15
+    epilogue:
+      fa: |
+        نقشه ایران برای همیشه تغییر کرد. کردستان، آذربایجان، بلوچستان
+        و خوزستان هر کدام راه خود را رفتند. ایران باقیمانده ضعیف و
+        شکسته بود.
+
+        آیا این آزادی بود یا فاجعه؟ تاریخ قضاوت خواهد کرد.
+      en: |
+        The map of Iran changed forever. Kurdistan, Azerbaijan, Baluchistan,
+        and Khuzestan each went their own way. The remaining Iran was weak
+        and broken.
+
+        Was this freedom or disaster? History will judge.
+    eudaimoniaModifiers:
+      freedomAgency: 5
+      materialWellbeing: -25
+      securityOrder: -30
+      socialCohesion: -40
+      culturalFlourishing: -20
+    unlocks:
+      - ending_dissolution
+
+  - id: foreign_intervention
+    category: fragmentation
+    title:
+      fa: مداخله خارجی
+      en: Foreign Intervention
+    description:
+      fa: |
+        بحران داخلی ایران چنان عمیق شد که قدرت‌های خارجی وارد شدند.
+        مناطق مختلف تحت نفوذ کشورهای مختلف قرار گرفتند.
+      en: |
+        Iran's internal crisis became so deep that foreign powers intervened.
+        Different regions came under the influence of different countries.
+    conditions:
+      - type: stat
+        path: regime.stability
+        operator: lessThan
+        value: 10
+      - type: stat
+        path: international.internationalIsolation
+        operator: greaterThan
+        value: 80
+      - type: flag
+        flag: foreign_forces_invited
+        operator: equals
+        value: true
+    epilogue:
+      fa: |
+        ایران به میدان رقابت قدرت‌های بزرگ تبدیل شد. مانند قرن نوزدهم،
+        اما این بار با سلاح‌های مدرن‌تر و بازیگران بیشتر.
+
+        شما که می‌خواستید ایران را آزاد کنید، اکنون شاهد اشغال هستید.
+        تلخ‌ترین پایان ممکن.
+      en: |
+        Iran became a battleground for great power competition. Like the
+        nineteenth century, but this time with more modern weapons and
+        more players.
+
+        You, who wanted to free Iran, now witness occupation. The bitterest
+        possible ending.
+    eudaimoniaModifiers:
+      freedomAgency: -25
+      materialWellbeing: -30
+      securityOrder: -35
+      socialCohesion: -30
+      sustainability: -20
+    unlocks:
+      - ending_intervention

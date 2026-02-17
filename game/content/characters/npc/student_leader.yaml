@@ -1,0 +1,71 @@
+# NPC Character: Student Leader
+# Representative of the student movement
+
+id: student_leader
+
+name:
+  fa: سارا میرزایی
+  en: Sara Mirzaei
+
+title:
+  fa: فعال دانشجویی
+  en: Student Activist
+
+portrait: student_leader.png
+
+role: activist_leader
+
+biography:
+  fa: |
+    فعال دانشجویی برجسته از دانشگاه تهران. صدای نسل جدید دانشجویان
+    که خواهان آزادی و برابری هستند. چندین بار بازداشت شده اما
+    همچنان به فعالیت ادامه می‌دهد.
+  en: |
+    Prominent student activist from University of Tehran. Voice of the new
+    generation of students demanding freedom and equality. Arrested several
+    times but continues her activism.
+
+personality:
+  traits:
+    - courageous
+    - idealistic
+    - charismatic
+    - resilient
+    - outspoken
+  beliefs:
+    economicLeft: 60
+    socialLiberal: 95
+    nationalist: 50
+    religious: 15
+    democratic: 95
+
+relationships:
+  - characterId: mir_hossein_mousavi
+    type: political
+    trust: 60
+    description:
+      fa: الهام از جنبش سبز
+      en: Inspired by Green Movement
+
+status:
+  health: 85
+  influence: 40
+  visibility: high
+  security: low
+
+goals:
+  - end_repression
+  - achieve_gender_equality
+  - democratic_reform
+
+fears:
+  - imprisonment
+  - harm_to_family
+  - movement_defeat
+
+tags:
+  - npc
+  - opposition
+  - student
+  - activist
+  - youth

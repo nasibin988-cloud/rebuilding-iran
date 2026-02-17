@@ -1,0 +1,93 @@
+# NPC Character: Supreme Leader Ali Khamenei
+# The aging Supreme Leader whose health is failing
+
+id: khamenei
+
+name:
+  fa: آیت‌الله علی خامنه‌ای
+  en: Ayatollah Ali Khamenei
+
+title:
+  fa: رهبر معظم انقلاب اسلامی
+  en: Supreme Leader of the Islamic Revolution
+
+portrait: khamenei.png
+
+role: supreme_leader
+
+biography:
+  fa: |
+    رهبر جمهوری اسلامی از سال ۱۳۶۸. پس از درگذشت آیت‌الله خمینی به
+    رهبری رسید و قدرت را به تدریج تحکیم کرد. اکنون در دهه نهم زندگی
+    است و سلامت او موضوع گمانه‌زنی‌های فراوان است.
+  en: |
+    Leader of the Islamic Republic since 1989. He rose to leadership after
+    Ayatollah Khomeini's death and gradually consolidated power. Now in his
+    ninth decade, his health is subject to much speculation.
+
+personality:
+  traits:
+    - suspicious
+    - strategic
+    - patient
+    - ideological
+    - paranoid
+  beliefs:
+    economicLeft: 45
+    socialLiberal: 10
+    nationalist: 70
+    religious: 95
+    democratic: 5
+
+relationships:
+  - characterId: mojtaba_khamenei
+    type: family
+    trust: 90
+    description:
+      fa: پسر و احتمالاً جانشین
+      en: Son and possible successor
+  - characterId: irgc_commander
+    type: political
+    trust: 75
+    description:
+      fa: فرمانده ارشد سپاه
+      en: Senior IRGC commander
+
+status:
+  health: 40
+  influence: 100
+  visibility: high
+  security: maximum
+
+goals:
+  - preserve_islamic_republic
+  - ensure_succession
+  - maintain_resistance_axis
+  - prevent_western_influence
+
+fears:
+  - popular_uprising
+  - military_coup
+  - foreign_intervention
+  - legacy_destruction
+
+triggers:
+  - condition:
+      type: stat
+      path: regime.stability
+      operator: lessThan
+      value: 40
+    response: increased_repression
+  - condition:
+      type: flag
+      flag: mass_protests
+      operator: equals
+      value: true
+    response: emergency_measures
+
+tags:
+  - npc
+  - regime
+  - leader
+  - clerical
+  - key_figure

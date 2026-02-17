@@ -1,0 +1,152 @@
+# Multiple NPC Definitions: Regime Figures
+
+characters:
+  # Basij Commander
+  - id: basij_commander
+    name:
+      fa: سردار غلامرضا سلیمانی
+      en: Brigadier General Gholamreza Soleimani
+    title:
+      fa: فرمانده بسیج
+      en: Commander of Basij
+    portrait: basij_commander.png
+    biography:
+      fa: فرمانده نیروی مقاومت بسیج، مسئول سازماندهی نیروهای شبه‌نظامی در سراسر کشور.
+      en: Commander of Basij Resistance Force, responsible for organizing paramilitary forces nationwide.
+    role: paramilitary_commander
+    faction: basij
+    traits: [loyal, brutal, organizational, ideological]
+    behavior:
+      aggression: 75
+      caution: 50
+      pragmatism: 40
+    stats:
+      health: 80
+      influence: 60
+      popularity: 8
+    tags: [npc, regime, military, basij]
+
+  # Head of Judiciary
+  - id: judiciary_chief
+    name:
+      fa: غلامحسین محسنی اژه‌ای
+      en: Gholamhossein Mohseni-Ejei
+    title:
+      fa: رئیس قوه قضائیه
+      en: Chief of Judiciary
+    portrait: judiciary_chief.png
+    biography:
+      fa: رئیس قوه قضائیه و عضو سابق وزارت اطلاعات. معروف به برخورد سخت با مخالفان.
+      en: Chief of Judiciary and former intelligence minister. Known for harsh treatment of dissidents.
+    role: judicial_leader
+    faction: hardline_clerics
+    traits: [ruthless, legalistic, loyal, conservative]
+    behavior:
+      aggression: 65
+      caution: 60
+      pragmatism: 35
+    stats:
+      health: 70
+      influence: 75
+      popularity: 5
+    tags: [npc, regime, judiciary, hardline]
+
+  # Intelligence Minister
+  - id: intelligence_minister
+    name:
+      fa: اسماعیل خطیب
+      en: Esmail Khatib
+    title:
+      fa: وزیر اطلاعات
+      en: Minister of Intelligence
+    portrait: intelligence_minister.png
+    biography:
+      fa: وزیر اطلاعات دولت رئیسی، مسئول دستگاه امنیتی موازی با اطلاعات سپاه.
+      en: Intelligence minister in Raisi's government, runs security apparatus parallel to IRGC intelligence.
+    role: intelligence_chief
+    faction: supreme_leader_office
+    traits: [secretive, methodical, suspicious, professional]
+    behavior:
+      aggression: 55
+      caution: 85
+      pragmatism: 60
+    stats:
+      health: 75
+      influence: 70
+      popularity: 3
+    tags: [npc, regime, intelligence, security]
+
+  # Guardian Council Secretary
+  - id: guardian_council_secretary
+    name:
+      fa: احمد جنتی
+      en: Ahmad Jannati
+    title:
+      fa: دبیر شورای نگهبان
+      en: Secretary of Guardian Council
+    portrait: jannati.png
+    biography:
+      fa: دبیر شورای نگهبان از سال ۱۳۷۱. در ۹۷ سالگی، قدیمی‌ترین چهره فعال سیاسی رژیم.
+      en: Secretary of Guardian Council since 1992. At 97, the oldest active political figure in the regime.
+    role: vetting_authority
+    faction: hardline_clerics
+    traits: [elderly, stubborn, conservative, powerful]
+    behavior:
+      aggression: 30
+      caution: 70
+      pragmatism: 20
+    stats:
+      health: 25
+      influence: 80
+      popularity: 2
+    tags: [npc, regime, clerical, guardian_council]
+
+  # Assembly of Experts Chairman
+  - id: experts_chairman
+    name:
+      fa: احمد خاتمی
+      en: Ahmad Khatami
+    title:
+      fa: عضو مجلس خبرگان
+      en: Member of Assembly of Experts
+    portrait: ahmad_khatami.png
+    biography:
+      fa: امام جمعه موقت تهران و چهره تندرو. معروف به خطبه‌های تهاجمی علیه اصلاح‌طلبان.
+      en: Interim Friday prayer leader of Tehran and hardline figure. Known for aggressive sermons against reformists.
+    role: clerical_leader
+    faction: hardline_clerics
+    traits: [aggressive, ideological, vocal, uncompromising]
+    behavior:
+      aggression: 80
+      caution: 30
+      pragmatism: 25
+    stats:
+      health: 65
+      influence: 55
+      popularity: 8
+    tags: [npc, regime, clerical, hardline]
+
+  # IRGC Intelligence Chief
+  - id: irgc_intelligence_chief
+    name:
+      fa: سردار حسین طائب
+      en: Brigadier General Hossein Taeb
+    title:
+      fa: رئیس سابق اطلاعات سپاه
+      en: Former IRGC Intelligence Chief
+    portrait: taeb.png
+    biography:
+      fa: رئیس سازمان اطلاعات سپاه تا ۱۴۰۱. معمار بسیاری از عملیات‌های امنیتی داخلی.
+      en: Head of IRGC Intelligence until 2022. Architect of many domestic security operations.
+    role: intelligence_operative
+    faction: irgc
+    traits: [cunning, ruthless, networked, ambitious]
+    behavior:
+      aggression: 70
+      caution: 75
+      pragmatism: 65
+    stats:
+      health: 70
+      influence: 60
+      popularity: 2
+    tags: [npc, regime, irgc, intelligence]

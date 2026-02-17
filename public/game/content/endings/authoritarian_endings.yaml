@@ -1,0 +1,255 @@
+# Endings: Authoritarian Outcomes
+
+endings:
+  # ================================
+  # REGIME SURVIVES
+  # ================================
+
+  - id: regime_consolidation
+    category: authoritarian
+    subcategory: status_quo
+    title:
+      fa: تحکیم رژیم
+      en: Regime Consolidation
+    subtitle:
+      fa: سرکوب پیروز شد
+      en: Repression Prevailed
+    description:
+      fa: |
+        رژیم موفق شد. سرکوب شدید، تضعیف جنبش‌ها، و انشقاق در اپوزیسیون
+        به پیروزی نظام انجامید. رهبران جنبش در زندان، در تبعید، یا سکوت.
+
+        مردم دوباره ساکت شدند - حداقل برای حالا. اما خاطرات باقی می‌ماند.
+      en: |
+        The regime succeeded. Harsh repression, weakened movements, and
+        opposition divisions led to the system's victory. Movement leaders
+        are in prison, exile, or silence.
+
+        People fell silent again - at least for now. But memories remain.
+    epilogue:
+      fa: |
+        تو شکست خوردی. یا شاید فقط این بار. تاریخ هنوز
+        تمام نشده، و مبارزه ادامه دارد.
+      en: |
+        You failed. Or maybe just this time. History isn't over yet,
+        and the struggle continues.
+    conditions:
+      - type: stat
+        target: regime.stability
+        operator: greater_than
+        value: 70
+      - type: stat
+        target: regime.repression
+        operator: greater_than
+        value: 80
+    eudaimonia:
+      freedom: 15
+      justice: 20
+      prosperity: 35
+      community: 25
+      meaning: 30
+      health: 45
+      knowledge: 30
+    color: "#7f1d1d"
+    tone: tragic
+    tags: [authoritarian, defeat, dark]
+
+  - id: hardliner_takeover
+    category: authoritarian
+    subcategory: hardliner
+    title:
+      fa: حکومت تندروها
+      en: Hardliner Takeover
+    subtitle:
+      fa: جمهوری اسلامی ۲.۰
+      en: Islamic Republic 2.0
+    description:
+      fa: |
+        جناح تندرو قدرت را به طور کامل به دست گرفت. حتی اصلاح‌طلبان
+        حذف شدند. ایران حالا یک حکومت نظامی-مذهبی سخت‌گیرانه‌تر است.
+
+        سپاه همه چیز را کنترل می‌کند. آزادی‌های کوچکی که بود، دیگر نیست.
+      en: |
+        The hardline faction took complete control. Even reformists were
+        eliminated. Iran is now a stricter military-religious state.
+
+        The IRGC controls everything. Small freedoms that existed are gone.
+    epilogue:
+      fa: |
+        در این دنیای جدید، مخالفت مساوی با مرگ است.
+        تو یا باید فرار کنی، یا برای همیشه سکوت.
+      en: |
+        In this new world, dissent equals death.
+        You must either flee or stay silent forever.
+    conditions:
+      - type: stat
+        target: regime.stability
+        operator: greater_than
+        value: 60
+      - type: faction_trust
+        target: irgc
+        operator: greater_than
+        value: 70
+      - type: stat
+        target: regime.repression
+        operator: greater_than
+        value: 90
+    eudaimonia:
+      freedom: 5
+      justice: 10
+      prosperity: 30
+      community: 20
+      meaning: 15
+      health: 40
+      knowledge: 20
+    color: "#450a0a"
+    tone: tragic
+    tags: [authoritarian, irgc, totalitarian]
+
+  - id: succession_mojtaba
+    category: authoritarian
+    subcategory: succession
+    title:
+      fa: سلسله خامنه‌ای
+      en: Khamenei Dynasty
+    subtitle:
+      fa: ولیعهد بر تخت
+      en: Crown Prince on Throne
+    description:
+      fa: |
+        مجتبی خامنه‌ای جانشین پدرش شد. این اولین بار در تاریخ جمهوری
+        اسلامی است که رهبری موروثی می‌شود. ایرانیان از این دورویی
+        شوکه شدند - انقلابی که قرار بود سلطنت را سرنگون کند، خودش
+        سلطنت شد.
+      en: |
+        Mojtaba Khamenei succeeded his father. This is the first time
+        in Islamic Republic history that leadership becomes hereditary.
+        Iranians were shocked by this hypocrisy - a revolution meant to
+        overthrow monarchy itself became one.
+    epilogue:
+      fa: |
+        تلخی این شکست عمیق است. اما شاید این آشکارسازی نهایی
+        ماهیت واقعی رژیم، روزی به سقوطش کمک کند.
+      en: |
+        The bitterness of this defeat is deep. But perhaps this final
+        revelation of the regime's true nature will someday help its fall.
+    conditions:
+      - type: flag
+        target: khamenei_dead
+        value: true
+      - type: flag
+        target: mojtaba_succession
+        value: true
+      - type: stat
+        target: regime.stability
+        operator: greater_than
+        value: 40
+    eudaimonia:
+      freedom: 10
+      justice: 15
+      prosperity: 30
+      community: 30
+      meaning: 20
+      health: 45
+      knowledge: 25
+    color: "#991b1b"
+    tone: bitter
+    tags: [authoritarian, succession, dynasty]
+
+  # ================================
+  # MILITARY RULE
+  # ================================
+
+  - id: military_coup
+    category: authoritarian
+    subcategory: military
+    title:
+      fa: کودتای نظامی
+      en: Military Coup
+    subtitle:
+      fa: ژنرال‌ها قدرت را گرفتند
+      en: Generals Took Power
+    description:
+      fa: |
+        در هرج و مرج پس از سقوط رهبری، ارتش دخالت کرد. یک شورای نظامی
+        قدرت را به دست گرفت با وعده «نظم و امنیت». انتخابات به تعویق افتاد.
+        «موقتا» - که در ایران معمولا معنای «برای همیشه» می‌دهد.
+      en: |
+        In the chaos after the leadership's fall, the army intervened.
+        A military council took power with promises of "order and security."
+        Elections were postponed. "Temporarily" - which in Iran usually
+        means "forever."
+    epilogue:
+      fa: |
+        تو برای دموکراسی جنگیدی، اما به دیکتاتوری دیگری رسیدی.
+        حداقل این بار بدون حجاب اجباری؟ تسلیت ضعیفی است.
+      en: |
+        You fought for democracy but arrived at another dictatorship.
+        At least this time without mandatory hijab? Small consolation.
+    conditions:
+      - type: stat
+        target: regime.stability
+        operator: less_than
+        value: 20
+      - type: flag
+        target: military_coup
+        value: true
+      - type: flag
+        target: democratic_coalition_formed
+        value: false
+    eudaimonia:
+      freedom: 25
+      justice: 30
+      prosperity: 45
+      community: 35
+      meaning: 25
+      health: 55
+      knowledge: 40
+    color: "#78350f"
+    tone: bitter
+    tags: [authoritarian, military, coup]
+
+  - id: irgc_state
+    category: authoritarian
+    subcategory: irgc
+    title:
+      fa: دولت سپاهی
+      en: IRGC State
+    subtitle:
+      fa: نظامیان بدون نقاب
+      en: Military Without Masks
+    description:
+      fa: |
+        روحانیت کنار رفت، اما سپاه قدرت را نگه داشت. ایران حالا یک
+        دولت نظامی-کسب‌وکاری است. مذهب فقط پوشش است. واقعیت:
+        یک مافیای نظامی که کشور را مثل یک شرکت اداره می‌کند.
+      en: |
+        The clergy stepped aside, but the IRGC kept power. Iran is now
+        a military-business state. Religion is just a facade. Reality:
+        a military mafia running the country like a corporation.
+    epilogue:
+      fa: |
+        این بدترین سناریو نیست - هنوز می‌توانی نفس بکشی.
+        اما آزادی؟ شاید نسل بعد.
+      en: |
+        This isn't the worst scenario - you can still breathe.
+        But freedom? Maybe the next generation.
+    conditions:
+      - type: flag
+        target: clerical_power_ended
+        value: true
+      - type: faction_trust
+        target: irgc
+        operator: greater_than
+        value: 80
+    eudaimonia:
+      freedom: 20
+      justice: 25
+      prosperity: 50
+      community: 30
+      meaning: 20
+      health: 55
+      knowledge: 35
+    color: "#713f12"
+    tone: cynical
+    tags: [authoritarian, irgc, pragmatic]

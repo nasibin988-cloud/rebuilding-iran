@@ -1,0 +1,82 @@
+# NPC: Ayatollah Ali Khamenei
+# Supreme Leader of the Islamic Republic
+
+id: khamenei
+
+name:
+  fa: آیت‌الله سید علی خامنه‌ای
+  en: Ayatollah Seyyed Ali Khamenei
+
+title:
+  fa: رهبر انقلاب اسلامی
+  en: Supreme Leader
+
+portrait: khamenei.png
+
+biography:
+  fa: |
+    رهبر جمهوری اسلامی از سال ۱۳۶۸. بیش از سه دهه در راس قدرت بوده و
+    نظام را از بحران‌های متعدد عبور داده است. اکنون در سن ۸۵ سالگی،
+    سوال جانشینی مهم‌ترین چالش پیش روی اوست.
+  en: |
+    Leader of the Islamic Republic since 1989. Has been at the helm of power
+    for over three decades and guided the system through numerous crises.
+    Now at 85, the succession question is his most important challenge.
+
+role: supreme_leader
+
+faction: supreme_leader_office
+
+psychology:
+  coreBeliefs:
+    - Islamic governance is divinely mandated
+    - Iran must resist Western domination
+    - The revolution's ideals must be preserved
+    - Stability trumps reform
+  fears:
+    - Regime collapse
+    - Loss of revolutionary legacy
+    - Color revolution
+    - Family's fate after death
+  motivations:
+    - Preserve the Islamic Republic
+    - Manage smooth succession
+    - Maintain independence from foreign powers
+    - Protect his legacy
+
+traits:
+  - suspicious
+  - strategic
+  - patient
+  - stubborn
+  - decisive
+
+relationships:
+  mojtaba_khamenei:
+    type: family
+    trust: 90
+    description:
+      fa: پسر و احتمالا جانشین
+      en: Son and likely successor
+  irgc_commander:
+    type: institutional
+    trust: 70
+    description:
+      fa: بازوی نظامی
+      en: Military arm
+
+behavior:
+  aggression: 40
+  caution: 80
+  pragmatism: 60
+
+stats:
+  health: 40
+  influence: 100
+  popularity: 25
+
+tags:
+  - npc
+  - regime
+  - supreme_leader
+  - critical

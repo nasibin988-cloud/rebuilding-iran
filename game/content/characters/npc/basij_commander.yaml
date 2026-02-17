@@ -1,0 +1,76 @@
+# NPC Character: Basij Commander
+# Head of the Basij paramilitary force
+
+id: basij_commander
+
+name:
+  fa: سردار غلامرضا سلیمانی
+  en: Brigadier General Gholamreza Soleimani
+
+title:
+  fa: فرمانده سازمان بسیج مستضعفین
+  en: Commander of Basij Organization
+
+portrait: basij_commander.png
+
+role: paramilitary_leader
+
+biography:
+  fa: |
+    فرمانده سازمان بسیج مستضعفین که زیر نظر سپاه پاسداران فعالیت می‌کند.
+    مسئول میلیون‌ها عضو بسیج که در سرکوب اعتراضات و کنترل اجتماعی
+    نقش کلیدی دارند.
+  en: |
+    Commander of the Basij Organization which operates under the IRGC.
+    Responsible for millions of Basij members who play a key role in
+    suppressing protests and social control.
+
+personality:
+  traits:
+    - zealous
+    - obedient
+    - ruthless
+    - ideological
+    - organized
+  beliefs:
+    economicLeft: 55
+    socialLiberal: 5
+    nationalist: 80
+    religious: 85
+    democratic: 0
+
+relationships:
+  - characterId: irgc_commander
+    type: subordinate
+    trust: 85
+    description:
+      fa: زیردست سپاه
+      en: Subordinate to IRGC
+  - characterId: khamenei
+    type: political
+    trust: 80
+    description:
+      fa: وفادار به رهبر
+      en: Loyal to the Leader
+
+status:
+  health: 70
+  influence: 60
+  visibility: medium
+  security: high
+
+goals:
+  - maintain_basij_power
+  - suppress_dissent
+  - ideological_mobilization
+
+fears:
+  - prosecution_for_violence
+  - basij_dissolution
+  - loss_of_regime_support
+
+tags:
+  - npc
+  - regime
+  - paramilitary
+  - basij

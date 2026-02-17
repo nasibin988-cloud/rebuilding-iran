@@ -1,0 +1,640 @@
+# Triggered Events: Faction-Specific Events
+
+events:
+  # ================================
+  # IRGC EVENTS
+  # ================================
+
+  - id: irgc_power_grab
+    category: triggered
+    title:
+      fa: قدرت‌نمایی سپاه
+      en: IRGC Power Grab
+    description:
+      fa: |
+        سپاه کنترل بخش جدیدی از اقتصاد را به دست گرفته. شرکت‌های
+        خصوصی مجبور به فروش به قیمت کم شده‌اند. این روند ادامه دارد.
+      en: |
+        The IRGC has taken control of another sector of the economy.
+        Private companies have been forced to sell at low prices.
+        This trend continues.
+    triggers:
+      - type: random
+        value: 0.12
+    priority: 60
+    weight: 1.0
+    once: false
+    cooldown: 8
+    requirements:
+      - type: stat
+        target: regime.stability
+        operator: greater_than
+        value: 30
+    decisions:
+      - id: expose_corruption
+        label:
+          fa: فساد را افشا کن
+          en: Expose Corruption
+        description:
+          fa: مستندات را جمع کن و پخش کن
+          en: Gather documents and spread them
+        effects:
+          immediate:
+            - type: faction_trust
+              target: irgc
+              value: -15
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 15
+            - type: faction_trust
+              target: bazaar_merchants
+              value: 15
+          delayed: []
+        tags: [investigative, anti_irgc]
+
+      - id: connect_victims
+        label:
+          fa: قربانیان را به هم وصل کن
+          en: Connect Victims
+        description:
+          fa: کسب‌وکارهای آسیب‌دیده را سازماندهی کن
+          en: Organize affected businesses
+        effects:
+          immediate:
+            - type: faction_trust
+              target: bazaar_merchants
+              value: 20
+            - type: resource_change
+              target: influence
+              value: 10
+          delayed: []
+        tags: [organizing, coalition]
+
+      - id: ignore
+        label:
+          fa: نادیده بگیر
+          en: Ignore
+        description:
+          fa: این جنگ تو نیست
+          en: This isn't your war
+        effects:
+          immediate: []
+          delayed: []
+        tags: [passive]
+    tags: [irgc, economic, corruption]
+
+  - id: irgc_internal_conflict
+    category: triggered
+    title:
+      fa: درگیری درون سپاه
+      en: IRGC Internal Conflict
+    description:
+      fa: |
+        شایعات از تنش میان فرماندهان سپاه می‌رسد. ظاهرا بر سر تقسیم
+        قدرت پس از رهبر اختلاف دارند. این می‌تواند فرصتی باشد.
+      en: |
+        Rumors of tension among IRGC commanders are spreading. Apparently
+        they disagree about power distribution after the Leader.
+        This could be an opportunity.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: regime.coherence
+          operator: less_than
+          value: 50
+    priority: 70
+    weight: 0.7
+    once: true
+    requirements: []
+    decisions:
+      - id: exploit_division
+        label:
+          fa: از شکاف استفاده کن
+          en: Exploit Division
+        description:
+          fa: اطلاعات را به یک طرف برسان
+          en: Feed information to one side
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.coherence
+              value: -10
+            - type: faction_trust
+              target: irgc
+              value: -10
+          delayed:
+            - delay: 4
+              probability: 0.3
+              effects:
+                - type: state_change
+                  target: regime.stability
+                  value: -10
+              narrative:
+                fa: درگیری تشدید شد
+                en: Conflict intensified
+        tags: [strategic, manipulative]
+
+      - id: publicize
+        label:
+          fa: علنی کن
+          en: Publicize
+        description:
+          fa: مردم باید بدانند
+          en: People should know
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.legitimacy
+              value: -5
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 10
+          delayed: []
+        tags: [media, transparency]
+
+      - id: watch_carefully
+        label:
+          fa: با دقت نظاره کن
+          en: Watch Carefully
+        description:
+          fa: اطلاعات جمع کن برای آینده
+          en: Gather information for the future
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 5
+          delayed: []
+        tags: [patient, intelligence]
+    tags: [irgc, internal, opportunity]
+
+  # ================================
+  # REFORMIST EVENTS
+  # ================================
+
+  - id: reformist_candidate
+    category: triggered
+    title:
+      fa: کاندیدای اصلاح‌طلب
+      en: Reformist Candidate
+    description:
+      fa: |
+        یک چهره اصلاح‌طلب معروف اعلام کاندیداتوری کرده. آیا این
+        بار شورای نگهبان اجازه می‌دهد؟ مردم منتظرند.
+      en: |
+        A famous reformist figure has announced candidacy. Will the
+        Guardian Council allow it this time? People are waiting.
+    triggers:
+      - type: random
+        value: 0.1
+    priority: 65
+    weight: 1.0
+    once: false
+    cooldown: 15
+    requirements:
+      - type: stat
+        target: regime.stability
+        operator: greater_than
+        value: 40
+    decisions:
+      - id: support_candidacy
+        label:
+          fa: از کاندیداتوری حمایت کن
+          en: Support Candidacy
+        description:
+          fa: امضا جمع کن و تبلیغ کن
+          en: Gather signatures and campaign
+        effects:
+          immediate:
+            - type: faction_trust
+              target: reformists
+              value: 20
+            - type: state_change
+              target: player.position.visibility
+              value: 10
+          delayed: []
+        tags: [reform, electoral]
+
+      - id: call_for_boycott
+        label:
+          fa: خواهان تحریم شو
+          en: Call for Boycott
+        description:
+          fa: انتخابات نمایشی است
+          en: Elections are a sham
+        effects:
+          immediate:
+            - type: faction_trust
+              target: reformists
+              value: -15
+            - type: faction_trust
+              target: students
+              value: 10
+            - type: state_change
+              target: regime.legitimacy
+              value: -3
+          delayed: []
+        tags: [radical, boycott]
+
+      - id: stay_neutral
+        label:
+          fa: بی‌طرف بمان
+          en: Stay Neutral
+        description:
+          fa: هر دو طرف درست می‌گویند
+          en: Both sides have a point
+        effects:
+          immediate: []
+          delayed: []
+        tags: [passive, balanced]
+    tags: [reformists, election, political]
+
+  - id: reformist_imprisoned
+    category: triggered
+    title:
+      fa: بازداشت چهره اصلاح‌طلب
+      en: Reformist Figure Imprisoned
+    description:
+      fa: |
+        یکی از رهبران اصلاح‌طلب بازداشت شده. اتهام «تبانی با دشمن».
+        این نشان می‌دهد که حتی اصلاح‌طلبان امن نیستند.
+      en: |
+        A reformist leader has been arrested. Charged with "colluding with
+        the enemy." This shows even reformists aren't safe.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: regime.repression
+          operator: greater_than
+          value: 65
+    priority: 70
+    weight: 0.8
+    once: false
+    cooldown: 12
+    requirements: []
+    decisions:
+      - id: organize_campaign
+        label:
+          fa: کمپین آزادی راه بینداز
+          en: Organize Freedom Campaign
+        description:
+          fa: برای آزادی او فشار بیاور
+          en: Pressure for their release
+        effects:
+          immediate:
+            - type: faction_trust
+              target: reformists
+              value: 15
+            - type: faction_trust
+              target: civil_society
+              value: 10
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 10
+          delayed: []
+        tags: [solidarity, campaign]
+
+      - id: document_case
+        label:
+          fa: پرونده را مستند کن
+          en: Document the Case
+        description:
+          fa: برای نهادهای بین‌المللی
+          en: For international bodies
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 10
+            - type: state_change
+              target: regime.legitimacy
+              value: -3
+          delayed: []
+        tags: [documentation, international]
+    tags: [reformists, repression, human_rights]
+
+  # ================================
+  # ETHNIC FACTION EVENTS
+  # ================================
+
+  - id: kurdish_uprising
+    category: triggered
+    title:
+      fa: قیام کردستان
+      en: Kurdish Uprising
+    description:
+      fa: |
+        پس از کشته شدن چند جوان کرد توسط نیروهای امنیتی، شهرهای
+        کردستان به آشوب کشیده شده. مردم خواهان عدالت هستند.
+      en: |
+        After security forces killed several Kurdish youth, Kurdistan
+        cities have erupted. People demand justice.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: regime.repression
+          operator: greater_than
+          value: 70
+    priority: 75
+    weight: 0.6
+    once: false
+    cooldown: 15
+    requirements: []
+    decisions:
+      - id: express_solidarity
+        label:
+          fa: همبستگی نشان بده
+          en: Express Solidarity
+        description:
+          fa: از مطالبات کردها حمایت کن
+          en: Support Kurdish demands
+        effects:
+          immediate:
+            - type: faction_trust
+              target: kurdish_parties
+              value: 25
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 15
+          delayed: []
+        tags: [solidarity, ethnic_rights]
+
+      - id: connect_movements
+        label:
+          fa: جنبش‌ها را متصل کن
+          en: Connect Movements
+        description:
+          fa: کردها را با جنبش سراسری پیوند بده
+          en: Link Kurds with national movement
+        effects:
+          immediate:
+            - type: faction_trust
+              target: kurdish_parties
+              value: 15
+            - type: resource_change
+              target: influence
+              value: 15
+          delayed: []
+        tags: [coalition, strategic]
+
+      - id: focus_on_center
+        label:
+          fa: روی مرکز تمرکز کن
+          en: Focus on Center
+        description:
+          fa: تهران مهم‌تر است
+          en: Tehran is more important
+        effects:
+          immediate:
+            - type: faction_trust
+              target: kurdish_parties
+              value: -15
+          delayed: []
+        tags: [pragmatic, centralist]
+    tags: [kurdish, uprising, ethnic]
+
+  - id: baluchi_protests
+    category: triggered
+    title:
+      fa: اعتراضات بلوچستان
+      en: Baluchistan Protests
+    description:
+      fa: |
+        پس از ماه‌ها بی‌توجهی به مطالبات بلوچ‌ها، اعتراضات در زاهدان
+        شروع شده. این منطقه همیشه محروم بوده.
+      en: |
+        After months of ignoring Baluch demands, protests have started
+        in Zahedan. This region has always been neglected.
+    triggers:
+      - type: random
+        value: 0.08
+    priority: 65
+    weight: 1.0
+    once: false
+    cooldown: 12
+    requirements: []
+    decisions:
+      - id: amplify_voices
+        label:
+          fa: صدایشان را بلند کن
+          en: Amplify Voices
+        description:
+          fa: مطالبات بلوچ‌ها را به گوش همه برسان
+          en: Make Baluch demands heard by all
+        effects:
+          immediate:
+            - type: faction_trust
+              target: baluchi_movement
+              value: 20
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 5
+          delayed: []
+        tags: [solidarity, ethnic_rights]
+
+      - id: send_resources
+        label:
+          fa: منابع بفرست
+          en: Send Resources
+        description:
+          fa: کمک مالی به فعالان محلی
+          en: Financial help to local activists
+        effects:
+          immediate:
+            - type: resource_change
+              target: money
+              value: -300
+            - type: faction_trust
+              target: baluchi_movement
+              value: 15
+          delayed: []
+        tags: [support, practical]
+    tags: [baluchi, protest, ethnic]
+
+  - id: azeri_language_rights
+    category: triggered
+    title:
+      fa: حقوق زبان ترکی
+      en: Turkish Language Rights
+    description:
+      fa: |
+        فعالان آذربایجانی خواهان آموزش به زبان ترکی در مدارس هستند.
+        این مطالبه ساده، واکنش شدید رژیم را به همراه داشته.
+      en: |
+        Azerbaijani activists demand Turkish language education in schools.
+        This simple demand has prompted a harsh regime response.
+    triggers:
+      - type: random
+        value: 0.1
+    priority: 55
+    weight: 1.0
+    once: false
+    cooldown: 10
+    requirements: []
+    decisions:
+      - id: support_demand
+        label:
+          fa: از مطالبه حمایت کن
+          en: Support Demand
+        description:
+          fa: حقوق زبانی حق همه است
+          en: Language rights are everyone's right
+        effects:
+          immediate:
+            - type: faction_trust
+              target: azeri_movement
+              value: 15
+          delayed: []
+        tags: [solidarity, rights]
+
+      - id: frame_nationally
+        label:
+          fa: در چارچوب ملی قرار بده
+          en: Frame Nationally
+        description:
+          fa: این بخشی از مبارزه برای آزادی همه ایرانیان است
+          en: This is part of the struggle for all Iranians' freedom
+        effects:
+          immediate:
+            - type: faction_trust
+              target: azeri_movement
+              value: 10
+            - type: resource_change
+              target: influence
+              value: 10
+          delayed: []
+        tags: [coalition, framing]
+    tags: [azeri, language, ethnic]
+
+  # ================================
+  # RELIGIOUS EVENTS
+  # ================================
+
+  - id: marjaa_statement
+    category: triggered
+    title:
+      fa: بیانیه مرجع تقلید
+      en: Grand Ayatollah's Statement
+    description:
+      fa: |
+        یکی از مراجع تقلید معتبر بیانیه‌ای صادر کرده که به طور ضمنی
+        از سیاست‌های رژیم انتقاد می‌کند. این نادر است.
+      en: |
+        A respected grand ayatollah has issued a statement that implicitly
+        criticizes regime policies. This is rare.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: regime.legitimacy
+          operator: less_than
+          value: 35
+    priority: 70
+    weight: 0.6
+    once: true
+    requirements: []
+    decisions:
+      - id: spread_statement
+        label:
+          fa: بیانیه را پخش کن
+          en: Spread Statement
+        description:
+          fa: همه باید این را ببینند
+          en: Everyone should see this
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.legitimacy
+              value: -8
+            - type: state_change
+              target: player.position.visibility
+              value: 10
+          delayed: []
+        tags: [media, religious]
+
+      - id: seek_meeting
+        label:
+          fa: درخواست ملاقات کن
+          en: Seek Meeting
+        description:
+          fa: شاید بتوان از این حمایت استفاده کرد
+          en: Maybe this support can be utilized
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 15
+          delayed:
+            - delay: 3
+              probability: 0.4
+              effects:
+                - type: faction_trust
+                  target: hardline_clerics
+                  value: -10
+              narrative:
+                fa: ملاقات جنجالی شد
+                en: Meeting became controversial
+        tags: [diplomatic, religious]
+    tags: [religious, clerical, opportunity]
+
+  - id: seminary_split
+    category: triggered
+    title:
+      fa: شکاف در حوزه
+      en: Seminary Split
+    description:
+      fa: |
+        گروهی از طلاب جوان در قم علنا از ولایت فقیه انتقاد کرده‌اند.
+        این نشان از تغییرات عمیق در نسل جدید روحانیون دارد.
+      en: |
+        A group of young seminary students in Qom have publicly criticized
+        velayat-e faqih. This shows deep changes in the new generation
+        of clerics.
+    triggers:
+      - type: random
+        value: 0.06
+    priority: 60
+    weight: 0.8
+    once: true
+    requirements:
+      - type: stat
+        target: regime.stability
+        operator: less_than
+        value: 50
+    decisions:
+      - id: connect_with_students
+        label:
+          fa: با طلاب ارتباط بگیر
+          en: Connect with Students
+        description:
+          fa: این می‌تواند متحد جدیدی باشد
+          en: This could be a new ally
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 10
+            - type: faction_trust
+              target: hardline_clerics
+              value: -5
+          delayed: []
+        tags: [coalition, religious]
+
+      - id: publicize
+        label:
+          fa: خبر را پخش کن
+          en: Publicize
+        description:
+          fa: مردم باید بدانند حتی روحانیون هم مخالفند
+          en: People should know even clerics disagree
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.legitimacy
+              value: -5
+          delayed: []
+        tags: [media, impactful]
+    tags: [religious, seminary, change]

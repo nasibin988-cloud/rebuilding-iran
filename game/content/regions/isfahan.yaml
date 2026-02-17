@@ -1,0 +1,71 @@
+# Region: Isfahan
+# Historic cultural center and industrial hub
+
+id: isfahan
+
+name:
+  fa: اصفهان
+  en: Isfahan
+
+type: major_city
+
+description:
+  fa: |
+    اصفهان، «نصف جهان» لقب گرفته و یکی از مهم‌ترین شهرهای تاریخی و فرهنگی ایران است.
+    این شهر مرکز صنعت فولاد و نظامی کشور است و طبقه متوسط قوی و سنت‌های فرهنگی
+    غنی دارد.
+  en: |
+    Isfahan, nicknamed "half the world," is one of Iran's most important historical
+    and cultural cities. It is the center of the country's steel and military
+    industry and has a strong middle class and rich cultural traditions.
+
+demographics:
+  population: 5500000
+  ethnicComposition:
+    persian: 90
+    other: 10
+  urbanization: 85
+  religiosity: 65
+  educationLevel: 70
+  youthPercentage: 40
+  unemploymentRate: 15
+
+control:
+  regimeControl: 80
+  oppositionPresence: 35
+  militaryPresence: 75
+  ethnicMovementControl: 0
+  contestedZones: []
+
+conditions:
+  economicHealth: 60
+  infrastructure: 65
+  publicServices: 60
+  environmentalHealth: 35
+  publicSentiment: 45
+
+activity:
+  protestLevel: 35
+  strikeActivity: 40
+  civilSocietyStrength: 50
+  insurgency: 0
+
+keyLocations:
+  - name:
+      fa: میدان نقش جهان
+      en: Naqsh-e Jahan Square
+    significance: cultural_heritage
+  - name:
+      fa: کارخانه ذوب آهن
+      en: Steel Mill
+    significance: industrial_center
+  - name:
+      fa: دانشگاه صنعتی اصفهان
+      en: Isfahan University of Technology
+    significance: education_center
+
+tags:
+  - cultural
+  - industrial
+  - traditional
+  - tourism

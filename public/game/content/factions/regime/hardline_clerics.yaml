@@ -1,0 +1,93 @@
+# Faction: Hardline Clerics
+# The traditional clerical establishment backing the regime
+
+id: hardline_clerics
+
+name:
+  fa: روحانیون اصول‌گرا
+  en: Hardline Clerics
+
+shortName:
+  fa: روحانیون
+  en: Clerics
+
+description:
+  fa: |
+    روحانیون محافظه‌کار و اصول‌گرا که از نظریه ولایت فقیه حمایت می‌کنند.
+    حضور در حوزه‌های علمیه، شورای نگهبان، مجلس خبرگان، و قوه قضائیه.
+  en: |
+    Conservative and principlist clerics who support the velayat-e faqih theory.
+    Present in seminaries, Guardian Council, Assembly of Experts, and judiciary.
+
+category: regime
+subcategory: clerical
+
+power:
+  base: 60
+  military: 5
+  economic: 35
+  religious: 95
+  popular: 15
+
+ideology:
+  economicLeft: 40
+  socialLiberal: 0
+  nationalist: 60
+  religious: 100
+  democratic: 0
+
+interests:
+  survival:
+    - Preserve clerical authority
+    - Maintain religious education system
+    - Protect financial interests (Bonyads)
+  shortTerm:
+    - Block reform legislation
+    - Control succession process
+    - Maintain cultural policies
+  longTerm:
+    - Ensure clerical successor
+    - Preserve Islamic Republic identity
+  redLines:
+    - Separation of religion and state
+    - Loss of vetting power
+    - Prosecution of clerics
+
+leaders:
+  - guardian_council_secretary
+  - judiciary_chief
+
+relationships:
+  - factionId: supreme_leader_office
+    type: ally
+    trust: 80
+    reason:
+      fa: پایگاه ایدئولوژیک مشترک
+      en: Shared ideological base
+  - factionId: irgc
+    type: ally
+    trust: 55
+    reason:
+      fa: منافع مشترک در حفظ نظام
+      en: Shared interest in regime preservation
+  - factionId: reformists
+    type: enemy
+    trust: -55
+    reason:
+      fa: تهدید برای اقتدار دینی
+      en: Threat to religious authority
+
+behavior:
+  aggression: 45
+  cooperation: 50
+  riskTolerance: 30
+  pragmatism: 40
+
+color: "#1a1a1a"
+icon: clerics
+
+tags:
+  - regime
+  - religious
+  - conservative
+  - institutional

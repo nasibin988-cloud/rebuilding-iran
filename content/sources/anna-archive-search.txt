@@ -1,0 +1,782 @@
+The Republic Plato
+The Laws Plato
+The Statesman Plato
+Politics Aristotle
+Nicomachean Ethics Aristotle
+The Athenian Constitution Aristotle
+On the Republic Cicero
+On the Laws Cicero
+On Duties Cicero
+Meditations Marcus Aurelius
+Letters from a Stoic Seneca
+The Histories Polybius
+The City of God Augustine
+Summa Theologica Thomas Aquinas
+Defender of the Peace Marsilius of Padua
+The Prince Machiavelli
+Discourses on Livy Machiavelli
+Utopia Thomas More
+Six Books of the Commonwealth Jean Bodin
+On the Law of War and Peace Hugo Grotius
+Leviathan Thomas Hobbes
+De Cive Thomas Hobbes
+Theological Political Treatise Spinoza
+Political Treatise Spinoza
+Two Treatises of Government John Locke
+A Letter Concerning Toleration John Locke
+Discourses Concerning Government Algernon Sidney
+The Spirit of the Laws Montesquieu
+Persian Letters Montesquieu
+The Social Contract Rousseau
+Discourse on Inequality Rousseau
+Emile Rousseau
+Considerations on the Government of Poland Rousseau
+Philosophical Letters Voltaire
+Political Writings Diderot
+Political Essays David Hume
+The Theory of Moral Sentiments Adam Smith
+The Wealth of Nations Adam Smith
+An Essay on the History of Civil Society Adam Ferguson
+Perpetual Peace Immanuel Kant
+Metaphysics of Morals Kant
+Common Sense Thomas Paine
+Rights of Man Thomas Paine
+The Age of Reason Thomas Paine
+Reflections on the Revolution in France Edmund Burke
+Speech on Conciliation with America Edmund Burke
+A Vindication of the Rights of Woman Mary Wollstonecraft
+A Vindication of the Rights of Men Mary Wollstonecraft
+The Federalist Papers Hamilton Madison Jay
+Political Writings Thomas Jefferson
+Notes on the Debates in the Federal Convention James Madison
+A Defence of the Constitutions John Adams
+Virginia Declaration of Rights George Mason
+Anti Federalist Papers
+The Liberty of the Ancients Compared with that of the Moderns Benjamin Constant
+Principles of Politics Benjamin Constant
+Democracy in America Tocqueville Volume 1
+Democracy in America Tocqueville Volume 2
+The Old Regime and the Revolution Tocqueville
+On Liberty John Stuart Mill
+Considerations on Representative Government John Stuart Mill
+The Subjection of Women John Stuart Mill
+Utilitarianism John Stuart Mill
+Autobiography John Stuart Mill
+Enfranchisement of Women Harriet Taylor Mill
+The Duties of Man Giuseppe Mazzini
+Essays on Freedom and Power Lord Acton
+The English Constitution Walter Bagehot
+Civil Disobedience Thoreau
+Speeches and Writings Abraham Lincoln
+Narrative and Speeches Frederick Douglass
+Economy and Society Max Weber
+Politics as a Vocation Max Weber
+The Protestant Ethic and the Spirit of Capitalism Max Weber
+The Division of Labor in Society Durkheim
+Professional Ethics and Civic Morals Durkheim
+The Philosophy of Money Georg Simmel
+The Rise and Fall of Elites Vilfredo Pareto
+The Ruling Class Gaetano Mosca
+Political Parties Robert Michels
+Capitalism Socialism and Democracy Schumpeter
+The Concept of the Political Carl Schmitt
+Constitutional Theory Carl Schmitt
+Pure Theory of Law Hans Kelsen
+General Theory of Law and State Hans Kelsen
+The Public and Its Problems John Dewey
+Democracy and Education John Dewey
+Public Opinion Walter Lippmann
+The Phantom Public Walter Lippmann
+A Grammar of Politics Harold Laski
+The Open Society and Its Enemies Karl Popper
+The Poverty of Historicism Karl Popper
+The Road to Serfdom Hayek
+The Constitution of Liberty Hayek
+Law Legislation and Liberty Hayek
+The Origins of Totalitarianism Hannah Arendt
+The Human Condition Hannah Arendt
+On Revolution Hannah Arendt
+Eichmann in Jerusalem Hannah Arendt
+Between Past and Future Hannah Arendt
+Four Essays on Liberty Isaiah Berlin
+The Crooked Timber of Humanity Isaiah Berlin
+Russian Thinkers Isaiah Berlin
+Main Currents in Sociological Thought Raymond Aron
+Democracy and Totalitarianism Raymond Aron
+The Rebel Albert Camus
+The Need for Roots Simone Weil
+A Theory of Justice John Rawls
+Political Liberalism John Rawls
+The Law of Peoples John Rawls
+Justice as Fairness A Restatement John Rawls
+Anarchy State and Utopia Robert Nozick
+Spheres of Justice Michael Walzer
+Just and Unjust Wars Michael Walzer
+Obligations Michael Walzer
+Liberalism and the Limits of Justice Michael Sandel
+Democracy's Discontent Michael Sandel
+After Virtue Alasdair MacIntyre
+Sources of the Self Charles Taylor
+Multiculturalism and the Politics of Recognition Charles Taylor
+Development as Freedom Amartya Sen
+The Idea of Justice Amartya Sen
+Identity and Violence Amartya Sen
+Frontiers of Justice Martha Nussbaum
+Creating Capabilities Martha Nussbaum
+Not for Profit Martha Nussbaum
+Republicanism A Theory of Freedom and Government Philip Pettit
+On the People's Terms Philip Pettit
+Liberty Before Liberalism Quentin Skinner
+Visions of Politics Quentin Skinner
+The Structural Transformation of the Public Sphere Habermas
+Between Facts and Norms Habermas
+The Theory of Communicative Action Habermas
+The Struggle for Recognition Axel Honneth
+A Preface to Democratic Theory Robert Dahl
+Who Governs Robert Dahl
+Polyarchy Robert Dahl
+Democracy and Its Critics Robert Dahl
+On Democracy Robert Dahl
+How Democratic Is the American Constitution Robert Dahl
+The Theory of Democracy Revisited Giovanni Sartori
+Comparative Constitutional Engineering Giovanni Sartori
+Participation and Democratic Theory Carole Pateman
+The Sexual Contract Carole Pateman
+Strong Democracy Benjamin Barber
+Democracy and Deliberation James Fishkin
+When the People Speak James Fishkin
+Democracy and Disagreement Gutmann Thompson
+Why Deliberative Democracy Gutmann Thompson
+Deliberative Democracy and Beyond John Dryzek
+The State of Democratic Theory Ian Shapiro
+Democracy's Place Ian Shapiro
+Democracy and the Market Adam Przeworski
+Crises of Democracy Adam Przeworski
+Ulysses and the Sirens Jon Elster
+Ulysses Unbound Jon Elster
+Securities Against Misrule Jon Elster
+Closing the Books Jon Elster
+Designing Democracy Cass Sunstein
+A Constitution of Many Minds Cass Sunstein
+The Partial Constitution Cass Sunstein
+We the People Foundations Bruce Ackerman
+We the People Transformations Bruce Ackerman
+We the People The Civil Rights Revolution Bruce Ackerman
+The Future of Liberal Revolution Bruce Ackerman
+Judicial Review in New Democracies Tom Ginsburg
+How to Save a Constitutional Democracy Ginsburg Huq
+The Endurance of National Constitutions Elkins Ginsburg Melton
+Weak Courts Strong Rights Mark Tushnet
+Advanced Introduction to Comparative Constitutional Law Mark Tushnet
+Taking the Constitution Away from the Courts Mark Tushnet
+Towards Juristocracy Ran Hirschl
+Comparative Matters Ran Hirschl
+Constitutional Theocracy Ran Hirschl
+Constitutional Engagement in a Transnational Era Vicki Jackson
+Comparative Constitutional Law Jackson Tushnet
+The Oxford Handbook of Comparative Constitutional Law Rosenfeld Sajo
+Exploring Federalism Daniel Elazar
+Covenant and Civil Society Daniel Elazar
+Federalism Origin Operation Significance William Riker
+Arguing Comparative Politics Alfred Stepan
+Comparing Federal Systems Ronald Watts
+Comparative Federalism Michael Burgess
+Constitutional Design for Divided Societies Sujit Choudhry
+Patterns of Democracy Arend Lijphart
+Democracies Arend Lijphart
+Democracy in Plural Societies Arend Lijphart
+Ethnic Groups in Conflict Donald Horowitz
+A Democratic South Africa Donald Horowitz
+Constitutional Change and Democracy in Indonesia Donald Horowitz
+Constituting Democracy Heinz Klug
+The Soul of a Nation Hassen Ebrahim
+Constitutional Amendments Richard Albert
+Transitions from Authoritarian Rule Tentative Conclusions O'Donnell Schmitter
+Transitions from Authoritarian Rule O'Donnell Schmitter Whitehead
+Totalitarian and Authoritarian Regimes Juan Linz
+Problems of Democratic Transition and Consolidation Linz Stepan
+The Breakdown of Democratic Regimes Linz Stepan
+The Third Wave Samuel Huntington
+Political Order in Changing Societies Samuel Huntington
+The Spirit of Democracy Larry Diamond
+Ill Winds Larry Diamond
+Developing Democracy Larry Diamond
+Democracy A Reader Diamond Plattner
+The End of History and the Last Man Francis Fukuyama
+The Origins of Political Order Francis Fukuyama
+Political Order and Political Decay Francis Fukuyama
+Transitions to Democracy Dankwart Rustow
+Democracy and Development Adam Przeworski
+Advancing Democracy Abroad Michael McFaul
+Aiding Democracy Abroad Thomas Carothers
+Critical Mission Thomas Carothers
+Capitalism and Democracy in Central and Eastern Europe Ekiert Hanson
+Subversive Institutions Valerie Bunce
+How Democracies Die Levitsky Ziblatt
+Competitive Authoritarianism Levitsky Way
+The People vs Democracy Yascha Mounk
+Cultural Backlash Norris Inglehart
+Nations Under God Anna Grzymala Busse
+The Politics of Authoritarian Rule Milan Svolik
+How Dictatorships Work Geddes Wright Frantz
+Revolution and Dictatorship Levitsky Way
+Twilight of Democracy Anne Applebaum
+Transitional Justice Ruti Teitel
+Unspeakable Truths Priscilla Hayner
+Between Vengeance and Forgiveness Martha Minow
+The Handbook of Reparations Pablo de Greiff
+The Justice Cascade Kathryn Sikkink
+The Pinochet Effect Naomi Roht Arriaza
+No Future Without Forgiveness Desmond Tutu
+Country of My Skull Antjie Krog
+A Country Unmasked Alex Boraine
+Mass Atrocity Collective Memory and the Law Mark Osiel
+Stay the Hand of Vengeance Gary Bass
+Hijacked Justice Jelena Subotic
+The Heritage of Persia Richard Frye
+The Golden Age of Persia Richard Frye
+Ancient Persia Josef Wiesehofer
+History of the Persian Empire A T Olmstead
+From Cyrus to Alexander Pierre Briant
+Sasanian Persia Touraj Daryaee
+The Nativist Prophets of Early Islamic Iran Patricia Crone
+The Venture of Islam Marshall Hodgson
+Studies in Caucasian History Vladimir Minorsky
+Continuity and Change in Medieval Persia Ann Lambton
+Landlord and Peasant in Persia Ann Lambton
+Pivot of the Universe Abbas Amanat
+Iran A Modern History Abbas Amanat
+Qajar Iran and the Rise of Reza Khan Nikki Keddie
+Iran Monarchy Bureaucracy and Reform Shaul Bakhash
+The Qajar Pact Vanessa Martin
+Frontier Fictions Firoozeh Kashani Sabet
+State and Society in Iran Homa Katouzian
+The Iranian Constitutional Revolution 1906 1911 Janet Afary
+Iran's First Revolution Mangol Bayat
+Islam and Modernism Vanessa Martin
+The Persian Revolution of 1905 1909 Edward Browne
+History of the Iranian Constitutional Revolution Ahmad Kasravi
+The Persian Constitutional Revolution and the Clerical Leadership of Khurasani Mehrdad Kia
+Iran Between Two Revolutions Ervand Abrahamian
+The Army and the Creation of the Pahlavi State in Iran Stephanie Cronin
+Iran and the Rise of Reza Shah Cyrus Ghani
+The Political Economy of Modern Iran Homa Katouzian
+Modern Iran Since 1797 Ali Ansari
+The Politics of Nationalism in Modern Iran Ali Ansari
+Modern Iran Roots and Results of Revolution Nikki Keddie
+Religion and Rebellion in Iran Nikki Keddie
+The Eagle and the Lion James Bill
+U.S. Foreign Policy and the Shah Mark Gasiorowski
+Mohammad Mosaddeq and the 1953 Coup in Iran Byrne Gasiorowski
+The Coup Ervand Abrahamian
+Patriot of Persia Christopher de Bellaigue
+Iran and the CIA Darioush Bayandor
+Musaddiq and the Struggle for Power in Iran Homa Katouzian
+Iran The Crisis of Democracy Fakhreddin Azimi
+Labor Unions and Autocracy in Iran Habib Ladjevardi
+Khomeinism Ervand Abrahamian
+A History of Modern Iran Ervand Abrahamian
+Tortured Confessions Ervand Abrahamian
+The Turban for the Crown Said Amir Arjomand
+After Khomeini Said Amir Arjomand
+The Making of Iran's Islamic Revolution Mohsen Milani
+The Reign of the Ayatollahs Shaul Bakhash
+In the Name of God Robin Wright
+The Mantle of the Prophet Roy Mottahedeh
+Revolutionary Iran Michael Axworthy
+A History of Iran Michael Axworthy
+Guardians of the Revolution Ray Takeyh
+Factional Politics in Post Khomeini Iran Mehdi Moslem
+Who Rules Iran Wilfried Buchta
+The Politics of Women's Rights in Iran Arzoo Osanloo
+Islam and Gender Ziba Mir Hosseini
+Theology of Discontent Hamid Dabashi
+Iran A People Interrupted Hamid Dabashi
+Intellectuals and the State in Iran Negin Nabavi
+Making Islam Democratic Asef Bayat
+Life as Politics Asef Bayat
+Street Politics Asef Bayat
+Democracy in Iran Gheissari Nasr
+Iran's Intellectual Revolution Mehran Kamrava
+Intellectual Discourse and the Politics of Modernization Ali Mirsepassi
+God and Juggernaut Farzin Vahdat
+Reading Legitimation Crisis in Tehran Danny Postel
+Passionate Uprisings Pardis Mahdavi
+Secularization of Iran Azadeh Kian Thiebaut
+Iran the Green Movement Hamid Dabashi
+The People Reloaded Hashemi Postel
+Discrimination and Intolerance in Iran's Textbooks Saeed Paivandi
+A Social Revolution Kevan Harris
+The World of Persian Literary Humanism Hamid Dabashi
+Recasting Persian Poetry Ahmad Karimi Hakkak
+A Lonely Woman Forugh Farrokhzad Michael Hillmann
+Veils and Words Farzaneh Milani
+The Politics of Writing in Iran Kamran Talattof
+Nationalizing Iran Afshin Marashi
+No god but God Reza Aslan
+Reading Lolita in Tehran Azar Nafisi
+Persepolis Marjane Satrapi
+The Road to Democracy in Iran Akbar Ganji
+The Ayatollah Begs to Differ Hooman Majd
+Lipstick Jihad Azadeh Moaveni
+The Septembers of Shiraz Dalia Sofer
+Censoring an Iranian Love Story Shahriar Mandanipour
+Shi'ism Heinz Halm
+An Introduction to Shi'i Islam Moojan Momen
+The Shia Revival Vali Nasr
+The Shi'is of Iraq Yitzhak Nakash
+Reaching for Power Yitzhak Nakash
+The Vanished Imam Fouad Ajami
+Modern Islamic Political Thought Hamid Enayat
+Islamic Messianism Abdulaziz Sachedina
+The Just Ruler in Shi'ite Islam Abdulaziz Sachedina
+Islamic Ecumenism in the 20th Century Rainer Brunner
+Islamic Government Ruhollah Khomeini
+Kashf al Asrar Khomeini
+Khomeini Life of the Ayatollah Baqer Moin
+Creating an Islamic State Vanessa Martin
+Islam and Revolution Hamid Algar
+Theories of Government in Shi'ite Fiqh Mohsen Kadivar
+Reason Freedom and Democracy in Islam Abdolkarim Soroush
+On the Rule of Law Brian Tamanaha
+Law as a Means to an End Brian Tamanaha
+The Rule of Law Tom Bingham
+Legalism Judith Shklar
+Philip Selznick Ideals in the World Martin Krygier
+The Rule of Law and the Measure of Property Jeremy Waldron
+Law and Disagreement Jeremy Waldron
+Toward a General Theory of Judicial Independence Peter Russell
+Courts Under Constraints Gretchen Helmke
+Courts in Latin America Helmke Rios Figueroa
+The Rule of Law in Nascent Democracies Rebecca Bill Chavez
+High Courts and Economic Governance in Argentina and Brazil Diana Kapiszewski
+Judges Beyond Politics in Democracy and Dictatorship Lisa Hilbink
+The Struggle for Constitutional Power Tamir Moustafa
+Corruption and Government Susan Rose Ackerman
+The Quality of Government Bo Rothstein
+Making Sense of Corruption Bo Rothstein
+The Quest for Good Governance Alina Mungiu Pippidi
+A Tale of Two Villages Alina Mungiu Pippidi
+Syndromes of Corruption Michael Johnston
+Routledge Handbook of Political Corruption Paul Heywood
+Electoral Systems and Party Systems Arend Lijphart
+Making Votes Count Gary Cox
+The Politics of Electoral Systems Gallagher Mitchell
+Electoral Engineering Pippa Norris
+Electoral Systems A Comparative Introduction David Farrell
+Handbook of Electoral System Choice Josep Colomer
+Political Institutions Josep Colomer
+Seats and Votes Taagepera Shugart
+Mixed Member Electoral Systems Shugart Wattenberg
+Parties and Party Systems Giovanni Sartori
+Political Parties Maurice Duverger
+How Parties Organize Katz Mair
+Democracy and the Cartelization of Political Parties Katz Mair
+The Transformation of European Social Democracy Herbert Kitschelt
+Post Communist Party Systems Herbert Kitschelt
+Political Parties Organization and Power Angelo Panebianco
+Party Systems and Voter Alignments Lipset Rokkan
+Ruling the Void Peter Mair
+Parties Without Partisans Dalton Wattenberg
+Populist Radical Right Parties in Europe Cas Mudde
+Populism A Very Short Introduction Mudde Kaltwasser
+What Is Populism Jan Werner Muller
+Me the People Nadia Urbinati
+The People Margaret Canovan
+On Populist Reason Ernesto Laclau
+Making Democracy Work Robert Putnam
+Bowling Alone Robert Putnam
+American Grace Putnam Campbell
+Diminished Democracy Theda Skocpol
+Civic Engagement in American Democracy Skocpol Fiorina
+Voice and Equality Verba Schlozman Brady
+Conditions of Liberty Ernest Gellner
+Toward a Global Civil Society Michael Walzer
+Civil Society and Political Theory Cohen Arato
+Civil Society Old Images New Visions John Keane
+Civil Society and the State Chambers Kopstein
+Civil Society Before Democracy Bermeo Nord
+Power in Movement Sidney Tarrow
+Social Movements 1768 2004 Charles Tilly
+From Mobilization to Revolution Charles Tilly
+Contentious Politics Tilly Tarrow
+Dynamics of Contention McAdam Tarrow Tilly
+Social Movements An Introduction della Porta Diani
+Clandestine Political Violence Donatella della Porta
+States and Social Revolutions Theda Skocpol
+Revolution and Rebellion in the Early Modern World Jack Goldstone
+Why Civil Resistance Works Chenoweth Stephan
+The Politics of Nonviolent Action Gene Sharp
+From Dictatorship to Democracy Gene Sharp
+Waging Nonviolent Struggle Gene Sharp
+A Force More Powerful Ackerman DuVall
+Civil Resistance and Power Politics Roberts Garton Ash
+Nonviolent Revolutions Sharon Nepstad
+Unarmed Insurrections Kurt Schock
+Blueprint for Revolution Srdja Popovic
+The Wealth of Networks Yochai Benkler
+Twitter and Tear Gas Zeynep Tufekci
+Here Comes Everybody Clay Shirky
+Networks of Outrage and Hope Manuel Castells
+The Net Delusion Evgeny Morozov
+The Digital Origins of Dictatorship and Democracy Philip Howard
+Consent of the Networked Rebecca MacKinnon
+One Economics Many Recipes Dani Rodrik
+The Globalization Paradox Dani Rodrik
+Economics Rules Dani Rodrik
+Why Nations Fail Acemoglu Robinson
+The Narrow Corridor Acemoglu Robinson
+Economic Origins of Dictatorship and Democracy Acemoglu Robinson
+The Logic of Collective Action Mancur Olson
+Power and Prosperity Mancur Olson
+The Rise and Decline of Nations Mancur Olson
+Institutions Institutional Change and Economic Performance Douglass North
+Violence and Social Orders Douglass North
+The Elusive Quest for Growth William Easterly
+The White Man's Burden William Easterly
+The Tyranny of Experts William Easterly
+Kicking Away the Ladder Ha Joon Chang
+Bad Samaritans Ha Joon Chang
+23 Things They Don't Tell You About Capitalism Ha Joon Chang
+Globalization and Its Discontents Joseph Stiglitz
+Making Globalization Work Joseph Stiglitz
+How Capitalism Was Built Anders Aslund
+Building Capitalism Anders Aslund
+From Shock to Therapy Grzegorz Kolodko
+The Road to a Free Economy Janos Kornai
+The Socialist System Janos Kornai
+Varieties of Capitalism Hall Soskice
+Varieties of Liberalization Kathleen Thelen
+The Political Economy of Democratic Transitions Haggard Kaufman
+The Oil Curse Michael Ross
+The Paradox of Plenty Terry Lynn Karl
+The Rentier State Beblawi Luciani
+The Plundered Planet Paul Collier
+The Bottom Billion Paul Collier
+Escaping the Resource Curse Humphreys Sachs Stiglitz
+Crude Democracy Thad Dunning
+Universal Human Rights in Theory and Practice Jack Donnelly
+Human Rights as Politics and Idolatry Michael Ignatieff
+The Last Utopia Samuel Moyn
+Not Enough Samuel Moyn
+Inventing Human Rights Lynn Hunt
+The Idea of Human Rights Charles Beitz
+On Human Rights James Griffin
+The End of Human Rights Costas Douzinas
+International Human Rights in Context Steiner Alston Goodman
+Advanced Introduction to International Human Rights Law Dinah Shelton
+The Internationalists Hathaway Shapiro
+Mobilizing for Human Rights Beth Simmons
+Making Human Rights a Reality Emilie Hafner Burton
+Evidence for Hope Kathryn Sikkink
+Activists Beyond Borders Keck Sikkink
+The Power of Human Rights Risse Ropp Sikkink
+The Persistent Power of Human Rights Risse Ropp Sikkink
+After Victory G John Ikenberry
+Liberal Leviathan G John Ikenberry
+After Hegemony Robert Keohane
+Stalled Democracy Eva Bellin
+The State and Social Transformation in Tunisia and Libya Lisa Anderson
+State Power and Politics in the Making of the Modern Middle East Roger Owen
+The Arab Uprisings James Gelvin
+The Arab Uprising Marc Lynch
+The Arab Spring Brownlee Masoud Reynolds
+Temptations of Power Shadi Hamid
+Islamic Exceptionalism Shadi Hamid
+Constitutions in a Nonconstitutional World Nathan Brown
+When Victory Is Not an Option Nathan Brown
+The Fall and Rise of the Islamic State Noah Feldman
+Freedom's Unsteady March Tamara Cofman Wittes
+Beyond the Facade Ottaway Choucair Vizoso
+Religion and Social Change in Modern Turkey Serif Mardin
+Turkey A Modern History Erik Zurcher
+Turkey What Everyone Needs to Know Andrew Finkel
+Muslim Nationalism and the New Turks Jenny White
+Islamic Political Identity in Turkey M Hakan Yavuz
+The New Turkey and Its Discontents Cengiz Candar
+The Magic Lantern Timothy Garton Ash
+The Polish Revolution Solidarity Timothy Garton Ash
+The File Timothy Garton Ash
+History of the Present Timothy Garton Ash
+Postwar Tony Judt
+After Europe Ivan Krastev
+The Light That Failed Krastev Holmes
+Rebellious Civil Society Ekiert Kubik
+The Other Europe Jacques Rupnik
+Fantasies of Salvation Vladimir Tismaneanu
+Reinventing Politics Vladimir Tismaneanu
+Europe Undivided Milada Vachudova
+The Haunted Land Tina Rosenberg
+A Carnival of Revolution Padraig Kenney
+Letters from Prison Adam Michnik
+The Power of the Powerless Vaclav Havel
+Living in Truth Vaclav Havel
+Summer Meditations Vaclav Havel
+The Common Good Bronislaw Geremek
+The Triumph of Democracy in Spain Paul Preston
+Franco A Biography Paul Preston
+Democracy Without Justice in Spain Omar Encarnacion
+Spanish Politics Omar Encarnacion
+Democratic Practice Robert Fishman
+Dealing with the Legacy of Authoritarianism Antonio Costa Pinto
+The Making of Portuguese Democracy Kenneth Maxwell
+The Third Wave of Democratization in Latin America Hagopian Mainwaring
+Building Democratic Institutions Mainwaring Scully
+Democracies and Dictatorships in Latin America Mainwaring Perez Linan
+The Politics of Market Reform in Fragile Democracies Kurt Weyland
+The Resurgence of the Latin American Left Levitsky Roberts
+Utopia Unarmed Jorge Castaneda
+The Pinochet Regime Carlos Huneeus
+A Nation of Enemies Constable Valenzuela
+Authoritarian Legacies and Democracy in Latin America Hite Cesarini
+Post Transitional Justice Cath Collins
+The Politics of Democratization in Korea Sunhyuk Kim
+Ethnic Nationalism in Korea Gi Wook Shin
+Korea's Place in the Sun Bruce Cumings
+Opposing Suharto Edward Aspinall
+Military Politics Islam and the State in Indonesia Marcus Mietzner
+Ordering Power Dan Slater
+Politics in Southeast Asia William Case
+How East Asians View Democracy Yun han Chu
+Facing the Perils of Presidentialism Fukuyama Dressel Chang
+Economic Crises and the Breakdown of Authoritarian Regimes Thomas Pepinsky
+Protest and Possibilities Meredith Weiss
+China's Transition Andrew Nathan
+China's Trapped Transition Minxin Pei
+Challenging the Mandate of Heaven Elizabeth Perry
+A Nation State by Construction Suisheng Zhao
+When Things Fell Apart Robert Bates
+Markets and States in Tropical Africa Robert Bates
+Democratic Experiments in Africa Bratton van de Walle
+Institutions and Ethnic Politics in Africa Daniel Posner
+The African Colonial State in Comparative Perspective Crawford Young
+Citizen and Subject Mahmood Mamdani
+Africa Works Chabal Daloz
+Democracy and Elections in Africa Staffan Lindberg
+Democracy in Africa Nic Cheeseman
+The Fate of Africa's Democratic Experiments Villalon VonDoepp
+Democratic Transitions Lust Waldner
+Political Ethics and Public Office Dennis Thompson
+Restoring Responsibility Dennis Thompson
+Justice Is Conflict Stuart Hampshire
+Equality and Partiality Thomas Nagel
+In the Beginning Was the Deed Bernard Williams
+Philosophy and Real Politics Raymond Geuss
+After Politics Glen Newey
+The Powers to Lead Joseph Nye
+Presidential Leadership and the Creation of the American Era Joseph Nye
+The Years of Lyndon Johnson Robert Caro
+Team of Rivals Doris Kearns Goodwin
+Leadership in Turbulent Times Doris Kearns Goodwin
+Kissinger 1973 the Crucial Year Alistair Horne
+Diplomacy Henry Kissinger
+World Order Henry Kissinger
+An Ethic for Enemies Donald Shriver
+Political Forgiveness P E Digeser
+Political Reconciliation Andrew Schaap
+Forgiveness and Revenge Trudy Govier
+Moral Repair Margaret Urban Walker
+Bureaucracy James Q Wilson
+Street Level Bureaucracy Michael Lipsky
+Governing the Commons Elinor Ostrom
+Understanding Institutional Diversity Elinor Ostrom
+Seeing Like a State James Scott
+The Art of Not Being Governed James Scott
+Against the Grain James Scott
+State Building Francis Fukuyama
+Building State Capability Pritchett Woolcock Andrews
+Going Local Merilee Grindle
+A Practical Guide for Policy Analysis Bardach Patashnik
+Policy Paradox Deborah Stone
+Agendas Alternatives and Public Policies John Kingdon
+Theories of the Policy Process Sabatier Weible
+Advice and Consent Peter deLeon
+Reframing Public Policy Frank Fischer
+Security Sector Reform in Transforming Societies Timothy Edmunds
+Security Sector Reform and Post Conflict Peacebuilding Schnabel Ehrhart
+Civil Military Relations in Latin America David Pion Berlin
+The Man on Horseback Samuel Finer
+Soldiers in Politics Eric Nordlinger
+Imagined Communities Benedict Anderson
+Nations and Nationalism Ernest Gellner
+Nations and Nationalism Since 1780 Eric Hobsbawm
+The Invention of Tradition Hobsbawm Ranger
+The Ethnic Origins of Nations Anthony Smith
+National Identity Anthony Smith
+Nationalism Reframed Rogers Brubaker
+Ethnicity Without Groups Rogers Brubaker
+Nationalism Five Roads to Modernity Liah Greenfeld
+Banal Nationalism Michael Billig
+Why Men Rebel Ted Gurr
+Peoples Versus States Ted Gurr
+Ethnicity Insurgency and Civil War Fearon Laitin
+Modern Hatreds Stuart Kaufman
+How to Get Out of Iraq with Integrity Brendan O'Leary
+The Northern Ireland Conflict McGarry O'Leary
+The Politics of Accommodation Arend Lijphart
+Multicultural Citizenship Will Kymlicka
+Multicultural Odysseys Will Kymlicka
+Citizenship in Diverse Societies Kymlicka Norman
+The Multiculturalism of Fear Jacob Levy
+The Liberal Archipelago Chandran Kukathas
+The Anarchical Society Hedley Bull
+War and Change in World Politics Robert Gilpin
+The Tragedy of Great Power Politics John Mearsheimer
+Theory of International Politics Kenneth Waltz
+Social Theory of International Politics Alexander Wendt
+National Interests in International Society Martha Finnemore
+Dialogues in Arab Politics Michael Barnett
+Grasping the Democratic Peace Bruce Russett
+Ways of War and Peace Michael Doyle
+Liberal Peace Liberal War John Owen
+The Choice for Europe Andrew Moravcsik
+Democracy from Above Jon Pevehouse
+Humanitarian Intervention Fernando Teson
+Saving Strangers Nicholas Wheeler
+Sovereignty Organized Hypocrisy Stephen Krasner
+At War's End Roland Paris
+The Beginner's Guide to Nation Building James Dobbins
+The World's Religious Systems and Democracy Alfred Stepan
+Sacred and Secular Norris Inglehart
+Public Religions in the Modern World Jose Casanova
+A Secular Age Charles Taylor
+Secularism and State Policies Toward Religion Ahmet Kuru
+Political Secularism Religion and the State Jonathan Fox
+Islam and Democracy Esposito Voll
+Islam and the Challenge of Democracy Khaled Abou El Fadl
+After Jihad Noah Feldman
+The Awakening of Muslim Democracy Jocelyne Cesari
+Islam and the Cultural Accommodation of Social Change Bassam Tibi
+Islam the West and the Challenges of Modernity Tariq Ramadan
+Globalized Islam Olivier Roy
+The Failure of Political Islam Olivier Roy
+Jihad The Trail of Political Islam Gilles Kepel
+Democratic Education Amy Gutmann
+Creating Citizens Eamonn Callan
+Liberal Purposes William Galston
+Diversity and Distrust Stephen Macedo
+On Education Harry Brighouse
+No Citizen Left Behind Meira Levinson
+The Political Character of Adolescence Jennings Niemi
+The Good Citizen Russell Dalton
+Hearing the Other Side Diana Mutz
+In Your Face Politics Diana Mutz
+Engendering Democracy Anne Phillips
+The Politics of Presence Anne Phillips
+Sex and the State Mala Htun
+The Logics of Gender Justice Htun Weldon
+Women Politics and Power Paxton Hughes
+Rising Tide Norris Inglehart
+Women Quotas and Politics Drude Dahlerup
+Political Power and Women's Representation in Latin America Leslie Schwindt Bayer
+Modernizing Women Valentine Moghadam
+Globalization and Social Movements Valentine Moghadam
+Women and the Political Process in Twentieth Century Iran Parvin Paidar
+Women and Gender in Contemporary Iran Nayereh Tohidi
+Women and Politics in Iran Hamideh Sedghi
+Wiki Government Beth Simone Noveck
+Smart Citizens Smarter State Beth Simone Noveck
+The Responsive City Goldsmith Crawford
+Republic.com 2.0 Cass Sunstein
+#Republic Cass Sunstein
+Surveillance Society David Lyon
+Data and Goliath Bruce Schneier
+The Age of Surveillance Capitalism Shoshana Zuboff
+Siyasatnama Nizam al Mulk
+Qabusnama Kai Kaus
+Nasihat al Muluk Ghazali
+Gulistan Saadi
+Bustan Saadi
+Collected Works Mirza Malkam Khan
+Maktubat Akhundzadeh
+Three Letters Mirza Aqa Khan Kermani
+Tarikh e Mashruteh ye Iran Ahmad Kasravi
+Gharbzadegi Jalal Al e Ahmad
+Collected Works Ali Shariati
+Islamology Ali Shariati
+Collected Works Mehdi Bazargan
+Qabd va Bast e Te'orik e Shari'at Abdolkarim Soroush
+Nazariyyeh haye Dolat dar Fiqh e Shi'i Mohsen Kadivar
+Manifest e Jomhuri khahi Akbar Ganji
+Eslahat e Dini Hashem Aghajari
+Shahnameh Ferdowsi
+Divan Hafez
+Masnavi Rumi
+Collected Poetry Ahmad Shamlu
+Collected Poetry Forough Farrokhzad
+Buf e Kur Sadegh Hedayat
+Haji Agha Sadegh Hedayat
+Magna Carta 1215
+English Bill of Rights 1689
+United States Constitution 1787
+United States Bill of Rights 1791
+French Declaration of the Rights of Man and Citizen 1789
+French Constitution of 1791
+Constitution of Cadiz 1812
+Belgian Constitution 1831
+German Basic Law 1949
+Constitution of the Fifth French Republic 1958
+South African Constitution 1996
+Spanish Constitution 1978
+Polish Constitution 1997
+Indian Constitution 1950
+Iranian Constitutional Laws 1906 1907
+Supplementary Fundamental Laws Iran 1907
+Constitution of the Islamic Republic of Iran 1979
+Universal Declaration of Human Rights 1948
+International Covenant on Civil and Political Rights 1966
+International Covenant on Economic Social and Cultural Rights 1966
+European Convention on Human Rights 1950
+American Convention on Human Rights 1969
+African Charter on Human and Peoples Rights 1981
+Cairo Declaration on Human Rights in Islam 1990
+Convention on the Elimination of All Forms of Discrimination Against Women 1979
+Master of the Senate Robert Caro
+Washington A Life Ron Chernow
+Hamilton Ron Chernow
+Benjamin Franklin Walter Isaacson
+Thomas Jefferson Jon Meacham
+Peter the Great Robert Massie
+Napoleon A Life Adam Zamoyski
+Hitler Ian Kershaw
+Stalin Stephen Kotkin
+The Sword of Persia Michael Axworthy
+The Shah Abbas Milani
+Long Walk to Freedom Nelson Mandela
+A Way of Hope Lech Walesa
+The Democracy Sourcebook Dahl Shapiro Cheibub
+The Global Resurgence of Democracy Diamond Plattner
+Democratization and Authoritarianism in the Arab World Diamond Plattner
+Democracy's Edges Ian Shapiro
+Transitions from Authoritarian Rule Prospects for Democracy Schmitter O'Donnell
+The Oxford Handbook of Comparative Politics Boix Stokes
+A Companion to Contemporary Political Philosophy Goodin Pettit
+The Age of Revolution Eric Hobsbawm
+The Age of Capital Eric Hobsbawm
+The Age of Empire Eric Hobsbawm
+The Age of Extremes Eric Hobsbawm
+Paris 1919 Margaret MacMillan
+Dark Continent Mark Mazower
+Governing the World Mark Mazower
+The Cold War Odd Arne Westad
+The Cold War A New History John Lewis Gaddis
+The Righteous Mind Jonathan Haidt
+Thinking Fast and Slow Daniel Kahneman
+The Lucifer Effect Philip Zimbardo
+Obedience to Authority Stanley Milgram
+The Symbolic Uses of Politics Murray Edelman
+Political Language Murray Edelman
+Moral Politics George Lakoff
+Don't Think of an Elephant George Lakoff
+Eloquence in an Electronic Age Kathleen Hall Jamieson
+The Death and Life of Great American Cities Jane Jacobs
+The Power Broker Robert Caro
+Social Justice and the City David Harvey
+The Climate Casino William Nordhaus
+Merchants of Doubt Oreskes Conway
+The Future of Freedom Fareed Zakaria
+The Post American World Fareed Zakaria
+On Tyranny Timothy Snyder
+Bloodlands Timothy Snyder
+The Road to Unfreedom Timothy Snyder
+The Future Is History Masha Gessen

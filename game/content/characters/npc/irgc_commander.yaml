@@ -1,0 +1,94 @@
+# NPC Character: IRGC Commander
+# A powerful military figure who could play kingmaker in a succession crisis
+
+id: irgc_commander
+
+name:
+  fa: سرلشکر حسین سلامی
+  en: Major General Hossein Salami
+
+title:
+  fa: فرمانده کل سپاه پاسداران
+  en: Commander-in-Chief of the IRGC
+
+portrait: irgc_commander.png
+
+role: military_leader
+
+biography:
+  fa: |
+    فرمانده کل سپاه پاسداران انقلاب اسلامی. یک نظامی کهنه‌کار که در
+    جنگ ایران و عراق جنگید و از طریق سپاه به قدرت رسید. کنترل‌کننده
+    یکی از قوی‌ترین نیروهای نظامی منطقه و امپراتوری اقتصادی گسترده.
+  en: |
+    Commander-in-Chief of the Islamic Revolutionary Guard Corps. A veteran
+    military man who fought in the Iran-Iraq War and rose through the IRGC
+    ranks. Controller of one of the most powerful military forces in the
+    region and a vast economic empire.
+
+personality:
+  traits:
+    - disciplined
+    - loyal
+    - ambitious
+    - pragmatic
+    - hardline
+  beliefs:
+    economicLeft: 30
+    socialLiberal: 5
+    nationalist: 90
+    religious: 70
+    democratic: 0
+
+relationships:
+  - characterId: khamenei
+    type: political
+    trust: 80
+    description:
+      fa: وفادار به رهبر
+      en: Loyal to the Leader
+  - characterId: mojtaba_khamenei
+    type: political
+    trust: 65
+    description:
+      fa: رابطه تاکتیکی
+      en: Tactical relationship
+
+status:
+  health: 75
+  influence: 85
+  visibility: medium
+  security: maximum
+
+goals:
+  - preserve_irgc_power
+  - expand_economic_control
+  - maintain_regional_influence
+  - prevent_reform
+
+fears:
+  - democratic_transition
+  - international_isolation
+  - internal_division
+  - economic_collapse
+
+triggers:
+  - condition:
+      type: stat
+      path: regime.stability
+      operator: lessThan
+      value: 25
+    response: military_intervention
+  - condition:
+      type: flag
+      flag: irgc_threatened
+      operator: equals
+      value: true
+    response: defensive_measures
+
+tags:
+  - npc
+  - regime
+  - military
+  - irgc
+  - key_figure

@@ -1,0 +1,72 @@
+# NPC Character: Bazaar Guild Leader
+# Head of Tehran's merchant guilds
+
+id: bazaar_guild_leader
+
+name:
+  fa: حاج محمدرضا بهشتی
+  en: Haj Mohammadreza Beheshti
+
+title:
+  fa: رئیس اتحادیه بازاریان تهران
+  en: Head of Tehran Merchants' Guild
+
+portrait: bazaar_guild_leader.png
+
+role: economic_leader
+
+biography:
+  fa: |
+    رئیس اتحادیه بازاریان تهران و چهره شناخته‌شده در محافل اقتصادی سنتی.
+    ارتباطات گسترده با روحانیون و حکومت دارد. نماینده منافع طبقه
+    تجار سنتی که نقش مهمی در اقتصاد ایران دارند.
+  en: |
+    Head of Tehran Merchants' Guild and a known figure in traditional economic
+    circles. Has extensive connections with clergy and government. Represents
+    the interests of the traditional merchant class who play an important role
+    in Iran's economy.
+
+personality:
+  traits:
+    - pragmatic
+    - traditional
+    - wealthy
+    - connected
+    - cautious
+  beliefs:
+    economicLeft: 20
+    socialLiberal: 30
+    nationalist: 70
+    religious: 65
+    democratic: 25
+
+relationships:
+  - characterId: ahmad_jannati
+    type: political
+    trust: 55
+    description:
+      fa: ارتباط با روحانیون
+      en: Connection with clergy
+
+status:
+  health: 65
+  influence: 55
+  visibility: medium
+  security: medium
+
+goals:
+  - protect_bazaar_interests
+  - reduce_government_interference
+  - economic_stability
+
+fears:
+  - economic_collapse
+  - irgc_competition
+  - nationalization
+
+tags:
+  - npc
+  - society
+  - economic
+  - bazaar
+  - traditional

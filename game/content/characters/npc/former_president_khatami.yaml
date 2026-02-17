@@ -1,0 +1,77 @@
+# NPC Character: Mohammad Khatami
+# Former reformist president
+
+id: former_president_khatami
+
+name:
+  fa: سید محمد خاتمی
+  en: Seyyed Mohammad Khatami
+
+title:
+  fa: رئیس‌جمهور سابق
+  en: Former President
+
+portrait: khatami.png
+
+role: reformist_elder
+
+biography:
+  fa: |
+    رئیس‌جمهور اصلاح‌طلب ایران از ۱۳۷۶ تا ۱۳۸۴. دوران ریاست‌جمهوری او
+    با گشایش سیاسی و امید به اصلاحات همراه بود. اکنون تحت محدودیت
+    رسانه‌ای است اما همچنان نفوذ دارد.
+  en: |
+    Reformist President of Iran from 1997 to 2005. His presidency was marked
+    by political opening and hope for reforms. Now under media ban but still
+    maintains influence.
+
+personality:
+  traits:
+    - intellectual
+    - moderate
+    - philosophical
+    - cautious
+    - respected
+  beliefs:
+    economicLeft: 50
+    socialLiberal: 70
+    nationalist: 60
+    religious: 65
+    democratic: 75
+
+relationships:
+  - characterId: mir_hossein_mousavi
+    type: ally
+    trust: 75
+    description:
+      fa: حمایت از جنبش سبز
+      en: Support for Green Movement
+  - characterId: khamenei
+    type: rival
+    trust: -40
+    description:
+      fa: رابطه پرتنش
+      en: Tense relationship
+
+status:
+  health: 55
+  influence: 55
+  visibility: restricted
+  security: medium
+
+goals:
+  - gradual_reform
+  - dialogue_with_regime
+  - protect_civil_society
+
+fears:
+  - irrelevance
+  - arrest
+  - reform_failure
+
+tags:
+  - npc
+  - opposition
+  - reformist
+  - former_president
+  - intellectual

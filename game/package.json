@@ -1,0 +1,31 @@
+{
+  "name": "iran-14xx",
+  "version": "1.0.0",
+  "description": "IRAN 14XX - Political Simulation Game",
+  "private": true,
+  "main": "index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint . --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "yaml": "^2.3.4",
+    "zustand": "^4.5.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "typescript": "^5.3.0"
+  },
+  "keywords": [
+    "iran",
+    "political-simulation",
+    "game",
+    "strategy"
+  ],
+  "author": "Rebuilding Iran Project",
+  "license": "MIT"
+}

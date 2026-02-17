@@ -1,0 +1,636 @@
+# Triggered Events: Protests and Social Movements
+
+events:
+  # ================================
+  # STREET PROTESTS
+  # ================================
+
+  - id: spark_protest
+    category: triggered
+    title:
+      fa: جرقه اعتراض
+      en: Spark of Protest
+    description:
+      fa: |
+        یک ویدیو از خشونت پلیس در شبکه‌های اجتماعی پخش شده. مردم خشمگین
+        به خیابان‌ها می‌ریزند. این می‌تواند آغاز چیزی بزرگ‌تر باشد.
+      en: |
+        A video of police violence has gone viral on social media. Angry
+        citizens are pouring into the streets. This could be the start of
+        something bigger.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: regime.legitimacy
+          operator: less_than
+          value: 40
+    priority: 80
+    weight: 1.0
+    once: false
+    cooldown: 5
+    requirements:
+      - type: stat
+        target: player.position.networkSize
+        operator: greater_than
+        value: 50
+    decisions:
+      - id: join_protests
+        label:
+          fa: به اعتراضات بپیوند
+          en: Join Protests
+        description:
+          fa: حضور فیزیکی در خیابان
+          en: Physical presence on the street
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: 20
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 15
+            - type: faction_trust
+              target: students
+              value: 15
+          delayed:
+            - delay: 1
+              probability: 0.2
+              effects:
+                - type: state_change
+                  target: player.resources.freedom
+                  value: -50
+              narrative:
+                fa: بازداشت موقت
+                en: Temporary detention
+        tags: [risky, solidarity]
+
+      - id: coordinate_from_behind
+        label:
+          fa: از پشت صحنه هماهنگ کن
+          en: Coordinate from Behind
+        description:
+          fa: سازماندهی بدون حضور مستقیم
+          en: Organize without direct presence
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 10
+            - type: state_change
+              target: player.position.networkSize
+              value: 5
+          delayed: []
+        tags: [strategic, safe]
+
+      - id: document_and_spread
+        label:
+          fa: مستندسازی و انتشار
+          en: Document and Spread
+        description:
+          fa: تصاویر و خبرها را به دنیا برسان
+          en: Get images and news to the world
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 10
+            - type: state_change
+              target: regime.legitimacy
+              value: -3
+          delayed: []
+        tags: [media, international]
+
+  - id: protest_escalation
+    category: triggered
+    title:
+      fa: تشدید اعتراضات
+      en: Protest Escalation
+    description:
+      fa: |
+        اعتراضات گسترش یافته. شعارها از مطالبات اقتصادی به مطالبات سیاسی
+        تغییر کرده. مردم می‌گویند «مرگ بر دیکتاتور».
+
+        این لحظه‌ای حساس است.
+      en: |
+        Protests have spread. Slogans have shifted from economic demands
+        to political demands. People are chanting "Death to the dictator."
+
+        This is a critical moment.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: regime.stability
+          operator: less_than
+          value: 50
+    priority: 85
+    weight: 1.0
+    once: false
+    cooldown: 8
+    requirements:
+      - type: flag
+        target: recent_protests
+        value: true
+    decisions:
+      - id: push_for_revolution
+        label:
+          fa: به سمت انقلاب فشار بیاور
+          en: Push for Revolution
+        description:
+          fa: وقت آن رسیده که رژیم سقوط کند
+          en: Time for the regime to fall
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.stability
+              value: -10
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 30
+            - type: state_change
+              target: player.position.visibility
+              value: 25
+          delayed:
+            - delay: 2
+              probability: 0.4
+              effects:
+                - type: state_change
+                  target: regime.repression
+                  value: 20
+              narrative:
+                fa: رژیم واکنش نشان می‌دهد
+                en: Regime responds
+        tags: [revolutionary, dangerous]
+
+      - id: demand_reforms
+        label:
+          fa: خواستار اصلاحات شو
+          en: Demand Reforms
+        description:
+          fa: فشار برای تغییر در چارچوب نظام
+          en: Pressure for change within the system
+        effects:
+          immediate:
+            - type: faction_trust
+              target: reformists
+              value: 15
+            - type: state_change
+              target: regime.stability
+              value: -3
+          delayed: []
+        tags: [moderate, reform]
+
+      - id: call_for_calm
+        label:
+          fa: درخواست آرامش کن
+          en: Call for Calm
+        description:
+          fa: از خشونت جلوگیری کن
+          en: Prevent violence
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: -10
+            - type: faction_trust
+              target: students
+              value: -10
+          delayed: []
+        tags: [cautious, unpopular]
+    tags: [protest, critical, turning_point]
+
+  - id: women_hijab_protest
+    category: triggered
+    title:
+      fa: اعتراض زنان به حجاب
+      en: Women's Hijab Protest
+    description:
+      fa: |
+        صدها زن در میدان اصلی شهر حجاب‌هایشان را برداشته‌اند.
+        این اقدام نمادین موجی از حمایت و همچنین واکنش شدید
+        ایجاد کرده.
+      en: |
+        Hundreds of women have removed their hijabs in the main city square.
+        This symbolic act has created a wave of support and also severe
+        backlash.
+    triggers:
+      - type: random
+        value: 0.12
+    priority: 75
+    weight: 1.0
+    once: false
+    cooldown: 10
+    requirements:
+      - type: stat
+        target: regime.legitimacy
+        operator: less_than
+        value: 50
+    decisions:
+      - id: support_women
+        label:
+          fa: از زنان حمایت کن
+          en: Support Women
+        description:
+          fa: علنا از این حرکت دفاع کن
+          en: Publicly defend this action
+        effects:
+          immediate:
+            - type: faction_trust
+              target: women_movement
+              value: 25
+            - type: state_change
+              target: regime.legitimacy
+              value: -5
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 15
+          delayed: []
+        tags: [solidarity, progressive]
+
+      - id: organize_support_network
+        label:
+          fa: شبکه حمایت بساز
+          en: Build Support Network
+        description:
+          fa: کمک قانونی و امنیتی برای زنان دستگیر شده
+          en: Legal and safety help for arrested women
+        effects:
+          immediate:
+            - type: resource_change
+              target: money
+              value: -300
+            - type: faction_trust
+              target: women_movement
+              value: 15
+            - type: faction_trust
+              target: civil_society
+              value: 10
+          delayed: []
+        tags: [humanitarian, organizing]
+
+      - id: stay_silent
+        label:
+          fa: سکوت کن
+          en: Stay Silent
+        description:
+          fa: این مبارزه تو نیست
+          en: This isn't your fight
+        effects:
+          immediate:
+            - type: faction_trust
+              target: women_movement
+              value: -15
+          delayed: []
+        tags: [passive, safe]
+    tags: [protest, women, woman_life_freedom]
+
+  # ================================
+  # LABOR ACTIONS
+  # ================================
+
+  - id: workers_strike
+    category: triggered
+    title:
+      fa: اعتصاب کارگران
+      en: Workers' Strike
+    description:
+      fa: |
+        کارگران صنایع نفت دست از کار کشیده‌اند. تولید نفت کاهش یافته.
+        این می‌تواند اقتصاد رژیم را فلج کند - همان‌طور که در ۵۷ کرد.
+      en: |
+        Oil industry workers have gone on strike. Production has dropped.
+        This could cripple the regime's economy - just as it did in '79.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: regime.stability
+          operator: less_than
+          value: 45
+    priority: 80
+    weight: 0.8
+    once: false
+    cooldown: 12
+    requirements: []
+    decisions:
+      - id: support_strike
+        label:
+          fa: از اعتصاب حمایت کن
+          en: Support Strike
+        description:
+          fa: کمک مالی و تبلیغاتی به کارگران
+          en: Financial and publicity help for workers
+        effects:
+          immediate:
+            - type: faction_trust
+              target: workers
+              value: 25
+            - type: resource_change
+              target: money
+              value: -500
+            - type: state_change
+              target: regime.stability
+              value: -5
+          delayed: []
+        tags: [solidarity, labor]
+
+      - id: coordinate_with_unions
+        label:
+          fa: با اتحادیه‌ها هماهنگ شو
+          en: Coordinate with Unions
+        description:
+          fa: گسترش اعتصاب به صنایع دیگر
+          en: Spread strike to other industries
+        effects:
+          immediate:
+            - type: faction_trust
+              target: workers
+              value: 15
+            - type: resource_change
+              target: influence
+              value: 15
+            - type: state_change
+              target: regime.stability
+              value: -8
+          delayed:
+            - delay: 2
+              probability: 0.5
+              effects:
+                - type: flag_set
+                  target: general_strike_possible
+                  value: true
+              narrative:
+                fa: امکان اعتصاب عمومی
+                en: General strike becomes possible
+        tags: [strategic, organizing]
+
+      - id: observe_only
+        label:
+          fa: فقط نظاره کن
+          en: Just Observe
+        description:
+          fa: این مبارزه آنهاست
+          en: This is their fight
+        effects:
+          immediate: []
+          delayed: []
+        tags: [passive]
+    tags: [labor, strike, economic]
+
+  - id: teachers_protest
+    category: triggered
+    title:
+      fa: اعتراض معلمان
+      en: Teachers' Protest
+    description:
+      fa: |
+        معلمان سراسر کشور در اعتراض به حقوق پایین دست از کار کشیده‌اند.
+        آنها خواهان افزایش بودجه آموزش و پایان فشار ایدئولوژیک هستند.
+      en: |
+        Teachers across the country have protested low wages.
+        They demand increased education budget and end to ideological pressure.
+    triggers:
+      - type: random
+        value: 0.15
+    priority: 65
+    weight: 1.0
+    once: false
+    cooldown: 8
+    requirements: []
+    decisions:
+      - id: amplify_message
+        label:
+          fa: پیام را تقویت کن
+          en: Amplify Message
+        description:
+          fa: صدای معلمان را به گوش همه برسان
+          en: Make teachers' voice heard everywhere
+        effects:
+          immediate:
+            - type: faction_trust
+              target: workers
+              value: 10
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 5
+          delayed: []
+        tags: [media, solidarity]
+
+      - id: connect_movements
+        label:
+          fa: جنبش‌ها را به هم وصل کن
+          en: Connect Movements
+        description:
+          fa: معلمان، کارگران، و دانشجویان را متحد کن
+          en: Unite teachers, workers, and students
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 10
+            - type: faction_trust
+              target: students
+              value: 10
+            - type: faction_trust
+              target: workers
+              value: 10
+          delayed: []
+        tags: [coalition, organizing]
+    tags: [labor, education, protest]
+
+  # ================================
+  # STUDENT MOVEMENTS
+  # ================================
+
+  - id: university_occupation
+    category: triggered
+    title:
+      fa: اشغال دانشگاه
+      en: University Occupation
+    description:
+      fa: |
+        دانشجویان دانشگاه تهران ساختمان اصلی را اشغال کرده‌اند.
+        آنها خواهان آزادی بیان و پایان دخالت امنیتی در دانشگاه هستند.
+        نیروهای امنیتی دور ساختمان را محاصره کرده‌اند.
+      en: |
+        Students have occupied the main building of Tehran University.
+        They demand freedom of speech and end to security interference.
+        Security forces have surrounded the building.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: regime.repression
+          operator: greater_than
+          value: 60
+    priority: 75
+    weight: 0.7
+    once: true
+    requirements:
+      - type: stat
+        target: player.position.networkSize
+        operator: greater_than
+        value: 30
+    decisions:
+      - id: join_occupation
+        label:
+          fa: به اشغال بپیوند
+          en: Join Occupation
+        description:
+          fa: با دانشجویان در ساختمان بمان
+          en: Stay with students in the building
+        effects:
+          immediate:
+            - type: faction_trust
+              target: students
+              value: 30
+            - type: state_change
+              target: player.position.visibility
+              value: 20
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 25
+          delayed:
+            - delay: 1
+              probability: 0.5
+              effects:
+                - type: state_change
+                  target: player.resources.freedom
+                  value: -30
+                - type: state_change
+                  target: player.resources.health
+                  value: -20
+              narrative:
+                fa: حمله نیروهای امنیتی
+                en: Security forces attack
+        tags: [risky, solidarity, student]
+
+      - id: negotiate_exit
+        label:
+          fa: برای خروج امن مذاکره کن
+          en: Negotiate Safe Exit
+        description:
+          fa: سعی کن دانشجویان بدون آسیب خارج شوند
+          en: Try to get students out safely
+        effects:
+          immediate:
+            - type: faction_trust
+              target: students
+              value: 10
+            - type: resource_change
+              target: influence
+              value: 5
+          delayed: []
+        tags: [diplomatic, protective]
+
+      - id: spread_news
+        label:
+          fa: خبر را پخش کن
+          en: Spread the News
+        description:
+          fa: جهان باید بداند چه می‌گذرد
+          en: The world must know what's happening
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 15
+            - type: state_change
+              target: regime.legitimacy
+              value: -5
+          delayed: []
+        tags: [media, international]
+    tags: [student, protest, occupation]
+
+  - id: student_arrests
+    category: triggered
+    title:
+      fa: بازداشت دانشجویان
+      en: Student Arrests
+    description:
+      fa: |
+        موج دستگیری‌ها دانشگاه‌ها را فرا گرفته. ده‌ها دانشجو بازداشت شده‌اند.
+        خانواده‌ها نگران سرنوشت فرزندانشان هستند.
+      en: |
+        A wave of arrests has swept the universities. Dozens of students
+        have been detained. Families are worried about their children's fate.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: regime.repression
+          operator: greater_than
+          value: 70
+    priority: 70
+    weight: 1.0
+    once: false
+    cooldown: 6
+    requirements: []
+    decisions:
+      - id: organize_families
+        label:
+          fa: خانواده‌ها را سازماندهی کن
+          en: Organize Families
+        description:
+          fa: کمک به خانواده‌های زندانیان
+          en: Help families of prisoners
+        effects:
+          immediate:
+            - type: faction_trust
+              target: students
+              value: 15
+            - type: faction_trust
+              target: civil_society
+              value: 10
+            - type: resource_change
+              target: money
+              value: -200
+          delayed: []
+        tags: [humanitarian, organizing]
+
+      - id: publicize_names
+        label:
+          fa: اسامی را منتشر کن
+          en: Publicize Names
+        description:
+          fa: تا همه بدانند چه کسانی بازداشت شده‌اند
+          en: So everyone knows who has been detained
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 10
+            - type: state_change
+              target: regime.legitimacy
+              value: -3
+          delayed: []
+        tags: [media, documentation]
+
+      - id: legal_defense
+        label:
+          fa: دفاع حقوقی
+          en: Legal Defense
+        description:
+          fa: وکیل برای دانشجویان پیدا کن
+          en: Find lawyers for students
+        effects:
+          immediate:
+            - type: faction_trust
+              target: civil_society
+              value: 15
+            - type: resource_change
+              target: money
+              value: -400
+          delayed:
+            - delay: 3
+              probability: 0.4
+              effects:
+                - type: faction_trust
+                  target: students
+                  value: 10
+              narrative:
+                fa: برخی دانشجویان آزاد شدند
+                en: Some students released
+        tags: [legal, protective]
+    tags: [student, repression, human_rights]

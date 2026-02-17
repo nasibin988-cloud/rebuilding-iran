@@ -1,0 +1,403 @@
+# Endings: Personal Player Outcomes
+
+endings:
+  # ================================
+  # POSITIVE PERSONAL
+  # ================================
+
+  - id: hero_of_revolution
+    category: personal
+    subcategory: triumph
+    title:
+      fa: قهرمان انقلاب
+      en: Hero of Revolution
+    subtitle:
+      fa: نام تو در تاریخ
+      en: Your Name in History
+    description:
+      fa: |
+        تو یکی از چهره‌های اصلی تغییر شدی. مردم نامت را می‌دانند.
+        خیابانی به نامت خواهند نامید. تو از جمله کسانی هستی که
+        ایران را تغییر دادند.
+
+        اما با شهرت، مسئولیت می‌آید. حالا باید ثابت کنی که
+        لایق این اعتماد هستی.
+      en: |
+        You became one of the main figures of change. People know your
+        name. They will name a street after you. You are among those
+        who changed Iran.
+
+        But with fame comes responsibility. Now you must prove you're
+        worthy of this trust.
+    conditions:
+      - type: stat
+        target: player.position.visibility
+        operator: greater_than
+        value: 90
+      - type: stat
+        target: player.position.influence
+        operator: greater_than
+        value: 80
+      - type: category
+        target: ending
+        value: democratic
+    eudaimonia:
+      freedom: 90
+      justice: 85
+      prosperity: 70
+      community: 85
+      meaning: 95
+      health: 70
+      knowledge: 80
+    color: "#fbbf24"
+    tone: triumphant
+    tags: [personal, hero, fame]
+
+  - id: quiet_victory
+    category: personal
+    subcategory: humble
+    title:
+      fa: پیروزی خاموش
+      en: Quiet Victory
+    subtitle:
+      fa: کسی نامت را نمی‌داند
+      en: No One Knows Your Name
+    description:
+      fa: |
+        تو در سایه ماندی، اما نقشت حیاتی بود. شبکه‌ها را ساختی،
+        پل‌ها را زدی، کارها را انجام دادی. اکنون که آزادی آمده،
+        کسی نامت را نمی‌داند - و تو از این خوشحالی.
+
+        قهرمان‌های واقعی همیشه در تاریخ نوشته نمی‌شوند.
+      en: |
+        You stayed in the shadows, but your role was vital. You built
+        networks, bridged gaps, got things done. Now that freedom came,
+        no one knows your name - and you're happy about that.
+
+        Real heroes aren't always written in history.
+    conditions:
+      - type: stat
+        target: player.position.visibility
+        operator: less_than
+        value: 40
+      - type: stat
+        target: player.position.influence
+        operator: greater_than
+        value: 60
+      - type: category
+        target: ending
+        value: democratic
+    eudaimonia:
+      freedom: 85
+      justice: 80
+      prosperity: 65
+      community: 80
+      meaning: 90
+      health: 80
+      knowledge: 75
+    color: "#a3a3a3"
+    tone: peaceful
+    tags: [personal, humble, peaceful]
+
+  - id: new_life_abroad
+    category: personal
+    subcategory: exile
+    title:
+      fa: زندگی جدید
+      en: New Life Abroad
+    subtitle:
+      fa: خارج از ایران
+      en: Outside Iran
+    description:
+      fa: |
+        تو رفتی. چه به زور، چه به انتخاب. حالا در کشور دیگری
+        زندگی می‌کنی. آزادی داری، اما دلتنگی هم. ایران همیشه
+        در قلبت خواهد ماند.
+
+        شاید روزی برگردی. شاید نه.
+      en: |
+        You left. Whether by force or choice. Now you live in another
+        country. You have freedom, but also homesickness. Iran will
+        always be in your heart.
+
+        Maybe you'll return one day. Maybe not.
+    conditions:
+      - type: flag
+        target: player_exiled
+        value: true
+    eudaimonia:
+      freedom: 75
+      justice: 60
+      prosperity: 65
+      community: 40
+      meaning: 55
+      health: 70
+      knowledge: 70
+    color: "#38bdf8"
+    tone: bittersweet
+    tags: [personal, exile, diaspora]
+
+  # ================================
+  # TRAGIC PERSONAL
+  # ================================
+
+  - id: martyrdom
+    category: personal
+    subcategory: death
+    title:
+      fa: شهادت
+      en: Martyrdom
+    subtitle:
+      fa: زندگی دادی
+      en: You Gave Your Life
+    description:
+      fa: |
+        تو جانت را از دست دادی - در خیابان، در زندان، یا در تبعید.
+        اما مرگت بیهوده نبود. نامت به نماد تبدیل شد. مردم
+        برایت گریه کردند و قسم خوردند ادامه دهند.
+
+        آزادی گران است.
+      en: |
+        You lost your life - on the street, in prison, or in exile.
+        But your death wasn't in vain. Your name became a symbol.
+        People cried for you and swore to continue.
+
+        Freedom is expensive.
+    conditions:
+      - type: stat
+        target: player.resources.health
+        operator: less_than
+        value: 0
+      - type: stat
+        target: player.position.visibility
+        operator: greater_than
+        value: 50
+    eudaimonia:
+      freedom: 0
+      justice: 0
+      prosperity: 0
+      community: 0
+      meaning: 100
+      health: 0
+      knowledge: 0
+    color: "#ef4444"
+    tone: tragic
+    tags: [personal, death, sacrifice]
+
+  - id: disappeared
+    category: personal
+    subcategory: death
+    title:
+      fa: ناپدید شده
+      en: Disappeared
+    subtitle:
+      fa: کسی نمی‌داند کجایی
+      en: No One Knows Where You Are
+    description:
+      fa: |
+        یک شب آمدند و بردنت. خانواده‌ات هنوز دنبالت می‌گردند.
+        شاید در زندانی، شاید در گوری بی‌نام. این سرنوشت خیلی‌ها
+        در ایران بوده.
+
+        نامت در فهرست «مفقودان» ثبت شد.
+      en: |
+        One night they came and took you. Your family still searches.
+        Maybe in a prison, maybe in an unmarked grave. This has been
+        the fate of many in Iran.
+
+        Your name was added to the list of "disappeared."
+    conditions:
+      - type: stat
+        target: player.resources.freedom
+        operator: less_than
+        value: 0
+      - type: stat
+        target: player.position.regimeAttention
+        operator: greater_than
+        value: 90
+    eudaimonia:
+      freedom: 0
+      justice: 0
+      prosperity: 0
+      community: 0
+      meaning: 50
+      health: 0
+      knowledge: 0
+    color: "#1f2937"
+    tone: tragic
+    tags: [personal, disappearance, tragic]
+
+  - id: broken
+    category: personal
+    subcategory: defeat
+    title:
+      fa: شکسته
+      en: Broken
+    subtitle:
+      fa: روحت خسته شد
+      en: Your Spirit Broke
+    description:
+      fa: |
+        سال‌ها مبارزه، ترس، فشار - بالاخره تو را شکست.
+        دیگر قادر به ادامه نیستی. نه جسما، نه روحا.
+        تسلیم شدی. نه به رژیم، بلکه به خستگی.
+
+        شاید روزی دوباره بلند شوی. شاید.
+      en: |
+        Years of struggle, fear, pressure - finally broke you.
+        You can no longer continue. Not physically, not spiritually.
+        You surrendered. Not to the regime, but to exhaustion.
+
+        Maybe one day you'll rise again. Maybe.
+    conditions:
+      - type: stat
+        target: player.resources.mentalHealth
+        operator: less_than
+        value: 10
+      - type: stat
+        target: player.resources.health
+        operator: less_than
+        value: 20
+    eudaimonia:
+      freedom: 30
+      justice: 30
+      prosperity: 40
+      community: 30
+      meaning: 15
+      health: 15
+      knowledge: 40
+    color: "#71717a"
+    tone: melancholic
+    tags: [personal, burnout, defeat]
+
+  - id: long_prison
+    category: personal
+    subcategory: imprisonment
+    title:
+      fa: زندان طولانی
+      en: Long Prison
+    subtitle:
+      fa: سال‌ها پشت میله‌ها
+      en: Years Behind Bars
+    description:
+      fa: |
+        محکوم شدی. سال‌ها، شاید دهه‌ها در زندان. از پشت میله‌ها
+        خبرها را می‌شنوی. دنیا تغییر می‌کند، تو همانجایی.
+
+        اما حتی در زندان، امید را زنده نگه داشتی.
+      en: |
+        You were sentenced. Years, maybe decades in prison. From behind
+        bars you hear the news. The world changes, you stay the same.
+
+        But even in prison, you kept hope alive.
+    conditions:
+      - type: stat
+        target: player.resources.freedom
+        operator: less_than
+        value: 10
+      - type: flag
+        target: player_imprisoned
+        value: true
+      - type: stat
+        target: player.resources.health
+        operator: greater_than
+        value: 30
+    eudaimonia:
+      freedom: 5
+      justice: 20
+      prosperity: 10
+      community: 30
+      meaning: 60
+      health: 30
+      knowledge: 50
+    color: "#374151"
+    tone: somber
+    tags: [personal, prison, endurance]
+
+  # ================================
+  # COMPROMISED
+  # ================================
+
+  - id: collaborator
+    category: personal
+    subcategory: compromise
+    title:
+      fa: همکار
+      en: Collaborator
+    subtitle:
+      fa: با آنها ساختی
+      en: You Made a Deal
+    description:
+      fa: |
+        در نهایت، با رژیم کنار آمدی. شاید برای حفظ خانواده،
+        شاید برای بقا. حالا زندگی آرام‌تری داری، اما هر روز
+        در آینه به خودت نگاه می‌کنی و می‌پرسی «ارزشش را داشت؟»
+
+        برخی می‌گویند خیانتکار. برخی می‌گویند واقع‌بین.
+      en: |
+        In the end, you made peace with the regime. Maybe to protect
+        family, maybe for survival. Now you have a calmer life, but
+        every day you look in the mirror and ask "Was it worth it?"
+
+        Some call you traitor. Some call you realist.
+    conditions:
+      - type: flag
+        target: player_collaborated
+        value: true
+    eudaimonia:
+      freedom: 40
+      justice: 25
+      prosperity: 60
+      community: 30
+      meaning: 20
+      health: 60
+      knowledge: 45
+    color: "#a1a1aa"
+    tone: ambiguous
+    tags: [personal, compromise, moral]
+
+  - id: silent_retreat
+    category: personal
+    subcategory: withdrawal
+    title:
+      fa: عقب‌نشینی خاموش
+      en: Silent Retreat
+    subtitle:
+      fa: دیگر نجنگیدی
+      en: You Stopped Fighting
+    description:
+      fa: |
+        یک روز تصمیم گرفتی کنار بکشی. نه همکاری، نه مبارزه.
+        فقط زندگی عادی. شاید این هم یک نوع مقاومت است -
+        زنده ماندن و شاهد بودن.
+
+        یا شاید فقط تسلیم بود. تو هرگز نخواهی دانست.
+      en: |
+        One day you decided to step back. No collaboration, no struggle.
+        Just normal life. Maybe this too is a form of resistance -
+        surviving and witnessing.
+
+        Or maybe it was just surrender. You'll never know.
+    conditions:
+      - type: stat
+        target: player.position.visibility
+        operator: less_than
+        value: 20
+      - type: stat
+        target: player.position.networkSize
+        operator: less_than
+        value: 20
+      - type: turn
+        operator: greater_than
+        value: 40
+    eudaimonia:
+      freedom: 45
+      justice: 40
+      prosperity: 50
+      community: 35
+      meaning: 30
+      health: 65
+      knowledge: 50
+    color: "#d4d4d8"
+    tone: ambiguous
+    tags: [personal, withdrawal, neutral]

@@ -1,0 +1,147 @@
+# Multiple NPC Definitions: Ethnic Leaders
+
+characters:
+  # Kurdish Leader - KDPI
+  - id: kdpi_leader
+    name:
+      fa: مصطفی هجری
+      en: Mostafa Hijri
+    title:
+      fa: دبیرکل حزب دموکرات کردستان
+      en: Secretary General of KDPI
+    portrait: kdpi_leader.png
+    biography:
+      fa: |
+        رهبر حزب دموکرات کردستان ایران در تبعید. مدافع فدرالیسم و حقوق
+        کردها. مستقر در اقلیم کردستان عراق.
+      en: |
+        Leader of the Kurdistan Democratic Party of Iran in exile. Advocate
+        for federalism and Kurdish rights. Based in Iraqi Kurdistan.
+    role: ethnic_leader
+    faction: kurdish_parties
+    traits: [experienced, diplomatic, patient, nationalist, exiled]
+    behavior:
+      aggression: 40
+      caution: 65
+      pragmatism: 70
+    stats:
+      health: 70
+      influence: 40
+      popularity: 35
+    tags: [npc, ethnic, kurdish, diaspora, political_leader]
+
+  # Kurdish Leader - Komala
+  - id: komala_leader
+    name:
+      fa: عبدالله مهتدی
+      en: Abdullah Mohtadi
+    title:
+      fa: دبیرکل کومله
+      en: Secretary General of Komala
+    portrait: komala_leader.png
+    biography:
+      fa: |
+        رهبر حزب کومله کردستان ایران. سابقه چپ‌گرایی دارد. مدافع
+        سکولاریسم و حقوق زنان در جنبش کردی.
+      en: |
+        Leader of Komala Party of Iranian Kurdistan. Has leftist background.
+        Advocate for secularism and women's rights in the Kurdish movement.
+    role: ethnic_leader
+    faction: kurdish_parties
+    traits: [ideological, secular, experienced, diplomatic, leftist]
+    behavior:
+      aggression: 45
+      caution: 55
+      pragmatism: 65
+    stats:
+      health: 65
+      influence: 35
+      popularity: 30
+    tags: [npc, ethnic, kurdish, diaspora, leftist]
+
+  # Baluchi Leader
+  - id: baluchi_leader
+    name:
+      fa: مولوی عبدالحمید اسماعیل‌زهی
+      en: Molavi Abdolhamid Ismaeelzahi
+    title:
+      fa: امام جمعه زاهدان
+      en: Friday Prayer Imam of Zahedan
+    portrait: abdolhamid.png
+    biography:
+      fa: |
+        مهم‌ترین رهبر مذهبی اهل سنت در ایران. امام جمعه زاهدان و رئیس
+        دارالعلوم مکی. صدای انتقادی نادر از درون ایران.
+      en: |
+        Most important Sunni religious leader in Iran. Friday prayer imam
+        of Zahedan and head of Makki seminary. Rare critical voice from inside Iran.
+    role: religious_leader
+    faction: baluchi_movement
+    traits: [religious, brave, outspoken, respected, cautious]
+    behavior:
+      aggression: 35
+      caution: 60
+      pragmatism: 55
+    stats:
+      health: 70
+      influence: 55
+      popularity: 60
+    tags: [npc, ethnic, baluchi, sunni, religious, inside_iran]
+
+  # Azeri Activist
+  - id: azeri_activist
+    name:
+      fa: عباس لسانی
+      en: Abbas Lesani
+    title:
+      fa: فعال حقوق ترک‌های ایران
+      en: Azerbaijani Rights Activist
+    portrait: lesani.png
+    biography:
+      fa: |
+        فعال حقوق زبانی و فرهنگی آذربایجان. چندین بار زندانی شده.
+        مدافع آموزش به زبان ترکی در مدارس.
+      en: |
+        Azerbaijani linguistic and cultural rights activist. Imprisoned
+        multiple times. Advocate for Turkish-language education in schools.
+    role: activist
+    faction: azeri_movement
+    traits: [persistent, principled, brave, cultural, nationalist]
+    behavior:
+      aggression: 40
+      caution: 45
+      pragmatism: 50
+    stats:
+      health: 65
+      influence: 30
+      popularity: 40
+    tags: [npc, ethnic, azeri, activist, inside_iran]
+
+  # Arab Activist
+  - id: arab_leader
+    name:
+      fa: حبیب جبر
+      en: Habib Jabr
+    title:
+      fa: فعال حقوق عرب‌های ایران
+      en: Ahwazi Arab Rights Activist
+    portrait: arab_leader.png
+    biography:
+      fa: |
+        فعال حقوق عرب‌های خوزستان در تبعید. مدافع حقوق فرهنگی و
+        محیط زیستی مردم عرب.
+      en: |
+        Ahwazi Arab rights activist in exile. Advocate for cultural and
+        environmental rights of Arab people.
+    role: diaspora_activist
+    faction: arab_movement
+    traits: [persistent, vocal, networked, exiled, determined]
+    behavior:
+      aggression: 50
+      caution: 50
+      pragmatism: 55
+    stats:
+      health: 75
+      influence: 25
+      popularity: 35
+    tags: [npc, ethnic, arab, diaspora, khuzestan]

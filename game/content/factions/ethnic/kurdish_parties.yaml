@@ -1,0 +1,97 @@
+# Faction: Kurdish Parties
+# Political parties representing Kurdish interests and autonomy demands
+
+id: kurdish_parties
+
+name:
+  fa: احزاب کردی
+  en: Kurdish Parties
+
+shortName:
+  fa: کردها
+  en: Kurds
+
+description:
+  fa: |
+    احزاب کردی نماینده منافع جمعیت کرد ایران هستند که عمدتاً در غرب کشور
+    ساکن‌اند. این احزاب طیفی از خواسته‌ها را مطرح می‌کنند، از حقوق فرهنگی
+    تا خودمختاری منطقه‌ای. برخی از آنها مسلح هستند و سابقه درگیری با حکومت دارند.
+  en: |
+    Kurdish parties represent the interests of Iran's Kurdish population, mainly
+    living in the western provinces. These parties advocate for a range of demands,
+    from cultural rights to regional autonomy. Some are armed and have a history
+    of conflict with the government.
+
+category: ethnic
+subcategory: minority
+
+power:
+  base: 30
+  military: 35
+  economic: 20
+  religious: 15
+  popular: 65  # Among Kurds
+
+ideology:
+  economicLeft: 65
+  socialLiberal: 70
+  nationalist: 85  # Kurdish nationalism
+  religious: 30
+  democratic: 75
+
+interests:
+  survival:
+    - Protect Kurdish community
+    - Maintain armed capability
+    - Preserve cultural identity
+  shortTerm:
+    - Kurdish language rights
+    - End discrimination
+    - Economic development in Kurdish regions
+  longTerm:
+    - Regional autonomy
+    - Federal system
+    - Self-determination
+  redLines:
+    - Forced assimilation
+    - Military campaigns against Kurds
+    - Suppression of Kurdish language
+
+leaders:
+  - kdpi_leader
+  - komala_leader
+
+relationships:
+  - factionId: irgc
+    type: enemy
+    trust: -80
+    reason:
+      fa: درگیری نظامی
+      en: Military conflict
+  - factionId: reformists
+    type: neutral
+    trust: 25
+    reason:
+      fa: امید محتاطانه
+      en: Cautious hope
+  - factionId: green_movement
+    type: ally
+    trust: 45
+    reason:
+      fa: اهداف دموکراتیک مشترک
+      en: Shared democratic goals
+
+behavior:
+  aggression: 50
+  cooperation: 45
+  riskTolerance: 60
+  pragmatism: 55
+
+color: "#16a34a"
+icon: kurdish_parties
+
+tags:
+  - ethnic
+  - minority
+  - autonomy
+  - armed

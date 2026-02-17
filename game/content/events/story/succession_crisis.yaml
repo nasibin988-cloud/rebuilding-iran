@@ -1,0 +1,314 @@
+# Story Events: Succession Crisis
+# Key events surrounding the transition of power
+
+events:
+  - id: leader_hospitalized
+    title:
+      fa: رهبر در بیمارستان
+      en: Leader Hospitalized
+    type: story
+    description:
+      fa: |
+        خبر فوری: رهبر به بیمارستان منتقل شده است. رسانه‌های دولتی می‌گویند
+        «معاینات معمول» اما شایعات درباره وضعیت وخیم سلامتی او پیچیده است.
+        فضای سیاسی متشنج شده و جناح‌ها در حال موضع‌گیری هستند.
+      en: |
+        Breaking news: The Leader has been taken to hospital. State media says
+        "routine examinations" but rumors of his serious condition are spreading.
+        The political atmosphere is tense and factions are positioning themselves.
+    context:
+      whatHappened:
+        fa: بحران سلامت رهبر علنی شد
+        en: The Leader's health crisis became public
+      whyItMatters:
+        fa: این آغاز پایان یک دوران است
+        en: This is the beginning of the end of an era
+      whoIsInvolved:
+        - khamenei
+        - mojtaba_khamenei
+        - irgc_commander
+    triggers:
+      conditions:
+        - type: stat
+          path: characters.khamenei.health
+          operator: lessThan
+          value: 35
+      probability: 100
+      priority: 95
+      cooldown: 0
+      maxOccurrences: 1
+    timing:
+      when: immediate
+      duration: 3
+      deadline: 5
+    presentation:
+      image: hospital_news.jpg
+      mood: tense
+      musicCue: crisis_theme
+    decisions:
+      - id: prepare_public_statement
+        label:
+          fa: بیانیه صادر کن
+          en: Issue Statement
+        description:
+          fa: موضع‌گیری علنی درباره وضعیت
+          en: Take a public stance on the situation
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.visibility
+              value: 15
+          delayed:
+            - delay: 1
+              probability: 50
+              effects:
+                - type: stat
+                  target: player.security
+                  value: -10
+              narrative:
+                fa: بیانیه‌ات توجه نیروهای امنیتی را جلب کرد
+                en: Your statement drew security attention
+      - id: contact_allies
+        label:
+          fa: با متحدان تماس بگیر
+          en: Contact Allies
+        description:
+          fa: هماهنگی با شبکه‌ها برای آماده‌سازی
+          en: Coordinate with networks to prepare
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.networks
+              value: 10
+          delayed: []
+      - id: wait_and_watch
+        label:
+          fa: صبر کن
+          en: Wait and Watch
+        description:
+          fa: اطلاعات بیشتری جمع‌آوری کن قبل از اقدام
+          en: Gather more information before acting
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.intelligence
+              value: 5
+          delayed: []
+
+  - id: assembly_of_experts_meeting
+    title:
+      fa: جلسه مجلس خبرگان
+      en: Assembly of Experts Meeting
+    type: story
+    description:
+      fa: |
+        مجلس خبرگان جلسه فوق‌العاده تشکیل داده است. بحث درباره جانشینی
+        به صورت غیررسمی آغاز شده. نام‌های مختلفی مطرح است: مجتبی خامنه‌ای،
+        ابراهیم رئیسی، و حتی برخی اصلاح‌طلبان میانه‌رو.
+      en: |
+        The Assembly of Experts has convened an emergency session. Discussion of
+        succession has unofficially begun. Various names are being mentioned:
+        Mojtaba Khamenei, Ebrahim Raisi, and even some moderate reformists.
+    context:
+      whatHappened:
+        fa: جانشینی رسماً در دستور کار قرار گرفت
+        en: Succession officially placed on the agenda
+      whyItMatters:
+        fa: این نهاد رهبر بعدی را انتخاب می‌کند
+        en: This body will select the next Leader
+      whoIsInvolved:
+        - mojtaba_khamenei
+    triggers:
+      conditions:
+        - type: flag
+          flag: leader_hospitalized_event
+          operator: equals
+          value: true
+      probability: 100
+      priority: 90
+      cooldown: 0
+      maxOccurrences: 1
+    timing:
+      when: start_of_turn
+      duration: 5
+      deadline: 10
+    presentation:
+      image: assembly_experts.jpg
+      mood: tense
+    decisions:
+      - id: lobby_reformist_clerics
+        label:
+          fa: با روحانیون اصلاح‌طلب صحبت کن
+          en: Lobby Reformist Clerics
+        description:
+          fa: تلاش برای تأثیرگذاری بر اعضای میانه‌رو
+          en: Try to influence moderate members
+        requirements:
+          - type: stat
+            path: player.networks
+            operator: greaterThan
+            value: 30
+        effects:
+          immediate:
+            - type: relationship
+              target: reformists
+              value: 15
+          delayed:
+            - delay: 5
+              probability: 40
+              effects:
+                - type: stat
+                  target: regime.stability
+                  value: -5
+              narrative:
+                fa: فشارها شکاف در نظام را عمیق‌تر کرد
+                en: Pressure deepened cracks in the system
+      - id: expose_mojtaba_ambitions
+        label:
+          fa: جاه‌طلبی مجتبی را افشا کن
+          en: Expose Mojtaba's Ambitions
+        description:
+          fa: افشای طرح‌های پسر رهبر برای جانشینی
+          en: Reveal the Leader's son's succession plans
+        requirements:
+          - type: stat
+            path: player.intelligence
+            operator: greaterThan
+            value: 40
+        effects:
+          immediate:
+            - type: stat
+              target: regime.legitimacy
+              value: -10
+            - type: stat
+              target: player.security
+              value: -20
+          delayed: []
+      - id: observe_silently
+        label:
+          fa: ناظر باش
+          en: Observe Silently
+        description:
+          fa: اطلاعات جمع‌آوری کن بدون دخالت مستقیم
+          en: Gather information without direct intervention
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.intelligence
+              value: 10
+          delayed: []
+
+  - id: succession_announcement
+    title:
+      fa: اعلام جانشینی
+      en: Succession Announcement
+    type: story
+    description:
+      fa: |
+        لحظه سرنوشت‌ساز فرا رسیده. مجلس خبرگان آماده اعلام تصمیم نهایی است.
+        سپاه نیروهایش را در تهران مستقر کرده. مردم منتظرند. آینده ایران
+        در چند ساعت آینده تعیین خواهد شد.
+      en: |
+        The fateful moment has arrived. The Assembly of Experts is ready to
+        announce its final decision. The IRGC has deployed forces in Tehran.
+        The people are waiting. Iran's future will be determined in the next
+        few hours.
+    context:
+      whatHappened:
+        fa: انتقال قدرت در حال وقوع است
+        en: The transfer of power is taking place
+      whyItMatters:
+        fa: این لحظه تاریخی است
+        en: This is a historic moment
+      whoIsInvolved:
+        - mojtaba_khamenei
+        - irgc_commander
+    triggers:
+      conditions:
+        - type: flag
+          flag: assembly_meeting_happened
+          operator: equals
+          value: true
+        - type: stat
+          path: characters.khamenei.health
+          operator: lessThan
+          value: 20
+      probability: 100
+      priority: 100
+      cooldown: 0
+      maxOccurrences: 1
+    timing:
+      when: immediate
+      duration: 1
+      deadline: 2
+    presentation:
+      image: succession_moment.jpg
+      mood: tense
+      musicCue: climax_theme
+    decisions:
+      - id: call_for_protests
+        label:
+          fa: فراخوان اعتراض
+          en: Call for Protests
+        description:
+          fa: مردم را به خیابان‌ها فرابخوان
+          en: Call the people to the streets
+        requirements:
+          - type: stat
+            path: player.networks
+            operator: greaterThan
+            value: 50
+        effects:
+          immediate:
+            - type: stat
+              target: regime.stability
+              value: -20
+            - type: stat
+              target: player.security
+              value: -30
+          delayed:
+            - delay: 1
+              probability: 60
+              effects:
+                - type: flag
+                  flag: mass_protests
+                  value: true
+              narrative:
+                fa: مردم به خیابان‌ها ریختند
+                en: The people took to the streets
+      - id: negotiate_with_irgc
+        label:
+          fa: با سپاه مذاکره کن
+          en: Negotiate with IRGC
+        description:
+          fa: تلاش برای یافتن زمینه مشترک با فرماندهان
+          en: Try to find common ground with commanders
+        requirements:
+          - type: relationship
+            target: irgc
+            operator: greaterThan
+            value: 0
+        effects:
+          immediate:
+            - type: relationship
+              target: irgc
+              value: 10
+          delayed: []
+      - id: prepare_escape
+        label:
+          fa: آماده فرار شو
+          en: Prepare Escape
+        description:
+          fa: اگر اوضاع بد شد، باید راه فراری داشته باشی
+          en: If things go bad, you need an escape route
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.security
+              value: 15
+          delayed: []

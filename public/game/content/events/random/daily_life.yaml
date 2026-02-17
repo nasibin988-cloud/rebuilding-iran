@@ -1,0 +1,714 @@
+# Random Events: Daily Life
+
+events:
+  # ================================
+  # STREET ENCOUNTERS
+  # ================================
+
+  - id: street_conversation
+    category: random
+    title:
+      fa: گفتگوی خیابانی
+      en: Street Conversation
+    description:
+      fa: |
+        در تاکسی، مردی میانسال شروع به صحبت می‌کند. از گذشته می‌گوید،
+        از روزهای قبل از انقلاب. «آن موقع زندگی بهتر بود» می‌گوید.
+        «یا شاید من جوان‌تر بودم.»
+      en: |
+        In a taxi, a middle-aged man starts talking. He speaks of the past,
+        days before the revolution. "Life was better then," he says.
+        "Or maybe I was just younger."
+    triggers:
+      - type: random
+        value: 0.3
+    priority: 20
+    weight: 1.0
+    once: false
+    cooldown: 5
+    requirements: []
+    decisions:
+      - id: engage
+        label:
+          fa: گفتگو کن
+          en: Engage
+        description:
+          fa: از تجربیاتش بپرس
+          en: Ask about his experiences
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 5
+          delayed: []
+        tags: [social, listening]
+
+      - id: share_views
+        label:
+          fa: نظرت را بگو
+          en: Share Views
+        description:
+          fa: درباره آینده حرف بزن
+          en: Talk about the future
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: 2
+          delayed: []
+        tags: [social, risk]
+
+      - id: stay_quiet
+        label:
+          fa: سکوت کن
+          en: Stay Quiet
+        description:
+          fa: در این روزها حرف زدن خطرناک است
+          en: Talking is dangerous these days
+        effects:
+          immediate: []
+          delayed: []
+        tags: [safe, passive]
+    tags: [daily, social, slice_of_life]
+
+  - id: neighborhood_gathering
+    category: random
+    title:
+      fa: دورهمی محله
+      en: Neighborhood Gathering
+    description:
+      fa: |
+        همسایه‌ها دور هم جمع شده‌اند. چای و شیرینی. بچه‌ها بازی می‌کنند.
+        برای لحظه‌ای انگار همه چیز عادی است. اما صحبت‌ها به سیاست می‌کشد.
+      en: |
+        Neighbors have gathered. Tea and pastries. Children play.
+        For a moment everything seems normal. But conversation turns to politics.
+    triggers:
+      - type: random
+        value: 0.2
+    priority: 15
+    weight: 1.0
+    once: false
+    cooldown: 6
+    requirements: []
+    decisions:
+      - id: listen_carefully
+        label:
+          fa: با دقت گوش بده
+          en: Listen Carefully
+        description:
+          fa: ببین مردم چه فکر می‌کنند
+          en: See what people think
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 2
+          delayed: []
+        tags: [intelligence, social]
+
+      - id: build_trust
+        label:
+          fa: اعتماد بساز
+          en: Build Trust
+        description:
+          fa: با همسایه‌ها دوست شو
+          en: Befriend neighbors
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.networkSize
+              value: 3
+          delayed: []
+        tags: [social, networking]
+
+      - id: leave_early
+        label:
+          fa: زود برو
+          en: Leave Early
+        description:
+          fa: نمی‌خواهی درگیر شوی
+          en: Don't want to get involved
+        effects:
+          immediate: []
+          delayed: []
+        tags: [safe]
+    tags: [daily, social, community]
+
+  # ================================
+  # DIGITAL LIFE
+  # ================================
+
+  - id: viral_post
+    category: random
+    title:
+      fa: پست وایرال
+      en: Viral Post
+    description:
+      fa: |
+        یکی از پست‌هایت در شبکه‌های اجتماعی وایرال شده. هزاران
+        لایک و اشتراک. این می‌تواند خوب باشد یا بد.
+      en: |
+        One of your social media posts has gone viral. Thousands
+        of likes and shares. This could be good or bad.
+    triggers:
+      - type: random
+        value: 0.1
+    priority: 40
+    weight: 0.8
+    once: false
+    cooldown: 8
+    requirements:
+      - type: stat
+        target: player.position.visibility
+        operator: greater_than
+        value: 20
+    decisions:
+      - id: capitalize
+        label:
+          fa: از فرصت استفاده کن
+          en: Capitalize
+        description:
+          fa: پیام‌های بیشتری منتشر کن
+          en: Post more messages
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: 15
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 10
+            - type: resource_change
+              target: influence
+              value: 10
+          delayed: []
+        tags: [media, growth]
+
+      - id: stay_quiet
+        label:
+          fa: آرام باش
+          en: Stay Quiet
+        description:
+          fa: زیادی توجه جلب نکن
+          en: Don't attract too much attention
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: 5
+          delayed: []
+        tags: [cautious]
+
+      - id: delete_post
+        label:
+          fa: پست را پاک کن
+          en: Delete Post
+        description:
+          fa: خطرناک است
+          en: It's dangerous
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.regimeAttention
+              value: -5
+          delayed: []
+        tags: [defensive, retreat]
+    tags: [digital, social_media, opportunity]
+
+  - id: internet_disruption
+    category: random
+    title:
+      fa: قطعی اینترنت
+      en: Internet Disruption
+    description:
+      fa: |
+        اینترنت کند شده یا قطع است. نمی‌توانی به شبکه‌های اجتماعی
+        دسترسی داشته باشی. فیلترشکن‌ها هم کار نمی‌کنند.
+      en: |
+        Internet is slow or down. You can't access social media.
+        VPNs aren't working either.
+    triggers:
+      - type: random
+        value: 0.25
+    priority: 30
+    weight: 1.0
+    once: false
+    cooldown: 4
+    requirements: []
+    decisions:
+      - id: find_alternative
+        label:
+          fa: راه جایگزین پیدا کن
+          en: Find Alternative
+        description:
+          fa: از کانال‌های دیگر استفاده کن
+          en: Use other channels
+        effects:
+          immediate:
+            - type: resource_change
+              target: money
+              value: -50
+          delayed: []
+        tags: [adaptive, practical]
+
+      - id: work_offline
+        label:
+          fa: آفلاین کار کن
+          en: Work Offline
+        description:
+          fa: روی کارهای دیگر تمرکز کن
+          en: Focus on other tasks
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 5
+          delayed: []
+        tags: [productive, adaptive]
+
+      - id: wait_it_out
+        label:
+          fa: صبر کن
+          en: Wait It Out
+        description:
+          fa: بالاخره درست می‌شود
+          en: It will come back eventually
+        effects:
+          immediate: []
+          delayed: []
+        tags: [passive]
+    tags: [digital, infrastructure, daily]
+
+  # ================================
+  # ECONOMIC ENCOUNTERS
+  # ================================
+
+  - id: price_shock
+    category: random
+    title:
+      fa: شوک قیمت
+      en: Price Shock
+    description:
+      fa: |
+        به مغازه می‌روی و می‌بینی قیمت‌ها دوباره بالا رفته.
+        نان، گوشت، سبزیجات - همه چیز. حقوقت کافی نیست.
+      en: |
+        You go to the store and see prices have risen again.
+        Bread, meat, vegetables - everything. Your salary isn't enough.
+    triggers:
+      - type: random
+        value: 0.3
+    priority: 25
+    weight: 1.0
+    once: false
+    cooldown: 5
+    requirements: []
+    decisions:
+      - id: complain_publicly
+        label:
+          fa: علنی اعتراض کن
+          en: Complain Publicly
+        description:
+          fa: در صف با دیگران حرف بزن
+          en: Talk to others in line
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: 3
+          delayed: []
+        tags: [social, vocal]
+
+      - id: document_prices
+        label:
+          fa: قیمت‌ها را مستند کن
+          en: Document Prices
+        description:
+          fa: این اطلاعات ارزشمند است
+          en: This information is valuable
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 2
+          delayed: []
+        tags: [documentation]
+
+      - id: accept_reality
+        label:
+          fa: بپذیر
+          en: Accept Reality
+        description:
+          fa: چاره‌ای نیست
+          en: No choice
+        effects:
+          immediate:
+            - type: resource_change
+              target: money
+              value: -100
+          delayed: []
+        tags: [passive, realistic]
+    tags: [economic, daily, inflation]
+
+  - id: job_opportunity
+    category: random
+    title:
+      fa: فرصت شغلی
+      en: Job Opportunity
+    description:
+      fa: |
+        یک آشنا پیشنهاد کار داده. حقوق خوب است، اما شرکت
+        با سپاه مرتبط است. آیا اصولت را کنار بگذاری؟
+      en: |
+        An acquaintance has offered a job. Good salary, but the company
+        is connected to the IRGC. Will you compromise your principles?
+    triggers:
+      - type: random
+        value: 0.08
+    priority: 45
+    weight: 0.7
+    once: false
+    cooldown: 15
+    requirements:
+      - type: stat
+        target: player.resources.money
+        operator: less_than
+        value: 800
+    decisions:
+      - id: accept_job
+        label:
+          fa: قبول کن
+          en: Accept
+        description:
+          fa: پول لازم است
+          en: Money is needed
+        effects:
+          immediate:
+            - type: resource_change
+              target: money
+              value: 1000
+            - type: faction_trust
+              target: students
+              value: -10
+          delayed: []
+        tags: [pragmatic, compromise]
+
+      - id: reject_firmly
+        label:
+          fa: قاطعانه رد کن
+          en: Reject Firmly
+        description:
+          fa: با سپاه کار نمی‌کنم
+          en: Won't work with IRGC
+        effects:
+          immediate:
+            - type: faction_trust
+              target: students
+              value: 5
+          delayed: []
+        tags: [principled]
+
+      - id: stall
+        label:
+          fa: وقت بخر
+          en: Stall
+        description:
+          fa: بگذار بعدا جواب می‌دهم
+          en: Say you'll answer later
+        effects:
+          immediate: []
+          delayed: []
+        tags: [avoidant]
+    tags: [economic, moral, choice]
+
+  # ================================
+  # CULTURAL MOMENTS
+  # ================================
+
+  - id: underground_concert
+    category: random
+    title:
+      fa: کنسرت زیرزمینی
+      en: Underground Concert
+    description:
+      fa: |
+        دعوت به یک کنسرت زیرزمینی. موسیقی ممنوعه، جوانان
+        با انرژی. برای لحظه‌ای از این دنیا فرار می‌کنی.
+      en: |
+        Invited to an underground concert. Forbidden music, energetic
+        youth. For a moment you escape this world.
+    triggers:
+      - type: random
+        value: 0.12
+    priority: 25
+    weight: 1.0
+    once: false
+    cooldown: 8
+    requirements: []
+    decisions:
+      - id: attend
+        label:
+          fa: برو
+          en: Attend
+        description:
+          fa: به این نیاز داری
+          en: You need this
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 15
+            - type: state_change
+              target: player.position.networkSize
+              value: 3
+          delayed:
+            - delay: 1
+              probability: 0.1
+              effects:
+                - type: state_change
+                  target: player.position.regimeAttention
+                  value: 5
+              narrative:
+                fa: شاید کسی تو را دیده
+                en: Maybe someone saw you
+        tags: [cultural, social, risky]
+
+      - id: bring_friends
+        label:
+          fa: دوستان را ببر
+          en: Bring Friends
+        description:
+          fa: این تجربه را تقسیم کن
+          en: Share this experience
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 20
+            - type: faction_trust
+              target: students
+              value: 5
+          delayed: []
+        tags: [social, bonding]
+
+      - id: decline
+        label:
+          fa: نرو
+          en: Don't Go
+        description:
+          fa: خطرش زیاد است
+          en: Too risky
+        effects:
+          immediate: []
+          delayed: []
+        tags: [cautious]
+    tags: [cultural, music, youth]
+
+  - id: poetry_reading
+    category: random
+    title:
+      fa: شب شعر
+      en: Poetry Reading
+    description:
+      fa: |
+        در یک کافه کوچک، شاعران شعر می‌خوانند. کلمات پر از
+        استعاره و اشاره هستند. همه می‌فهمند درباره چیست.
+      en: |
+        In a small cafe, poets read their work. Words full of
+        metaphor and allusion. Everyone understands what it's about.
+    triggers:
+      - type: random
+        value: 0.15
+    priority: 20
+    weight: 1.0
+    once: false
+    cooldown: 7
+    requirements: []
+    decisions:
+      - id: participate
+        label:
+          fa: شرکت کن
+          en: Participate
+        description:
+          fa: شاید تو هم چیزی بخوانی
+          en: Maybe read something too
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 10
+            - type: state_change
+              target: player.position.visibility
+              value: 5
+          delayed: []
+        tags: [cultural, expressive]
+
+      - id: just_listen
+        label:
+          fa: فقط گوش بده
+          en: Just Listen
+        description:
+          fa: از کلمات لذت ببر
+          en: Enjoy the words
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 10
+          delayed: []
+        tags: [cultural, passive]
+    tags: [cultural, poetry, intellectual]
+
+  # ================================
+  # FAMILY MOMENTS
+  # ================================
+
+  - id: family_dinner
+    category: random
+    title:
+      fa: شام خانوادگی
+      en: Family Dinner
+    description:
+      fa: |
+        دور هم جمع شده‌اید. غذای مادر، شوخی‌های پدر. اما
+        وقتی بحث به سیاست می‌کشد، تنش بالا می‌گیرد.
+      en: |
+        You've gathered together. Mom's food, dad's jokes. But
+        when discussion turns to politics, tension rises.
+    triggers:
+      - type: random
+        value: 0.2
+    priority: 20
+    weight: 1.0
+    once: false
+    cooldown: 6
+    requirements: []
+    decisions:
+      - id: share_views
+        label:
+          fa: نظرت را بگو
+          en: Share Views
+        description:
+          fa: خانواده باید بدانند چه فکر می‌کنی
+          en: Family should know what you think
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: -5
+          delayed: []
+        tags: [honest, conflict]
+
+      - id: keep_peace
+        label:
+          fa: صلح را حفظ کن
+          en: Keep Peace
+        description:
+          fa: موضوع را عوض کن
+          en: Change the subject
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 5
+          delayed: []
+        tags: [diplomatic, family]
+
+      - id: listen_to_elders
+        label:
+          fa: به بزرگ‌ترها گوش بده
+          en: Listen to Elders
+        description:
+          fa: شاید چیزی یاد بگیری
+          en: Maybe you'll learn something
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 5
+            - type: resource_change
+              target: influence
+              value: 2
+          delayed: []
+        tags: [respectful, learning]
+    tags: [family, social, slice_of_life]
+
+  - id: old_friend_call
+    category: random
+    title:
+      fa: تماس دوست قدیمی
+      en: Old Friend's Call
+    description:
+      fa: |
+        یک دوست قدیمی که سال‌هاست ندیده‌ای زنگ زده. حالا
+        در خارج زندگی می‌کند. می‌پرسد «اوضاع چطوره؟»
+      en: |
+        An old friend you haven't seen in years has called. Now
+        living abroad. Asks "How are things?"
+    triggers:
+      - type: random
+        value: 0.1
+    priority: 25
+    weight: 1.0
+    once: false
+    cooldown: 10
+    requirements: []
+    decisions:
+      - id: be_honest
+        label:
+          fa: صادق باش
+          en: Be Honest
+        description:
+          fa: واقعیت را بگو
+          en: Tell the truth
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 10
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 3
+          delayed: []
+        tags: [honest, connection]
+
+      - id: stay_vague
+        label:
+          fa: مبهم باش
+          en: Stay Vague
+        description:
+          fa: تلفن‌ها کنترل می‌شوند
+          en: Phones are monitored
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: -5
+          delayed: []
+        tags: [cautious, sad]
+
+      - id: ask_for_help
+        label:
+          fa: کمک بخواه
+          en: Ask for Help
+        description:
+          fa: شاید بتواند از خارج کمک کند
+          en: Maybe they can help from abroad
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 5
+          delayed:
+            - delay: 3
+              probability: 0.3
+              effects:
+                - type: resource_change
+                  target: money
+                  value: 500
+              narrative:
+                fa: دوستت پولی فرستاد
+                en: Your friend sent some money
+        tags: [practical, diaspora]
+    tags: [social, diaspora, personal]

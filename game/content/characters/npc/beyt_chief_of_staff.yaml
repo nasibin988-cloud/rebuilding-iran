@@ -1,0 +1,77 @@
+# NPC Character: Beyt Chief of Staff
+# Head of the Supreme Leader's Office staff
+
+id: beyt_chief_of_staff
+
+name:
+  fa: حجت‌الاسلام محمد محمدی گلپایگانی
+  en: Hojatoleslam Mohammad Mohammadi Golpayegani
+
+title:
+  fa: رئیس دفتر رهبر
+  en: Chief of the Supreme Leader's Office
+
+portrait: beyt_chief_of_staff.png
+
+role: beyt_administrator
+
+biography:
+  fa: |
+    رئیس دفتر مقام معظم رهبری و مدیر بیت رهبری. کنترل‌کننده دسترسی
+    به رهبر و هماهنگ‌کننده فعالیت‌های دفتر. نقش کلیدی در مدیریت
+    روابط رهبر با نهادهای مختلف.
+  en: |
+    Chief of the Supreme Leader's Office and manager of the Beyt. Controls
+    access to the Leader and coordinates office activities. Key role in
+    managing Leader's relations with various institutions.
+
+personality:
+  traits:
+    - discreet
+    - loyal
+    - organized
+    - influential
+    - cautious
+  beliefs:
+    economicLeft: 45
+    socialLiberal: 10
+    nationalist: 70
+    religious: 90
+    democratic: 5
+
+relationships:
+  - characterId: khamenei
+    type: staff
+    trust: 95
+    description:
+      fa: نزدیک‌ترین معاون رهبر
+      en: Leader's closest aide
+  - characterId: mojtaba_khamenei
+    type: political
+    trust: 85
+    description:
+      fa: همکار در بیت
+      en: Colleague in the Beyt
+
+status:
+  health: 60
+  influence: 70
+  visibility: low
+  security: high
+
+goals:
+  - protect_leader
+  - manage_succession
+  - maintain_beyt_power
+
+fears:
+  - leader_death
+  - loss_of_position
+  - internal_conflict
+
+tags:
+  - npc
+  - regime
+  - clerical
+  - beyt
+  - administration

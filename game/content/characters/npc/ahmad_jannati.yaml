@@ -1,0 +1,71 @@
+# NPC Character: Ahmad Jannati
+# Head of the Guardian Council and Assembly of Experts
+
+id: ahmad_jannati
+
+name:
+  fa: آیت‌الله احمد جنتی
+  en: Ayatollah Ahmad Jannati
+
+title:
+  fa: دبیر شورای نگهبان
+  en: Secretary of the Guardian Council
+
+portrait: ahmad_jannati.png
+
+role: guardian_council_head
+
+biography:
+  fa: |
+    دبیر شورای نگهبان و رئیس مجلس خبرگان رهبری. از محافظه‌کارترین
+    چهره‌های روحانیت ایران که نقش کلیدی در رد صلاحیت نامزدهای
+    اصلاح‌طلب و نظارت بر انتخابات دارد.
+  en: |
+    Secretary of the Guardian Council and Chairman of the Assembly of Experts.
+    One of the most conservative figures in Iranian clergy who plays a key role
+    in disqualifying reformist candidates and overseeing elections.
+
+personality:
+  traits:
+    - ultraconservative
+    - uncompromising
+    - loyal
+    - elderly
+    - influential
+  beliefs:
+    economicLeft: 50
+    socialLiberal: 0
+    nationalist: 70
+    religious: 100
+    democratic: 0
+
+relationships:
+  - characterId: khamenei
+    type: political
+    trust: 90
+    description:
+      fa: وفادار مطلق به رهبر
+      en: Absolutely loyal to the Leader
+
+status:
+  health: 30
+  influence: 75
+  visibility: high
+  security: high
+
+goals:
+  - preserve_islamic_system
+  - block_reforms
+  - ensure_hardline_succession
+
+fears:
+  - democratic_opening
+  - reformist_victory
+  - loss_of_clerical_power
+
+tags:
+  - npc
+  - regime
+  - clerical
+  - guardian_council
+  - hardliner

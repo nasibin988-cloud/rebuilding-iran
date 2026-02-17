@@ -1,0 +1,77 @@
+# NPC Character: Quds Force Commander
+# Head of IRGC's external operations
+
+id: quds_force_commander
+
+name:
+  fa: سردار اسماعیل قاآنی
+  en: Brigadier General Esmail Ghaani
+
+title:
+  fa: فرمانده نیروی قدس سپاه
+  en: Commander of IRGC Quds Force
+
+portrait: quds_force_commander.png
+
+role: intelligence_military
+
+biography:
+  fa: |
+    فرمانده نیروی قدس سپاه پاسداران، مسئول عملیات برون‌مرزی ایران.
+    جانشین سردار سلیمانی که پس از ترور او به این مقام رسید. کنترل‌کننده
+    شبکه نیروهای نیابتی ایران در منطقه.
+  en: |
+    Commander of IRGC Quds Force, responsible for Iran's external operations.
+    Successor to General Soleimani after his assassination. Controls Iran's
+    network of proxy forces in the region.
+
+personality:
+  traits:
+    - secretive
+    - strategic
+    - patient
+    - loyal
+    - experienced
+  beliefs:
+    economicLeft: 35
+    socialLiberal: 5
+    nationalist: 95
+    religious: 75
+    democratic: 0
+
+relationships:
+  - characterId: irgc_commander
+    type: political
+    trust: 75
+    description:
+      fa: همکار ارشد سپاه
+      en: Senior IRGC colleague
+  - characterId: khamenei
+    type: political
+    trust: 85
+    description:
+      fa: مأمور ویژه رهبر
+      en: Leader's special operative
+
+status:
+  health: 60
+  influence: 80
+  visibility: low
+  security: maximum
+
+goals:
+  - maintain_resistance_axis
+  - expand_regional_influence
+  - protect_irgc_interests
+
+fears:
+  - assassination
+  - regional_defeat
+  - exposure_of_operations
+
+tags:
+  - npc
+  - regime
+  - military
+  - irgc
+  - quds_force

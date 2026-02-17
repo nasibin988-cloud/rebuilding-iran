@@ -1,0 +1,205 @@
+# Scheduled Events: Elections
+# Events related to electoral cycles
+
+events:
+  - id: parliamentary_elections
+    title:
+      fa: انتخابات مجلس
+      en: Parliamentary Elections
+    type: scheduled
+    description:
+      fa: |
+        انتخابات مجلس شورای اسلامی در راه است. شورای نگهبان در حال بررسی
+        صلاحیت نامزدها است. بسیاری از اصلاح‌طلبان رد صلاحیت شده‌اند.
+        آیا شرکت در این انتخابات معنا دارد؟
+      en: |
+        Parliamentary elections are approaching. The Guardian Council is vetting
+        candidates. Many reformists have been disqualified. Does participating
+        in these elections have meaning?
+    context:
+      whatHappened:
+        fa: انتخابات مجلس اعلام شد
+        en: Parliamentary elections announced
+      whyItMatters:
+        fa: حتی انتخابات کنترل‌شده می‌تواند فرصت باشد
+        en: Even controlled elections can be an opportunity
+      whoIsInvolved: []
+    triggers:
+      conditions:
+        - type: turn
+          operator: equals
+          value: 12  # Every 12 turns
+      probability: 100
+      priority: 80
+      cooldown: 12
+      maxOccurrences: 10
+    timing:
+      when: scheduled
+      duration: 3
+      deadline: 5
+    presentation:
+      image: election_posters.jpg
+      mood: neutral
+    decisions:
+      - id: boycott_elections
+        label:
+          fa: تحریم انتخابات
+          en: Boycott Elections
+        description:
+          fa: فراخوان به تحریم این انتخابات نمایشی
+          en: Call for boycotting this theatrical election
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: regime.legitimacy
+              value: -10
+            - type: relationship
+              target: reformists
+              value: -10
+          delayed: []
+      - id: support_reformists
+        label:
+          fa: از اصلاح‌طلبان حمایت کن
+          en: Support Reformists
+        description:
+          fa: حمایت از نامزدهای اصلاح‌طلب باقی‌مانده
+          en: Support remaining reformist candidates
+        requirements: []
+        effects:
+          immediate:
+            - type: relationship
+              target: reformists
+              value: 20
+          delayed:
+            - delay: 2
+              probability: 40
+              effects:
+                - type: stat
+                  target: regime.control
+                  value: -5
+              narrative:
+                fa: برخی اصلاح‌طلبان وارد مجلس شدند
+                en: Some reformists entered parliament
+      - id: run_underground_campaign
+        label:
+          fa: کمپین زیرزمینی
+          en: Run Underground Campaign
+        description:
+          fa: پخش اطلاعات درباره ماهیت واقعی انتخابات
+          en: Spread information about the true nature of elections
+        requirements:
+          - type: stat
+            path: player.networks
+            operator: greaterThan
+            value: 30
+        effects:
+          immediate:
+            - type: stat
+              target: regime.legitimacy
+              value: -15
+            - type: stat
+              target: player.visibility
+              value: 10
+          delayed: []
+
+  - id: presidential_elections
+    title:
+      fa: انتخابات ریاست‌جمهوری
+      en: Presidential Elections
+    type: scheduled
+    description:
+      fa: |
+        انتخابات ریاست‌جمهوری در پیش است. این بار رقابت سختی بین جناح‌های
+        مختلف حکومت وجود دارد. آیا این فرصتی برای تغییر است یا فقط
+        تعویض چهره‌ها؟
+      en: |
+        Presidential elections are coming. This time there's fierce competition
+        between different regime factions. Is this an opportunity for change or
+        just changing faces?
+    context:
+      whatHappened:
+        fa: انتخابات ریاست‌جمهوری نزدیک است
+        en: Presidential elections are approaching
+      whyItMatters:
+        fa: رئیس‌جمهور می‌تواند فضا را تغییر دهد
+        en: The president can change the atmosphere
+      whoIsInvolved: []
+    triggers:
+      conditions:
+        - type: turn
+          operator: equals
+          value: 16  # Every 16 turns
+      probability: 100
+      priority: 85
+      cooldown: 16
+      maxOccurrences: 5
+    timing:
+      when: scheduled
+      duration: 5
+      deadline: 7
+    presentation:
+      image: presidential_campaign.jpg
+      mood: neutral
+    decisions:
+      - id: campaign_for_reformist
+        label:
+          fa: برای اصلاح‌طلب کمپین کن
+          en: Campaign for Reformist
+        description:
+          fa: حمایت فعال از نامزد اصلاح‌طلب
+          en: Actively support the reformist candidate
+        requirements: []
+        effects:
+          immediate:
+            - type: relationship
+              target: reformists
+              value: 25
+            - type: stat
+              target: player.visibility
+              value: 15
+          delayed:
+            - delay: 3
+              probability: 30
+              effects:
+                - type: stat
+                  target: regime.openness
+                  value: 10
+              narrative:
+                fa: اصلاح‌طلب پیروز شد
+                en: The reformist won
+      - id: expose_election_fraud
+        label:
+          fa: تقلب را افشا کن
+          en: Expose Election Fraud
+        description:
+          fa: جمع‌آوری و انتشار مدارک تقلب
+          en: Gather and publish evidence of fraud
+        requirements:
+          - type: stat
+            path: player.intelligence
+            operator: greaterThan
+            value: 40
+        effects:
+          immediate:
+            - type: stat
+              target: regime.legitimacy
+              value: -20
+            - type: stat
+              target: player.security
+              value: -15
+          delayed: []
+      - id: ignore_elections
+        label:
+          fa: نادیده بگیر
+          en: Ignore
+        description:
+          fa: این انتخابات ارزش توجه ندارد
+          en: These elections aren't worth the attention
+        requirements: []
+        effects:
+          immediate:
+            - type: stat
+              target: player.morale
+              value: -5
+          delayed: []

@@ -1,0 +1,77 @@
+# NPC Character: Sadegh Larijani
+# Former Judiciary Chief, influential hardline cleric
+
+id: sadegh_larijani
+
+name:
+  fa: آیت‌الله صادق لاریجانی
+  en: Ayatollah Sadegh Larijani
+
+title:
+  fa: رئیس سابق قوه قضاییه
+  en: Former Judiciary Chief
+
+portrait: sadegh_larijani.png
+
+role: judiciary_figure
+
+biography:
+  fa: |
+    رئیس سابق قوه قضاییه و عضو مجمع تشخیص مصلحت نظام. از خانواده
+    لاریجانی که چندین مقام بلندپایه دارد. محافظه‌کار سرسخت که
+    مخالف هرگونه اصلاحات است.
+  en: |
+    Former Judiciary Chief and member of the Expediency Council. From the
+    Larijani family which has several high-ranking officials. A staunch
+    conservative who opposes any reforms.
+
+personality:
+  traits:
+    - authoritarian
+    - well_connected
+    - calculating
+    - conservative
+    - ambitious
+  beliefs:
+    economicLeft: 40
+    socialLiberal: 5
+    nationalist: 65
+    religious: 90
+    democratic: 5
+
+relationships:
+  - characterId: khamenei
+    type: political
+    trust: 80
+    description:
+      fa: مورد اعتماد رهبر
+      en: Trusted by the Leader
+  - characterId: ahmad_jannati
+    type: political
+    trust: 70
+    description:
+      fa: همکار در جبهه محافظه‌کار
+      en: Ally in conservative front
+
+status:
+  health: 65
+  influence: 70
+  visibility: medium
+  security: high
+
+goals:
+  - maintain_judiciary_power
+  - expand_family_influence
+  - prevent_accountability
+
+fears:
+  - prosecution_for_abuses
+  - family_exposure
+  - loss_of_position
+
+tags:
+  - npc
+  - regime
+  - clerical
+  - judiciary
+  - hardliner

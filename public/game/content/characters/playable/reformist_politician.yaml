@@ -1,0 +1,120 @@
+# Playable Character: The Reformist Politician
+# A former insider trying to change the system from within
+
+id: reformist_politician
+
+name:
+  fa: میرحسین موسوی‌زاده
+  en: Mir-Hossein Mousavizadeh
+
+title:
+  fa: نماینده سابق مجلس
+  en: Former Member of Parliament
+
+portrait: reformist_politician.png
+
+biography:
+  fa: |
+    یک سیاستمدار میانه‌رو که زمانی در قلب نظام قرار داشت. شما در انتخابات ۱۳۸۸
+    شاهد سرکوب جنبش سبز بودید و از آن زمان به دنبال راهی برای اصلاحات واقعی
+    هستید. شبکه‌ای از روابط در میان اصلاح‌طلبان و حتی برخی محافظه‌کاران
+    میانه‌رو دارید، اما زیر نظر دستگاه امنیتی هستید.
+  en: |
+    A moderate politician who was once at the heart of the system. You witnessed
+    the suppression of the Green Movement in 2009 and have since sought a path
+    toward genuine reform. You have a network of connections among reformists
+    and even some moderate conservatives, but you are under security surveillance.
+
+startingPosition:
+  location: tehran
+  officialRole: null
+  factionMemberships:
+    - factionId: reformists
+      role: senior_member
+      trust: 60
+    - factionId: green_movement
+      role: sympathizer
+      trust: 40
+
+startingResources:
+  influence: 60
+  money: 5000
+  actionsPerTurn: 3
+
+personal:
+  age: 55
+  traits:
+    - pragmatic
+    - patient
+    - diplomatic
+    - cautious
+  beliefs:
+    economicLeft: 45
+    socialLiberal: 70
+    nationalist: 55
+    religious: 40
+    democratic: 80
+  priorities:
+    - democratic_reform
+    - civil_liberties
+    - economic_development
+    - international_normalization
+  redLines:
+    - violence_against_civilians
+    - collaboration_with_foreign_powers_against_iran
+    - abandoning_democratic_principles
+
+backstory:
+  fa: |
+    متولد ۱۳۴۸ در تهران، در یک خانواده مذهبی اما روشنفکر بزرگ شدید. در دوران
+    دانشجویی در دانشگاه تهران با ایده‌های اصلاح‌طلبانه آشنا شدید. پس از انقلاب،
+    مانند بسیاری دیگر، امیدوار به تحقق آرمان‌های عدالت‌خواهانه بودید.
+
+    در دهه ۷۰ وارد سیاست شدید و به مجلس ششم راه یافتید - مجلسی که به خاطر
+    اصلاحاتش معروف شد اما در نهایت توسط شورای نگهبان محدود گردید. این تجربه
+    به شما آموخت که تغییر در این نظام چقدر دشوار است.
+
+    در سال ۸۸، از نزدیک شاهد سرکوب جنبش سبز بودید. دوستانی را از دست دادید.
+    برخی زندانی شدند. این نقطه عطفی در زندگی شما بود.
+  en: |
+    Born in 1969 in Tehran, you grew up in a religious but intellectual family.
+    During your university years at Tehran University, you became acquainted with
+    reformist ideas. After the revolution, like many others, you hoped for the
+    realization of justice-oriented ideals.
+
+    In the 1990s you entered politics and were elected to the Sixth Majlis -
+    a parliament known for its reforms but ultimately constrained by the Guardian
+    Council. This experience taught you how difficult change within this system is.
+
+    In 2009, you witnessed the suppression of the Green Movement up close. You lost
+    friends. Some were imprisoned. This was a turning point in your life.
+
+motivations:
+  fa: |
+    شما باور دارید که ایران می‌تواند از درون اصلاح شود، اما این نیازمند صبر،
+    استراتژی، و ائتلاف‌سازی هوشمندانه است. هدف شما ایجاد فضای سیاسی بازتر،
+    بدون خشونت و بدون تخریب کامل نهادها است.
+  en: |
+    You believe Iran can be reformed from within, but this requires patience,
+    strategy, and smart coalition-building. Your goal is to create more open
+    political space, without violence and without completely destroying institutions.
+
+challenges:
+  - fa: دستگاه امنیتی شما را زیر نظر دارد
+    en: The security apparatus is watching you
+  - fa: بسیاری از جوانان به اصلاحات از درون باور ندارند
+    en: Many young people don't believe in reform from within
+  - fa: اعتماد به اصلاح‌طلبان پس از ناکامی‌های گذشته کاهش یافته
+    en: Trust in reformists has declined after past failures
+  - fa: باید میان اصول و مصلحت تعادل برقرار کنید
+    en: You must balance principles with pragmatism
+
+difficulty: normal
+
+tags:
+  - playable
+  - reformist
+  - politician
+  - insider
+  - tehran
+  - moderate

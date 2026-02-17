@@ -1,0 +1,77 @@
+# NPC Character: Exiled Journalist
+# An Iranian journalist in exile
+
+id: exiled_journalist
+
+name:
+  fa: رضا خاتمی
+  en: Reza Khatami
+
+title:
+  fa: روزنامه‌نگار و تحلیلگر سیاسی
+  en: Journalist and Political Analyst
+
+portrait: exiled_journalist.png
+
+role: media_figure
+
+biography:
+  fa: |
+    روزنامه‌نگار سابق روزنامه‌های اصلاح‌طلب که پس از سرکوب مطبوعات
+    به خارج مهاجرت کرد. اکنون برای رسانه‌های فارسی‌زبان کار می‌کند
+    و وضعیت ایران را تحلیل می‌کند.
+  en: |
+    Former journalist of reformist newspapers who emigrated after the press
+    crackdown. Now works for Persian-language media and analyzes Iran's
+    situation.
+
+personality:
+  traits:
+    - analytical
+    - well_informed
+    - connected
+    - cautious
+    - professional
+  beliefs:
+    economicLeft: 50
+    socialLiberal: 80
+    nationalist: 55
+    religious: 25
+    democratic: 85
+
+relationships:
+  - characterId: diaspora_leader
+    type: colleague
+    trust: 65
+    description:
+      fa: همکار رسانه‌ای
+      en: Media colleague
+  - characterId: former_president_khatami
+    type: political
+    trust: 60
+    description:
+      fa: ارتباط با اصلاح‌طلبان
+      en: Connection to reformists
+
+status:
+  health: 75
+  influence: 35
+  visibility: medium
+  security: medium
+
+goals:
+  - inform_world_about_iran
+  - support_press_freedom
+  - document_history
+
+fears:
+  - family_retaliation
+  - losing_sources
+  - irrelevance
+
+tags:
+  - npc
+  - opposition
+  - diaspora
+  - journalist
+  - media

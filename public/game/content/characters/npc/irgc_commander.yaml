@@ -1,0 +1,66 @@
+# NPC: IRGC Commander-in-Chief
+# Head of the Revolutionary Guards
+
+id: irgc_commander
+
+name:
+  fa: سرلشکر حسین سلامی
+  en: Major General Hossein Salami
+
+title:
+  fa: فرمانده کل سپاه پاسداران
+  en: Commander-in-Chief of IRGC
+
+portrait: irgc_commander.png
+
+biography:
+  fa: |
+    فرمانده کل سپاه پاسداران از سال ۱۳۹۸. یک سخنران آتشین و ایدئولوگ
+    که به سخنرانی‌های تهاجمی علیه غرب و اسرائیل معروف است. تحت فرمان
+    او سپاه به یک امپراتوری اقتصادی-نظامی تبدیل شده است.
+  en: |
+    Commander-in-Chief of IRGC since 2019. A fiery speaker and ideologue
+    known for aggressive speeches against the West and Israel. Under his
+    command, the IRGC has become an economic-military empire.
+
+role: military_commander
+
+faction: irgc
+
+psychology:
+  coreBeliefs:
+    - Military power guarantees survival
+    - Foreign enemies are existential threat
+    - IRGC is guardian of the revolution
+  fears:
+    - Military defeat
+    - Loss of economic empire
+    - Prosecution for human rights
+  motivations:
+    - Expand IRGC power
+    - Deter foreign intervention
+    - Control succession process
+
+traits:
+  - aggressive
+  - ideological
+  - ambitious
+  - theatrical
+  - loyal_to_system
+
+behavior:
+  aggression: 85
+  caution: 40
+  pragmatism: 45
+
+stats:
+  health: 75
+  influence: 85
+  popularity: 15
+
+tags:
+  - npc
+  - regime
+  - military
+  - irgc
+  - hardline

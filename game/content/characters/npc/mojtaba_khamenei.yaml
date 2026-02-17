@@ -1,0 +1,94 @@
+# NPC Character: Mojtaba Khamenei
+# Son of the Supreme Leader, rumored to be his preferred successor
+
+id: mojtaba_khamenei
+
+name:
+  fa: حجت‌الاسلام مجتبی خامنه‌ای
+  en: Hojatoleslam Mojtaba Khamenei
+
+title:
+  fa: فرزند رهبر
+  en: Son of the Supreme Leader
+
+portrait: mojtaba_khamenei.png
+
+role: potential_successor
+
+biography:
+  fa: |
+    پسر دوم رهبر، که گفته می‌شود نقش مهمی در پشت صحنه قدرت دارد.
+    ارتباطات نزدیک با سپاه و بسیج دارد و برخی او را جانشین احتمالی
+    پدر می‌دانند، هرچند این موضوع محل بحث است.
+  en: |
+    The Leader's second son, said to play an important behind-the-scenes
+    role in power. He has close connections with the IRGC and Basij, and
+    some consider him the likely successor to his father, though this is
+    debated.
+
+personality:
+  traits:
+    - ambitious
+    - secretive
+    - calculating
+    - ruthless
+    - networked
+  beliefs:
+    economicLeft: 40
+    socialLiberal: 5
+    nationalist: 75
+    religious: 85
+    democratic: 0
+
+relationships:
+  - characterId: khamenei
+    type: family
+    trust: 90
+    description:
+      fa: پدر و رهبر فعلی
+      en: Father and current leader
+  - characterId: irgc_commander
+    type: political
+    trust: 70
+    description:
+      fa: متحد سیاسی
+      en: Political ally
+
+status:
+  health: 85
+  influence: 70
+  visibility: low
+  security: high
+
+goals:
+  - secure_succession
+  - expand_network
+  - control_irgc
+  - eliminate_rivals
+
+fears:
+  - public_exposure
+  - clerical_opposition
+  - irgc_independence
+  - democratic_transition
+
+triggers:
+  - condition:
+      type: stat
+      path: characters.khamenei.health
+      operator: lessThan
+      value: 30
+    response: succession_maneuvering
+  - condition:
+      type: flag
+      flag: succession_crisis
+      operator: equals
+      value: true
+    response: power_grab
+
+tags:
+  - npc
+  - regime
+  - succession
+  - hardliner
+  - key_figure

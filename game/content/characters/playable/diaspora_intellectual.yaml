@@ -1,0 +1,127 @@
+# Playable Character: The Diaspora Intellectual
+# A scholar and activist abroad, working to shape Iran's future from outside
+
+id: diaspora_intellectual
+
+name:
+  fa: داریوش مهرگان
+  en: Dariush Mehregan
+
+title:
+  fa: روشنفکر در تبعید
+  en: Intellectual in Exile
+
+portrait: diaspora_intellectual.png
+
+biography:
+  fa: |
+    یک نویسنده و تحلیلگر سیاسی که سال‌هاست در خارج زندگی می‌کند. شما پس از
+    سرکوب جنبش سبز ایران را ترک کردید. اکنون صدای جنبش دموکراسی‌خواهی ایران
+    در مجامع بین‌المللی محسوب می‌شوید. شبکه گسترده‌ای در میان دیاسپورای
+    ایرانی دارید و با رسانه‌های بین‌المللی و سازمان‌های حقوق بشر در ارتباط هستید.
+  en: |
+    A writer and political analyst who has lived abroad for years. You left Iran
+    after the Green Movement crackdown. Now you are considered a voice for Iran's
+    democracy movement in international forums. You have an extensive network among
+    the Iranian diaspora and connections with international media and human rights
+    organizations.
+
+startingPosition:
+  location: abroad
+  officialRole: null
+  factionMemberships:
+    - factionId: diaspora_activists
+      role: leader
+      trust: 80
+    - factionId: green_movement
+      role: supporter
+      trust: 50
+    - factionId: reformists
+      role: sympathizer
+      trust: 30
+
+startingResources:
+  influence: 40
+  money: 8000
+  actionsPerTurn: 3
+
+personal:
+  age: 48
+  traits:
+    - intellectual
+    - connected
+    - idealistic
+    - media_savvy
+  beliefs:
+    economicLeft: 55
+    socialLiberal: 90
+    nationalist: 60
+    religious: 20
+    democratic: 95
+  priorities:
+    - human_rights
+    - democratic_transition
+    - women_rights
+    - secularism
+    - international_pressure
+  redLines:
+    - supporting_regime
+    - abandoning_human_rights
+    - violence_against_innocents
+
+backstory:
+  fa: |
+    متولد ۱۳۵۵ در شیراز، در خانواده‌ای تحصیل‌کرده و سکولار بزرگ شدید.
+    پدرتان استاد دانشگاه بود و مادرتان پزشک. از کودکی با کتاب و بحث
+    فلسفی آشنا بودید.
+
+    در نوجوانی، خاطرات تلخ جنگ ایران و عراق و محدودیت‌های اجتماعی
+    پس از انقلاب، شما را به سمت پرسشگری سوق داد. در دانشگاه تهران
+    فلسفه خواندید و سپس برای دکترا به آمریکا رفتید.
+
+    قصد بازگشت داشتید، اما وقایع ۸۸ همه چیز را تغییر داد. دوستان
+    نزدیکتان زندانی شدند. شما در خارج ماندید و صدای آنان شدید.
+  en: |
+    Born in 1976 in Shiraz, you grew up in an educated, secular family.
+    Your father was a university professor and your mother a physician.
+    From childhood, you were familiar with books and philosophical debate.
+
+    In your teenage years, the bitter memories of the Iran-Iraq War and
+    post-revolution social restrictions pushed you toward questioning.
+    You studied philosophy at Tehran University, then went to America
+    for your doctorate.
+
+    You intended to return, but the events of 2009 changed everything.
+    Close friends were imprisoned. You stayed abroad and became their voice.
+
+motivations:
+  fa: |
+    شما باور دارید که فشار بین‌المللی، آگاهی‌بخشی و همبستگی دیاسپورا
+    می‌تواند به تغییر در ایران کمک کند. هدفتان ایجاد پل میان جنبش
+    داخل و حمایت بین‌المللی است. می‌خواهید روزی به ایران آزاد برگردید.
+  en: |
+    You believe that international pressure, awareness-raising, and diaspora
+    solidarity can help bring change to Iran. Your goal is to build bridges
+    between the movement inside and international support. You dream of
+    returning to a free Iran someday.
+
+challenges:
+  - fa: از ایران دور هستید و ارتباط مستقیم محدود است
+    en: You are far from Iran with limited direct contact
+  - fa: برخی در داخل شما را "خارج‌نشین" می‌دانند
+    en: Some inside view you as a disconnected expatriate
+  - fa: رژیم شما را تهدید امنیتی می‌داند
+    en: The regime considers you a security threat
+  - fa: باید میان ایده‌آل‌ها و واقعیت‌های سیاست بین‌الملل تعادل برقرار کنید
+    en: You must balance ideals with international political realities
+
+difficulty: challenging
+
+tags:
+  - playable
+  - diaspora
+  - intellectual
+  - academic
+  - abroad
+  - human_rights
+  - media

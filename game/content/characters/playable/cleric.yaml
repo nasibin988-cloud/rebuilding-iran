@@ -1,0 +1,65 @@
+# Playable Character: The Dissident Cleric
+# A religious scholar who questions the regime's interpretation of Islam
+
+id: cleric
+
+name:
+  fa: آیت‌الله مهرداد فرزانه
+  en: Ayatollah Mehrdad Farzaneh
+
+title:
+  fa: روحانی منتقد
+  en: Dissident Cleric
+
+portrait: cleric.png
+
+biography:
+  fa: |
+    یک روحانی میانه‌رو که در حوزه علمیه قم تحصیل کرده و معتقد است که اسلام سیاسی
+    فعلی انحراف از اصول واقعی است. شما طرفدارانی در میان روحانیون جوان‌تر دارید
+    اما تحت فشار شدید حکومتی هستید.
+  en: |
+    A moderate cleric educated in Qom seminary who believes current political Islam
+    is a deviation from true principles. You have supporters among younger clerics
+    but are under intense government pressure.
+
+startingPosition:
+  location: mashhad
+  officialRole: null
+
+startingResources:
+  money: 25000
+  influence: 55
+  networkConnections: 45
+  knowledge: 75
+  actionsPerTurn: 3
+  actionsRemaining: 3
+
+personal:
+  health: 70
+  stress: 40
+  hope: 60
+  courage: 65
+
+backstory:
+  fa: شما روزی از حامیان انقلاب بودید، اما دیگر نمی‌توانید سکوت کنید.
+  en: You were once a supporter of the revolution, but you can no longer stay silent.
+
+motivations:
+  fa: اصلاح دینی و جدایی دین از حکومت
+  en: Religious reform and separation of religion from governance
+
+challenges:
+  - fa: مقابله با اتهام ارتداد
+    en: Facing accusations of apostasy
+  - fa: حفظ پایگاه مذهبی
+    en: Maintaining religious base
+  - fa: متقاعد کردن روحانیون دیگر
+    en: Convincing other clerics
+
+difficulty: expert
+tags:
+  - cleric
+  - reformist
+  - religious
+  - high-influence

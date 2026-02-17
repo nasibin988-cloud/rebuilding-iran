@@ -1,0 +1,728 @@
+# Triggered Events: Player Personal Events
+
+events:
+  # ================================
+  # SECURITY THREATS
+  # ================================
+
+  - id: surveillance_detected
+    category: triggered
+    title:
+      fa: تحت نظارت هستی
+      en: You're Being Watched
+    description:
+      fa: |
+        متوجه می‌شوی که یک موتورسوار مشکوک چند روز است دنبالت می‌کند.
+        تلفنت صداهای عجیب می‌دهد. احساس می‌کنی تحت نظر هستی.
+
+        باید احتیاط کنی.
+      en: |
+        You notice a suspicious motorcyclist has been following you for days.
+        Your phone makes strange sounds. You feel you're being watched.
+
+        You need to be careful.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: player.position.regimeAttention
+          operator: greater_than
+          value: 60
+    priority: 90
+    weight: 1.0
+    once: false
+    cooldown: 8
+    requirements: []
+    decisions:
+      - id: go_underground
+        label:
+          fa: زیرزمینی شو
+          en: Go Underground
+        description:
+          fa: فعالیت‌ها را متوقف کن و پنهان شو
+          en: Stop activities and hide
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: -30
+            - type: state_change
+              target: player.position.regimeAttention
+              value: -20
+            - type: resource_change
+              target: influence
+              value: -10
+          delayed: []
+        tags: [defensive, hiding]
+
+      - id: change_methods
+        label:
+          fa: روش‌ها را عوض کن
+          en: Change Methods
+        description:
+          fa: از کانال‌های ارتباطی جدید استفاده کن
+          en: Use new communication channels
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.regimeAttention
+              value: -10
+            - type: resource_change
+              target: money
+              value: -200
+          delayed: []
+        tags: [adaptive, security]
+
+      - id: continue_regardless
+        label:
+          fa: ادامه بده
+          en: Continue Regardless
+        description:
+          fa: نباید ترسید
+          en: Must not show fear
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: 10
+          delayed:
+            - delay: 2
+              probability: 0.3
+              effects:
+                - type: flag_set
+                  target: interrogation_imminent
+                  value: true
+              narrative:
+                fa: احتمال بازداشت افزایش یافت
+                en: Risk of arrest increased
+        tags: [brave, risky]
+    tags: [player, security, surveillance]
+
+  - id: interrogation
+    category: triggered
+    title:
+      fa: بازجویی
+      en: Interrogation
+    description:
+      fa: |
+        دستگیر شدی. در یک اتاق تاریک نشسته‌ای. بازجو می‌خواهد بداند
+        با چه کسانی کار می‌کنی. چه اطلاعاتی داری.
+
+        هر کلمه‌ای که بگویی می‌تواند عواقب داشته باشد.
+      en: |
+        You've been arrested. You're sitting in a dark room. The interrogator
+        wants to know who you work with. What information you have.
+
+        Every word you say could have consequences.
+    triggers:
+      - type: condition
+        value:
+          type: flag
+          target: interrogation_imminent
+          value: true
+    priority: 95
+    weight: 1.0
+    once: false
+    cooldown: 15
+    requirements: []
+    decisions:
+      - id: stay_silent
+        label:
+          fa: سکوت کن
+          en: Stay Silent
+        description:
+          fa: هیچ چیز نگو - هر چه باشد
+          en: Say nothing - no matter what
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.health
+              value: -25
+            - type: state_change
+              target: player.resources.freedom
+              value: -40
+          delayed:
+            - delay: 3
+              probability: 0.6
+              effects:
+                - type: state_change
+                  target: player.resources.freedom
+                  value: 30
+              narrative:
+                fa: بالاخره آزاد شدی
+                en: Finally released
+        tags: [brave, protecting_others]
+
+      - id: give_false_info
+        label:
+          fa: اطلاعات غلط بده
+          en: Give False Info
+        description:
+          fa: آنها را گمراه کن
+          en: Mislead them
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.health
+              value: -15
+          delayed:
+            - delay: 2
+              probability: 0.4
+              effects:
+                - type: state_change
+                  target: player.resources.freedom
+                  value: 20
+              narrative:
+                fa: آنها باورشان شد
+                en: They believed you
+        tags: [deceptive, risky]
+
+      - id: cooperate_minimally
+        label:
+          fa: همکاری حداقلی
+          en: Minimal Cooperation
+        description:
+          fa: اطلاعات بی‌ضرر بده تا آزاد شوی
+          en: Give harmless info to get released
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.freedom
+              value: -20
+            - type: faction_trust
+              target: students
+              value: -5
+          delayed:
+            - delay: 1
+              probability: 0.7
+              effects:
+                - type: state_change
+                  target: player.resources.freedom
+                  value: 30
+              narrative:
+                fa: آزاد شدی
+                en: You're released
+        tags: [pragmatic, compromise]
+    tags: [player, detention, critical]
+
+  - id: family_threatened
+    category: triggered
+    title:
+      fa: تهدید خانواده
+      en: Family Threatened
+    description:
+      fa: |
+        پیامی دریافت کرده‌ای: «ما می‌دانیم خانواده‌ات کجا زندگی می‌کنند.»
+        این تهدید مستقیم است. باید تصمیم بگیری که چه کنی.
+      en: |
+        You've received a message: "We know where your family lives."
+        This is a direct threat. You must decide what to do.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: player.position.regimeAttention
+          operator: greater_than
+          value: 80
+    priority: 95
+    weight: 0.6
+    once: true
+    requirements:
+      - type: stat
+        target: player.position.visibility
+        operator: greater_than
+        value: 50
+    decisions:
+      - id: relocate_family
+        label:
+          fa: خانواده را جابجا کن
+          en: Relocate Family
+        description:
+          fa: آنها را به جای امن ببر
+          en: Move them to a safe place
+        effects:
+          immediate:
+            - type: resource_change
+              target: money
+              value: -1000
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: -10
+          delayed: []
+        tags: [protective, expensive]
+
+      - id: send_abroad
+        label:
+          fa: به خارج بفرست
+          en: Send Abroad
+        description:
+          fa: اگر امکان دارد، آنها را از کشور خارج کن
+          en: If possible, get them out of the country
+        effects:
+          immediate:
+            - type: resource_change
+              target: money
+              value: -2000
+            - type: flag_set
+              target: family_safe_abroad
+              value: true
+          delayed: []
+        tags: [protective, permanent]
+
+      - id: defy_threat
+        label:
+          fa: تهدید را نادیده بگیر
+          en: Defy the Threat
+        description:
+          fa: نباید تسلیم شد
+          en: Must not submit
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: 10
+          delayed:
+            - delay: 3
+              probability: 0.3
+              effects:
+                - type: state_change
+                  target: player.resources.mentalHealth
+                  value: -30
+              narrative:
+                fa: اتفاق بدی برای یکی از نزدیکانت افتاد
+                en: Something bad happened to a loved one
+        tags: [brave, dangerous]
+    tags: [player, family, threat]
+
+  # ================================
+  # OPPORTUNITIES
+  # ================================
+
+  - id: interview_request
+    category: triggered
+    title:
+      fa: درخواست مصاحبه
+      en: Interview Request
+    description:
+      fa: |
+        یک خبرنگار خارجی می‌خواهد با تو مصاحبه کند. این فرصتی است
+        که صدایت را به جهان برسانی. اما خطرات هم دارد.
+      en: |
+        A foreign journalist wants to interview you. This is a chance
+        to get your voice to the world. But there are risks.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: player.position.internationalProfile
+          operator: greater_than
+          value: 40
+    priority: 60
+    weight: 0.7
+    once: false
+    cooldown: 10
+    requirements: []
+    decisions:
+      - id: accept_openly
+        label:
+          fa: علنی قبول کن
+          en: Accept Openly
+        description:
+          fa: با نام و چهره واقعی مصاحبه کن
+          en: Interview with real name and face
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 25
+            - type: state_change
+              target: player.position.visibility
+              value: 30
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 25
+          delayed: []
+        tags: [brave, impactful]
+
+      - id: accept_anonymously
+        label:
+          fa: ناشناس قبول کن
+          en: Accept Anonymously
+        description:
+          fa: مصاحبه با صدای تغییر یافته و چهره پنهان
+          en: Interview with altered voice and hidden face
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 10
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 5
+          delayed: []
+        tags: [safe, media]
+
+      - id: decline_interview
+        label:
+          fa: رد کن
+          en: Decline
+        description:
+          fa: خطرش زیاد است
+          en: Too risky
+        effects:
+          immediate: []
+          delayed: []
+        tags: [cautious]
+    tags: [player, media, opportunity]
+
+  - id: funding_opportunity
+    category: triggered
+    title:
+      fa: فرصت تامین مالی
+      en: Funding Opportunity
+    description:
+      fa: |
+        یک سازمان بین‌المللی آماده است به فعالیت‌های تو کمک مالی کند.
+        اما پذیرش پول خارجی می‌تواند عواقب داشته باشد - رژیم همیشه
+        از این موضوع برای بی‌اعتبار کردن مخالفان استفاده می‌کند.
+      en: |
+        An international organization is ready to fund your activities.
+        But accepting foreign money could have consequences - the regime
+        always uses this to discredit opponents.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: player.position.internationalProfile
+          operator: greater_than
+          value: 30
+    priority: 55
+    weight: 0.6
+    once: false
+    cooldown: 15
+    requirements:
+      - type: stat
+        target: player.resources.money
+        operator: less_than
+        value: 1000
+    decisions:
+      - id: accept_funding
+        label:
+          fa: قبول کن
+          en: Accept
+        description:
+          fa: پول لازم است برای ادامه کار
+          en: Money is needed to continue
+        effects:
+          immediate:
+            - type: resource_change
+              target: money
+              value: 2000
+            - type: flag_set
+              target: foreign_funded
+              value: true
+          delayed:
+            - delay: 5
+              probability: 0.4
+              effects:
+                - type: state_change
+                  target: regime.legitimacy
+                  value: 3
+              narrative:
+                fa: رژیم از پول خارجی تو سوءاستفاده کرد
+                en: Regime exploited your foreign funding
+        tags: [pragmatic, risky]
+
+      - id: negotiate_terms
+        label:
+          fa: شرایط را مذاکره کن
+          en: Negotiate Terms
+        description:
+          fa: پول بگیر اما با شرایط خودت
+          en: Take money but on your terms
+        effects:
+          immediate:
+            - type: resource_change
+              target: money
+              value: 1000
+          delayed: []
+        tags: [diplomatic, balanced]
+
+      - id: reject_funding
+        label:
+          fa: رد کن
+          en: Reject
+        description:
+          fa: استقلال مهم‌تر است
+          en: Independence is more important
+        effects:
+          immediate:
+            - type: faction_trust
+              target: students
+              value: 10
+          delayed: []
+        tags: [principled, independent]
+    tags: [player, funding, international]
+
+  # ================================
+  # NETWORK EVENTS
+  # ================================
+
+  - id: ally_arrested
+    category: triggered
+    title:
+      fa: بازداشت همکار
+      en: Ally Arrested
+    description:
+      fa: |
+        یکی از نزدیک‌ترین همکارانت دستگیر شده. او اطلاعات زیادی
+        درباره شبکه و فعالیت‌هایت دارد. این می‌تواند همه چیز را
+        به خطر بیندازد.
+      en: |
+        One of your closest allies has been arrested. They have a lot
+        of information about your network and activities. This could
+        put everything at risk.
+    triggers:
+      - type: random
+        value: 0.1
+    priority: 80
+    weight: 1.0
+    once: false
+    cooldown: 10
+    requirements:
+      - type: stat
+        target: player.position.networkSize
+        operator: greater_than
+        value: 50
+      - type: stat
+        target: player.position.regimeAttention
+        operator: greater_than
+        value: 40
+    decisions:
+      - id: activate_protocols
+        label:
+          fa: پروتکل‌های امنیتی را فعال کن
+          en: Activate Security Protocols
+        description:
+          fa: همه رمزها را عوض کن، جلسات را لغو کن
+          en: Change all codes, cancel meetings
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.networkSize
+              value: -10
+            - type: state_change
+              target: player.position.regimeAttention
+              value: -15
+          delayed: []
+        tags: [security, defensive]
+
+      - id: try_to_help
+        label:
+          fa: سعی کن کمک کنی
+          en: Try to Help
+        description:
+          fa: وکیل پیدا کن، خانواده را کمک کن
+          en: Find lawyer, help family
+        effects:
+          immediate:
+            - type: resource_change
+              target: money
+              value: -500
+            - type: faction_trust
+              target: civil_society
+              value: 10
+          delayed:
+            - delay: 2
+              probability: 0.3
+              effects:
+                - type: state_change
+                  target: player.position.regimeAttention
+                  value: 10
+              narrative:
+                fa: فعالیت‌هایت توجه جلب کرد
+                en: Your activities drew attention
+        tags: [solidarity, risky]
+
+      - id: cut_ties
+        label:
+          fa: رابطه را قطع کن
+          en: Cut Ties
+        description:
+          fa: برای امنیت شبکه، فاصله بگیر
+          en: For network security, distance yourself
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.networkSize
+              value: -5
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: -10
+          delayed: []
+        tags: [pragmatic, cold]
+    tags: [player, network, security]
+
+  - id: betrayal
+    category: triggered
+    title:
+      fa: خیانت
+      en: Betrayal
+    description:
+      fa: |
+        فهمیدی که یکی از اعضای شبکه‌ات با اطلاعات کار می‌کرده.
+        شوک بزرگی است. چه کسی دیگر قابل اعتماد است؟
+      en: |
+        You've discovered that one of your network members was working
+        with intelligence. It's a huge shock. Who else can you trust?
+    triggers:
+      - type: random
+        value: 0.05
+    priority: 85
+    weight: 0.5
+    once: true
+    requirements:
+      - type: stat
+        target: player.position.networkSize
+        operator: greater_than
+        value: 70
+      - type: stat
+        target: player.position.regimeAttention
+        operator: greater_than
+        value: 50
+    decisions:
+      - id: purge_network
+        label:
+          fa: شبکه را پاکسازی کن
+          en: Purge Network
+        description:
+          fa: هر کسی را که به او مشکوکی حذف کن
+          en: Remove anyone you're suspicious of
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.networkSize
+              value: -30
+            - type: state_change
+              target: player.position.regimeAttention
+              value: -20
+          delayed: []
+        tags: [drastic, security]
+
+      - id: rebuild_trust
+        label:
+          fa: اعتماد را بازسازی کن
+          en: Rebuild Trust
+        description:
+          fa: با دقت بیشتر، اما حذف گسترده نه
+          en: More carefully, but no mass purge
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.networkSize
+              value: -10
+            - type: resource_change
+              target: influence
+              value: -5
+          delayed: []
+        tags: [balanced, careful]
+
+      - id: go_public
+        label:
+          fa: علنی کن
+          en: Go Public
+        description:
+          fa: نام نفوذی را فاش کن
+          en: Expose the infiltrator's name
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: 20
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 15
+          delayed: []
+        tags: [bold, confrontational]
+    tags: [player, betrayal, critical]
+
+  # ================================
+  # PERSONAL GROWTH
+  # ================================
+
+  - id: moment_of_doubt
+    category: triggered
+    title:
+      fa: لحظه تردید
+      en: Moment of Doubt
+    description:
+      fa: |
+        شب‌ها خوابت نمی‌برد. به قربانیان فکر می‌کنی. به خانواده‌ات.
+        آیا این همه ارزشش را دارد؟ آیا چیزی تغییر خواهد کرد؟
+      en: |
+        You can't sleep at night. You think of the victims. Of your family.
+        Is all this worth it? Will anything change?
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: player.resources.mentalHealth
+          operator: less_than
+          value: 40
+    priority: 65
+    weight: 1.0
+    once: false
+    cooldown: 12
+    requirements: []
+    decisions:
+      - id: find_meaning
+        label:
+          fa: معنا پیدا کن
+          en: Find Meaning
+        description:
+          fa: به یاد بیاور چرا شروع کردی
+          en: Remember why you started
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 15
+          delayed: []
+        tags: [introspective, healing]
+
+      - id: seek_support
+        label:
+          fa: از دوستان کمک بخواه
+          en: Seek Support
+        description:
+          fa: با کسانی که قابل اعتمادند حرف بزن
+          en: Talk to those you can trust
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 20
+            - type: faction_trust
+              target: students
+              value: 5
+          delayed: []
+        tags: [social, healing]
+
+      - id: push_through
+        label:
+          fa: ادامه بده
+          en: Push Through
+        description:
+          fa: وقت استراحت نیست
+          en: No time to rest
+        effects:
+          immediate:
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: -10
+            - type: resource_change
+              target: influence
+              value: 5
+          delayed: []
+        tags: [driven, unhealthy]
+    tags: [player, personal, mental_health]

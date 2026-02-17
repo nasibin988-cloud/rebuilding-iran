@@ -1,0 +1,80 @@
+# NPC: Mojtaba Khamenei
+# Son of the Supreme Leader, rumored successor
+
+id: mojtaba_khamenei
+
+name:
+  fa: سید مجتبی خامنه‌ای
+  en: Seyyed Mojtaba Khamenei
+
+title:
+  fa: فرزند رهبر
+  en: Son of the Leader
+
+portrait: mojtaba.png
+
+biography:
+  fa: |
+    پسر دوم آیت‌الله خامنه‌ای که در سایه قدرت رشد کرده است. گفته می‌شود
+    نقش مهمی در سرکوب جنبش سبز ۸۸ داشت. بدون سابقه روحانیت رسمی، اما
+    با شبکه‌ای قوی در سپاه و دستگاه امنیتی.
+  en: |
+    Second son of Ayatollah Khamenei who grew up in the shadow of power.
+    Reportedly played a key role in suppressing the 2009 Green Movement.
+    No formal clerical credentials, but with a strong network in the IRGC
+    and security apparatus.
+
+role: power_broker
+
+faction: supreme_leader_office
+
+psychology:
+  coreBeliefs:
+    - Family legacy must continue
+    - Hard power is necessary
+    - Trust no one outside inner circle
+  fears:
+    - Prosecution if regime changes
+    - Rivals in succession
+    - Public exposure
+  motivations:
+    - Secure succession
+    - Protect family interests
+    - Maintain security apparatus loyalty
+
+traits:
+  - secretive
+  - ruthless
+  - ambitious
+  - paranoid
+  - calculating
+
+relationships:
+  khamenei:
+    type: family
+    trust: 85
+    description:
+      fa: پدر و منبع قدرت
+      en: Father and source of power
+  irgc_commander:
+    type: alliance
+    trust: 65
+    description:
+      fa: متحد نظامی
+      en: Military ally
+
+behavior:
+  aggression: 70
+  caution: 60
+  pragmatism: 50
+
+stats:
+  health: 90
+  influence: 75
+  popularity: 5
+
+tags:
+  - npc
+  - regime
+  - succession
+  - irgc_connected

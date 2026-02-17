@@ -1,0 +1,837 @@
+# All Iranian Provinces (31 Regions)
+
+regions:
+  # ===============================
+  # CENTRAL/CAPITAL REGION
+  # ===============================
+
+  - id: tehran
+    name:
+      fa: تهران
+      en: Tehran
+    capital: Tehran
+    population: 14000000
+    demographics:
+      persian: 65
+      azeri: 20
+      kurd: 5
+      arab: 2
+      other: 8
+    economy:
+      gdpContribution: 30
+      mainIndustries: [government, services, manufacturing, technology]
+      unemployment: 12
+    politics:
+      regimeControl: 75
+      oppositionStrength: 50
+      dominantFactions: [supreme_leader_office, irgc, reformists, students]
+      grievances: [air_pollution, housing_costs, political_repression, unemployment]
+    geography:
+      borders: [alborz, mazandaran, semnan, qom, markazi]
+      terrain: urban_mountain
+      strategicImportance: 100
+    tags: [capital, political_center, protest_hub]
+
+  - id: alborz
+    name:
+      fa: البرز
+      en: Alborz
+    capital: Karaj
+    population: 2900000
+    demographics:
+      persian: 70
+      azeri: 15
+      other: 15
+    economy:
+      gdpContribution: 5
+      mainIndustries: [manufacturing, agriculture]
+      unemployment: 14
+    politics:
+      regimeControl: 70
+      oppositionStrength: 45
+      dominantFactions: [workers, students]
+      grievances: [unemployment, pollution, housing]
+    geography:
+      borders: [tehran, qazvin, mazandaran]
+      terrain: mountain
+      strategicImportance: 60
+    tags: [industrial, suburban]
+
+  - id: qom
+    name:
+      fa: قم
+      en: Qom
+    capital: Qom
+    population: 1300000
+    demographics:
+      persian: 85
+      arab: 5
+      other: 10
+    economy:
+      gdpContribution: 2
+      mainIndustries: [religious_tourism, education, textiles]
+      unemployment: 10
+    politics:
+      regimeControl: 90
+      oppositionStrength: 15
+      dominantFactions: [hardline_clerics, basij]
+      grievances: [economic_stagnation]
+    geography:
+      borders: [tehran, markazi, isfahan, semnan]
+      terrain: desert
+      strategicImportance: 75
+    tags: [religious_center, seminary_city, regime_stronghold]
+
+  # ===============================
+  # NORTHWESTERN REGION (AZERI)
+  # ===============================
+
+  - id: east_azerbaijan
+    name:
+      fa: آذربایجان شرقی
+      en: East Azerbaijan
+    capital: Tabriz
+    population: 4000000
+    demographics:
+      azeri: 85
+      persian: 10
+      kurd: 3
+      other: 2
+    economy:
+      gdpContribution: 6
+      mainIndustries: [manufacturing, machinery, agriculture]
+      unemployment: 13
+    politics:
+      regimeControl: 65
+      oppositionStrength: 45
+      dominantFactions: [azeri_movement, bazaar_merchants]
+      grievances: [language_rights, economic_neglect, cultural_suppression]
+    geography:
+      borders: [west_azerbaijan, ardabil, zanjan, turkey, armenia, nakhchivan]
+      terrain: mountain
+      strategicImportance: 70
+      borderCountries: [Turkey, Armenia, Azerbaijan]
+    tags: [azeri_majority, industrial, border_province]
+
+  - id: west_azerbaijan
+    name:
+      fa: آذربایجان غربی
+      en: West Azerbaijan
+    capital: Urmia
+    population: 3300000
+    demographics:
+      azeri: 50
+      kurd: 40
+      persian: 5
+      other: 5
+    economy:
+      gdpContribution: 3
+      mainIndustries: [agriculture, mining]
+      unemployment: 15
+    politics:
+      regimeControl: 60
+      oppositionStrength: 50
+      dominantFactions: [kurdish_parties, azeri_movement]
+      grievances: [ethnic_tensions, water_crisis, border_insecurity]
+    geography:
+      borders: [east_azerbaijan, kurdistan, zanjan, turkey, iraq]
+      terrain: mountain_lake
+      strategicImportance: 65
+      borderCountries: [Turkey, Iraq]
+    tags: [multi_ethnic, border_province, water_crisis]
+
+  - id: ardabil
+    name:
+      fa: اردبیل
+      en: Ardabil
+    capital: Ardabil
+    population: 1300000
+    demographics:
+      azeri: 90
+      persian: 5
+      other: 5
+    economy:
+      gdpContribution: 1.5
+      mainIndustries: [agriculture, tourism, handicrafts]
+      unemployment: 14
+    politics:
+      regimeControl: 70
+      oppositionStrength: 35
+      dominantFactions: [azeri_movement]
+      grievances: [economic_underdevelopment, language_rights]
+    geography:
+      borders: [east_azerbaijan, gilan, azerbaijan_republic]
+      terrain: mountain
+      strategicImportance: 45
+      borderCountries: [Azerbaijan]
+    tags: [azeri_majority, border_province]
+
+  # ===============================
+  # KURDISH REGION
+  # ===============================
+
+  - id: kurdistan
+    name:
+      fa: کردستان
+      en: Kurdistan
+    capital: Sanandaj
+    population: 1600000
+    demographics:
+      kurd: 90
+      persian: 5
+      other: 5
+    economy:
+      gdpContribution: 1.5
+      mainIndustries: [agriculture, handicrafts]
+      unemployment: 18
+    politics:
+      regimeControl: 50
+      oppositionStrength: 65
+      dominantFactions: [kurdish_parties]
+      grievances: [ethnic_discrimination, economic_neglect, political_repression, executions]
+    geography:
+      borders: [west_azerbaijan, hamadan, kermanshah, zanjan, iraq]
+      terrain: mountain
+      strategicImportance: 55
+      borderCountries: [Iraq]
+    tags: [kurdish_majority, opposition_stronghold, border_province]
+
+  - id: kermanshah
+    name:
+      fa: کرمانشاه
+      en: Kermanshah
+    capital: Kermanshah
+    population: 2000000
+    demographics:
+      kurd: 70
+      persian: 15
+      lur: 10
+      other: 5
+    economy:
+      gdpContribution: 2
+      mainIndustries: [oil_refining, agriculture]
+      unemployment: 16
+    politics:
+      regimeControl: 55
+      oppositionStrength: 55
+      dominantFactions: [kurdish_parties, workers]
+      grievances: [earthquake_recovery, unemployment, ethnic_issues]
+    geography:
+      borders: [kurdistan, hamadan, lorestan, ilam, iraq]
+      terrain: mountain
+      strategicImportance: 50
+      borderCountries: [Iraq]
+    tags: [kurdish_majority, border_province]
+
+  - id: ilam
+    name:
+      fa: ایلام
+      en: Ilam
+    capital: Ilam
+    population: 600000
+    demographics:
+      kurd: 50
+      lur: 40
+      other: 10
+    economy:
+      gdpContribution: 1
+      mainIndustries: [oil, agriculture]
+      unemployment: 17
+    politics:
+      regimeControl: 60
+      oppositionStrength: 45
+      dominantFactions: [kurdish_parties]
+      grievances: [underdevelopment, border_issues]
+    geography:
+      borders: [kermanshah, lorestan, khuzestan, iraq]
+      terrain: mountain
+      strategicImportance: 40
+      borderCountries: [Iraq]
+    tags: [border_province, oil]
+
+  # ===============================
+  # CASPIAN REGION
+  # ===============================
+
+  - id: gilan
+    name:
+      fa: گیلان
+      en: Gilan
+    capital: Rasht
+    population: 2600000
+    demographics:
+      gilaki: 70
+      persian: 15
+      azeri: 10
+      other: 5
+    economy:
+      gdpContribution: 3
+      mainIndustries: [agriculture, tea, rice, fishing, tourism]
+      unemployment: 12
+    politics:
+      regimeControl: 65
+      oppositionStrength: 40
+      dominantFactions: [reformists, workers]
+      grievances: [flooding, environmental_damage, economic_issues]
+    geography:
+      borders: [ardabil, zanjan, qazvin, mazandaran, caspian_sea]
+      terrain: coastal_forest
+      strategicImportance: 55
+    tags: [caspian, agriculture, distinct_culture]
+
+  - id: mazandaran
+    name:
+      fa: مازندران
+      en: Mazandaran
+    capital: Sari
+    population: 3300000
+    demographics:
+      mazandarani: 65
+      persian: 25
+      other: 10
+    economy:
+      gdpContribution: 4
+      mainIndustries: [agriculture, tourism, manufacturing]
+      unemployment: 11
+    politics:
+      regimeControl: 70
+      oppositionStrength: 35
+      dominantFactions: [reformists]
+      grievances: [environmental_damage, overdevelopment]
+    geography:
+      borders: [gilan, tehran, semnan, golestan, caspian_sea]
+      terrain: coastal_forest
+      strategicImportance: 50
+    tags: [caspian, tourism, distinct_culture]
+
+  - id: golestan
+    name:
+      fa: گلستان
+      en: Golestan
+    capital: Gorgan
+    population: 1900000
+    demographics:
+      persian: 50
+      turkmen: 25
+      azeri: 10
+      other: 15
+    economy:
+      gdpContribution: 2
+      mainIndustries: [agriculture, cotton]
+      unemployment: 14
+    politics:
+      regimeControl: 70
+      oppositionStrength: 30
+      dominantFactions: []
+      grievances: [ethnic_issues, flooding, poverty]
+    geography:
+      borders: [mazandaran, semnan, north_khorasan, turkmenistan]
+      terrain: plain_forest
+      strategicImportance: 45
+      borderCountries: [Turkmenistan]
+    tags: [border_province, multi_ethnic]
+
+  # ===============================
+  # CENTRAL PLATEAU
+  # ===============================
+
+  - id: isfahan
+    name:
+      fa: اصفهان
+      en: Isfahan
+    capital: Isfahan
+    population: 5300000
+    demographics:
+      persian: 85
+      other: 15
+    economy:
+      gdpContribution: 8
+      mainIndustries: [steel, textiles, tourism, handicrafts, nuclear]
+      unemployment: 10
+    politics:
+      regimeControl: 70
+      oppositionStrength: 40
+      dominantFactions: [bazaar_merchants, workers]
+      grievances: [water_crisis, air_pollution]
+    geography:
+      borders: [markazi, qom, yazd, fars, kohgiluyeh, chaharmahal, lorestan]
+      terrain: plateau
+      strategicImportance: 75
+    tags: [industrial, historical, nuclear_facility]
+
+  - id: yazd
+    name:
+      fa: یزد
+      en: Yazd
+    capital: Yazd
+    population: 1200000
+    demographics:
+      persian: 90
+      other: 10
+    economy:
+      gdpContribution: 2
+      mainIndustries: [textiles, ceramics, tourism]
+      unemployment: 9
+    politics:
+      regimeControl: 75
+      oppositionStrength: 25
+      dominantFactions: [bazaar_merchants]
+      grievances: [water_scarcity]
+    geography:
+      borders: [isfahan, kerman, south_khorasan, fars]
+      terrain: desert
+      strategicImportance: 40
+    tags: [historical, zoroastrian_heritage, desert]
+
+  - id: semnan
+    name:
+      fa: سمنان
+      en: Semnan
+    capital: Semnan
+    population: 700000
+    demographics:
+      persian: 90
+      other: 10
+    economy:
+      gdpContribution: 1.5
+      mainIndustries: [cement, mining, agriculture]
+      unemployment: 11
+    politics:
+      regimeControl: 75
+      oppositionStrength: 25
+      dominantFactions: []
+      grievances: [underdevelopment]
+    geography:
+      borders: [tehran, mazandaran, golestan, north_khorasan, south_khorasan, isfahan, qom]
+      terrain: desert_mountain
+      strategicImportance: 35
+    tags: [transit_corridor]
+
+  # ===============================
+  # KHORASAN REGION
+  # ===============================
+
+  - id: razavi_khorasan
+    name:
+      fa: خراسان رضوی
+      en: Razavi Khorasan
+    capital: Mashhad
+    population: 6500000
+    demographics:
+      persian: 75
+      kurd: 10
+      turkmen: 5
+      other: 10
+    economy:
+      gdpContribution: 7
+      mainIndustries: [religious_tourism, agriculture, manufacturing]
+      unemployment: 11
+    politics:
+      regimeControl: 80
+      oppositionStrength: 25
+      dominantFactions: [hardline_clerics, basij]
+      grievances: [afghan_refugees, unemployment]
+    geography:
+      borders: [north_khorasan, south_khorasan, semnan, afghanistan, turkmenistan]
+      terrain: mountain_plain
+      strategicImportance: 70
+      borderCountries: [Afghanistan, Turkmenistan]
+    tags: [religious_center, imam_reza_shrine, border_province]
+
+  - id: north_khorasan
+    name:
+      fa: خراسان شمالی
+      en: North Khorasan
+    capital: Bojnurd
+    population: 900000
+    demographics:
+      persian: 50
+      kurd: 30
+      turkmen: 15
+      other: 5
+    economy:
+      gdpContribution: 1
+      mainIndustries: [agriculture, mining]
+      unemployment: 15
+    politics:
+      regimeControl: 70
+      oppositionStrength: 30
+      dominantFactions: [kurdish_parties]
+      grievances: [underdevelopment, ethnic_issues]
+    geography:
+      borders: [golestan, semnan, razavi_khorasan, turkmenistan]
+      terrain: mountain
+      strategicImportance: 35
+      borderCountries: [Turkmenistan]
+    tags: [border_province, multi_ethnic]
+
+  - id: south_khorasan
+    name:
+      fa: خراسان جنوبی
+      en: South Khorasan
+    capital: Birjand
+    population: 800000
+    demographics:
+      persian: 85
+      other: 15
+    economy:
+      gdpContribution: 1
+      mainIndustries: [saffron, agriculture]
+      unemployment: 14
+    politics:
+      regimeControl: 75
+      oppositionStrength: 20
+      dominantFactions: []
+      grievances: [drought, underdevelopment]
+    geography:
+      borders: [razavi_khorasan, yazd, kerman, sistan, afghanistan]
+      terrain: desert_mountain
+      strategicImportance: 35
+      borderCountries: [Afghanistan]
+    tags: [border_province, saffron]
+
+  # ===============================
+  # SOUTHEASTERN REGION
+  # ===============================
+
+  - id: sistan
+    name:
+      fa: سیستان و بلوچستان
+      en: Sistan and Baluchestan
+    capital: Zahedan
+    population: 2900000
+    demographics:
+      baluch: 60
+      persian: 30
+      other: 10
+    economy:
+      gdpContribution: 2
+      mainIndustries: [fisheries, agriculture]
+      unemployment: 25
+    politics:
+      regimeControl: 45
+      oppositionStrength: 55
+      dominantFactions: [baluchi_movement]
+      grievances: [poverty, discrimination, executions, water_crisis, sunni_rights]
+    geography:
+      borders: [south_khorasan, kerman, hormozgan, pakistan, afghanistan]
+      terrain: desert
+      strategicImportance: 55
+      borderCountries: [Pakistan, Afghanistan]
+    tags: [baluchi_majority, sunni, poorest_province, border_province, insurgency]
+
+  - id: kerman
+    name:
+      fa: کرمان
+      en: Kerman
+    capital: Kerman
+    population: 3200000
+    demographics:
+      persian: 85
+      baluch: 10
+      other: 5
+    economy:
+      gdpContribution: 3
+      mainIndustries: [mining, copper, pistachios, carpets]
+      unemployment: 13
+    politics:
+      regimeControl: 70
+      oppositionStrength: 30
+      dominantFactions: []
+      grievances: [drought, unemployment]
+    geography:
+      borders: [yazd, isfahan, fars, hormozgan, sistan, south_khorasan]
+      terrain: desert_mountain
+      strategicImportance: 45
+    tags: [mining, pistachio]
+
+  # ===============================
+  # SOUTHERN COASTAL REGION
+  # ===============================
+
+  - id: hormozgan
+    name:
+      fa: هرمزگان
+      en: Hormozgan
+    capital: Bandar Abbas
+    population: 1800000
+    demographics:
+      persian: 70
+      arab: 15
+      baluch: 10
+      other: 5
+    economy:
+      gdpContribution: 4
+      mainIndustries: [ports, shipping, oil, fisheries]
+      unemployment: 12
+    politics:
+      regimeControl: 75
+      oppositionStrength: 25
+      dominantFactions: [irgc]
+      grievances: [heat, environmental_issues]
+    geography:
+      borders: [kerman, sistan, fars, persian_gulf, strait_of_hormuz]
+      terrain: coastal_desert
+      strategicImportance: 90
+    tags: [strategic_ports, strait_of_hormuz, irgc_naval_base]
+
+  - id: bushehr
+    name:
+      fa: بوشهر
+      en: Bushehr
+    capital: Bushehr
+    population: 1200000
+    demographics:
+      persian: 75
+      arab: 20
+      other: 5
+    economy:
+      gdpContribution: 3
+      mainIndustries: [oil, gas, nuclear, petrochemicals]
+      unemployment: 11
+    politics:
+      regimeControl: 80
+      oppositionStrength: 20
+      dominantFactions: [irgc]
+      grievances: [nuclear_safety_concerns]
+    geography:
+      borders: [fars, khuzestan, kohgiluyeh, persian_gulf]
+      terrain: coastal_desert
+      strategicImportance: 85
+    tags: [nuclear_plant, oil, strategic]
+
+  # ===============================
+  # SOUTHWESTERN REGION
+  # ===============================
+
+  - id: khuzestan
+    name:
+      fa: خوزستان
+      en: Khuzestan
+    capital: Ahvaz
+    population: 4700000
+    demographics:
+      arab: 40
+      persian: 35
+      lur: 15
+      other: 10
+    economy:
+      gdpContribution: 12
+      mainIndustries: [oil, petrochemicals, agriculture]
+      unemployment: 15
+      oilProduction: 3.5
+    politics:
+      regimeControl: 55
+      oppositionStrength: 55
+      dominantFactions: [arab_movement, workers]
+      grievances: [air_pollution, water_crisis, ethnic_discrimination, poverty_despite_oil, environmental_disaster]
+    geography:
+      borders: [lorestan, isfahan, kohgiluyeh, bushehr, ilam, iraq, persian_gulf]
+      terrain: plain_marshland
+      strategicImportance: 95
+      borderCountries: [Iraq]
+    tags: [oil_heartland, arab_population, environmental_crisis, strategic, protest_prone]
+
+  - id: fars
+    name:
+      fa: فارس
+      en: Fars
+    capital: Shiraz
+    population: 4900000
+    demographics:
+      persian: 80
+      qashqai: 10
+      other: 10
+    economy:
+      gdpContribution: 5
+      mainIndustries: [agriculture, oil, tourism, electronics]
+      unemployment: 11
+    politics:
+      regimeControl: 70
+      oppositionStrength: 35
+      dominantFactions: [bazaar_merchants, reformists]
+      grievances: [economic_issues]
+    geography:
+      borders: [isfahan, yazd, kerman, hormozgan, bushehr, kohgiluyeh]
+      terrain: mountain_plain
+      strategicImportance: 60
+    tags: [historical, persepolis, cultural_center]
+
+  - id: kohgiluyeh
+    name:
+      fa: کهگیلویه و بویراحمد
+      en: Kohgiluyeh and Boyer-Ahmad
+    capital: Yasuj
+    population: 700000
+    demographics:
+      lur: 80
+      persian: 15
+      other: 5
+    economy:
+      gdpContribution: 0.5
+      mainIndustries: [agriculture, nomadic]
+      unemployment: 18
+    politics:
+      regimeControl: 70
+      oppositionStrength: 30
+      dominantFactions: []
+      grievances: [underdevelopment, poverty]
+    geography:
+      borders: [isfahan, fars, bushehr, khuzestan, chaharmahal]
+      terrain: mountain
+      strategicImportance: 25
+    tags: [tribal, underdeveloped]
+
+  - id: chaharmahal
+    name:
+      fa: چهارمحال و بختیاری
+      en: Chaharmahal and Bakhtiari
+    capital: Shahr-e Kord
+    population: 1000000
+    demographics:
+      lur: 60
+      persian: 35
+      other: 5
+    economy:
+      gdpContribution: 1
+      mainIndustries: [agriculture, nomadic, tourism]
+      unemployment: 14
+    politics:
+      regimeControl: 70
+      oppositionStrength: 30
+      dominantFactions: []
+      grievances: [underdevelopment, water_issues]
+    geography:
+      borders: [isfahan, lorestan, khuzestan, kohgiluyeh]
+      terrain: mountain
+      strategicImportance: 30
+    tags: [tribal, bakhtiari]
+
+  - id: lorestan
+    name:
+      fa: لرستان
+      en: Lorestan
+    capital: Khorramabad
+    population: 1800000
+    demographics:
+      lur: 85
+      persian: 10
+      other: 5
+    economy:
+      gdpContribution: 1.5
+      mainIndustries: [agriculture, nomadic]
+      unemployment: 17
+    politics:
+      regimeControl: 65
+      oppositionStrength: 40
+      dominantFactions: [workers]
+      grievances: [flood_damage, poverty, unemployment]
+    geography:
+      borders: [kermanshah, hamadan, markazi, isfahan, chaharmahal, khuzestan, ilam]
+      terrain: mountain
+      strategicImportance: 35
+    tags: [tribal, flood_prone]
+
+  # ===============================
+  # WESTERN/CENTRAL
+  # ===============================
+
+  - id: hamadan
+    name:
+      fa: همدان
+      en: Hamadan
+    capital: Hamadan
+    population: 1800000
+    demographics:
+      persian: 60
+      lur: 25
+      kurd: 10
+      other: 5
+    economy:
+      gdpContribution: 2
+      mainIndustries: [agriculture, manufacturing, handicrafts]
+      unemployment: 13
+    politics:
+      regimeControl: 70
+      oppositionStrength: 35
+      dominantFactions: []
+      grievances: [unemployment, cold_winters]
+    geography:
+      borders: [kurdistan, zanjan, qazvin, markazi, lorestan, kermanshah]
+      terrain: mountain
+      strategicImportance: 40
+    tags: [historical, ecbatana]
+
+  - id: markazi
+    name:
+      fa: مرکزی
+      en: Markazi
+    capital: Arak
+    population: 1400000
+    demographics:
+      persian: 85
+      other: 15
+    economy:
+      gdpContribution: 3
+      mainIndustries: [heavy_industry, aluminum, machinery]
+      unemployment: 12
+    politics:
+      regimeControl: 70
+      oppositionStrength: 35
+      dominantFactions: [workers]
+      grievances: [pollution, industrial_decline]
+    geography:
+      borders: [tehran, qom, isfahan, lorestan, hamadan, qazvin]
+      terrain: plateau
+      strategicImportance: 45
+    tags: [industrial, heavy_water_facility]
+
+  - id: qazvin
+    name:
+      fa: قزوین
+      en: Qazvin
+    capital: Qazvin
+    population: 1300000
+    demographics:
+      persian: 75
+      azeri: 20
+      other: 5
+    economy:
+      gdpContribution: 2.5
+      mainIndustries: [manufacturing, food_processing]
+      unemployment: 12
+    politics:
+      regimeControl: 70
+      oppositionStrength: 35
+      dominantFactions: []
+      grievances: [earthquake_risk]
+    geography:
+      borders: [tehran, alborz, gilan, zanjan, hamadan, markazi]
+      terrain: mountain_plain
+      strategicImportance: 45
+    tags: [industrial, historical]
+
+  - id: zanjan
+    name:
+      fa: زنجان
+      en: Zanjan
+    capital: Zanjan
+    population: 1100000
+    demographics:
+      azeri: 80
+      persian: 15
+      other: 5
+    economy:
+      gdpContribution: 1.5
+      mainIndustries: [mining, lead, zinc, handicrafts]
+      unemployment: 14
+    politics:
+      regimeControl: 65
+      oppositionStrength: 40
+      dominantFactions: [azeri_movement]
+      grievances: [language_rights, unemployment]
+    geography:
+      borders: [east_azerbaijan, west_azerbaijan, kurdistan, hamadan, qazvin, gilan, ardabil]
+      terrain: mountain
+      strategicImportance: 40
+    tags: [azeri_majority, mining]

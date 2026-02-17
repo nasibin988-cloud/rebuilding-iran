@@ -1,0 +1,57 @@
+# IRAN 14XX Content Manifest
+# Version 1.0 - Complete Content
+
+version: "1.0"
+
+events:
+  # Story events
+  - story/prologue.yaml
+  - story/succession_crisis.yaml
+  # Triggered events
+  - triggered/regime_events.yaml
+  - triggered/protest_events.yaml
+  - triggered/player_events.yaml
+  - triggered/faction_events.yaml
+  - triggered/economic_events.yaml
+  # Random events
+  - random/daily_life.yaml
+  - random/news_events.yaml
+  - random/minor_incidents.yaml
+
+characters:
+  # Playable characters
+  - playable/reformist_politician.yaml
+  - playable/student_activist.yaml
+  # NPC characters
+  - npc/khamenei.yaml
+  - npc/mojtaba_khamenei.yaml
+  - npc/irgc_commander.yaml
+  - npc/quds_force_commander.yaml
+  - npc/regime_figures.yaml
+  - npc/opposition_figures.yaml
+  - npc/ethnic_leaders.yaml
+
+factions:
+  # Regime factions
+  - regime/supreme_leader_office.yaml
+  - regime/irgc.yaml
+  - regime/basij.yaml
+  - regime/hardline_clerics.yaml
+  # Opposition factions
+  - opposition/reformists.yaml
+  - opposition/green_movement.yaml
+  # Society factions
+  - society/bazaar_merchants.yaml
+  - society/students.yaml
+  # Combined file for additional factions
+  - all_factions.yaml
+
+regions:
+  - tehran.yaml
+  - all_regions.yaml
+
+endings:
+  - democratic_endings.yaml
+  - authoritarian_endings.yaml
+  - fragmentation_endings.yaml
+  - personal_endings.yaml

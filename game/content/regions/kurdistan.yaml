@@ -1,0 +1,76 @@
+# Region: Kurdistan
+# Kurdish-majority border province with history of autonomy demands
+
+id: kurdistan
+
+name:
+  fa: کردستان
+  en: Kurdistan
+
+type: border_region
+
+description:
+  fa: |
+    استان کردستان در غرب ایران با جمعیت عمدتاً کرد، سابقه طولانی در مبارزه برای
+    حقوق فرهنگی و خودمختاری دارد. این منطقه با کردستان عراق مرز مشترک دارد و
+    احزاب کردی ایران در آنجا فعال هستند.
+  en: |
+    Kurdistan province in western Iran, with a predominantly Kurdish population,
+    has a long history of struggle for cultural rights and autonomy. It shares
+    a border with Iraqi Kurdistan, and Iranian Kurdish parties are active there.
+
+demographics:
+  population: 1700000
+  ethnicComposition:
+    kurd: 90
+    persian: 8
+    other: 2
+  urbanization: 55
+  religiosity: 50
+  educationLevel: 55
+  youthPercentage: 48
+  unemploymentRate: 25
+
+control:
+  regimeControl: 55
+  oppositionPresence: 60
+  militaryPresence: 80
+  ethnicMovementControl: 55
+  contestedZones:
+    - border_villages
+    - mountain_areas
+    - rural_districts
+
+conditions:
+  economicHealth: 35
+  infrastructure: 40
+  publicServices: 40
+  environmentalHealth: 65
+  publicSentiment: 30
+
+activity:
+  protestLevel: 55
+  strikeActivity: 45
+  civilSocietyStrength: 50
+  insurgency: 35
+
+keyLocations:
+  - name:
+      fa: سنندج
+      en: Sanandaj
+    significance: provincial_capital
+  - name:
+      fa: مریوان
+      en: Marivan
+    significance: border_town
+  - name:
+      fa: کوه‌های زاگرس
+      en: Zagros Mountains
+    significance: guerrilla_territory
+
+tags:
+  - kurdish
+  - border
+  - autonomy
+  - contested
+  - armed_conflict

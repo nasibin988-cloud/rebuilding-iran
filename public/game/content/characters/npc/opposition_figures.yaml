@@ -1,0 +1,218 @@
+# Multiple NPC Definitions: Opposition Figures
+
+characters:
+  # Reza Pahlavi
+  - id: reza_pahlavi
+    name:
+      fa: رضا پهلوی
+      en: Reza Pahlavi
+    title:
+      fa: ولیعهد سابق ایران
+      en: Former Crown Prince of Iran
+    portrait: reza_pahlavi.png
+    biography:
+      fa: |
+        فرزند آخرین شاه ایران. از سال ۱۹۷۹ در تبعید. در سال‌های اخیر تلاش
+        کرده خود را به عنوان چهره وحدت‌بخش اپوزیسیون معرفی کند.
+      en: |
+        Son of the last Shah of Iran. In exile since 1979. In recent years
+        has tried to present himself as a unifying figure for the opposition.
+    role: diaspora_leader
+    faction: monarchists
+    psychology:
+      coreBeliefs:
+        - Iran needs secular democracy
+        - Monarchy can be constitutional
+        - Unity is key to change
+      fears:
+        - Irrelevance
+        - Regime collapse into chaos
+        - Being used by foreign powers
+      motivations:
+        - Return to Iran
+        - Restore family honor
+        - Lead transition
+    traits: [diplomatic, cautious, media_savvy, privileged, patient]
+    behavior:
+      aggression: 20
+      caution: 70
+      pragmatism: 65
+    stats:
+      health: 90
+      influence: 45
+      popularity: 25
+    tags: [npc, opposition, diaspora, monarchist]
+
+  # Mohammad Khatami
+  - id: khatami
+    name:
+      fa: سید محمد خاتمی
+      en: Seyyed Mohammad Khatami
+    title:
+      fa: رئیس‌جمهور سابق
+      en: Former President
+    portrait: khatami.png
+    biography:
+      fa: |
+        رئیس‌جمهور دوره اصلاحات (۱۳۷۶-۱۳۸۴). اکنون تحت محدودیت رسانه‌ای
+        و ممنوع‌الخروج. نماد اصلاحات و همچنین ناامیدی از آن.
+      en: |
+        President during the reform era (1997-2005). Now under media ban
+        and travel restrictions. Symbol of reform and also disillusionment with it.
+    role: former_president
+    faction: reformists
+    traits: [intellectual, cautious, philosophical, disillusioned, symbolic]
+    behavior:
+      aggression: 10
+      caution: 90
+      pragmatism: 50
+    stats:
+      health: 75
+      influence: 35
+      popularity: 30
+    tags: [npc, opposition, reformist, former_official]
+
+  # Mir Hossein Mousavi
+  - id: mousavi
+    name:
+      fa: میرحسین موسوی
+      en: Mir Hossein Mousavi
+    title:
+      fa: نخست‌وزیر سابق
+      en: Former Prime Minister
+    portrait: mousavi.png
+    biography:
+      fa: |
+        نخست‌وزیر دوران جنگ (۱۳۶۰-۱۳۶۸) و کاندیدای ریاست‌جمهوری ۱۳۸۸.
+        از سال ۱۳۸۹ تحت حصر خانگی. نماد مقاومت و فداکاری.
+      en: |
+        Prime Minister during the war (1981-1989) and 2009 presidential candidate.
+        Under house arrest since 2010. Symbol of resistance and sacrifice.
+    role: political_prisoner
+    faction: green_movement
+    traits: [principled, artistic, stubborn, symbolic, isolated]
+    behavior:
+      aggression: 30
+      caution: 60
+      pragmatism: 40
+    stats:
+      health: 60
+      influence: 40
+      popularity: 35
+    tags: [npc, opposition, green_movement, house_arrest]
+
+  # Mehdi Karroubi
+  - id: karroubi
+    name:
+      fa: مهدی کروبی
+      en: Mehdi Karroubi
+    title:
+      fa: روحانی اصلاح‌طلب
+      en: Reformist Cleric
+    portrait: karroubi.png
+    biography:
+      fa: |
+        روحانی اصلاح‌طلب و رئیس سابق مجلس. از سال ۱۳۸۹ همراه با موسوی
+        تحت حصر خانگی. معروف به افشای شکنجه در زندان‌ها.
+      en: |
+        Reformist cleric and former parliament speaker. Under house arrest
+        since 2010 alongside Mousavi. Known for exposing prison torture.
+    role: political_prisoner
+    faction: green_movement
+    traits: [brave, outspoken, principled, elderly, defiant]
+    behavior:
+      aggression: 45
+      caution: 40
+      pragmatism: 55
+    stats:
+      health: 50
+      influence: 30
+      popularity: 25
+    tags: [npc, opposition, green_movement, house_arrest, clerical]
+
+  # Nasrin Sotoudeh
+  - id: sotoudeh
+    name:
+      fa: نسرین ستوده
+      en: Nasrin Sotoudeh
+    title:
+      fa: وکیل حقوق بشر
+      en: Human Rights Lawyer
+    portrait: sotoudeh.png
+    biography:
+      fa: |
+        وکیل دادگستری و مدافع حقوق بشر. چندین بار زندانی شده. نماد
+        مقاومت زنان ایرانی و جنبش حقوقی.
+      en: |
+        Lawyer and human rights defender. Imprisoned multiple times. Symbol
+        of Iranian women's resistance and the legal rights movement.
+    role: activist
+    faction: civil_society
+    traits: [brave, principled, resilient, symbolic, defiant]
+    behavior:
+      aggression: 35
+      caution: 25
+      pragmatism: 30
+    stats:
+      health: 55
+      influence: 35
+      popularity: 40
+    tags: [npc, opposition, human_rights, political_prisoner, woman]
+
+  # Hossein Ronaghi
+  - id: ronaghi
+    name:
+      fa: حسین رونقی
+      en: Hossein Ronaghi
+    title:
+      fa: فعال سایبری
+      en: Cyber Activist
+    portrait: ronaghi.png
+    biography:
+      fa: |
+        فعال حقوق دیجیتال و زندانی سیاسی. چندین بار اعتصاب غذا کرده.
+        نماد نسل جدید فعالان سایبری ایران.
+      en: |
+        Digital rights activist and political prisoner. Has gone on hunger
+        strike multiple times. Symbol of Iran's new generation of cyber activists.
+    role: activist
+    faction: students
+    traits: [tech_savvy, brave, defiant, young, networked]
+    behavior:
+      aggression: 50
+      caution: 30
+      pragmatism: 35
+    stats:
+      health: 45
+      influence: 30
+      popularity: 35
+    tags: [npc, opposition, activist, digital, political_prisoner]
+
+  # Shirin Ebadi
+  - id: ebadi
+    name:
+      fa: شیرین عبادی
+      en: Shirin Ebadi
+    title:
+      fa: برنده جایزه نوبل
+      en: Nobel Laureate
+    portrait: ebadi.png
+    biography:
+      fa: |
+        برنده جایزه صلح نوبل ۲۰۰۳. اولین قاضی زن ایران قبل از انقلاب.
+        از سال ۲۰۰۹ در تبعید. صدای بین‌المللی حقوق بشر ایران.
+      en: |
+        Winner of 2003 Nobel Peace Prize. Iran's first female judge before
+        the revolution. In exile since 2009. International voice for Iranian human rights.
+    role: diaspora_activist
+    faction: civil_society
+    traits: [prestigious, diplomatic, persistent, principled, international]
+    behavior:
+      aggression: 25
+      caution: 65
+      pragmatism: 60
+    stats:
+      health: 75
+      influence: 50
+      popularity: 30
+    tags: [npc, opposition, diaspora, human_rights, woman, nobel]

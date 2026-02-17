@@ -1,0 +1,656 @@
+# Random Events: News and Media
+
+events:
+  # ================================
+  # INTERNATIONAL NEWS
+  # ================================
+
+  - id: world_leader_statement
+    category: random
+    title:
+      fa: بیانیه رهبر جهانی
+      en: World Leader Statement
+    description:
+      fa: |
+        رئیس‌جمهور یک کشور غربی درباره ایران صحبت کرده.
+        حمایت از «مردم ایران» و انتقاد از «رژیم».
+        رسانه‌های داخلی این را «دخالت» می‌نامند.
+      en: |
+        A Western president has spoken about Iran.
+        Support for "the Iranian people" and criticism of "the regime."
+        Domestic media calls this "interference."
+    triggers:
+      - type: random
+        value: 0.15
+    priority: 35
+    weight: 1.0
+    once: false
+    cooldown: 8
+    requirements: []
+    decisions:
+      - id: amplify_message
+        label:
+          fa: پیام را تقویت کن
+          en: Amplify Message
+        description:
+          fa: این حمایت بین‌المللی است
+          en: This is international support
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 5
+            - type: faction_trust
+              target: students
+              value: 5
+          delayed: []
+        tags: [international, media]
+
+      - id: criticize_hypocrisy
+        label:
+          fa: دورویی را نقد کن
+          en: Criticize Hypocrisy
+        description:
+          fa: همین غرب با رژیم تجارت می‌کند
+          en: The same West trades with the regime
+        effects:
+          immediate:
+            - type: faction_trust
+              target: workers
+              value: 5
+          delayed: []
+        tags: [principled, nuanced]
+
+      - id: ignore
+        label:
+          fa: نادیده بگیر
+          en: Ignore
+        description:
+          fa: این حرف‌ها فایده ندارد
+          en: These words don't help
+        effects:
+          immediate: []
+          delayed: []
+        tags: [passive, skeptical]
+    tags: [international, news, diplomatic]
+
+  - id: diaspora_protest
+    category: random
+    title:
+      fa: تظاهرات مهاجران
+      en: Diaspora Protest
+    description:
+      fa: |
+        ایرانیان خارج از کشور جلوی سفارت جمهوری اسلامی تجمع کرده‌اند.
+        تصاویر در شبکه‌های اجتماعی پخش می‌شود. پیامی از بیرون.
+      en: |
+        Iranians abroad have gathered outside the Islamic Republic embassy.
+        Images spread on social media. A message from outside.
+    triggers:
+      - type: random
+        value: 0.18
+    priority: 30
+    weight: 1.0
+    once: false
+    cooldown: 6
+    requirements: []
+    decisions:
+      - id: share_images
+        label:
+          fa: تصاویر را پخش کن
+          en: Share Images
+        description:
+          fa: مردم باید ببینند که تنها نیستند
+          en: People should see they're not alone
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: 5
+            - type: state_change
+              target: player.resources.mentalHealth
+              value: 5
+          delayed: []
+        tags: [media, solidarity]
+
+      - id: connect_online
+        label:
+          fa: آنلاین ارتباط بگیر
+          en: Connect Online
+        description:
+          fa: با فعالان مهاجر تماس بگیر
+          en: Contact diaspora activists
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 5
+          delayed: []
+        tags: [networking, international]
+
+      - id: stay_focused_inside
+        label:
+          fa: روی داخل تمرکز کن
+          en: Stay Focused Inside
+        description:
+          fa: تغییر از داخل می‌آید
+          en: Change comes from within
+        effects:
+          immediate: []
+          delayed: []
+        tags: [pragmatic, internal]
+    tags: [diaspora, protest, international]
+
+  - id: human_rights_report
+    category: random
+    title:
+      fa: گزارش حقوق بشر
+      en: Human Rights Report
+    description:
+      fa: |
+        سازمان ملل گزارش جدیدی درباره نقض حقوق بشر در ایران
+        منتشر کرده. اعدام‌ها، شکنجه، بازداشت‌های خودسرانه.
+      en: |
+        The UN has published a new report on human rights violations
+        in Iran. Executions, torture, arbitrary detentions.
+    triggers:
+      - type: random
+        value: 0.12
+    priority: 40
+    weight: 1.0
+    once: false
+    cooldown: 10
+    requirements: []
+    decisions:
+      - id: spread_report
+        label:
+          fa: گزارش را پخش کن
+          en: Spread Report
+        description:
+          fa: مردم باید بدانند
+          en: People should know
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 8
+            - type: state_change
+              target: regime.legitimacy
+              value: -3
+          delayed: []
+        tags: [documentation, international]
+
+      - id: add_evidence
+        label:
+          fa: شواهد اضافه کن
+          en: Add Evidence
+        description:
+          fa: اطلاعات خودت را به گزارش اضافه کن
+          en: Add your information to the report
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 10
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 8
+          delayed: []
+        tags: [documentation, risky]
+    tags: [human_rights, international, documentation]
+
+  # ================================
+  # DOMESTIC NEWS
+  # ================================
+
+  - id: propaganda_broadcast
+    category: random
+    title:
+      fa: پخش تبلیغاتی
+      en: Propaganda Broadcast
+    description:
+      fa: |
+        تلویزیون دولتی برنامه‌ای درباره «فتنه‌گران» پخش کرده.
+        «اعترافات» اجباری و تصاویر مونتاژ شده.
+        این تاکتیک قدیمی است.
+      en: |
+        State TV has broadcast a program about "rioters."
+        Forced "confessions" and edited footage.
+        This is an old tactic.
+    triggers:
+      - type: random
+        value: 0.2
+    priority: 35
+    weight: 1.0
+    once: false
+    cooldown: 6
+    requirements:
+      - type: stat
+        target: regime.repression
+        operator: greater_than
+        value: 50
+    decisions:
+      - id: debunk
+        label:
+          fa: افشا کن
+          en: Debunk
+        description:
+          fa: نشان بده که دروغ است
+          en: Show it's a lie
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.legitimacy
+              value: -3
+            - type: state_change
+              target: player.position.visibility
+              value: 10
+          delayed: []
+        tags: [media, counter_narrative]
+
+      - id: support_victim
+        label:
+          fa: از قربانی حمایت کن
+          en: Support Victim
+        description:
+          fa: به خانواده شخص «اعتراف‌کننده» برس
+          en: Reach out to the family of the "confessor"
+        effects:
+          immediate:
+            - type: faction_trust
+              target: civil_society
+              value: 10
+          delayed: []
+        tags: [solidarity, humanitarian]
+
+      - id: ignore_propaganda
+        label:
+          fa: نادیده بگیر
+          en: Ignore Propaganda
+        description:
+          fa: توجه نکردن بهترین جواب است
+          en: Not paying attention is the best response
+        effects:
+          immediate: []
+          delayed: []
+        tags: [passive]
+    tags: [propaganda, media, regime]
+
+  - id: journalist_arrested
+    category: random
+    title:
+      fa: بازداشت روزنامه‌نگار
+      en: Journalist Arrested
+    description:
+      fa: |
+        یک روزنامه‌نگار مستقل بازداشت شده. اتهام «تبلیغ علیه نظام».
+        این چندمین روزنامه‌نگار این ماه است.
+      en: |
+        An independent journalist has been arrested. Charged with
+        "propaganda against the state." This is the nth journalist
+        this month.
+    triggers:
+      - type: random
+        value: 0.15
+    priority: 45
+    weight: 1.0
+    once: false
+    cooldown: 8
+    requirements: []
+    decisions:
+      - id: campaign_freedom
+        label:
+          fa: کمپین آزادی
+          en: Freedom Campaign
+        description:
+          fa: برای آزادی او فشار بیاور
+          en: Pressure for their release
+        effects:
+          immediate:
+            - type: faction_trust
+              target: civil_society
+              value: 15
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 10
+          delayed: []
+        tags: [solidarity, advocacy]
+
+      - id: document_case
+        label:
+          fa: پرونده را مستند کن
+          en: Document Case
+        description:
+          fa: برای نهادهای بین‌المللی
+          en: For international bodies
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.internationalProfile
+              value: 8
+          delayed: []
+        tags: [documentation, international]
+
+      - id: continue_their_work
+        label:
+          fa: کارشان را ادامه بده
+          en: Continue Their Work
+        description:
+          fa: داستان را تمام کن
+          en: Finish the story
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: 10
+            - type: resource_change
+              target: influence
+              value: 10
+          delayed: []
+        tags: [brave, journalism]
+    tags: [press_freedom, repression, journalism]
+
+  - id: celebrity_speaks
+    category: random
+    title:
+      fa: سخنرانی سلبریتی
+      en: Celebrity Speaks Out
+    description:
+      fa: |
+        یک بازیگر یا خواننده معروف علنا از اعتراضات حمایت کرده.
+        این خبر بزرگی است - معمولا هنرمندان سکوت می‌کنند.
+      en: |
+        A famous actor or singer has publicly supported protests.
+        This is big news - artists usually stay silent.
+    triggers:
+      - type: random
+        value: 0.1
+    priority: 40
+    weight: 0.8
+    once: false
+    cooldown: 12
+    requirements:
+      - type: stat
+        target: regime.stability
+        operator: less_than
+        value: 50
+    decisions:
+      - id: amplify_voice
+        label:
+          fa: صدایشان را بلند کن
+          en: Amplify Voice
+        description:
+          fa: این پیام را به همه برسان
+          en: Get this message to everyone
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.legitimacy
+              value: -3
+            - type: state_change
+              target: player.position.visibility
+              value: 5
+          delayed: []
+        tags: [media, solidarity]
+
+      - id: protect_celebrity
+        label:
+          fa: از هنرمند محافظت کن
+          en: Protect Celebrity
+        description:
+          fa: کمک کن تا امنیتشان حفظ شود
+          en: Help keep them safe
+        effects:
+          immediate:
+            - type: faction_trust
+              target: civil_society
+              value: 10
+          delayed: []
+        tags: [protective, solidarity]
+
+      - id: be_skeptical
+        label:
+          fa: شک کن
+          en: Be Skeptical
+        description:
+          fa: شاید فقط برای تبلیغات است
+          en: Maybe just for publicity
+        effects:
+          immediate: []
+          delayed: []
+        tags: [skeptical, cynical]
+    tags: [celebrity, culture, support]
+
+  # ================================
+  # RUMORS & LEAKS
+  # ================================
+
+  - id: regime_leak
+    category: random
+    title:
+      fa: درز اطلاعات
+      en: Information Leak
+    description:
+      fa: |
+        اسناد محرمانه از درون رژیم درز کرده. جزئیات جالبی
+        درباره فساد و تصمیم‌گیری‌های پشت پرده.
+      en: |
+        Classified documents have leaked from within the regime.
+        Interesting details about corruption and behind-the-scenes
+        decision-making.
+    triggers:
+      - type: random
+        value: 0.08
+    priority: 50
+    weight: 0.7
+    once: false
+    cooldown: 15
+    requirements: []
+    decisions:
+      - id: verify_and_spread
+        label:
+          fa: تایید و پخش کن
+          en: Verify and Spread
+        description:
+          fa: مطمئن شو واقعی است و بعد منتشر کن
+          en: Make sure it's real then publish
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.legitimacy
+              value: -5
+            - type: state_change
+              target: player.position.visibility
+              value: 10
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 10
+          delayed: []
+        tags: [journalism, impactful]
+
+      - id: investigate_further
+        label:
+          fa: بیشتر تحقیق کن
+          en: Investigate Further
+        description:
+          fa: شاید اطلاعات بیشتری باشد
+          en: Maybe there's more information
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 10
+          delayed:
+            - delay: 3
+              probability: 0.4
+              effects:
+                - type: state_change
+                  target: regime.coherence
+                  value: -5
+              narrative:
+                fa: اطلاعات بیشتری پیدا کردی
+                en: You found more information
+        tags: [investigative, patient]
+
+      - id: be_cautious
+        label:
+          fa: احتیاط کن
+          en: Be Cautious
+        description:
+          fa: شاید تله باشد
+          en: It might be a trap
+        effects:
+          immediate: []
+          delayed: []
+        tags: [cautious, skeptical]
+    tags: [leak, intelligence, opportunity]
+
+  - id: succession_rumor
+    category: random
+    title:
+      fa: شایعه جانشینی
+      en: Succession Rumor
+    description:
+      fa: |
+        شایعات جدیدی درباره سلامت رهبر و جانشینی پخش شده.
+        کسی نمی‌داند حقیقت چیست، اما همه حرف می‌زنند.
+      en: |
+        New rumors about the Leader's health and succession are spreading.
+        No one knows what's true, but everyone is talking.
+    triggers:
+      - type: random
+        value: 0.12
+    priority: 45
+    weight: 1.0
+    once: false
+    cooldown: 8
+    requirements: []
+    decisions:
+      - id: spread_rumors
+        label:
+          fa: شایعات را پخش کن
+          en: Spread Rumors
+        description:
+          fa: بی‌ثباتی به نفع ماست
+          en: Instability benefits us
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.stability
+              value: -3
+            - type: state_change
+              target: regime.coherence
+              value: -2
+          delayed: []
+        tags: [propaganda, destabilizing]
+
+      - id: investigate
+        label:
+          fa: تحقیق کن
+          en: Investigate
+        description:
+          fa: حقیقت را پیدا کن
+          en: Find the truth
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 5
+          delayed: []
+        tags: [investigative]
+
+      - id: dismiss
+        label:
+          fa: نادیده بگیر
+          en: Dismiss
+        description:
+          fa: شایعات همیشه هست
+          en: There are always rumors
+        effects:
+          immediate: []
+          delayed: []
+        tags: [passive, skeptical]
+    tags: [succession, rumor, regime]
+
+  - id: fake_news_crisis
+    category: random
+    title:
+      fa: بحران خبر جعلی
+      en: Fake News Crisis
+    description:
+      fa: |
+        یک خبر جعلی درباره جنبش پخش شده. می‌گویند «رهبران جنبش
+        از خارج پول می‌گیرند». این دروغ است اما در حال پخش شدن است.
+      en: |
+        Fake news about the movement has spread. They say "movement
+        leaders receive foreign money." This is a lie but it's spreading.
+    triggers:
+      - type: random
+        value: 0.1
+    priority: 55
+    weight: 0.9
+    once: false
+    cooldown: 10
+    requirements:
+      - type: stat
+        target: player.position.visibility
+        operator: greater_than
+        value: 30
+    decisions:
+      - id: counter_narrative
+        label:
+          fa: روایت متقابل
+          en: Counter Narrative
+        description:
+          fa: حقیقت را بگو
+          en: Tell the truth
+        effects:
+          immediate:
+            - type: state_change
+              target: player.position.visibility
+              value: 10
+            - type: faction_trust
+              target: students
+              value: 10
+          delayed: []
+        tags: [defensive, media]
+
+      - id: investigate_source
+        label:
+          fa: منبع را پیدا کن
+          en: Find Source
+        description:
+          fa: ببین این دروغ از کجا آمده
+          en: See where this lie came from
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 5
+          delayed:
+            - delay: 2
+              probability: 0.5
+              effects:
+                - type: state_change
+                  target: regime.legitimacy
+                  value: -3
+              narrative:
+                fa: اطلاعات بود
+                en: It was intelligence
+        tags: [investigative]
+
+      - id: ignore_noise
+        label:
+          fa: سر و صدا را نادیده بگیر
+          en: Ignore Noise
+        description:
+          fa: انرژی را جای دیگر صرف کن
+          en: Spend energy elsewhere
+        effects:
+          immediate:
+            - type: faction_trust
+              target: students
+              value: -5
+          delayed: []
+        tags: [passive, risky]
+    tags: [disinformation, media, defense]

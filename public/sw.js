@@ -1,11 +1,11 @@
 // Service Worker for Rebuilding Iran PWA
-const CACHE_NAME = 'rebuilding-iran-v1';
-const OFFLINE_URL = '/offline';
+const CACHE_NAME = 'rebuilding-iran-v2';
+const OFFLINE_URL = '/offline.html';
 
 // Assets to cache on install
 const PRECACHE_ASSETS = [
   '/',
-  '/offline',
+  '/offline.html',
   '/manifest.json',
 ];
 

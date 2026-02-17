@@ -1,0 +1,95 @@
+# Faction: Green Movement
+# The legacy of 2009 and its heirs
+
+id: green_movement
+
+name:
+  fa: جنبش سبز
+  en: Green Movement
+
+shortName:
+  fa: سبزها
+  en: Greens
+
+description:
+  fa: |
+    میراث اعتراضات ۱۳۸۸ و رهبران آن موسوی و کروبی. اگرچه سرکوب شد،
+    ایده‌ها و شبکه‌هایش در جنبش‌های بعدی مانند خیزش ۱۴۰۱ تداوم یافت.
+  en: |
+    Legacy of the 2009 protests and its leaders Mousavi and Karroubi.
+    Although suppressed, its ideas and networks continued in later movements
+    like the 2022 uprising.
+
+category: opposition
+subcategory: movement
+
+power:
+  base: 20
+  military: 0
+  economic: 10
+  religious: 15
+  popular: 40
+
+ideology:
+  economicLeft: 45
+  socialLiberal: 75
+  nationalist: 55
+  religious: 35
+  democratic: 85
+
+interests:
+  survival:
+    - Free political prisoners
+    - Maintain underground networks
+    - Document regime crimes
+  shortTerm:
+    - Connect to new generation
+    - Build international solidarity
+    - Support activists
+  longTerm:
+    - Democratic transition
+    - Justice for victims
+    - National reconciliation
+  redLines:
+    - Violence against civilians
+    - Abandoning leaders in prison
+    - Collaboration with MEK
+
+leaders:
+  - mousavi
+  - karroubi
+
+relationships:
+  - factionId: reformists
+    type: ally
+    trust: 50
+    reason:
+      fa: ریشه‌های مشترک
+      en: Shared roots
+  - factionId: students
+    type: ally
+    trust: 60
+    reason:
+      fa: ادامه‌دهندگان راه
+      en: Continuing the path
+  - factionId: irgc
+    type: enemy
+    trust: -85
+    reason:
+      fa: سرکوبگران جنبش
+      en: Suppressors of the movement
+
+behavior:
+  aggression: 25
+  cooperation: 70
+  riskTolerance: 50
+  pragmatism: 55
+
+color: "#22c55e"
+icon: green
+
+tags:
+  - opposition
+  - movement
+  - pro_democracy
+  - legacy

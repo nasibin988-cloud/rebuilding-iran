@@ -1,0 +1,77 @@
+# NPC Character: Komala Leader
+# Leader of Komala Party of Iranian Kurdistan
+
+id: komala_leader
+
+name:
+  fa: عبدالله مهتدی
+  en: Abdullah Mohtadi
+
+title:
+  fa: دبیرکل کومه‌له
+  en: Secretary-General of Komala
+
+portrait: komala_leader.png
+
+role: ethnic_leader
+
+biography:
+  fa: |
+    دبیرکل حزب کومه‌له کردستان ایران. رهبر حزب چپ‌گرای کرد که
+    خواهان فدرالیسم و حقوق برابر برای همه اقوام ایران است.
+    از تبعید رهبری جنبش را بر عهده دارد.
+  en: |
+    Secretary-General of Komala Party of Iranian Kurdistan. Leader of the
+    leftist Kurdish party demanding federalism and equal rights for all
+    Iranian ethnicities. Leads the movement from exile.
+
+personality:
+  traits:
+    - intellectual
+    - leftist
+    - organized
+    - resilient
+    - articulate
+  beliefs:
+    economicLeft: 80
+    socialLiberal: 85
+    nationalist: 85
+    religious: 15
+    democratic: 85
+
+relationships:
+  - characterId: kdpi_leader
+    type: ally
+    trust: 55
+    description:
+      fa: همکاری در جبهه کردی
+      en: Cooperation in Kurdish front
+  - characterId: mir_hossein_mousavi
+    type: ally
+    trust: 45
+    description:
+      fa: همراهی با جنبش دموکراسی‌خواهی
+      en: Alliance with democracy movement
+
+status:
+  health: 65
+  influence: 40
+  visibility: medium
+  security: medium
+
+goals:
+  - federalism_for_iran
+  - workers_rights
+  - ethnic_equality
+
+fears:
+  - regime_attacks
+  - internal_division
+  - marginalization
+
+tags:
+  - npc
+  - opposition
+  - ethnic
+  - kurdish
+  - leftist

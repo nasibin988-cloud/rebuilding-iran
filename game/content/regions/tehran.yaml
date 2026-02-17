@@ -1,0 +1,74 @@
+# Region: Tehran
+# The capital and political heart of Iran
+
+id: tehran
+
+name:
+  fa: تهران
+  en: Tehran
+
+type: capital
+
+description:
+  fa: |
+    پایتخت و بزرگ‌ترین شهر ایران. مرکز سیاسی، اقتصادی و فرهنگی کشور.
+    تهران خانه نهادهای حکومتی، دانشگاه‌های بزرگ، و جمعیتی متنوع است.
+    اعتراضات و تظاهرات معمولاً از تهران آغاز می‌شوند.
+  en: |
+    The capital and largest city of Iran. The political, economic, and cultural
+    center of the country. Tehran houses government institutions, major universities,
+    and a diverse population. Protests and demonstrations often begin in Tehran.
+
+demographics:
+  population: 15000000
+  ethnicComposition:
+    persian: 65
+    azeri: 20
+    other: 15
+  urbanization: 95
+  religiosity: 55
+  educationLevel: 75
+  youthPercentage: 45
+  unemploymentRate: 18
+
+control:
+  regimeControl: 75
+  oppositionPresence: 45
+  militaryPresence: 80
+  ethnicMovementControl: 0
+  contestedZones:
+    - university_district
+    - south_tehran
+
+conditions:
+  economicHealth: 55
+  infrastructure: 70
+  publicServices: 65
+  environmentalHealth: 30
+  publicSentiment: 40
+
+activity:
+  protestLevel: 50
+  strikeActivity: 35
+  civilSocietyStrength: 60
+  insurgency: 0
+
+keyLocations:
+  - name:
+      fa: میدان آزادی
+      en: Azadi Square
+    significance: protest_gathering
+  - name:
+      fa: دانشگاه تهران
+      en: University of Tehran
+    significance: student_center
+  - name:
+      fa: بازار بزرگ
+      en: Grand Bazaar
+    significance: economic_hub
+
+tags:
+  - capital
+  - political_center
+  - protest_hub
+  - diverse

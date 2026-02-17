@@ -1,0 +1,97 @@
+# Faction: Hardline Clerics
+# The conservative religious establishment that dominates the Guardian Council and judiciary
+
+id: hardline_clerics
+
+name:
+  fa: روحانیون تندرو
+  en: Hardline Clerics
+
+shortName:
+  fa: تندروها
+  en: Hardliners
+
+description:
+  fa: |
+    روحانیون تندرو بخش محافظه‌کار حوزه علمیه قم هستند که بر شورای نگهبان،
+    قوه قضاییه، و بسیاری نهادهای دینی تسلط دارند. آنها مخالف سرسخت اصلاحات
+    و مدافع تفسیر سختگیرانه از اسلام سیاسی هستند.
+  en: |
+    The hardline clerics are the conservative faction of the Qom seminary who
+    dominate the Guardian Council, judiciary, and many religious institutions.
+    They fiercely oppose reforms and defend a strict interpretation of political
+    Islam.
+
+category: regime
+subcategory: clerical
+
+power:
+  base: 65
+  military: 30
+  economic: 45
+  religious: 95
+  popular: 25
+
+ideology:
+  economicLeft: 50
+  socialLiberal: 5
+  nationalist: 65
+  religious: 100
+  democratic: 5
+
+interests:
+  survival:
+    - Maintain clerical authority
+    - Control religious institutions
+    - Preserve velayat-e faqih system
+  shortTerm:
+    - Block reform legislation
+    - Vet electoral candidates
+    - Control judiciary
+  longTerm:
+    - Ensure hardline succession
+    - Expand Islamization
+    - Eliminate secular influences
+  redLines:
+    - Separation of religion and state
+    - Popular sovereignty over clerical authority
+    - Reform of Guardian Council
+
+leaders:
+  - ahmad_jannati
+  - sadegh_larijani
+
+relationships:
+  - factionId: irgc
+    type: ally
+    trust: 70
+    reason:
+      fa: اتحاد در برابر اصلاحات
+      en: Alliance against reforms
+  - factionId: reformists
+    type: enemy
+    trust: -80
+    reason:
+      fa: تقابل ایدئولوژیک
+      en: Ideological opposition
+  - factionId: supreme_leader_office
+    type: subordinate
+    trust: 85
+    reason:
+      fa: وفاداری به نظام ولایت
+      en: Loyalty to velayat system
+
+behavior:
+  aggression: 55
+  cooperation: 30
+  riskTolerance: 45
+  pragmatism: 35
+
+color: "#1a1a1a"
+icon: hardline_clerics
+
+tags:
+  - regime
+  - clerical
+  - conservative
+  - guardian_council

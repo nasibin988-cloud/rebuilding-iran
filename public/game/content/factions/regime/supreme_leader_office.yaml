@@ -1,0 +1,109 @@
+# Faction: Supreme Leader's Office (Beyt-e Rahbari)
+# The center of power in the Islamic Republic
+
+id: supreme_leader_office
+
+name:
+  fa: بیت رهبری
+  en: Supreme Leader's Office
+
+shortName:
+  fa: بیت
+  en: Beyt
+
+description:
+  fa: |
+    دفتر رهبری مرکز اصلی قدرت در جمهوری اسلامی است. آیت‌الله خامنه‌ای بیش از
+    سه دهه رهبری را بر عهده داشته و حالا سوال جانشینی به مهم‌ترین مسئله تبدیل
+    شده است. بیت شبکه‌ای از نمایندگان، روحانیون، و مشاوران را کنترل می‌کند.
+  en: |
+    The Supreme Leader's Office is the main center of power in the Islamic Republic.
+    Ayatollah Khamenei has held leadership for over three decades and now the
+    succession question has become the most important issue. The Beyt controls
+    a network of representatives, clerics, and advisors.
+
+category: regime
+subcategory: leadership
+
+power:
+  base: 95
+  military: 60
+  economic: 50
+  religious: 90
+  popular: 20
+
+ideology:
+  economicLeft: 35
+  socialLiberal: 5
+  nationalist: 75
+  religious: 95
+  democratic: 0
+
+interests:
+  survival:
+    - Maintain leadership authority
+    - Manage succession smoothly
+    - Preserve Islamic Republic
+    - Prevent chaos
+  shortTerm:
+    - Stabilize the system
+    - Manage IRGC ambitions
+    - Control dissent
+  longTerm:
+    - Ensure ideological continuity
+    - Prepare next generation
+    - Maintain independence from foreign powers
+  redLines:
+    - Challenge to Velayat-e Faqih
+    - Loss of authority over IRGC
+    - Prosecution of Khamenei family
+    - Constitutional change removing Supreme Leader
+
+leaders:
+  - khamenei
+
+keyMembers:
+  - mojtaba_khamenei
+  - beyt_chief_of_staff
+  - intelligence_advisor
+
+relationships:
+  - factionId: irgc
+    type: ally
+    trust: 65
+    reason:
+      fa: سپاه بازوی نظامی رهبری است
+      en: IRGC is the military arm of leadership
+  - factionId: hardline_clerics
+    type: ally
+    trust: 75
+    reason:
+      fa: پایگاه مذهبی مشترک
+      en: Shared religious base
+  - factionId: reformists
+    type: rival
+    trust: -30
+    reason:
+      fa: تهدید بالقوه برای ساختار قدرت
+      en: Potential threat to power structure
+  - factionId: basij
+    type: ally
+    trust: 70
+    reason:
+      fa: نیروی پایگاه مردمی
+      en: Popular base force
+
+behavior:
+  aggression: 50
+  cooperation: 35
+  riskTolerance: 40
+  pragmatism: 55
+
+color: "#000000"
+icon: beyt
+
+tags:
+  - regime
+  - leadership
+  - religious
+  - central_authority

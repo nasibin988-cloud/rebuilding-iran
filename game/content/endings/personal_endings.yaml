@@ -1,0 +1,218 @@
+# IRAN 14XX - Personal Endings
+# Endings based on player character's fate regardless of regime outcome
+
+endings:
+  - id: martyrdom
+    category: personal
+    title:
+      fa: شهادت
+      en: Martyrdom
+    description:
+      fa: |
+        شما در راه مبارزه جان خود را از دست دادید. نام شما به نماد
+        مقاومت تبدیل شد و نسل‌های آینده از فداکاری شما الهام می‌گیرند.
+      en: |
+        You lost your life in the struggle. Your name became a symbol
+        of resistance and future generations will be inspired by your
+        sacrifice.
+    conditions:
+      - type: stat
+        path: player.personal.health
+        operator: lessThan
+        value: 1
+      - type: flag
+        flag: died_in_action
+        operator: equals
+        value: true
+    epilogue:
+      fa: |
+        در روز خاکسپاری شما، هزاران نفر به خیابان‌ها آمدند. رژیم تلاش
+        کرد جلوی آن‌ها را بگیرد، اما مردم نترسیدند.
+
+        شما رفتید، اما آتشی که روشن کردید نمرد. سال‌ها بعد، وقتی
+        سرانجام ایران آزاد شد، نام شما در خیابان‌ها و میادین ماند.
+      en: |
+        On the day of your burial, thousands came to the streets. The
+        regime tried to stop them, but the people were not afraid.
+
+        You are gone, but the fire you lit did not die. Years later,
+        when Iran was finally free, your name remained on streets and
+        squares.
+    eudaimoniaModifiers:
+      socialCohesion: 10
+      freedomAgency: 5
+    unlocks:
+      - ending_martyrdom
+
+  - id: imprisonment
+    category: personal
+    title:
+      fa: زندان
+      en: Imprisonment
+    description:
+      fa: |
+        شما دستگیر و به زندان طولانی‌مدت محکوم شدید. پشت میله‌ها،
+        همچنان به مبارزه فکر می‌کنید و امید به آزادی را حفظ می‌کنید.
+      en: |
+        You were arrested and sentenced to long-term imprisonment. Behind
+        bars, you still think of the struggle and maintain hope for freedom.
+    conditions:
+      - type: stat
+        path: player.position.regimeAttention
+        operator: greaterThan
+        value: 90
+      - type: flag
+        flag: arrested
+        operator: equals
+        value: true
+      - type: stat
+        path: player.personal.freedom
+        operator: lessThan
+        value: 10
+    epilogue:
+      fa: |
+        سال‌ها در زندان گذشت. همبندی‌های شما تغییر کردند - برخی آزاد شدند،
+        برخی شکستند، برخی مردند. شما ایستادید.
+
+        روزی که سرانجام آزاد شدید، ایران همان نبود. اما شما همان بودید.
+        مبارزه‌ای که در زندان ادامه دادید، بیرون هم ادامه یافت.
+      en: |
+        Years passed in prison. Your cellmates changed - some were freed,
+        some broke, some died. You stood firm.
+
+        The day you were finally released, Iran was not the same. But you
+        were. The struggle you continued in prison continued outside too.
+    eudaimoniaModifiers:
+      freedomAgency: -10
+      healthLongevity: -15
+      socialCohesion: 5
+    unlocks:
+      - ending_imprisonment
+
+  - id: exile
+    category: personal
+    title:
+      fa: تبعید
+      en: Exile
+    description:
+      fa: |
+        شما مجبور شدید ایران را ترک کنید. در غربت، از دور به مبارزه
+        ادامه می‌دهید و روزی امید به بازگشت به وطن آزاد دارید.
+      en: |
+        You were forced to leave Iran. In exile, you continue the struggle
+        from afar, hoping one day to return to a free homeland.
+    conditions:
+      - type: stat
+        path: player.position.regimeAttention
+        operator: greaterThan
+        value: 80
+      - type: flag
+        flag: fled_country
+        operator: equals
+        value: true
+    epilogue:
+      fa: |
+        زندگی در تبعید سخت است. دلتنگی برای خانه، زبان، آدم‌ها. اما
+        شما صدای آن‌هایی شدید که صدا ندارند.
+
+        از دور، با رسانه‌ها و سازمان‌های بین‌المللی کار کردید. هر بار
+        که خبری از ایران می‌آمد، قلب شما می‌تپید. روزی برمی‌گردید.
+      en: |
+        Life in exile is hard. Longing for home, language, people. But
+        you became the voice of those who have no voice.
+
+        From afar, you worked with media and international organizations.
+        Every time news came from Iran, your heart beat faster. You will
+        return someday.
+    eudaimoniaModifiers:
+      freedomAgency: 5
+      socialCohesion: -10
+      culturalFlourishing: -5
+    unlocks:
+      - ending_exile
+
+  - id: burnout
+    category: personal
+    title:
+      fa: فرسودگی
+      en: Burnout
+    description:
+      fa: |
+        سال‌ها مبارزه، استرس، و فشار سرانجام کارشان را کرد. شما دیگر
+        توان ادامه ندارید و باید از صحنه کنار بروید.
+      en: |
+        Years of struggle, stress, and pressure finally took their toll.
+        You no longer have the strength to continue and must step back.
+    conditions:
+      - type: stat
+        path: player.personal.mentalHealth
+        operator: lessThan
+        value: 10
+      - type: stat
+        path: player.personal.health
+        operator: lessThan
+        value: 30
+    epilogue:
+      fa: |
+        کنار کشیدن سخت‌ترین تصمیم زندگیتان بود. اما بدن و روح به شما
+        گفتند که بس است.
+
+        زندگی ساکتی در حاشیه آغاز کردید. دیگران مبارزه را ادامه دادند.
+        شما شاهد بودید و دعا کردید. گاهی همین کافی است.
+      en: |
+        Stepping back was the hardest decision of your life. But body and
+        soul told you enough is enough.
+
+        You began a quiet life on the margins. Others continued the fight.
+        You watched and prayed. Sometimes that's enough.
+    eudaimoniaModifiers:
+      healthLongevity: -10
+      socialCohesion: -5
+    unlocks:
+      - ending_burnout
+
+  - id: victory_and_power
+    category: personal
+    title:
+      fa: پیروزی و قدرت
+      en: Victory and Power
+    description:
+      fa: |
+        شما نه تنها به پیروزی جنبش کمک کردید، بلکه در نظام جدید به
+        جایگاه قدرت رسیدید. اکنون مسئولیت ساختن آینده بر دوش شماست.
+      en: |
+        You not only helped the movement win, but also rose to a position
+        of power in the new system. Now the responsibility of building
+        the future is on your shoulders.
+    conditions:
+      - type: stat
+        path: regime.stability
+        operator: lessThan
+        value: 20
+      - type: stat
+        path: player.resources.influence
+        operator: greaterThan
+        value: 80
+      - type: flag
+        flag: transition_leader
+        operator: equals
+        value: true
+    epilogue:
+      fa: |
+        در کاخ ریاست جمهوری نشستید و به بیرون نگاه کردید. همان خیابان‌هایی
+        که روزی در آن‌ها فرار می‌کردید، حالا منتظر تصمیم شما هستند.
+
+        قدرت می‌تواند فاسد کند. شما این را می‌دانید. هر روز تلاش می‌کنید
+        که همان کسی بمانید که بودید. آیا موفق خواهید شد؟
+      en: |
+        You sat in the presidential palace and looked outside. The same
+        streets where you once fled now await your decisions.
+
+        Power can corrupt. You know this. Every day you try to remain who
+        you were. Will you succeed?
+    eudaimoniaModifiers:
+      freedomAgency: 10
+      socialCohesion: 5
+      materialWellbeing: 5
+    unlocks:
+      - ending_power

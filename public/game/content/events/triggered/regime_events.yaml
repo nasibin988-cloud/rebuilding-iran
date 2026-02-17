@@ -1,0 +1,362 @@
+# Triggered Events: Regime-Related
+
+events:
+  # ================================
+  # STABILITY EVENTS
+  # ================================
+
+  - id: regime_stability_crisis
+    category: triggered
+    title:
+      fa: بحران ثبات
+      en: Stability Crisis
+    description:
+      fa: |
+        ثبات رژیم به سطح خطرناکی رسیده. شکاف‌ها در درون حکومت آشکار شده.
+        جناح‌ها علنا به یکدیگر حمله می‌کنند. این فرصتی نادر است.
+      en: |
+        Regime stability has reached dangerous levels. Cracks within the
+        government are visible. Factions openly attack each other. This is a
+        rare opportunity.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: regime.stability
+          operator: less_than
+          value: 30
+    priority: 85
+    weight: 1.0
+    once: false
+    cooldown: 10
+    requirements: []
+    decisions:
+      - id: push_harder
+        label:
+          fa: فشار بیشتر
+          en: Push Harder
+        description:
+          fa: وقتش است که ضربه نهایی را بزنیم
+          en: Time for the final blow
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.stability
+              value: -5
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 20
+          delayed: []
+        tags: [aggressive]
+
+      - id: exploit_weakness
+        label:
+          fa: از ضعف استفاده کن
+          en: Exploit Weakness
+        description:
+          fa: با احتیاط از این فرصت استفاده کن
+          en: Carefully use this opportunity
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 15
+          delayed: []
+        tags: [strategic]
+
+      - id: wait_and_see
+        label:
+          fa: صبر کن
+          en: Wait and See
+        description:
+          fa: بگذار خودشان همدیگر را نابود کنند
+          en: Let them destroy each other
+        effects:
+          immediate: []
+          delayed: []
+        tags: [passive]
+    tags: [regime, crisis, opportunity]
+
+  - id: irgc_economic_scandal
+    category: triggered
+    title:
+      fa: رسوایی اقتصادی سپاه
+      en: IRGC Economic Scandal
+    description:
+      fa: |
+        اسنادی درز کرده که نشان می‌دهد سپاه میلیاردها دلار از اقتصاد
+        کشور را به جیب زده. فساد گسترده در پروژه‌های عمرانی.
+
+        این می‌تواند مشروعیت سپاه را تضعیف کند.
+      en: |
+        Documents have leaked showing the IRGC has pocketed billions from
+        the national economy. Widespread corruption in construction projects.
+
+        This could undermine the IRGC's legitimacy.
+    triggers:
+      - type: random
+        value: 0.1
+    priority: 70
+    weight: 1.0
+    once: true
+    requirements:
+      - type: stat
+        target: regime.stability
+        operator: less_than
+        value: 60
+    decisions:
+      - id: publicize_scandal
+        label:
+          fa: افشا کن
+          en: Publicize
+        description:
+          fa: اسناد را به رسانه‌ها برسان
+          en: Get documents to media
+        effects:
+          immediate:
+            - type: faction_trust
+              target: irgc
+              value: -20
+            - type: state_change
+              target: regime.coherence
+              value: -5
+            - type: state_change
+              target: player.position.regimeAttention
+              value: 25
+          delayed: []
+        tags: [risky, impactful]
+
+      - id: use_for_leverage
+        label:
+          fa: اهرم فشار
+          en: Use as Leverage
+        description:
+          fa: این اطلاعات را نگه دار برای فرصت بهتر
+          en: Keep this information for a better opportunity
+        effects:
+          immediate:
+            - type: flag_set
+              target: has_irgc_blackmail
+              value: true
+          delayed: []
+        tags: [strategic, power]
+
+      - id: ignore_scandal
+        label:
+          fa: نادیده بگیر
+          en: Ignore
+        description:
+          fa: درگیر این موضوع نشو
+          en: Don't get involved
+        effects:
+          immediate: []
+          delayed: []
+        tags: [safe]
+    tags: [regime, irgc, corruption]
+
+  - id: clerical_split
+    category: triggered
+    title:
+      fa: شکاف در روحانیت
+      en: Clerical Split
+    description:
+      fa: |
+        چند مرجع تقلید برجسته علنا از سیاست‌های رژیم انتقاد کرده‌اند.
+        این نادر است - روحانیون معمولا سکوت می‌کنند.
+
+        آیا این نشانه تغییری بزرگ‌تر است؟
+      en: |
+        Several prominent grand ayatollahs have publicly criticized regime
+        policies. This is rare - clerics usually stay silent.
+
+        Is this a sign of bigger change?
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: regime.legitimacy
+          operator: less_than
+          value: 25
+    priority: 75
+    weight: 1.0
+    once: true
+    requirements: []
+    decisions:
+      - id: contact_clerics
+        label:
+          fa: با روحانیون تماس بگیر
+          en: Contact Clerics
+        description:
+          fa: شاید بتوانی این شکاف را عمیق‌تر کنی
+          en: Maybe you can deepen this rift
+        effects:
+          immediate:
+            - type: faction_trust
+              target: hardline_clerics
+              value: -10
+            - type: resource_change
+              target: influence
+              value: 10
+          delayed: []
+        tags: [strategic, religious]
+
+      - id: publicize_split
+        label:
+          fa: افشا کن
+          en: Publicize
+        description:
+          fa: این خبر را پخش کن
+          en: Spread this news
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.legitimacy
+              value: -5
+          delayed: []
+        tags: [media, impactful]
+    tags: [regime, religious, opportunity]
+
+  # ================================
+  # INTERNATIONAL EVENTS
+  # ================================
+
+  - id: sanctions_tightened
+    category: triggered
+    title:
+      fa: تشدید تحریم‌ها
+      en: Sanctions Tightened
+    description:
+      fa: |
+        آمریکا تحریم‌های جدیدی اعمال کرده. ارزش ریال سقوط کرده.
+        مردم در صف نان ایستاده‌اند. خشم در حال افزایش است.
+      en: |
+        America has imposed new sanctions. The rial has plummeted.
+        People are standing in bread lines. Anger is rising.
+    triggers:
+      - type: random
+        value: 0.15
+    priority: 65
+    weight: 1.0
+    once: false
+    cooldown: 8
+    requirements: []
+    decisions:
+      - id: blame_regime
+        label:
+          fa: رژیم را مقصر بدان
+          en: Blame Regime
+        description:
+          fa: نشان بده که سیاست‌های رژیم باعث تحریم شده
+          en: Show that regime policies caused sanctions
+        effects:
+          immediate:
+            - type: state_change
+              target: regime.legitimacy
+              value: -3
+          delayed: []
+        tags: [propaganda]
+
+      - id: help_affected
+        label:
+          fa: به آسیب‌دیدگان کمک کن
+          en: Help Affected
+        description:
+          fa: شبکه‌های خیریه را فعال کن
+          en: Activate charity networks
+        effects:
+          immediate:
+            - type: faction_trust
+              target: workers
+              value: 10
+            - type: resource_change
+              target: money
+              value: -500
+          delayed: []
+        tags: [humanitarian, reputation]
+    tags: [international, economic]
+
+  - id: foreign_support_offer
+    category: triggered
+    title:
+      fa: پیشنهاد حمایت خارجی
+      en: Foreign Support Offer
+    description:
+      fa: |
+        یک دیپلمات غربی به طور محرمانه تماس گرفته. می‌گوید دولتش
+        آماده حمایت از "نیروهای تغییر" است. اما چه قیمتی؟
+
+        این می‌تواند کمک باشد یا تله.
+      en: |
+        A Western diplomat has made secret contact. Says their government
+        is ready to support "forces of change." But at what price?
+
+        This could be help or a trap.
+    triggers:
+      - type: condition
+        value:
+          type: stat
+          target: player.position.internationalProfile
+          operator: greater_than
+          value: 30
+    priority: 70
+    weight: 0.5
+    once: true
+    requirements: []
+    decisions:
+      - id: accept_cautiously
+        label:
+          fa: با احتیاط بپذیر
+          en: Accept Cautiously
+        description:
+          fa: ببین چه می‌خواهند بدون تعهد
+          en: See what they want without commitment
+        effects:
+          immediate:
+            - type: flag_set
+              target: foreign_contact
+              value: true
+            - type: resource_change
+              target: money
+              value: 1000
+          delayed:
+            - delay: 3
+              probability: 0.3
+              effects:
+                - type: flag_set
+                  target: foreign_strings
+                  value: true
+              narrative:
+                fa: خارجی‌ها انتظاراتی دارند
+                en: Foreigners have expectations
+        tags: [international, risky]
+
+      - id: reject_firmly
+        label:
+          fa: قاطعانه رد کن
+          en: Reject Firmly
+        description:
+          fa: تغییر باید از درون باشد
+          en: Change must come from within
+        effects:
+          immediate:
+            - type: faction_trust
+              target: students
+              value: 10
+          delayed: []
+        tags: [nationalist, principled]
+
+      - id: report_to_network
+        label:
+          fa: به شبکه گزارش بده
+          en: Report to Network
+        description:
+          fa: بگذار دیگران هم بدانند
+          en: Let others know too
+        effects:
+          immediate:
+            - type: resource_change
+              target: influence
+              value: 10
+          delayed: []
+        tags: [transparent, coalition]
+    tags: [international, opportunity, sensitive]

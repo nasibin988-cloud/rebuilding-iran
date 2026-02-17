@@ -1,0 +1,148 @@
+# IRAN 14XX - Authoritarian Endings
+# Endings where authoritarianism persists or intensifies
+
+endings:
+  - id: regime_consolidation
+    category: authoritarian
+    title:
+      fa: تحکیم استبداد
+      en: Consolidated Autocracy
+    description:
+      fa: |
+        رژیم توانست با سرکوب شدید و اصلاحات ظاهری، بحران را پشت سر بگذارد.
+        نظام نه تنها سرنگون نشد، بلکه قوی‌تر و سرکوب‌گرتر از پیش شد.
+        امید به تغییر برای نسلی دیگر به تاخیر افتاد.
+      en: |
+        The regime managed to survive the crisis through severe repression
+        and superficial reforms. The system not only survived but became
+        stronger and more repressive than before. Hope for change was
+        delayed for another generation.
+    conditions:
+      - type: stat
+        path: regime.stability
+        operator: greaterThan
+        value: 70
+      - type: stat
+        path: regime.repressiveCapacity
+        operator: greaterThan
+        value: 80
+      - type: stat
+        path: eudaimonia.freedomAgency
+        operator: lessThan
+        value: 20
+    epilogue:
+      fa: |
+        در سال‌های پس از سرکوب، سکوت بر جامعه حاکم شد. رسانه‌ها کاملاً
+        تحت کنترل درآمدند، اینترنت محدودتر شد، و هر صدای مخالفی خاموش گشت.
+
+        شما که روزی رویای آزادی داشتید، اکنون یا در تبعید هستید یا در
+        سکوت زندگی می‌کنید. اما آیا آتش زیر خاکستر خاموش شده است؟
+      en: |
+        In the years after the crackdown, silence ruled society. Media came
+        under complete control, the internet became more restricted, and
+        every voice of dissent was silenced.
+
+        You, who once dreamed of freedom, now live either in exile or in
+        silence. But has the fire under the ashes truly been extinguished?
+    eudaimoniaModifiers:
+      freedomAgency: -30
+      socialCohesion: -20
+      culturalFlourishing: -15
+      securityOrder: 10
+    unlocks:
+      - ending_authoritarian
+
+  - id: irgc_takeover
+    category: authoritarian
+    title:
+      fa: دولت نظامی
+      en: Military State
+    description:
+      fa: |
+        پس از بحران‌های متعدد، سپاه پاسداران قدرت را به طور کامل در دست
+        گرفت. ایران به یک دولت نظامی-امنیتی تبدیل شد که در آن نظامیان
+        همه جنبه‌های زندگی را کنترل می‌کنند.
+      en: |
+        After multiple crises, the IRGC took complete control. Iran became
+        a military-security state where the military controls all aspects
+        of life.
+    conditions:
+      - type: stat
+        path: world.factions.irgc.power.base
+        operator: greaterThan
+        value: 80
+      - type: flag
+        flag: supreme_leader_incapacitated
+        operator: equals
+        value: true
+      - type: stat
+        path: regime.coherence
+        operator: lessThan
+        value: 30
+    epilogue:
+      fa: |
+        رهبری جدید، یک ژنرال سپاه، همه چیز را نظامی اداره می‌کند. اقتصاد
+        کاملاً در دست سپاه است. مرزها بسته‌تر شدند و ایران منزوی‌تر از پیش.
+
+        این پایان راهی نبود که شما برایش مبارزه کردید. اما تاریخ هنوز
+        نوشته نشده است.
+      en: |
+        The new leader, an IRGC general, runs everything militarily. The
+        economy is completely in IRGC hands. Borders became more closed
+        and Iran more isolated than ever.
+
+        This was not the ending you fought for. But history is not yet
+        written.
+    eudaimoniaModifiers:
+      freedomAgency: -35
+      materialWellbeing: -15
+      socialCohesion: -25
+      securityOrder: 20
+    unlocks:
+      - ending_military
+
+  - id: new_supreme_leader
+    category: authoritarian
+    title:
+      fa: ولی فقیه جدید
+      en: New Supreme Leader
+    description:
+      fa: |
+        پس از درگذشت رهبر، جانشین او که از نسل جدید محافظه‌کاران است،
+        قدرت را به دست گرفت. او وعده اصلاحات داد اما در عمل چیزی تغییر نکرد.
+      en: |
+        After the Leader's death, his successor from the new generation
+        of conservatives took power. He promised reforms but in practice
+        nothing changed.
+    conditions:
+      - type: flag
+        flag: khamenei_dead
+        operator: equals
+        value: true
+      - type: stat
+        path: regime.stability
+        operator: greaterThan
+        value: 50
+      - type: stat
+        path: world.factions.hardline_clerics.power.base
+        operator: greaterThan
+        value: 50
+    epilogue:
+      fa: |
+        رهبر جدید جوان‌تر و مدرن‌تر به نظر می‌رسد. او از تکنولوژی استفاده
+        می‌کند و زبان متفاوتی دارد. اما ساختار قدرت همان است.
+
+        مردم منتظرند و می‌نگرند. شاید این بار متفاوت باشد. شاید نه.
+      en: |
+        The new leader appears younger and more modern. He uses technology
+        and speaks differently. But the power structure remains the same.
+
+        The people wait and watch. Perhaps this time will be different.
+        Perhaps not.
+    eudaimoniaModifiers:
+      freedomAgency: -10
+      materialWellbeing: 5
+      socialCohesion: -5
+      securityOrder: 5
+    unlocks:
+      - ending_succession

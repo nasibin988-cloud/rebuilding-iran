@@ -1,0 +1,94 @@
+# Faction: Student Movement
+# University students and young activists
+
+id: students
+
+name:
+  fa: جنبش دانشجویی
+  en: Student Movement
+
+shortName:
+  fa: دانشجویان
+  en: Students
+
+description:
+  fa: |
+    دانشجویان دانشگاه‌های سراسر کشور. پیشتازان اعتراضات ۱۴۰۱. نسل
+    جدیدی که با اینترنت و شبکه‌های اجتماعی بزرگ شده و خواسته‌های
+    رادیکال‌تری نسبت به نسل قبل دارد.
+  en: |
+    University students across the country. Vanguard of the 2022 protests.
+    A new generation raised with internet and social media, with more radical
+    demands than the previous generation.
+
+category: society
+subcategory: youth
+
+power:
+  base: 25
+  military: 5
+  economic: 5
+  religious: 5
+  popular: 55
+
+ideology:
+  economicLeft: 50
+  socialLiberal: 95
+  nationalist: 60
+  religious: 10
+  democratic: 95
+
+interests:
+  survival:
+    - Avoid mass arrests
+    - Maintain communication networks
+    - Protect identities
+  shortTerm:
+    - Continue protests
+    - Build solidarity
+    - Document repression
+  longTerm:
+    - Regime change
+    - Secular democracy
+    - Women's rights
+  redLines:
+    - Compromise with regime
+    - Abandoning street action
+    - Division by ethnicity
+
+leaders: []
+
+relationships:
+  - factionId: green_movement
+    type: ally
+    trust: 55
+    reason:
+      fa: الهام از جنبش سبز
+      en: Inspired by Green Movement
+  - factionId: reformists
+    type: neutral
+    trust: 15
+    reason:
+      fa: شک به اصلاحات از درون
+      en: Skeptical of reform from within
+  - factionId: basij
+    type: enemy
+    trust: -90
+    reason:
+      fa: دشمنان در دانشگاه
+      en: Enemies on campus
+
+behavior:
+  aggression: 55
+  cooperation: 65
+  riskTolerance: 75
+  pragmatism: 35
+
+color: "#3b82f6"
+icon: students
+
+tags:
+  - society
+  - youth
+  - activist
+  - woman_life_freedom

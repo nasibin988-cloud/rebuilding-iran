@@ -1,0 +1,94 @@
+# Faction: Basij Resistance Force
+# The regime's paramilitary and social mobilization arm
+
+id: basij
+
+name:
+  fa: نیروی مقاومت بسیج
+  en: Basij Resistance Force
+
+shortName:
+  fa: بسیج
+  en: Basij
+
+description:
+  fa: |
+    نیروی شبه‌نظامی داوطلبانه زیرمجموعه سپاه پاسداران. میلیون‌ها عضو در
+    سراسر کشور با حضور در مساجد، دانشگاه‌ها، و محلات. ابزار اصلی
+    کنترل اجتماعی و سرکوب اعتراضات.
+  en: |
+    Volunteer paramilitary force under the IRGC. Millions of members across
+    the country with presence in mosques, universities, and neighborhoods.
+    Primary tool for social control and protest suppression.
+
+category: regime
+subcategory: paramilitary
+
+power:
+  base: 55
+  military: 50
+  economic: 20
+  religious: 40
+  popular: 20
+
+ideology:
+  economicLeft: 50
+  socialLiberal: 5
+  nationalist: 70
+  religious: 85
+  democratic: 0
+
+interests:
+  survival:
+    - Maintain organizational structure
+    - Preserve economic benefits for members
+    - Keep ideological training programs
+  shortTerm:
+    - Suppress protests effectively
+    - Recruit young members
+    - Expand surveillance networks
+  longTerm:
+    - Remain relevant after succession
+    - Compete with IRGC for influence
+  redLines:
+    - Dissolution
+    - Loss of benefits and privileges
+    - Prosecution of members
+
+leaders:
+  - basij_commander
+
+relationships:
+  - factionId: irgc
+    type: ally
+    trust: 75
+    reason:
+      fa: زیرمجموعه سپاه
+      en: Subordinate to IRGC
+  - factionId: supreme_leader_office
+    type: ally
+    trust: 80
+    reason:
+      fa: وفاداری به رهبری
+      en: Loyalty to leadership
+  - factionId: students
+    type: enemy
+    trust: -70
+    reason:
+      fa: رقابت در دانشگاه‌ها
+      en: Competition in universities
+
+behavior:
+  aggression: 70
+  cooperation: 40
+  riskTolerance: 55
+  pragmatism: 35
+
+color: "#2d5016"
+icon: basij
+
+tags:
+  - regime
+  - paramilitary
+  - social_control
+  - ideological

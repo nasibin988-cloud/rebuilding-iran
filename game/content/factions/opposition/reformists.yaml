@@ -1,0 +1,107 @@
+# Faction: Reformists (Eslah-talaban)
+# The loyal opposition trying to change the system from within
+
+id: reformists
+
+name:
+  fa: اصلاح‌طلبان
+  en: Reformists
+
+shortName:
+  fa: اصلاح‌طلبان
+  en: Reformists
+
+description:
+  fa: |
+    جناح اصلاح‌طلب شامل سیاستمداران، روشنفکران، و روحانیونی است که معتقدند
+    نظام می‌تواند از درون اصلاح شود. پس از سرکوب جنبش سبز در ۱۳۸۸ و خیزش
+    ۱۴۰۱، موقعیت آنها ضعیف شده اما همچنان شبکه‌ای از ارتباطات دارند.
+  en: |
+    The reformist faction includes politicians, intellectuals, and clerics who
+    believe the system can be reformed from within. After the suppression of
+    the Green Movement in 2009 and the 2022 uprising, their position has weakened
+    but they still have a network of connections.
+
+category: opposition
+subcategory: political
+
+power:
+  base: 25
+  military: 0
+  economic: 15
+  religious: 30
+  popular: 35
+
+ideology:
+  economicLeft: 50
+  socialLiberal: 65
+  nationalist: 55
+  religious: 50
+  democratic: 70
+
+interests:
+  survival:
+    - Maintain political relevance
+    - Protect members from prosecution
+    - Preserve reformist identity
+  shortTerm:
+    - Expand political space
+    - Build bridges with moderates
+    - Advocate for political prisoners
+  longTerm:
+    - Achieve democratic reform
+    - Create sustainable pluralism
+    - Integrate Iran into international community
+  redLines:
+    - Violent revolution
+    - Complete rejection of religious values
+    - Alliance with MEK
+
+leaders:
+  - reformist_politician
+
+keyMembers:
+  - former_president_khatami
+  - imprisoned_reformist
+  - reformist_cleric
+
+relationships:
+  - factionId: supreme_leader_office
+    type: rival
+    trust: -25
+    reason:
+      fa: تنش مداوم بر سر محدودیت‌ها
+      en: Ongoing tension over restrictions
+  - factionId: green_movement
+    type: ally
+    trust: 45
+    reason:
+      fa: ریشه‌های مشترک در جنبش ۸۸
+      en: Shared roots in 2009 movement
+  - factionId: students
+    type: ally
+    trust: 35
+    reason:
+      fa: پایگاه طبیعی
+      en: Natural base
+  - factionId: irgc
+    type: enemy
+    trust: -55
+    reason:
+      fa: سرکوب مداوم
+      en: Ongoing repression
+
+behavior:
+  aggression: 20
+  cooperation: 75
+  riskTolerance: 30
+  pragmatism: 80
+
+color: "#4a7c4e"
+icon: reformist
+
+tags:
+  - opposition
+  - political
+  - moderate
+  - institutional

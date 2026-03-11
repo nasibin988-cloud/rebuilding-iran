@@ -28,7 +28,7 @@ export function getDb(): DbProvider {
     console.log('[db] Using Supabase');
   }
 
-  return provider;
+  return provider!;
 }
 
 // Convenience export

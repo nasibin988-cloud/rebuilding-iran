@@ -2,6 +2,24 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import OpenAI from 'openai';
 
+// Self-hosted Postgres for raw Telegram archive (always writes here)
+let pgPool: import('pg').Pool | null = null;
+function getRawArchivePool() {
+  if (!pgPool && process.env.PG_PASSWORD) {
+    const { Pool } = require('pg') as typeof import('pg');
+    pgPool = new Pool({
+      host: process.env.PG_HOST || '127.0.0.1',
+      port: parseInt(process.env.PG_PORT || '5432', 10),
+      database: process.env.PG_DATABASE || 'rebuilding_iran',
+      user: process.env.PG_USER || 'rebuilding',
+      password: process.env.PG_PASSWORD,
+      max: 5,
+      connectionTimeoutMillis: 5000,
+    });
+  }
+  return pgPool;
+}
+
 // Vercel execution limit: allow up to 5 minutes for feed fetching + AI summaries
 export const maxDuration = 300;
 
@@ -651,6 +669,28 @@ export async function GET(request: NextRequest) {
 
       const allPosts = tgResults.flatMap(r => r.posts);
       console.log(`[news-refresh] Scraped ${allPosts.length} Telegram posts`);
+
+      // Archive ALL raw posts to self-hosted Postgres (unfiltered)
+      const rawPool = getRawArchivePool();
+      if (rawPool && allPosts.length > 0) {
+        try {
+          let rawInserted = 0;
+          for (const p of allPosts) {
+            const { rowCount } = await rawPool.query(
+              `INSERT INTO telegram_raw (channel, channel_label, message_id, link, raw_text, pub_date)
+               VALUES ($1, $2, $3, $4, $5, $6)
+               ON CONFLICT (link) DO NOTHING`,
+              [p.channel, p.label, parseInt(p.messageId, 10), p.link, p.text, p.date || null]
+            );
+            rawInserted += (rowCount || 0);
+          }
+          if (rawInserted > 0) {
+            console.log(`[news-refresh] Archived ${rawInserted} raw Telegram posts to local Postgres`);
+          }
+        } catch (rawErr) {
+          console.error(`[news-refresh] Raw archive error (non-fatal): ${rawErr instanceof Error ? rawErr.message : rawErr}`);
+        }
+      }
 
       if (allPosts.length > 0) {
         // Deduplicate against existing

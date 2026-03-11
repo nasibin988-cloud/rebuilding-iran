@@ -296,7 +296,7 @@ export default function NewsClient() {
             </p>
             <p className="text-dark-500 text-sm mb-4">{error}</p>
             <button
-              onClick={loadFeeds}
+              onClick={() => loadFeeds()}
               className="px-4 py-2 rounded-lg bg-persian-600 hover:bg-persian-500 text-white text-sm font-medium transition-colors"
             >
               Try again

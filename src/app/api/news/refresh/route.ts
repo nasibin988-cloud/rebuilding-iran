@@ -63,7 +63,7 @@ const FEEDS_EN: FeedSource[] = [
   { url: 'https://www.jpost.com/rss/rssfeedsfrontpage.aspx', source: 'Jerusalem Post', bias: 1, lang: 'en' },
   { url: 'https://www.ynetnews.com/Integration/StoryRss2.xml', source: 'Ynet News', bias: 0, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=site:i24news.tv+iran+OR+middle+east&hl=en-US&gl=US&ceid=US:en', source: 'i24NEWS', bias: 1, lang: 'en' },
-  { url: 'https://news.google.com/rss/search?q=iran+site:haaretz.com&hl=en-US&gl=US&ceid=US:en', source: 'Haaretz', paywall: true, bias: -1, lang: 'en' },
+  { url: 'https://www.haaretz.com/srv/middle-east-news-rss', source: 'Haaretz', paywall: true, bias: -1, lang: 'en' },
   { url: 'https://feeds.bbci.co.uk/news/world/middle_east/rss.xml', source: 'BBC Middle East', bias: 0, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=iran+OR+middle+east+site:reuters.com&hl=en-US&gl=US&ceid=US:en', source: 'Reuters', bias: 0, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=iran+OR+middle+east+site:apnews.com&hl=en-US&gl=US&ceid=US:en', source: 'AP News', bias: 0, lang: 'en' },
@@ -84,11 +84,11 @@ const FEEDS_EN: FeedSource[] = [
   { url: 'https://www.middleeasteye.net/rss', source: 'Middle East Eye', bias: -1, lang: 'en' },
   { url: 'https://www.al-monitor.com/rss', source: 'Al-Monitor', bias: 0, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=site:arabnews.com+iran+OR+middle+east&hl=en-US&gl=US&ceid=US:en', source: 'Arab News', bias: 1, lang: 'en' },
-  { url: 'https://news.google.com/rss/search?q=site:thenationalnews.com+iran+OR+middle+east&hl=en-US&gl=US&ceid=US:en', source: 'The National (UAE)', bias: 1, lang: 'en' },
+  { url: 'https://www.thenationalnews.com/arc/outboundfeeds/rss/category/news/mena/?outputType=xml', source: 'The National (UAE)', bias: 1, lang: 'en' },
   { url: 'https://www.foreignaffairs.com/rss.xml', source: 'Foreign Affairs', paywall: true, bias: 0, lang: 'en' },
   { url: 'https://nationalinterest.org/feed', source: 'National Interest', bias: 1, lang: 'en' },
   { url: 'https://theintercept.com/feed/?rss', source: 'The Intercept', bias: -2, lang: 'en' },
-  { url: 'https://news.google.com/rss/search?q=iran+OR+middle+east+site:mako.co.il&hl=en-US&gl=US&ceid=US:en', source: 'Channel 12 (Mako)', bias: 0, lang: 'en' },
+  { url: 'https://rcs.mako.co.il/rss/news-world.xml', source: 'Channel 12 (Mako)', bias: 0, lang: 'en' },
 ];
 
 const FEEDS_FA: FeedSource[] = [

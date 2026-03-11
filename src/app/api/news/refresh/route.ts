@@ -402,7 +402,8 @@ interface RawTelegramPost {
   label: string;
   messageId: string;
   link: string;
-  text: string;
+  text: string;       // truncated for Grok processing
+  fullText: string;   // complete untruncated text for raw archive
   date: string | null;
 }
 
@@ -440,7 +441,7 @@ async function scrapeTelegramChannel(ch: TelegramChannel): Promise<{ posts: RawT
         .replace(/\s+/g, ' ')
         .trim();
 
-      if (!rawText || rawText.length < 10) continue;
+      if (!rawText) continue;
 
       const postId = postIds[i];
       const msgNum = postId.split('/')[1] || postId;
@@ -449,7 +450,8 @@ async function scrapeTelegramChannel(ch: TelegramChannel): Promise<{ posts: RawT
         label: ch.label,
         messageId: msgNum,
         link: `https://t.me/${ch.username}/${msgNum}`,
-        text: rawText.slice(0, 2000),
+        text: rawText.slice(0, 2000),   // truncated copy for Grok screening
+        fullText: rawText,               // complete text for raw archive
         date: dateMatches[i] || null,
       });
     }
@@ -680,7 +682,7 @@ export async function GET(request: NextRequest) {
               `INSERT INTO telegram_raw (channel, channel_label, message_id, link, raw_text, pub_date)
                VALUES ($1, $2, $3, $4, $5, $6)
                ON CONFLICT (link) DO NOTHING`,
-              [p.channel, p.label, parseInt(p.messageId, 10), p.link, p.text, p.date || null]
+              [p.channel, p.label, parseInt(p.messageId, 10), p.link, p.fullText, p.date || null]
             );
             rawInserted += (rowCount || 0);
           }

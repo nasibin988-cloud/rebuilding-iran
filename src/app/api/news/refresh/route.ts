@@ -389,10 +389,10 @@ const TELEGRAM_CHANNELS: TelegramChannel[] = [
   { username: 'IranintlTV', label: 'Iran International' },
   { username: 'bbcpersian', label: 'BBC Persian' },
   { username: 'RadioFarda', label: 'Radio Farda' },
-  { username: 'bbcworld', label: 'BBC World' },
+  { username: 'FoxNews', label: 'Fox News' },
   // Israeli & OSINT sources
   { username: 'CIG_telegram', label: 'CIG OSINT' },
-  { username: 'IsraelWarRoom', label: 'Israel War Room' },
+  { username: 'kann_news', label: 'Kan News (Israel)' },
   { username: 'AbuAliExpress', label: 'Abu Ali Express' },
   { username: 'OSINTdefender', label: 'OSINT Defender' },
 ];

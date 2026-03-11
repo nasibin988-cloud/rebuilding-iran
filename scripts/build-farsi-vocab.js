@@ -56,6 +56,10 @@ function parseCSV(text) {
 }
 
 function main() {
+  if (!fs.existsSync(CSV_PATH)) {
+    console.log(`Skipping farsi vocab build: ${CSV_PATH} not found`);
+    return;
+  }
   console.log('Reading CSV...');
   let raw = fs.readFileSync(CSV_PATH, 'utf-8');
   // Strip BOM

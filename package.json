@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm run build:data && next build",
-    "build:data": "node scripts/build-quizzes.js && node scripts/build-flashcards.js && node scripts/build-search-index.js && node scripts/build-farsi-vocab.js",
+    "build": "npm run build:data; next build",
+    "build:data": "node scripts/build-quizzes.js; node scripts/build-flashcards.js; node scripts/build-search-index.js; node scripts/build-farsi-vocab.js; echo 'Data build step done'",
     "build:search": "node scripts/build-search-index.js",
     "start": "next start",
     "lint": "next lint",

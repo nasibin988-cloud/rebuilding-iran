@@ -203,7 +203,7 @@ function parseRSS(xml: string, feedSource: FeedSource): ParsedArticle[] {
   while ((itemMatch = itemRegex.exec(xml)) !== null) {
     const itemXml = itemMatch[1];
     let title = stripHtml(extractTagContent(itemXml, 'title'));
-    const link = stripHtml(extractTagContent(itemXml, 'link'));
+    const link = normalizeUrl(stripHtml(extractTagContent(itemXml, 'link')));
     const description = stripHtml(extractTagContent(itemXml, 'description')).slice(0, 500);
     const pub_date = parseDate(stripHtml(extractTagContent(itemXml, 'pubDate')));
 
@@ -231,7 +231,7 @@ function parseAtom(xml: string, feedSource: FeedSource): ParsedArticle[] {
   while ((entryMatch = entryRegex.exec(xml)) !== null) {
     const entryXml = entryMatch[1];
     const title = stripHtml(extractTagContent(entryXml, 'title'));
-    const link = extractAtomLink(entryXml);
+    const link = normalizeUrl(extractAtomLink(entryXml));
     const summary = stripHtml(
       extractTagContent(entryXml, 'summary') || extractTagContent(entryXml, 'content')
     ).slice(0, 500);
@@ -304,21 +304,19 @@ function extractArticleText(html: string): string {
     .replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ')
     .trim();
 
-  return text.slice(0, 4000);
+  return text.slice(0, 100000);
 }
 
 interface AISummaryResult {
   summary: string;
   relevance: Relevance;
+  full_text: string;
 }
 
-async function summarizeArticle(url: string, title: string): Promise<AISummaryResult | null> {
-  const xai = getXAI();
-  if (!xai) return null;
-
+async function fetchAndExtractArticle(url: string): Promise<string | null> {
   try {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 8000);
+    const timeout = setTimeout(() => controller.abort(), 12000);
     const response = await fetch(url, {
       signal: controller.signal,
       headers: {
@@ -330,9 +328,26 @@ async function summarizeArticle(url: string, title: string): Promise<AISummaryRe
     if (!response.ok) return null;
 
     const html = await response.text();
-    const articleText = extractArticleText(html);
-    if (articleText.length < 100) return null;
+    const text = extractArticleText(html);
+    return text.length >= 50 ? text : null;
+  } catch {
+    return null;
+  }
+}
 
+async function summarizeArticle(url: string, title: string): Promise<AISummaryResult | null> {
+  // 1. Always fetch and extract full article text
+  const articleText = await fetchAndExtractArticle(url);
+  if (!articleText) return null;
+
+  // 2. Summarize with Grok (if available)
+  const xai = getXAI();
+  if (!xai) {
+    // No Grok key -- still return full text without summary
+    return { summary: '', relevance: 1, full_text: articleText };
+  }
+
+  try {
     const completion = await xai.chat.completions.create({
       model: MODEL,
       max_tokens: 500,
@@ -352,24 +367,24 @@ Return ONLY valid JSON, no markdown fences.`,
         },
         {
           role: 'user',
-          content: `Article title: ${title}\n\nArticle text:\n${articleText}`,
+          content: `Article title: ${title}\n\nArticle text:\n${articleText.slice(0, 4000)}`,
         },
       ],
     });
 
     const raw = completion.choices[0]?.message?.content?.trim();
-    if (!raw) return null;
+    if (!raw) return { summary: '', relevance: 1, full_text: articleText };
 
     try {
       const parsed = JSON.parse(raw);
       const relevance = [1, 2, 3].includes(parsed.relevance) ? parsed.relevance as Relevance : 1;
-      return { summary: parsed.summary || raw, relevance };
+      return { summary: parsed.summary || raw, relevance, full_text: articleText };
     } catch {
-      // If JSON parse fails, use the raw text as summary
-      return { summary: raw, relevance: 1 };
+      return { summary: raw, relevance: 1, full_text: articleText };
     }
   } catch {
-    return null;
+    // Grok failed but we still have the full text
+    return { summary: '', relevance: 1, full_text: articleText };
   }
 }
 
@@ -546,6 +561,23 @@ function snapTo5Min(date: Date): Date {
   return new Date(Math.floor(ms / (5 * 60 * 1000)) * (5 * 60 * 1000));
 }
 
+/** Normalize URL for deduplication: strip tracking params, www, force https */
+function normalizeUrl(url: string): string {
+  try {
+    const u = new URL(url);
+    for (const p of ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','ref','source','fbclid','gclid','mc_cid','mc_eid']) {
+      u.searchParams.delete(p);
+    }
+    u.hostname = u.hostname.replace(/^www\./, '');
+    u.protocol = 'https:';
+    u.pathname = u.pathname.replace(/\/+$/, '') || '/';
+    u.hash = '';
+    return u.toString();
+  } catch {
+    return url;
+  }
+}
+
 // ── Cron secret validation ─────────────────────────────────────
 function isAuthorized(request: NextRequest): boolean {
   const secret = process.env.CRON_SECRET;
@@ -648,24 +680,24 @@ export async function GET(request: NextRequest) {
 
     console.log(`[news-refresh] Inserted ${inserted?.length || 0} articles`);
 
-    // 5. Generate AI summaries + relevance for non-paywall new articles (max 40 per run, 5 concurrency)
-    const toSummarize = (inserted || []).filter(a => !a.paywall).slice(0, 40);
-    let summariesGenerated = 0;
+    // 5. Fetch full article text for ALL new articles (10 concurrency, no AI summary for now)
+    const toFetchText = inserted || [];
+    let fullTextFetched = 0;
 
-    for (let i = 0; i < toSummarize.length; i += 5) {
-      const batch = toSummarize.slice(i, i + 5);
+    for (let i = 0; i < toFetchText.length; i += 10) {
+      const batch = toFetchText.slice(i, i + 10);
       const results = await Promise.all(
-        batch.map(a => summarizeArticle(a.link, a.title))
+        batch.map(a => fetchAndExtractArticle(a.link))
       );
 
       for (let j = 0; j < batch.length; j++) {
-        const result = results[j];
-        if (result) {
+        const fullText = results[j];
+        if (fullText) {
           await supabase
             .from('news_feed')
-            .update({ summary: result.summary, relevance: result.relevance })
+            .update({ full_text: fullText })
             .eq('id', batch[j].id);
-          summariesGenerated++;
+          fullTextFetched++;
         }
       }
     }
@@ -766,13 +798,13 @@ export async function GET(request: NextRequest) {
     }
 
     const duration = Date.now() - startTime;
-    console.log(`[news-refresh] Done in ${duration}ms. ${inserted?.length || 0} RSS new, ${telegramNew} TG new, ${summariesGenerated} summarized, ${failures.length} feeds failed`);
+    console.log(`[news-refresh] Done in ${duration}ms. ${inserted?.length || 0} RSS new, ${telegramNew} TG new, ${fullTextFetched} full-text fetched, ${failures.length} feeds failed`);
 
     return NextResponse.json({
       message: 'Refresh complete',
       new_articles: inserted?.length || 0,
       telegram_new: telegramNew,
-      summaries_generated: summariesGenerated,
+      full_text_fetched: fullTextFetched,
       total_parsed: allArticles.length,
       feeds_failed: failures.length,
       refresh_time: refreshTime.toISOString(),

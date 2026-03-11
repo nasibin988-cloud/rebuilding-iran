@@ -21,6 +21,7 @@ export interface NewsFeedRow {
   bias: number;
   paywall: boolean;
   summary: string | null;
+  full_text: string | null;
   lang: string;
   relevance: number;
   type: string;

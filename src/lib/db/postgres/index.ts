@@ -58,13 +58,13 @@ export function createPostgresProvider(): DbProvider {
           const inserted: NewsFeedRow[] = [];
           for (const row of rows) {
             const { rows: result } = await pool.query(
-              `INSERT INTO news_feed (link, title, source, description, pub_date, bias, paywall, summary, lang, relevance, type)
-               VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
+              `INSERT INTO news_feed (link, title, source, description, pub_date, bias, paywall, summary, full_text, lang, relevance, type)
+               VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
                ON CONFLICT (link) DO NOTHING
                RETURNING *`,
               [row.link, row.title, row.source, row.description || null, row.pub_date || null,
-               row.bias || 0, row.paywall || false, row.summary || null, row.lang || 'en',
-               row.relevance || 1, row.type || 'rss']
+               row.bias || 0, row.paywall || false, row.summary || null, row.full_text || null,
+               row.lang || 'en', row.relevance || 1, row.type || 'rss']
             );
             if (result[0]) inserted.push(result[0]);
           }

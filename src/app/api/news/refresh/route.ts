@@ -1,26 +1,23 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-import OpenAI from 'openai';
 
-// Self-hosted Postgres for raw Telegram archive (always writes here)
+// ── Self-hosted Postgres (all data lives here now) ──────────────
 let pgPool: import('pg').Pool | null = null;
-function getRawArchivePool() {
-  if (!pgPool && process.env.PG_PASSWORD) {
+function getPool() {
+  if (!pgPool) {
     const { Pool } = require('pg') as typeof import('pg');
     pgPool = new Pool({
       host: process.env.PG_HOST || '127.0.0.1',
       port: parseInt(process.env.PG_PORT || '5432', 10),
       database: process.env.PG_DATABASE || 'rebuilding_iran',
       user: process.env.PG_USER || 'rebuilding',
-      password: process.env.PG_PASSWORD,
-      max: 5,
-      connectionTimeoutMillis: 5000,
+      password: process.env.PG_PASSWORD || '',
+      max: 10,
+      connectionTimeoutMillis: 10000,
     });
   }
   return pgPool;
 }
 
-// Vercel execution limit: allow up to 5 minutes for feed fetching + AI summaries
 export const maxDuration = 300;
 
 // ── Types ──────────────────────────────────────────────────────
@@ -47,93 +44,49 @@ interface ParsedArticle {
   relevance: Relevance;
 }
 
-// ── Supabase admin client ──────────────────────────────────────
-function getSupabaseAdmin() {
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  );
-}
-
-// ── Grok client for summaries ──────────────────────────────────
-let xaiClient: OpenAI | null = null;
-function getXAI(): OpenAI | null {
-  if (!xaiClient && process.env.XAI_API_KEY) {
-    xaiClient = new OpenAI({
-      apiKey: process.env.XAI_API_KEY,
-      baseURL: 'https://api.x.ai/v1',
-    });
-  }
-  return xaiClient;
-}
-const MODEL = 'grok-4-1-fast-reasoning';
-
 // ── Relevance scoring ──────────────────────────────────────────
-// 3 = Key breaking news: major military strikes, regime changes, major policy shifts, mass casualties
-// 2 = Relevant & important: Iran-related diplomacy, regional conflict, sanctions, notable statements
-// 1 = Background/context: general Middle East coverage, tangential mentions, routine updates
 const IRAN_DIRECT = /\b(iran|iranian|tehran|isfahan|tabriz|shiraz|mashhad|irgc|sepah|pahlavi|khamenei|raisi|rouhani|basij|quds\s*force|persian\s*gulf|rial|jcpoa|mahsa|amini|farsi)\b/i;
 const IRAN_FARSI = /(\u0627\u06CC\u0631\u0627\u0646|\u062A\u0647\u0631\u0627\u0646|\u0633\u067E\u0627\u0647|\u067E\u0647\u0644\u0648\u06CC|\u062E\u0627\u0645\u0646\u0647\u200C?\u0627\u06CC)/;
 const REGIONAL = /\b(israel|israeli|hezbollah|houthi|syria|iraq|saudi|gulf\s*state|middle\s*east|nuclear\s*deal|sanction|proxy\s*war|strait\s*of\s*hormuz|lebanon|gaza|netanyahu|idf)\b/i;
 
 function scoreRelevance(title: string, description: string): Relevance {
   const text = `${title} ${description}`;
-  // Keyword heuristic defaults to 2 for Iran-related, 1 for regional. AI refines to 3 later.
   if (IRAN_DIRECT.test(text) || IRAN_FARSI.test(text)) return 2;
   if (REGIONAL.test(text)) return 1;
   return 1;
 }
 
 // ── Feed sources ───────────────────────────────────────────────
-// NOTE: Sources whose native RSS is dead/blocked use Google News RSS proxies.
-// Google News items use the source's original link, so deduplication still works.
 const FEEDS_EN: FeedSource[] = [
-  // Iran-focused
   { url: 'https://www.iranintl.com/en/feed', source: 'Iran International', bias: 1, lang: 'en' },
-
-  // Israeli sources
   { url: 'https://www.timesofisrael.com/feed/', source: 'Times of Israel', bias: 0, lang: 'en' },
   { url: 'https://www.jpost.com/rss/rssfeedsfrontpage.aspx', source: 'Jerusalem Post', bias: 1, lang: 'en' },
   { url: 'https://www.ynetnews.com/Integration/StoryRss2.xml', source: 'Ynet News', bias: 0, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=site:i24news.tv+iran+OR+middle+east&hl=en-US&gl=US&ceid=US:en', source: 'i24NEWS', bias: 1, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=iran+site:haaretz.com&hl=en-US&gl=US&ceid=US:en', source: 'Haaretz', paywall: true, bias: -1, lang: 'en' },
-
-  // Wire services
   { url: 'https://feeds.bbci.co.uk/news/world/middle_east/rss.xml', source: 'BBC Middle East', bias: 0, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=iran+OR+middle+east+site:reuters.com&hl=en-US&gl=US&ceid=US:en', source: 'Reuters', bias: 0, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=iran+OR+middle+east+site:apnews.com&hl=en-US&gl=US&ceid=US:en', source: 'AP News', bias: 0, lang: 'en' },
-
-  // International broadcasters
   { url: 'https://www.aljazeera.com/xml/rss/all.xml', source: 'Al Jazeera', bias: -1, lang: 'en' },
   { url: 'https://www.france24.com/en/middle-east/rss', source: 'France 24', bias: 0, lang: 'en' },
   { url: 'https://rss.dw.com/xml/rss-en-all', source: 'DW News', bias: 0, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=site:voanews.com+iran+OR+middle+east+when:7d&hl=en-US&gl=US&ceid=US:en', source: 'VOA News', bias: 0, lang: 'en' },
-
-  // US newspapers
   { url: 'https://rss.nytimes.com/services/xml/rss/nyt/MiddleEast.xml', source: 'NY Times', paywall: true, bias: -1, lang: 'en' },
   { url: 'https://feeds.washingtonpost.com/rss/world', source: 'Washington Post', paywall: true, bias: -1, lang: 'en' },
   { url: 'https://feeds.foxnews.com/foxnews/world', source: 'Fox News', bias: 2, lang: 'en' },
   { url: 'https://feeds.nbcnews.com/nbcnews/public/news', source: 'NBC News', bias: -1, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=iran+OR+middle+east+site:wsj.com&hl=en-US&gl=US&ceid=US:en', source: 'Wall Street Journal', paywall: true, bias: 1, lang: 'en' },
-
-  // UK & European newspapers
   { url: 'https://www.theguardian.com/world/iran/rss', source: 'The Guardian', bias: -1, lang: 'en' },
   { url: 'https://www.telegraph.co.uk/rss.xml', source: 'The Telegraph', paywall: true, bias: 1, lang: 'en' },
   { url: 'https://www.independent.co.uk/topic/iran/rss', source: 'The Independent', bias: -1, lang: 'en' },
-
-  // Regional / Middle East specialists
   { url: 'https://news.google.com/rss/search?q=site:english.alarabiya.net+iran+OR+middle+east&hl=en-US&gl=US&ceid=US:en', source: 'Al Arabiya', bias: 1, lang: 'en' },
   { url: 'https://www.middleeasteye.net/rss', source: 'Middle East Eye', bias: -1, lang: 'en' },
   { url: 'https://www.al-monitor.com/rss', source: 'Al-Monitor', bias: 0, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=site:arabnews.com+iran+OR+middle+east&hl=en-US&gl=US&ceid=US:en', source: 'Arab News', bias: 1, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=site:thenationalnews.com+iran+OR+middle+east&hl=en-US&gl=US&ceid=US:en', source: 'The National (UAE)', bias: 1, lang: 'en' },
-
-  // Think tanks & analysis
   { url: 'https://www.foreignaffairs.com/rss.xml', source: 'Foreign Affairs', paywall: true, bias: 0, lang: 'en' },
   { url: 'https://nationalinterest.org/feed', source: 'National Interest', bias: 1, lang: 'en' },
   { url: 'https://theintercept.com/feed/?rss', source: 'The Intercept', bias: -2, lang: 'en' },
-
-  // Israeli TV (Hebrew sources via Google News proxy)
   { url: 'https://news.google.com/rss/search?q=iran+OR+middle+east+site:mako.co.il&hl=en-US&gl=US&ceid=US:en', source: 'Channel 12 (Mako)', bias: 0, lang: 'en' },
 ];
 
@@ -166,7 +119,6 @@ function extractTagContent(xml: string, tag: string): string {
 }
 
 function extractAtomLink(entryXml: string): string {
-  // Atom <link> is self-closing with href attribute
   const altMatch = entryXml.match(/<link[^>]*rel=["']alternate["'][^>]*href=["']([^"']+)["'][^>]*\/?>/i);
   if (altMatch) return altMatch[1];
   const anyMatch = entryXml.match(/<link[^>]*href=["']([^"']+)["'][^>]*\/?>/i);
@@ -174,7 +126,6 @@ function extractAtomLink(entryXml: string): string {
   return '';
 }
 
-// Feb 25, 2025 00:00 ET = Feb 25, 2025 05:00 UTC
 const DATE_CUTOFF = new Date('2025-02-25T05:00:00Z');
 
 function parseDate(dateStr: string): string | null {
@@ -185,13 +136,29 @@ function parseDate(dateStr: string): string | null {
   return d.toISOString();
 }
 
-/** Google News appends " - Source Name" to titles. Strip it. */
 function cleanGoogleNewsTitle(title: string): string {
   return title.replace(/\s+-\s+[^-]+$/, '');
 }
 
 function isGoogleNewsFeed(url: string): boolean {
   return url.startsWith('https://news.google.com/');
+}
+
+/** Normalize URL for deduplication */
+function normalizeUrl(url: string): string {
+  try {
+    const u = new URL(url);
+    for (const p of ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','ref','source','fbclid','gclid','mc_cid','mc_eid']) {
+      u.searchParams.delete(p);
+    }
+    u.hostname = u.hostname.replace(/^www\./, '');
+    u.protocol = 'https:';
+    u.pathname = u.pathname.replace(/\/+$/, '') || '/';
+    u.hash = '';
+    return u.toString();
+  } catch {
+    return url;
+  }
 }
 
 function parseRSS(xml: string, feedSource: FeedSource): ParsedArticle[] {
@@ -208,9 +175,7 @@ function parseRSS(xml: string, feedSource: FeedSource): ParsedArticle[] {
     const pub_date = parseDate(stripHtml(extractTagContent(itemXml, 'pubDate')));
 
     if (!title || !link) continue;
-    // Skip articles with a date that's before the cutoff (null date = no date, still include)
     if (extractTagContent(itemXml, 'pubDate') && !pub_date) continue;
-
     if (isGN) title = cleanGoogleNewsTitle(title);
 
     articles.push({
@@ -219,7 +184,6 @@ function parseRSS(xml: string, feedSource: FeedSource): ParsedArticle[] {
       relevance: scoreRelevance(title, description),
     });
   }
-
   return articles;
 }
 
@@ -247,12 +211,10 @@ function parseAtom(xml: string, feedSource: FeedSource): ParsedArticle[] {
       relevance: scoreRelevance(title, summary),
     });
   }
-
   return articles;
 }
 
 function parseFeedXml(xml: string, feedSource: FeedSource): ParsedArticle[] {
-  // Try RSS first (most feeds), then Atom
   const rssArticles = parseRSS(xml, feedSource);
   if (rssArticles.length > 0) return rssArticles;
   return parseAtom(xml, feedSource);
@@ -270,21 +232,17 @@ async function fetchFeed(feedSource: FeedSource): Promise<{ articles: ParsedArti
       },
     });
     clearTimeout(timeout);
-    if (!response.ok) {
-      return { articles: [], error: `HTTP ${response.status}` };
-    }
+    if (!response.ok) return { articles: [], error: `HTTP ${response.status}` };
     const xml = await response.text();
     const articles = parseFeedXml(xml, feedSource);
-    if (articles.length === 0) {
-      return { articles: [], error: 'Parsed 0 articles (empty or unrecognized format)' };
-    }
+    if (articles.length === 0) return { articles: [], error: 'Parsed 0 articles' };
     return { articles };
   } catch (err) {
     return { articles: [], error: err instanceof Error ? err.message : String(err) };
   }
 }
 
-// ── Article text extraction for summarization ──────────────────
+// ── Article text extraction ────────────────────────────────────
 function extractArticleText(html: string): string {
   let text = html
     .replace(/<script[\s\S]*?<\/script>/gi, '')
@@ -307,12 +265,6 @@ function extractArticleText(html: string): string {
   return text.slice(0, 100000);
 }
 
-interface AISummaryResult {
-  summary: string;
-  relevance: Relevance;
-  full_text: string;
-}
-
 async function fetchAndExtractArticle(url: string): Promise<string | null> {
   try {
     const controller = new AbortController();
@@ -326,65 +278,11 @@ async function fetchAndExtractArticle(url: string): Promise<string | null> {
     });
     clearTimeout(timeout);
     if (!response.ok) return null;
-
     const html = await response.text();
     const text = extractArticleText(html);
     return text.length >= 50 ? text : null;
   } catch {
     return null;
-  }
-}
-
-async function summarizeArticle(url: string, title: string): Promise<AISummaryResult | null> {
-  // 1. Always fetch and extract full article text
-  const articleText = await fetchAndExtractArticle(url);
-  if (!articleText) return null;
-
-  // 2. Summarize with Grok (if available)
-  const xai = getXAI();
-  if (!xai) {
-    // No Grok key -- still return full text without summary
-    return { summary: '', relevance: 1, full_text: articleText };
-  }
-
-  try {
-    const completion = await xai.chat.completions.create({
-      model: MODEL,
-      max_tokens: 500,
-      messages: [
-        {
-          role: 'system',
-          content: `You are a concise news summarizer focused on Iran and the Middle East.
-
-Return a JSON object with exactly two fields:
-- "summary": 2-3 sentence summary capturing the key facts. Be neutral and factual. Write in the same language as the article.
-- "relevance": integer 1-3 importance rating. Be strict -- 3 is rare and reserved for key news:
-  3 = KEY NEWS: major military strikes on Iran, regime leadership killed/fallen, war declarations, nuclear developments, mass civilian casualties, historic policy shifts. Reserve 3 only for events that would lead a front page.
-  2 = IMPORTANT: notable Iran-related diplomacy, significant regional military operations, sanctions changes, major protests, important political statements about Iran.
-  1 = RELEVANT: general Middle East coverage, routine updates, tangential Iran mentions, background context, regional news not directly impacting Iran.
-
-Return ONLY valid JSON, no markdown fences.`,
-        },
-        {
-          role: 'user',
-          content: `Article title: ${title}\n\nArticle text:\n${articleText.slice(0, 4000)}`,
-        },
-      ],
-    });
-
-    const raw = completion.choices[0]?.message?.content?.trim();
-    if (!raw) return { summary: '', relevance: 1, full_text: articleText };
-
-    try {
-      const parsed = JSON.parse(raw);
-      const relevance = [1, 2, 3].includes(parsed.relevance) ? parsed.relevance as Relevance : 1;
-      return { summary: parsed.summary || raw, relevance, full_text: articleText };
-    } catch {
-      return { summary: raw, relevance: 1, full_text: articleText };
-    }
-  } catch {
-    // Grok failed but we still have the full text
-    return { summary: '', relevance: 1, full_text: articleText };
   }
 }
 
@@ -395,15 +293,13 @@ interface TelegramChannel {
   label: string;
 }
 
-// All channels are vetted: opposition, independent, Israeli, or Western sources only.
-// No pro-regime (IR state media / IRGC-affiliated) channels.
 const TELEGRAM_CHANNELS: TelegramChannel[] = [
   // Iranian opposition & Persian-language
   { username: 'rodast_omiddana', label: 'Omid Dana' },
   { username: 'kianmeli1', label: 'Kian Meli' },
   { username: 'vahidonline', label: 'Vahid Online' },
   { username: 'OfficialRezaPahlavi', label: 'Reza Pahlavi' },
-  // Iranian state media (IR propaganda)
+  // Iranian state media (for analysis)
   { username: 'farsna', label: 'Fars News Agency' },
   { username: 'tasnimnews', label: 'Tasnim News' },
   // Persian-language international
@@ -432,8 +328,7 @@ interface RawTelegramPost {
   label: string;
   messageId: string;
   link: string;
-  text: string;       // truncated for Grok processing
-  fullText: string;   // complete untruncated text for raw archive
+  fullText: string;
   date: string | null;
 }
 
@@ -453,12 +348,8 @@ async function scrapeTelegramChannel(ch: TelegramChannel): Promise<{ posts: RawT
 
     const html = await response.text();
     const posts: RawTelegramPost[] = [];
-
-    // Extract data-post IDs
     const postIds = [...html.matchAll(/data-post="([^"]+)"/g)].map(m => m[1]);
-    // Extract message texts
     const textMatches = [...html.matchAll(/class="tgme_widget_message_text[^"]*"[^>]*>([\s\S]*?)<\/div>/g)];
-    // Extract dates
     const dateMatches = [...html.matchAll(/<time[^>]*datetime="([^"]+)"/g)].map(m => m[1]);
 
     const count = Math.min(postIds.length, textMatches.length);
@@ -480,105 +371,23 @@ async function scrapeTelegramChannel(ch: TelegramChannel): Promise<{ posts: RawT
         label: ch.label,
         messageId: msgNum,
         link: `https://t.me/${ch.username}/${msgNum}`,
-        text: rawText.slice(0, 2000),   // truncated copy for Grok screening
-        fullText: rawText,               // complete text for raw archive
+        fullText: rawText,
         date: dateMatches[i] || null,
       });
     }
-
     return { posts };
   } catch (err) {
     return { posts: [], error: err instanceof Error ? err.message : String(err) };
   }
 }
 
-interface ProcessedTelegramPost {
-  headline: string;
-  relevance: Relevance;
-  originalIndex: number;
-}
-
-async function screenAndRewriteTelegram(posts: RawTelegramPost[]): Promise<ProcessedTelegramPost[]> {
-  const xai = getXAI();
-  if (!xai || posts.length === 0) return [];
-
-  const numbered = posts.map((p, i) => `[${i}] (${p.label}) ${p.text.slice(0, 500)}`).join('\n\n');
-
-  try {
-    const completion = await xai.chat.completions.create({
-      model: MODEL,
-      max_tokens: 4000,
-      messages: [
-        {
-          role: 'system',
-          content: `You are a wire-service editor processing raw Telegram channel posts about Iran and the Middle East.
-
-For each post, decide if it contains any news content -- events, statements, developments, military updates, political moves, or notable claims. Be INCLUSIVE: if in doubt, keep it. Only skip: duplicate/near-identical info already in this batch, pure promotions/ads, channel subscription links, emoji-only reactions, or forwarded jokes with zero news content.
-
-For each newsworthy post, rewrite it as a single punchy headline-style sentence (like a wire alert). Examples:
-- "Israel struck IRGC positions in Isfahan province overnight"
-- "Trump: 'Iran will never have nuclear weapons under my watch'"
-- "IRGC officers reportedly abandoning posts in western provinces"
-
-Return ONLY a JSON array of objects: { "i": <original_index>, "h": "<headline>", "r": <1|2|3 importance> }
-Importance (be strict -- 3 is rare):
-  3 = KEY: major strikes on Iran, leadership killed, war declarations, nuclear events, mass casualties. Front-page-level only.
-  2 = IMPORTANT: significant military ops, diplomacy, sanctions, major protests, notable political statements.
-  1 = RELEVANT: routine updates, general regional news, tangential mentions, background context.
-Most items should be 1 or 2. Only give 3 for truly major breaking events.
-If no posts are newsworthy, return []. No markdown fences.`,
-        },
-        {
-          role: 'user',
-          content: numbered,
-        },
-      ],
-    });
-
-    const raw = completion.choices[0]?.message?.content?.trim();
-    if (!raw) return [];
-
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-
-    return parsed
-      .filter((p: { i?: number; h?: string; r?: number }) => typeof p.i === 'number' && typeof p.h === 'string' && p.h.length > 0)
-      .map((p: { i: number; h: string; r?: number }) => ({
-        headline: p.h,
-        relevance: ([1, 2, 3].includes(p.r || 0) ? p.r : 2) as Relevance,
-        originalIndex: p.i,
-      }));
-  } catch {
-    return [];
-  }
-}
-
 // ── Helpers ─────────────────────────────────────────────────────
 
-/** Snap a Date to the nearest 5-minute boundary (floor) */
 function snapTo5Min(date: Date): Date {
   const ms = date.getTime();
   return new Date(Math.floor(ms / (5 * 60 * 1000)) * (5 * 60 * 1000));
 }
 
-/** Normalize URL for deduplication: strip tracking params, www, force https */
-function normalizeUrl(url: string): string {
-  try {
-    const u = new URL(url);
-    for (const p of ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','ref','source','fbclid','gclid','mc_cid','mc_eid']) {
-      u.searchParams.delete(p);
-    }
-    u.hostname = u.hostname.replace(/^www\./, '');
-    u.protocol = 'https:';
-    u.pathname = u.pathname.replace(/\/+$/, '') || '/';
-    u.hash = '';
-    return u.toString();
-  } catch {
-    return url;
-  }
-}
-
-// ── Cron secret validation ─────────────────────────────────────
 function isAuthorized(request: NextRequest): boolean {
   const secret = process.env.CRON_SECRET;
   if (!secret) return true;
@@ -592,7 +401,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const supabase = getSupabaseAdmin();
+  const pool = getPool();
   const startTime = Date.now();
   const refreshTime = snapTo5Min(new Date());
 
@@ -601,12 +410,9 @@ export async function GET(request: NextRequest) {
     console.log(`[news-refresh] Fetching ${ALL_FEEDS.length} feeds...`);
     const feedResults = await Promise.all(ALL_FEEDS.map(feed => fetchFeed(feed)));
 
-    // Log any feed failures
     const failures: string[] = [];
     feedResults.forEach((result, i) => {
-      if (result.error) {
-        failures.push(`${ALL_FEEDS[i].source}: ${result.error}`);
-      }
+      if (result.error) failures.push(`${ALL_FEEDS[i].source}: ${result.error}`);
     });
     if (failures.length > 0) {
       console.warn(`[news-refresh] ${failures.length} feeds failed:\n  ${failures.join('\n  ')}`);
@@ -615,95 +421,73 @@ export async function GET(request: NextRequest) {
     const allArticles = feedResults.flatMap(r => r.articles);
     console.log(`[news-refresh] Parsed ${allArticles.length} articles from ${ALL_FEEDS.length - failures.length}/${ALL_FEEDS.length} feeds`);
 
-    // 2. Record the refresh time regardless of whether new articles were found
-    await supabase
-      .from('news_meta')
-      .upsert(
-        { key: 'last_refresh', value: refreshTime.toISOString(), updated_at: new Date().toISOString() },
-        { onConflict: 'key' }
-      );
+    // 2. Record refresh time
+    await pool.query(
+      `INSERT INTO news_meta (key, value, updated_at) VALUES ($1, $2, NOW())
+       ON CONFLICT (key) DO UPDATE SET value = $2, updated_at = NOW()`,
+      ['last_refresh', refreshTime.toISOString()]
+    );
 
-    if (allArticles.length === 0) {
-      return NextResponse.json({
-        message: 'No articles found',
-        feeds_failed: failures.length,
-        refresh_time: refreshTime.toISOString(),
-        duration: Date.now() - startTime,
-      });
+    // 3. Deduplicate against existing links
+    let newArticles = allArticles;
+    if (allArticles.length > 0) {
+      const existingLinks = new Set<string>();
+      for (let i = 0; i < allArticles.length; i += 500) {
+        const batch = allArticles.slice(i, i + 500).map(a => a.link);
+        const { rows } = await pool.query(
+          `SELECT link FROM news_feed WHERE link = ANY($1)`,
+          [batch]
+        );
+        rows.forEach((r: { link: string }) => existingLinks.add(r.link));
+      }
+      newArticles = allArticles.filter(a => !existingLinks.has(a.link));
     }
-
-    // 3. Get existing links to deduplicate
-    const links = allArticles.map(a => a.link);
-    const { data: existing } = await supabase
-      .from('news_feed')
-      .select('link')
-      .in('link', links);
-
-    const existingLinks = new Set((existing || []).map(e => e.link));
-    const newArticles = allArticles.filter(a => !existingLinks.has(a.link));
     console.log(`[news-refresh] ${newArticles.length} new articles to insert`);
 
-    if (newArticles.length === 0) {
-      return NextResponse.json({
-        message: 'No new articles',
-        total_parsed: allArticles.length,
-        feeds_failed: failures.length,
-        refresh_time: refreshTime.toISOString(),
-        duration: Date.now() - startTime,
-      });
+    if (newArticles.length === 0 && allArticles.length > 0) {
+      // Skip to Telegram if no new RSS articles
     }
 
-    // 4. Insert new articles with keyword-based relevance (AI may refine later)
-    const { error: insertError, data: inserted } = await supabase
-      .from('news_feed')
-      .upsert(
-        newArticles.map(a => ({
-          link: a.link,
-          title: a.title,
-          source: a.source,
-          description: a.description,
-          pub_date: a.pub_date,
-          bias: a.bias,
-          paywall: a.paywall,
-          lang: a.lang,
-          relevance: a.relevance,
-          type: 'rss',
-        })),
-        { onConflict: 'link', ignoreDuplicates: true }
-      )
-      .select('id, link, title, paywall');
-
-    if (insertError) {
-      console.error('[news-refresh] Insert error:', insertError);
-      return NextResponse.json({ error: insertError.message }, { status: 500 });
+    // 4. Insert new articles
+    interface InsertedArticle { id: string; link: string; title: string; }
+    const inserted: InsertedArticle[] = [];
+    for (const a of newArticles) {
+      try {
+        const { rows } = await pool.query(
+          `INSERT INTO news_feed (link, title, source, description, pub_date, bias, paywall, lang, relevance, type)
+           VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
+           ON CONFLICT (link) DO NOTHING
+           RETURNING id, link, title`,
+          [a.link, a.title, a.source, a.description, a.pub_date, a.bias, a.paywall, a.lang, a.relevance, 'rss']
+        );
+        if (rows[0]) inserted.push(rows[0]);
+      } catch (err) {
+        console.error(`[news-refresh] Insert error for ${a.link}: ${err instanceof Error ? err.message : err}`);
+      }
     }
+    console.log(`[news-refresh] Inserted ${inserted.length} articles`);
 
-    console.log(`[news-refresh] Inserted ${inserted?.length || 0} articles`);
-
-    // 5. Fetch full article text for ALL new articles (10 concurrency, no AI summary for now)
-    const toFetchText = inserted || [];
+    // 5. Fetch full article text for ALL new articles (10 concurrency)
     let fullTextFetched = 0;
-
-    for (let i = 0; i < toFetchText.length; i += 10) {
-      const batch = toFetchText.slice(i, i + 10);
+    for (let i = 0; i < inserted.length; i += 10) {
+      const batch = inserted.slice(i, i + 10);
       const results = await Promise.all(
         batch.map(a => fetchAndExtractArticle(a.link))
       );
-
       for (let j = 0; j < batch.length; j++) {
         const fullText = results[j];
         if (fullText) {
-          await supabase
-            .from('news_feed')
-            .update({ full_text: fullText })
-            .eq('id', batch[j].id);
+          await pool.query(
+            `UPDATE news_feed SET full_text = $1 WHERE id = $2`,
+            [fullText, batch[j].id]
+          );
           fullTextFetched++;
         }
       }
     }
 
-    // ── 6. Telegram channels ──────────────────────────────────────
-    let telegramNew = 0;
+    // ── 6. Telegram: archive raw posts only (no AI processing) ───
+    let telegramArchived = 0;
     if (TELEGRAM_CHANNELS.length > 0) {
       console.log(`[news-refresh] Scraping ${TELEGRAM_CHANNELS.length} Telegram channels...`);
       const tgResults = await Promise.all(TELEGRAM_CHANNELS.map(ch => scrapeTelegramChannel(ch)));
@@ -719,92 +503,35 @@ export async function GET(request: NextRequest) {
       const allPosts = tgResults.flatMap(r => r.posts);
       console.log(`[news-refresh] Scraped ${allPosts.length} Telegram posts`);
 
-      // Archive ALL raw posts to self-hosted Postgres (unfiltered)
-      const rawPool = getRawArchivePool();
-      if (rawPool && allPosts.length > 0) {
+      // Archive to telegram_raw (same Postgres, no Supabase)
+      if (allPosts.length > 0) {
         try {
-          let rawInserted = 0;
           for (const p of allPosts) {
-            const { rowCount } = await rawPool.query(
+            const { rowCount } = await pool.query(
               `INSERT INTO telegram_raw (channel, channel_label, message_id, link, raw_text, pub_date)
                VALUES ($1, $2, $3, $4, $5, $6)
                ON CONFLICT (link) DO NOTHING`,
               [p.channel, p.label, parseInt(p.messageId, 10), p.link, p.fullText, p.date || null]
             );
-            rawInserted += (rowCount || 0);
+            telegramArchived += (rowCount || 0);
           }
-          if (rawInserted > 0) {
-            console.log(`[news-refresh] Archived ${rawInserted} raw Telegram posts to local Postgres`);
+          if (telegramArchived > 0) {
+            console.log(`[news-refresh] Archived ${telegramArchived} new Telegram posts`);
           }
         } catch (rawErr) {
-          console.error(`[news-refresh] Raw archive error (non-fatal): ${rawErr instanceof Error ? rawErr.message : rawErr}`);
-        }
-      }
-
-      if (allPosts.length > 0) {
-        // Deduplicate against existing
-        const tgLinks = allPosts.map(p => p.link);
-        const { data: existingTg } = await supabase
-          .from('news_feed')
-          .select('link')
-          .in('link', tgLinks);
-        const existingTgLinks = new Set((existingTg || []).map(e => e.link));
-        const newPosts = allPosts.filter(p => !existingTgLinks.has(p.link));
-        console.log(`[news-refresh] ${newPosts.length} new Telegram posts to process`);
-
-        if (newPosts.length > 0) {
-          // Screen and rewrite via Grok in batches of 40, process all new posts
-          let processed: ProcessedTelegramPost[] = [];
-          for (let batch = 0; batch < newPosts.length; batch += 40) {
-            const chunk = newPosts.slice(batch, batch + 40);
-            const result = await screenAndRewriteTelegram(chunk);
-            // Adjust originalIndex to be relative to full newPosts array
-            processed.push(...result.map(p => ({ ...p, originalIndex: p.originalIndex + batch })));
-          }
-          const toProcess = newPosts;
-          console.log(`[news-refresh] Grok kept ${processed.length}/${toProcess.length} Telegram posts as newsworthy`);
-
-          if (processed.length > 0) {
-            const telegramRows = processed.map(p => {
-              const orig = toProcess[p.originalIndex];
-              return {
-                link: orig.link,
-                title: p.headline,
-                source: orig.label,
-                description: orig.text.slice(0, 500),
-                pub_date: orig.date ? new Date(orig.date).toISOString() : null,
-                bias: 0,
-                paywall: false,
-                lang: 'en',
-                relevance: p.relevance,
-                type: 'telegram',
-              };
-            });
-
-            const { error: tgInsertError, data: tgInserted } = await supabase
-              .from('news_feed')
-              .upsert(telegramRows, { onConflict: 'link', ignoreDuplicates: true })
-              .select('id');
-
-            if (tgInsertError) {
-              console.error('[news-refresh] Telegram insert error:', tgInsertError);
-            } else {
-              telegramNew = tgInserted?.length || 0;
-              console.log(`[news-refresh] Inserted ${telegramNew} Telegram headlines`);
-            }
-          }
+          console.error(`[news-refresh] Telegram archive error: ${rawErr instanceof Error ? rawErr.message : rawErr}`);
         }
       }
     }
 
     const duration = Date.now() - startTime;
-    console.log(`[news-refresh] Done in ${duration}ms. ${inserted?.length || 0} RSS new, ${telegramNew} TG new, ${fullTextFetched} full-text fetched, ${failures.length} feeds failed`);
+    console.log(`[news-refresh] Done in ${duration}ms. ${inserted.length} RSS new, ${fullTextFetched} full-text, ${telegramArchived} TG archived, ${failures.length} feeds failed`);
 
     return NextResponse.json({
       message: 'Refresh complete',
-      new_articles: inserted?.length || 0,
-      telegram_new: telegramNew,
+      new_articles: inserted.length,
       full_text_fetched: fullTextFetched,
+      telegram_archived: telegramArchived,
       total_parsed: allArticles.length,
       feeds_failed: failures.length,
       refresh_time: refreshTime.toISOString(),

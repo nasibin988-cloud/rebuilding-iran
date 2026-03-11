@@ -406,6 +406,10 @@ const TELEGRAM_CHANNELS: TelegramChannel[] = [
   // Russian & Chinese state media
   { username: 'rt_russ', label: 'RT Russian' },
   { username: 'XHNews', label: 'Xinhua News (China)' },
+  // Regional / international
+  { username: 'indianexpress', label: 'Indian Express (India)' },
+  { username: 'saudinews50', label: 'Saudi News' },
+  { username: 'tagesschau24', label: 'Tagesschau (Germany)' },
 ];
 
 interface RawTelegramPost {

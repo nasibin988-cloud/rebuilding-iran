@@ -30,6 +30,9 @@ const CHANNELS = [
   { username: 'OSINTdefender', label: 'OSINT Defender' },
   { username: 'rt_russ', label: 'RT Russian' },
   { username: 'XHNews', label: 'Xinhua News (China)' },
+  { username: 'indianexpress', label: 'Indian Express (India)' },
+  { username: 'saudinews50', label: 'Saudi News' },
+  { username: 'tagesschau24', label: 'Tagesschau (Germany)' },
 ];
 
 const pool = new Pool({

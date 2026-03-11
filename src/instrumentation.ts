@@ -22,18 +22,31 @@ export async function register() {
       }
     };
 
-    // Wait for refresh to finish, then wait 5 min, then refresh again (no overlap)
-    // Wrapped in try/catch so the loop NEVER dies, even on unexpected errors
+    // Calculate ms until the next clock time divisible by 5 minutes
+    // e.g. if it's 14:07:23, wait until 14:10:00
+    const msUntilNext5 = () => {
+      const now = Date.now();
+      const fiveMin = 5 * 60 * 1000;
+      const next = Math.ceil(now / fiveMin) * fiveMin;
+      return next - now;
+    };
+
     const loop = async () => {
-      console.log('[news-cron] Starting background news refresh (every 5 min)');
+      console.log('[news-cron] Starting background news refresh (every 5 min, clock-aligned)');
+      // First refresh immediately on startup
+      await doRefresh();
       while (true) {
+        // Sleep until next :00, :05, :10, :15, :20, :25, :30, :35, :40, :45, :50, :55
+        const waitMs = msUntilNext5();
+        const nextTime = new Date(Date.now() + waitMs);
+        console.log(`[news-cron] Next refresh at ${nextTime.toISOString().slice(11, 16)} UTC (in ${Math.round(waitMs / 1000)}s)`);
+        await new Promise(r => setTimeout(r, waitMs));
         try {
           await doRefresh();
         } catch (err: unknown) {
           const msg = err instanceof Error ? err.message : String(err);
           console.error(`[news-cron] Loop error (will retry): ${msg}`);
         }
-        await new Promise(r => setTimeout(r, INTERVAL_MS));
       }
     };
 

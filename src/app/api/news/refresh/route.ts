@@ -70,7 +70,8 @@ const FEEDS_EN: FeedSource[] = [
   { url: 'https://www.aljazeera.com/xml/rss/all.xml', source: 'Al Jazeera', bias: -1, lang: 'en' },
   { url: 'https://www.france24.com/en/middle-east/rss', source: 'France 24', bias: 0, lang: 'en' },
   { url: 'https://rss.dw.com/xml/rss-en-all', source: 'DW News', bias: 0, lang: 'en' },
-  { url: 'https://news.google.com/rss/search?q=site:voanews.com+iran+OR+middle+east+when:7d&hl=en-US&gl=US&ceid=US:en', source: 'VOA News', bias: 0, lang: 'en' },
+  { url: 'https://www.voanews.com/api/zrbopl-vomx-tpeovm_', source: 'VOA Middle East', bias: 0, lang: 'en' },
+  { url: 'https://www.voanews.com/api/zvgmqil-vomx-tpeumvqm', source: 'VOA Iran', bias: 0, lang: 'en' },
   { url: 'https://rss.nytimes.com/services/xml/rss/nyt/MiddleEast.xml', source: 'NY Times', paywall: true, bias: -1, lang: 'en' },
   { url: 'https://feeds.washingtonpost.com/rss/world', source: 'Washington Post', paywall: true, bias: -1, lang: 'en' },
   { url: 'https://feeds.foxnews.com/foxnews/world', source: 'Fox News', bias: 2, lang: 'en' },
@@ -92,10 +93,10 @@ const FEEDS_EN: FeedSource[] = [
 
 const FEEDS_FA: FeedSource[] = [
   { url: 'https://www.iranintl.com/fa/feed', source: '\u0627\u06CC\u0631\u0627\u0646 \u0627\u06CC\u0646\u062A\u0631\u0646\u0634\u0646\u0627\u0644', bias: 1, lang: 'fa' },
-  { url: 'https://news.google.com/rss/search?q=site:radiofarda.com+when:7d&hl=fa&gl=IR&ceid=IR:fa', source: '\u0631\u0627\u062F\u06CC\u0648 \u0641\u0631\u062F\u0627', bias: 0, lang: 'fa' },
+  { url: 'https://www.radiofarda.com/api/zrttpol-vomx-tpeoogpi', source: '\u0631\u0627\u062F\u06CC\u0648 \u0641\u0631\u062F\u0627', bias: 0, lang: 'fa' },
   { url: 'https://www.bbc.com/persian/index.xml', source: '\u0628\u06CC\u200C\u0628\u06CC\u200C\u0633\u06CC \u0641\u0627\u0631\u0633\u06CC', bias: 0, lang: 'fa' },
-  { url: 'https://news.google.com/rss/search?q=site:ir.voanews.com&hl=fa&gl=IR&ceid=IR:fa', source: '\u0635\u062F\u0627\u06CC \u0622\u0645\u0631\u06CC\u06A9\u0627', bias: 0, lang: 'fa' },
-  { url: 'https://news.google.com/rss/search?q=site:dw.com+iran&hl=fa&gl=IR&ceid=IR:fa', source: '\u062F\u0648\u06CC\u0686\u0647\u200C\u0648\u0644\u0647 \u0641\u0627\u0631\u0633\u06CC', bias: 0, lang: 'fa' },
+  { url: 'https://ir.voanews.com/api/zbtpil-vomx-tpeqiyp', source: '\u0635\u062F\u0627\u06CC \u0622\u0645\u0631\u06CC\u06A9\u0627', bias: 0, lang: 'fa' },
+  { url: 'https://news.google.com/rss/search?q=site:dw.com+iran+when:7d&hl=fa&gl=IR&ceid=IR:fa', source: '\u062F\u0648\u06CC\u0686\u0647\u200C\u0648\u0644\u0647 \u0641\u0627\u0631\u0633\u06CC', bias: 0, lang: 'fa' },
   { url: 'https://www.independentpersian.com/rss.xml', source: '\u0627\u06CC\u0646\u062F\u06CC\u067E\u0646\u062F\u0646\u062A \u0641\u0627\u0631\u0633\u06CC', bias: -1, lang: 'fa' },
 ];
 
@@ -161,6 +162,18 @@ function normalizeUrl(url: string): string {
   }
 }
 
+/** Extract actual article URL from Google News RSS item (from <source url="..."> or description) */
+function extractGoogleNewsSourceUrl(itemXml: string): string | null {
+  // Google News items sometimes have <source url="https://actual.site.com/article">
+  const sourceMatch = itemXml.match(/<source[^>]*url=["']([^"']+)["']/i);
+  if (sourceMatch && sourceMatch[1] && !sourceMatch[1].includes('google.com')) {
+    // The source URL is usually just the domain, not the full article URL
+    // But we can try to use it
+    return null; // Domain-only, not useful
+  }
+  return null;
+}
+
 function parseRSS(xml: string, feedSource: FeedSource): ParsedArticle[] {
   const articles: ParsedArticle[] = [];
   const itemRegex = /<item[^>]*>([\s\S]*?)<\/item>/gi;
@@ -170,13 +183,18 @@ function parseRSS(xml: string, feedSource: FeedSource): ParsedArticle[] {
   while ((itemMatch = itemRegex.exec(xml)) !== null) {
     const itemXml = itemMatch[1];
     let title = stripHtml(extractTagContent(itemXml, 'title'));
-    const link = normalizeUrl(stripHtml(extractTagContent(itemXml, 'link')));
+    let link = normalizeUrl(stripHtml(extractTagContent(itemXml, 'link')));
     const description = stripHtml(extractTagContent(itemXml, 'description')).slice(0, 500);
     const pub_date = parseDate(stripHtml(extractTagContent(itemXml, 'pubDate')));
 
     if (!title || !link) continue;
     if (extractTagContent(itemXml, 'pubDate') && !pub_date) continue;
-    if (isGN) title = cleanGoogleNewsTitle(title);
+    if (isGN) {
+      title = cleanGoogleNewsTitle(title);
+      // Try to extract actual URL from Google News item
+      const actualUrl = extractGoogleNewsSourceUrl(itemXml);
+      if (actualUrl) link = normalizeUrl(actualUrl);
+    }
 
     articles.push({
       link, title, source: feedSource.source, description, pub_date,

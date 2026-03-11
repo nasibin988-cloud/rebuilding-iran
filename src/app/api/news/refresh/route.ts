@@ -127,7 +127,7 @@ function extractAtomLink(entryXml: string): string {
   return '';
 }
 
-const DATE_CUTOFF = new Date('2025-02-25T05:00:00Z');
+const DATE_CUTOFF = new Date('2025-09-01T00:00:00Z');
 
 function parseDate(dateStr: string): string | null {
   if (!dateStr) return null;

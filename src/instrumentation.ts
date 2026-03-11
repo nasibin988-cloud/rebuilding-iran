@@ -7,7 +7,8 @@ export async function register() {
     const doRefresh = async () => {
       try {
         const port = process.env.PORT || 3000;
-        const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || `http://localhost:${port}`;
+        // Always use localhost for internal self-calls (avoids routing through reverse proxy)
+        const baseUrl = `http://localhost:${port}`;
         const res = await fetch(`${baseUrl}/api/news/refresh`);
         if (!res.ok) {
           console.error(`[news-cron] Refresh failed: HTTP ${res.status}`);

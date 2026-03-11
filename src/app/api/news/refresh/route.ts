@@ -395,6 +395,7 @@ const TELEGRAM_CHANNELS: TelegramChannel[] = [
   { username: 'kann_news', label: 'Kan News (Israel)' },
   { username: 'AbuAliExpress', label: 'Abu Ali Express' },
   { username: 'OSINTdefender', label: 'OSINT Defender' },
+  { username: 'vahidonline', label: 'Vahid Online' },
 ];
 
 interface RawTelegramPost {

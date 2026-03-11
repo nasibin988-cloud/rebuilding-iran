@@ -386,16 +386,26 @@ const TELEGRAM_CHANNELS: TelegramChannel[] = [
   // Iranian opposition & Persian-language
   { username: 'rodast_omiddana', label: 'Omid Dana' },
   { username: 'kianmeli1', label: 'Kian Meli' },
+  { username: 'vahidonline', label: 'Vahid Online' },
+  { username: 'OfficialRezaPahlavi', label: 'Reza Pahlavi' },
+  // Iranian state media (IR propaganda)
+  { username: 'farsna', label: 'Fars News Agency' },
+  { username: 'tasnimnews', label: 'Tasnim News' },
+  // Persian-language international
   { username: 'IranintlTV', label: 'Iran International' },
   { username: 'bbcpersian', label: 'BBC Persian' },
   { username: 'RadioFarda', label: 'Radio Farda' },
+  // English-language
   { username: 'FoxNews', label: 'Fox News' },
+  { username: 'aljazeeraglobal', label: 'Al Jazeera English' },
   // Israeli & OSINT sources
   { username: 'CIG_telegram', label: 'CIG OSINT' },
   { username: 'kann_news', label: 'Kan News (Israel)' },
   { username: 'AbuAliExpress', label: 'Abu Ali Express' },
   { username: 'OSINTdefender', label: 'OSINT Defender' },
-  { username: 'vahidonline', label: 'Vahid Online' },
+  // Russian & Chinese state media
+  { username: 'rt_russ', label: 'RT Russian' },
+  { username: 'XHNews', label: 'Xinhua News (China)' },
 ];
 
 interface RawTelegramPost {

@@ -15,15 +15,21 @@ const PAGE_DELAY_MS = 300;
 const CHANNELS = [
   { username: 'rodast_omiddana', label: 'Omid Dana' },
   { username: 'kianmeli1', label: 'Kian Meli' },
+  { username: 'vahidonline', label: 'Vahid Online' },
+  { username: 'OfficialRezaPahlavi', label: 'Reza Pahlavi' },
+  { username: 'farsna', label: 'Fars News Agency' },
+  { username: 'tasnimnews', label: 'Tasnim News' },
   { username: 'IranintlTV', label: 'Iran International' },
   { username: 'bbcpersian', label: 'BBC Persian' },
   { username: 'RadioFarda', label: 'Radio Farda' },
   { username: 'FoxNews', label: 'Fox News' },
+  { username: 'aljazeeraglobal', label: 'Al Jazeera English' },
   { username: 'CIG_telegram', label: 'CIG OSINT' },
   { username: 'kann_news', label: 'Kan News (Israel)' },
   { username: 'AbuAliExpress', label: 'Abu Ali Express' },
   { username: 'OSINTdefender', label: 'OSINT Defender' },
-  { username: 'vahidonline', label: 'Vahid Online' },
+  { username: 'rt_russ', label: 'RT Russian' },
+  { username: 'XHNews', label: 'Xinhua News (China)' },
 ];
 
 const pool = new Pool({

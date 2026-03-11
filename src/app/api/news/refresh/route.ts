@@ -624,10 +624,11 @@ export async function GET(request: NextRequest) {
       );
 
       for (let j = 0; j < batch.length; j++) {
-        if (results[j]) {
+        const result = results[j];
+        if (result) {
           await supabase
             .from('news_feed')
-            .update({ summary: results[j].summary, relevance: results[j].relevance })
+            .update({ summary: result.summary, relevance: result.relevance })
             .eq('id', batch[j].id);
           summariesGenerated++;
         }

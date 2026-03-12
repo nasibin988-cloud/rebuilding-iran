@@ -30,6 +30,7 @@ interface FeedSource {
   paywall?: boolean;
   bias: Bias;
   lang: 'en' | 'fa';
+  type?: 'rss' | 'world';  // 'world' = general world news, 'rss' = Iran-focused (default)
 }
 
 interface ParsedArticle {
@@ -102,6 +103,40 @@ const FEEDS_EN: FeedSource[] = [
   { url: 'https://www.breitbart.com/feed/', source: 'Breitbart', bias: 3, lang: 'en' },
 ];
 
+// ── World news feeds (general, not Iran-filtered) ─────────────
+const FEEDS_WORLD: FeedSource[] = [
+  // === US News ===
+  { url: 'https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml', source: 'BBC US', bias: 0, lang: 'en', type: 'world' },
+  { url: 'https://rss.nytimes.com/services/xml/rss/nyt/US.xml', source: 'The New York Times', paywall: true, bias: -1, lang: 'en', type: 'world' },
+  { url: 'https://feeds.npr.org/1001/rss.xml', source: 'NPR', bias: 0, lang: 'en', type: 'world' },
+  // === Europe / NATO ===
+  { url: 'https://feeds.bbci.co.uk/news/world/europe/rss.xml', source: 'BBC Europe', bias: 0, lang: 'en', type: 'world' },
+  { url: 'https://www.france24.com/en/europe/rss', source: 'France 24', bias: 0, lang: 'en', type: 'world' },
+  { url: 'https://www.theguardian.com/world/europe-news/rss', source: 'The Guardian', bias: -1, lang: 'en', type: 'world' },
+  // === China ===
+  { url: 'https://www.scmp.com/rss/91/feed', source: 'South China Morning Post', bias: 0, lang: 'en', type: 'world' },
+  { url: 'https://feeds.bbci.co.uk/news/world/asia/china/rss.xml', source: 'BBC China', bias: 0, lang: 'en', type: 'world' },
+  // === India ===
+  { url: 'https://www.thehindu.com/news/international/feeder/default.rss', source: 'The Hindu', bias: 0, lang: 'en', type: 'world' },
+  { url: 'https://feeds.bbci.co.uk/news/world/asia/india/rss.xml', source: 'BBC India', bias: 0, lang: 'en', type: 'world' },
+  // === Gulf States / MENA general ===
+  { url: 'https://www.thenationalnews.com/arc/outboundfeeds/rss/?outputType=xml', source: 'The National (UAE)', bias: 1, lang: 'en', type: 'world' },
+  { url: 'https://www.arabnews.com/rss.xml', source: 'Arab News', bias: 1, lang: 'en', type: 'world' },
+  // === Iran neighbours: Turkey ===
+  { url: 'https://www.hurriyetdailynews.com/rss', source: 'Hurriyet Daily News', bias: 0, lang: 'en', type: 'world' },
+  // === Iran neighbours: Pakistan ===
+  { url: 'https://www.dawn.com/feeds/home', source: 'Dawn', bias: 0, lang: 'en', type: 'world' },
+  // === Iran neighbours: Azerbaijan / Caucasus ===
+  { url: 'https://news.google.com/rss/search?q=azerbaijan+OR+caucasus&hl=en-US&gl=US&ceid=US:en', source: 'Azerbaijan News', bias: 0, lang: 'en', type: 'world' },
+  // === Russia ===
+  { url: 'https://www.themoscowtimes.com/rss/news', source: 'The Moscow Times', bias: 0, lang: 'en', type: 'world' },
+  // === Africa ===
+  { url: 'https://feeds.bbci.co.uk/news/world/africa/rss.xml', source: 'BBC Africa', bias: 0, lang: 'en', type: 'world' },
+  { url: 'https://www.france24.com/en/africa/rss', source: 'France 24 Africa', bias: 0, lang: 'en', type: 'world' },
+  // === Asia-Pacific (Japan, Korea, ASEAN) ===
+  { url: 'https://feeds.bbci.co.uk/news/world/asia/rss.xml', source: 'BBC Asia', bias: 0, lang: 'en', type: 'world' },
+];
+
 const FEEDS_FA: FeedSource[] = [
   { url: 'https://www.iranintl.com/fa/feed', source: '\u0627\u06CC\u0631\u0627\u0646 \u0627\u06CC\u0646\u062A\u0631\u0646\u0634\u0646\u0627\u0644', bias: 1, lang: 'fa' },
   { url: 'https://www.radiofarda.com/api/zrttpol-vomx-tpeoogpi', source: '\u0631\u0627\u062F\u06CC\u0648 \u0641\u0631\u062F\u0627', bias: 0, lang: 'fa' },
@@ -111,7 +146,7 @@ const FEEDS_FA: FeedSource[] = [
   { url: 'https://www.independentpersian.com/rss.xml', source: '\u0627\u06CC\u0646\u062F\u06CC\u067E\u0646\u062F\u0646\u062A \u0641\u0627\u0631\u0633\u06CC', bias: -1, lang: 'fa' },
 ];
 
-const ALL_FEEDS = [...FEEDS_EN, ...FEEDS_FA];
+const ALL_FEEDS = [...FEEDS_EN, ...FEEDS_FA, ...FEEDS_WORLD];
 
 // ── XML parsing helpers ────────────────────────────────────────
 function stripHtml(html: string): string {
@@ -448,7 +483,9 @@ export async function GET(request: NextRequest) {
       console.warn(`[news-refresh] ${failures.length} feeds failed:\n  ${failures.join('\n  ')}`);
     }
 
-    const allArticles = feedResults.flatMap(r => r.articles);
+    const allArticles = feedResults.flatMap((r, i) =>
+      r.articles.map(a => ({ ...a, feedType: ALL_FEEDS[i].type || 'rss' }))
+    );
     console.log(`[news-refresh] Parsed ${allArticles.length} articles from ${ALL_FEEDS.length - failures.length}/${ALL_FEEDS.length} feeds`);
 
     // 2. Record refresh time
@@ -488,7 +525,7 @@ export async function GET(request: NextRequest) {
            VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
            ON CONFLICT (link) DO NOTHING
            RETURNING id, link, title`,
-          [a.link, a.title, a.source, a.description, a.pub_date, a.bias, a.paywall, a.lang, a.relevance, 'rss']
+          [a.link, a.title, a.source, a.description, a.pub_date, a.bias, a.paywall, a.lang, a.relevance, a.feedType]
         );
         if (rows[0]) inserted.push(rows[0]);
       } catch (err) {

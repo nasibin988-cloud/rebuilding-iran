@@ -75,7 +75,6 @@ const FEEDS_EN: FeedSource[] = [
   { url: 'https://feeds.washingtonpost.com/rss/world', source: 'Washington Post', paywall: true, bias: -1, lang: 'en' },
   { url: 'https://feeds.foxnews.com/foxnews/world', source: 'Fox News', bias: 2, lang: 'en' },
   { url: 'https://feeds.nbcnews.com/nbcnews/public/news', source: 'NBC News', bias: -1, lang: 'en' },
-  { url: 'https://news.google.com/rss/search?q=iran+OR+middle+east+site:wsj.com&hl=en-US&gl=US&ceid=US:en', source: 'Wall Street Journal', paywall: true, bias: 1, lang: 'en' },
   { url: 'https://www.theguardian.com/world/iran/rss', source: 'The Guardian', bias: -1, lang: 'en' },
   { url: 'https://www.telegraph.co.uk/rss.xml', source: 'The Telegraph', paywall: true, bias: 1, lang: 'en' },
   { url: 'https://www.independent.co.uk/topic/iran/rss', source: 'The Independent', bias: -1, lang: 'en' },

@@ -59,7 +59,7 @@ function scoreRelevance(title: string, description: string): Relevance {
 // ── Feed sources ───────────────────────────────────────────────
 const FEEDS_EN: FeedSource[] = [
   { url: 'https://www.iranintl.com/en/feed', source: 'Iran International', bias: 1, lang: 'en' },
-  { url: 'https://www.timesofisrael.com/feed/', source: 'Times of Israel', bias: 0, lang: 'en' },
+  { url: 'https://news.google.com/rss/search?q=site:timesofisrael.com+iran+OR+middle+east&hl=en-US&gl=US&ceid=US:en', source: 'Times of Israel', bias: 0, lang: 'en' },
   { url: 'https://www.jpost.com/rss/rssfeedsfrontpage.aspx', source: 'Jerusalem Post', bias: 1, lang: 'en' },
   { url: 'https://www.ynetnews.com/Integration/StoryRss2.xml', source: 'Ynet News', bias: 0, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=site:i24news.tv+iran+OR+middle+east&hl=en-US&gl=US&ceid=US:en', source: 'i24NEWS', bias: 1, lang: 'en' },
@@ -70,8 +70,7 @@ const FEEDS_EN: FeedSource[] = [
   { url: 'https://www.aljazeera.com/xml/rss/all.xml', source: 'Al Jazeera', bias: -1, lang: 'en' },
   { url: 'https://www.france24.com/en/middle-east/rss', source: 'France 24', bias: 0, lang: 'en' },
   { url: 'https://rss.dw.com/xml/rss-en-all', source: 'DW News', bias: 0, lang: 'en' },
-  { url: 'https://www.voanews.com/api/zrbopl-vomx-tpeovm_', source: 'VOA Middle East', bias: 0, lang: 'en' },
-  { url: 'https://www.voanews.com/api/zvgmqil-vomx-tpeumvqm', source: 'VOA Iran', bias: 0, lang: 'en' },
+  { url: 'https://news.google.com/rss/search?q=iran+OR+middle+east+site:voanews.com&hl=en-US&gl=US&ceid=US:en', source: 'VOA', bias: 0, lang: 'en' },
   { url: 'https://rss.nytimes.com/services/xml/rss/nyt/MiddleEast.xml', source: 'NY Times', paywall: true, bias: -1, lang: 'en' },
   { url: 'https://feeds.washingtonpost.com/rss/world', source: 'Washington Post', paywall: true, bias: -1, lang: 'en' },
   { url: 'https://feeds.foxnews.com/foxnews/world', source: 'Fox News', bias: 2, lang: 'en' },
@@ -89,6 +88,17 @@ const FEEDS_EN: FeedSource[] = [
   { url: 'https://nationalinterest.org/feed', source: 'National Interest', bias: 1, lang: 'en' },
   { url: 'https://theintercept.com/feed/?rss', source: 'The Intercept', bias: -2, lang: 'en' },
   { url: 'https://rcs.mako.co.il/rss/news-world.xml', source: 'Channel 12 (Mako)', bias: 0, lang: 'en' },
+  // US broadcast / public media (direct feeds)
+  { url: 'https://www.pbs.org/newshour/feeds/rss/headlines', source: 'PBS NewsHour', bias: 0, lang: 'en' },
+  { url: 'https://feeds.npr.org/1004/rss.xml', source: 'NPR World', bias: 0, lang: 'en' },
+  { url: 'https://feeds.npr.org/1009/rss.xml', source: 'NPR Middle East', bias: 0, lang: 'en' },
+  { url: 'https://www.cbsnews.com/latest/rss/world', source: 'CBS News World', bias: 0, lang: 'en' },
+  { url: 'https://www.middleeastmonitor.com/feed/', source: 'Middle East Monitor', bias: -1, lang: 'en' },
+  // CNN (Google News proxy - CNN's own RSS is stale since 2024)
+  { url: 'https://news.google.com/rss/search?q=iran+OR+middle+east+site:cnn.com&hl=en-US&gl=US&ceid=US:en', source: 'CNN', bias: -1, lang: 'en' },
+  // Conservative US outlets
+  { url: 'https://nypost.com/feed/', source: 'New York Post', bias: 2, lang: 'en' },
+  { url: 'https://www.washingtontimes.com/rss/headlines/news/world/', source: 'Washington Times', bias: 2, lang: 'en' },
 ];
 
 const FEEDS_FA: FeedSource[] = [

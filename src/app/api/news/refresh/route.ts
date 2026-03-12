@@ -99,6 +99,8 @@ const FEEDS_EN: FeedSource[] = [
   // Conservative US outlets
   { url: 'https://nypost.com/feed/', source: 'New York Post', bias: 2, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=iran+OR+middle+east+site:washingtontimes.com&hl=en-US&gl=US&ceid=US:en', source: 'Washington Times', bias: 2, lang: 'en' },
+  { url: 'https://www.dailywire.com/feeds/rss.xml', source: 'Daily Wire', bias: 2, lang: 'en' },
+  { url: 'https://www.breitbart.com/feed/', source: 'Breitbart', bias: 3, lang: 'en' },
 ];
 
 const FEEDS_FA: FeedSource[] = [

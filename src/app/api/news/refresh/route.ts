@@ -325,11 +325,12 @@ const TELEGRAM_CHANNELS: TelegramChannel[] = [
   { username: 'bbcpersian', label: 'BBC Persian' },
   { username: 'RadioFarda', label: 'Radio Farda' },
   // English-language
-  { username: 'FoxNews', label: 'Fox News' },
+  { username: 'epochtimes', label: 'The Epoch Times' },
+  { username: 'oanntv', label: 'OAN' },
+  { username: 'nytimes', label: 'New York Times' },
   { username: 'aljazeeraglobal', label: 'Al Jazeera English' },
   // Israeli & OSINT sources
   { username: 'CIG_telegram', label: 'CIG OSINT' },
-  { username: 'kann_news', label: 'Kan News (Israel)' },
   { username: 'AbuAliExpress', label: 'Abu Ali Express' },
   { username: 'OSINTdefender', label: 'OSINT Defender' },
   // Russian & Chinese state media

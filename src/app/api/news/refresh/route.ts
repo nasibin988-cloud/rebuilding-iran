@@ -64,12 +64,12 @@ const FEEDS_EN: FeedSource[] = [
   { url: 'https://www.jpost.com/rss/rssfeedsfrontpage.aspx', source: 'Jerusalem Post', bias: 1, lang: 'en' },
   { url: 'https://www.ynetnews.com/Integration/StoryRss2.xml', source: 'Ynet News', bias: 0, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=site:i24news.tv+iran+OR+middle+east&hl=en-US&gl=US&ceid=US:en', source: 'i24NEWS', bias: 1, lang: 'en' },
-  { url: 'https://feeds.bbci.co.uk/news/world/middle_east/rss.xml', source: 'BBC Middle East', bias: 0, lang: 'en' },
+  { url: 'https://feeds.bbci.co.uk/news/world/middle_east/rss.xml', source: 'BBC Middle East', bias: -1, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=iran+OR+middle+east+site:reuters.com&hl=en-US&gl=US&ceid=US:en', source: 'Reuters', bias: 0, lang: 'en' },
-  { url: 'https://news.google.com/rss/search?q=iran+OR+middle+east+site:apnews.com&hl=en-US&gl=US&ceid=US:en', source: 'AP News', bias: 0, lang: 'en' },
+  { url: 'https://news.google.com/rss/search?q=iran+OR+middle+east+site:apnews.com&hl=en-US&gl=US&ceid=US:en', source: 'AP News', bias: -1, lang: 'en' },
   { url: 'https://www.aljazeera.com/xml/rss/all.xml', source: 'Al Jazeera', bias: -1, lang: 'en' },
   { url: 'https://www.france24.com/en/middle-east/rss', source: 'France 24', bias: 0, lang: 'en' },
-  { url: 'https://rss.dw.com/xml/rss-en-all', source: 'DW News', bias: 0, lang: 'en' },
+  { url: 'https://rss.dw.com/xml/rss-en-all', source: 'DW News', bias: -1, lang: 'en' },
   { url: 'https://news.google.com/rss/search?q=iran+site:voanews.com&hl=en-US&gl=US&ceid=US:en', source: 'VOA', bias: 0, lang: 'en' },
   { url: 'https://feeds.foxnews.com/foxnews/world', source: 'Fox News', bias: 2, lang: 'en' },
   { url: 'https://feeds.nbcnews.com/nbcnews/public/news', source: 'NBC News', bias: -1, lang: 'en' },
@@ -84,10 +84,10 @@ const FEEDS_EN: FeedSource[] = [
   { url: 'https://theintercept.com/feed/?rss', source: 'The Intercept', bias: -2, lang: 'en' },
   { url: 'https://rcs.mako.co.il/rss/news-world.xml', source: 'Channel 12 (Mako)', bias: 0, lang: 'en' },
   // US broadcast / public media (direct feeds)
-  { url: 'https://www.pbs.org/newshour/feeds/rss/headlines', source: 'PBS NewsHour', bias: 0, lang: 'en' },
-  { url: 'https://feeds.npr.org/1004/rss.xml', source: 'NPR World', bias: 0, lang: 'en' },
-  { url: 'https://feeds.npr.org/1009/rss.xml', source: 'NPR Middle East', bias: 0, lang: 'en' },
-  { url: 'https://www.cbsnews.com/latest/rss/world', source: 'CBS News World', bias: 0, lang: 'en' },
+  { url: 'https://www.pbs.org/newshour/feeds/rss/headlines', source: 'PBS NewsHour', bias: -1, lang: 'en' },
+  { url: 'https://feeds.npr.org/1004/rss.xml', source: 'NPR World', bias: -1, lang: 'en' },
+  { url: 'https://feeds.npr.org/1009/rss.xml', source: 'NPR Middle East', bias: -1, lang: 'en' },
+  { url: 'https://www.cbsnews.com/latest/rss/world', source: 'CBS News World', bias: -1, lang: 'en' },
   { url: 'https://www.middleeastmonitor.com/feed/', source: 'Middle East Monitor', bias: -1, lang: 'en' },
   // CNN (Google News proxy - CNN's own RSS is stale since 2024)
   { url: 'https://news.google.com/rss/search?q=iran+OR+middle+east+site:cnn.com&hl=en-US&gl=US&ceid=US:en', source: 'CNN', bias: -1, lang: 'en' },
@@ -101,18 +101,18 @@ const FEEDS_EN: FeedSource[] = [
 // ── World news feeds (general, not Iran-filtered) ─────────────
 const FEEDS_WORLD: FeedSource[] = [
   // === US News ===
-  { url: 'https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml', source: 'BBC US', bias: 0, lang: 'en', type: 'world' },
-  { url: 'https://feeds.npr.org/1001/rss.xml', source: 'NPR', bias: 0, lang: 'en', type: 'world' },
+  { url: 'https://feeds.bbci.co.uk/news/world/us_and_canada/rss.xml', source: 'BBC US', bias: -1, lang: 'en', type: 'world' },
+  { url: 'https://feeds.npr.org/1001/rss.xml', source: 'NPR', bias: -1, lang: 'en', type: 'world' },
   // === Europe / NATO ===
-  { url: 'https://feeds.bbci.co.uk/news/world/europe/rss.xml', source: 'BBC Europe', bias: 0, lang: 'en', type: 'world' },
+  { url: 'https://feeds.bbci.co.uk/news/world/europe/rss.xml', source: 'BBC Europe', bias: -1, lang: 'en', type: 'world' },
   { url: 'https://www.france24.com/en/europe/rss', source: 'France 24', bias: 0, lang: 'en', type: 'world' },
   { url: 'https://www.theguardian.com/world/europe-news/rss', source: 'The Guardian', bias: -1, lang: 'en', type: 'world' },
   // === China ===
   { url: 'https://www.scmp.com/rss/91/feed', source: 'South China Morning Post', bias: 0, lang: 'en', type: 'world' },
-  { url: 'https://feeds.bbci.co.uk/news/world/asia/china/rss.xml', source: 'BBC China', bias: 0, lang: 'en', type: 'world' },
+  { url: 'https://feeds.bbci.co.uk/news/world/asia/china/rss.xml', source: 'BBC China', bias: -1, lang: 'en', type: 'world' },
   // === India ===
   { url: 'https://www.thehindu.com/news/international/feeder/default.rss', source: 'The Hindu', bias: 0, lang: 'en', type: 'world' },
-  { url: 'https://feeds.bbci.co.uk/news/world/asia/india/rss.xml', source: 'BBC India', bias: 0, lang: 'en', type: 'world' },
+  { url: 'https://feeds.bbci.co.uk/news/world/asia/india/rss.xml', source: 'BBC India', bias: -1, lang: 'en', type: 'world' },
   // === Gulf States / MENA general ===
   { url: 'https://www.thenationalnews.com/arc/outboundfeeds/rss/?outputType=xml', source: 'The National (UAE)', bias: 1, lang: 'en', type: 'world' },
   { url: 'https://www.arabnews.com/rss.xml', source: 'Arab News', bias: 1, lang: 'en', type: 'world' },
@@ -125,16 +125,16 @@ const FEEDS_WORLD: FeedSource[] = [
   // === Russia ===
   { url: 'https://www.themoscowtimes.com/rss/news', source: 'The Moscow Times', bias: 0, lang: 'en', type: 'world' },
   // === Africa ===
-  { url: 'https://feeds.bbci.co.uk/news/world/africa/rss.xml', source: 'BBC Africa', bias: 0, lang: 'en', type: 'world' },
+  { url: 'https://feeds.bbci.co.uk/news/world/africa/rss.xml', source: 'BBC Africa', bias: -1, lang: 'en', type: 'world' },
   { url: 'https://www.france24.com/en/africa/rss', source: 'France 24 Africa', bias: 0, lang: 'en', type: 'world' },
   // === Asia-Pacific (Japan, Korea, ASEAN) ===
-  { url: 'https://feeds.bbci.co.uk/news/world/asia/rss.xml', source: 'BBC Asia', bias: 0, lang: 'en', type: 'world' },
+  { url: 'https://feeds.bbci.co.uk/news/world/asia/rss.xml', source: 'BBC Asia', bias: -1, lang: 'en', type: 'world' },
 ];
 
 const FEEDS_FA: FeedSource[] = [
   { url: 'https://www.iranintl.com/fa/feed', source: '\u0627\u06CC\u0631\u0627\u0646 \u0627\u06CC\u0646\u062A\u0631\u0646\u0634\u0646\u0627\u0644', bias: 1, lang: 'fa' },
   { url: 'https://www.radiofarda.com/api/zrttpol-vomx-tpeoogpi', source: '\u0631\u0627\u062F\u06CC\u0648 \u0641\u0631\u062F\u0627', bias: 0, lang: 'fa' },
-  { url: 'https://www.bbc.com/persian/index.xml', source: '\u0628\u06CC\u200C\u0628\u06CC\u200C\u0633\u06CC \u0641\u0627\u0631\u0633\u06CC', bias: 0, lang: 'fa' },
+  { url: 'https://www.bbc.com/persian/index.xml', source: '\u0628\u06CC\u200C\u0628\u06CC\u200C\u0633\u06CC \u0641\u0627\u0631\u0633\u06CC', bias: -1, lang: 'fa' },
   { url: 'https://ir.voanews.com/api/zbtpil-vomx-tpeqiyp', source: '\u0635\u062F\u0627\u06CC \u0622\u0645\u0631\u06CC\u06A9\u0627', bias: 0, lang: 'fa' },
   { url: 'https://news.google.com/rss/search?q=site:dw.com+iran+when:7d&hl=fa&gl=IR&ceid=IR:fa', source: '\u062F\u0648\u06CC\u0686\u0647\u200C\u0648\u0644\u0647 \u0641\u0627\u0631\u0633\u06CC', bias: 0, lang: 'fa' },
   { url: 'https://www.independentpersian.com/rss.xml', source: '\u0627\u06CC\u0646\u062F\u06CC\u067E\u0646\u062F\u0646\u062A \u0641\u0627\u0631\u0633\u06CC', bias: -1, lang: 'fa' },
